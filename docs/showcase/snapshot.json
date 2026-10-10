@@ -1,0 +1,22 @@
+{
+  "component_count": 83,
+  "copper_layers": [
+    "F.Cu",
+    "In1.Cu",
+    "In2.Cu",
+    "In3.Cu",
+    "In4.Cu",
+    "B.Cu"
+  ],
+  "native_drc_violation_count": 0,
+  "native_unconnected_item_count": 0,
+  "net_count": 73,
+  "pcb": "build/fabrication-usb-battery-20261010/routed.kicad_pcb",
+  "pcb_sha256": "70caf673a789d4a6cfb4eaad1cb6247de70ccd1d47bfcc828c2dd438ac74aa31",
+  "placement_view": "Same candidate poses and pads, with tracks/vias/zones hidden for illustration.",
+  "qualified_release": false,
+  "routing_views": "Native KiCad exports of the unchanged filled review candidate; unmirrored top view.",
+  "source_sha256": "177d718446a3dbadd669289578e6d2307b9ae9e19bd76bb4bbe93b573ac05d5c",
+  "track_count": 1122,
+  "via_count": 367
+}

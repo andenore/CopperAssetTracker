@@ -1,0 +1,43 @@
+{
+  "components": [
+    {
+      "footprint": null,
+      "modes": {},
+      "part": "simcom.SIM7670G_LNGV",
+      "properties": {},
+      "ref": "U_MODEM",
+      "value": null
+    },
+    {
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "modes": {},
+      "part": "CAPACITOR",
+      "properties": {
+        "decouples": "U_MCU.VDD",
+        "role": "decoupling"
+      },
+      "ref": "C_MCU",
+      "value": {
+        "base_value": "1E-7",
+        "unit": "nF",
+        "value": "1E+2"
+      }
+    }
+  ],
+  "kind": "board",
+  "name": "CopperAssetTracker",
+  "nets": [
+    {
+      "endpoints": [
+        "PWR.V3V8",
+        "U_MODEM.USB_VBUS",
+        "U_MODEM.VBAT_1",
+        "U_MODEM.VBAT_2",
+        "U_MODEM.VBAT_3",
+        "C_MODEM_BULK.1"
+      ],
+      "name": "V3V8"
+    }
+  ],
+  "schema": "copperscript-ir/v0.1"
+}

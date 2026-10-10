@@ -1,0 +1,15 @@
+[project]
+name = "copper-asset-tracker"
+version = "0.1.0"
+description = "CopperScript cellular/GNSS/BLE asset tracker with rechargeable battery power"
+requires-python = ">=3.12"
+dependencies = ["copperscript"]
+
+[project.optional-dependencies]
+qualification = ["copperscript[qualification]"]
+
+[tool.uv]
+package = false
+
+[tool.uv.sources]
+copperscript = { git = "https://github.com/andenore/CopperScript.git", rev = "e5fefc5a292b41462cee14243f647131f4af0c61" }

@@ -1,0 +1,565 @@
+{
+  "schema": "copper-asset-tracker-procurement/v1",
+  "board": "CopperAssetTracker",
+  "checked_on": "2026-10-09",
+  "status": "candidate selections; not manufacturing signoff",
+  "groups": [
+    {
+      "references": [
+        "U_MODEM"
+      ],
+      "manufacturer": "SIMCom Wireless Solutions",
+      "mpn": "SIM7670G-LNGV",
+      "supplier": "jlcpcb",
+      "supplier_part": "C45935408",
+      "source_url": "https://jlcpcb.com/partdetail/48042558-LTE_Cat_1bis/C45935408",
+      "checked_on": "2026-10-09",
+      "availability": "Stock 22 in JLC related-part record for exact C45935408, 2026-10-09; Standard PCBA only, X-ray required; recheck before order",
+      "stock_evidence_url": "https://jlcpcb.com/partdetail/SIMComWirelessSolutions-SIM7670GMNGV/C45911303"
+    },
+    {
+      "references": [
+        "U_MCU"
+      ],
+      "manufacturer": "STMicroelectronics",
+      "mpn": "STM32G0C1RET6",
+      "supplier": "jlcpcb",
+      "supplier_part": "C3231062",
+      "source_url": "https://jlcpcb.com/partdetail/C3231062",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "U_NRF"
+      ],
+      "manufacturer": "Nordic Semiconductor",
+      "mpn": "NRF52832-QFAA-R",
+      "supplier": "jlcpcb",
+      "supplier_part": "C77540",
+      "source_url": "https://jlcpcb.com/partdetail/C77540",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "U_GNSS"
+      ],
+      "manufacturer": "u-blox",
+      "mpn": "MAX-M10S-00B",
+      "supplier": "jlcpcb",
+      "supplier_part": "C4153167",
+      "source_url": "https://jlcpcb.com/partdetail/UBLOX-MAX_M10S00B/C4153167",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "U_ACCEL"
+      ],
+      "manufacturer": "STMicroelectronics",
+      "mpn": "LIS2DW12TR",
+      "supplier": "jlcpcb",
+      "supplier_part": "C189624",
+      "source_url": "https://jlcpcb.com/partdetail/C189624",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "U_CC"
+      ],
+      "manufacturer": "Texas Instruments",
+      "mpn": "TUSB320LAIRWBR",
+      "supplier": "jlcpcb",
+      "supplier_part": "C132554",
+      "source_url": "https://jlcpcb.com/partdetail/C132554",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "U_MODEM_LEVEL",
+        "U_MODEM_STATUS"
+      ],
+      "manufacturer": "Texas Instruments",
+      "mpn": "SN74AXC2T245RSWR",
+      "supplier": "jlcpcb",
+      "supplier_part": "C1882550",
+      "source_url": "https://jlcpcb.com/partdetail/C1882550",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "U_MODEM_KEY"
+      ],
+      "manufacturer": "onsemi",
+      "mpn": "BSS138",
+      "supplier": "jlcpcb",
+      "supplier_part": "C52895",
+      "source_url": "https://jlcpcb.com/partdetail/Onsemi-BSS138/C52895",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "PWR/U_CHARGE"
+      ],
+      "manufacturer": "Texas Instruments",
+      "mpn": "BQ24072RGTR",
+      "supplier": "jlcpcb",
+      "supplier_part": "C140288",
+      "source_url": "https://jlcpcb.com/partdetail/C140288",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "PWR/U_LOGIC",
+        "PWR/U_MODEM"
+      ],
+      "manufacturer": "Texas Instruments",
+      "mpn": "TPS63020DSJR",
+      "supplier": "jlcpcb",
+      "supplier_part": "C15483",
+      "source_url": "https://jlcpcb.com/partdetail/C15483",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "PWR/L_LOGIC",
+        "PWR/L_MODEM"
+      ],
+      "manufacturer": "Bourns",
+      "mpn": "SRP4020TA-1R5M",
+      "supplier": "jlcpcb",
+      "supplier_part": "C3233727",
+      "source_url": "https://jlcpcb.com/partdetail/C3233727",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "PWR/J_BAT"
+      ],
+      "manufacturer": "JST",
+      "mpn": "S3B-XH-SM4-TB(LF)(SN)",
+      "supplier": "jlcpcb",
+      "supplier_part": "C161860",
+      "source_url": "https://jlcpcb.com/partdetail/173241-S3B_XH_SM4_TB_LF_SN/C161860",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "J_DEBUG"
+      ],
+      "manufacturer": "JST",
+      "mpn": "S4B-XH-SM4-TB(LF)(SN)",
+      "supplier": "jlcpcb",
+      "supplier_part": "C161861",
+      "source_url": "https://jlcpcb.com/partdetail/JST-S4B_XH_SM4_TB_LF_SN/C161861",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "J_POWER"
+      ],
+      "manufacturer": "GCT",
+      "mpn": "USB4135-GF-A",
+      "supplier": "jlcpcb",
+      "supplier_part": "C5438410",
+      "source_url": "https://jlcpcb.com/partdetail/6314253-USB4135_GFA/C5438410",
+      "checked_on": "2026-10-09",
+      "availability": "JLCPCB part page confirms SMT PCBA offering; CAD API unavailable; recheck live stock"
+    },
+    {
+      "references": [
+        "J_SIM"
+      ],
+      "manufacturer": "GCT",
+      "mpn": "SIM8060-6-0-14-00-A",
+      "supplier": "jlcpcb",
+      "supplier_part": "C6296715",
+      "source_url": "https://jlcpcb.com/partdetail/7243741-SIM8060_6_0_14_00A/C6296715",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "J_CELL",
+        "J_GNSS"
+      ],
+      "manufacturer": "Hirose",
+      "mpn": "U.FL-R-SMT-1(10)",
+      "supplier": "jlcpcb",
+      "supplier_part": "C88373",
+      "source_url": "https://jlcpcb.com/partdetail/C88373",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "J_SWD_MCU",
+        "J_SWD_NRF"
+      ],
+      "manufacturer": "Samtec",
+      "mpn": "FTSH-105-01-L-DV-007-K",
+      "supplier": "jlcpcb",
+      "supplier_part": "C5296739",
+      "source_url": "https://jlcpcb.com/partdetail/C5296739",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "SW_USER"
+      ],
+      "manufacturer": "E-Switch",
+      "mpn": "TL3342F160QG",
+      "supplier": "jlcpcb",
+      "supplier_part": "C2886898",
+      "source_url": "https://jlcpcb.com/partdetail/C2886898",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "LED_1",
+        "LED_2"
+      ],
+      "manufacturer": "Hubei KENTO Elec",
+      "mpn": "KT-0603R",
+      "supplier": "jlcpcb",
+      "supplier_part": "C2286",
+      "source_url": "https://jlcpcb.com/partdetail/C2286",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "ANT_BT"
+      ],
+      "manufacturer": "Johanson Technology",
+      "mpn": "2450AT18A0100001E",
+      "supplier": "jlcpcb",
+      "supplier_part": "C17430588",
+      "source_url": "https://jlcpcb.com/partdetail/C17430588",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "FL_USB"
+      ],
+      "manufacturer": "Coilcraft",
+      "mpn": "0603USB-601MLC",
+      "supplier": "jlcpcb",
+      "supplier_part": "C3211396",
+      "source_url": "https://jlcpcb.com/partdetail/Coilcraft-0603USB601MLC/C3211396",
+      "checked_on": "2026-10-09",
+      "availability": "JLCPCB part page confirms PCBA offering; CAD API unavailable; recheck live stock"
+    },
+    {
+      "references": [
+        "Y_NRF"
+      ],
+      "manufacturer": "YXC (Yangxing Technology)",
+      "mpn": "X322532MOB4SI",
+      "supplier": "jlcpcb",
+      "supplier_part": "C9009",
+      "source_url": "https://jlcpcb.com/partdetail/YangxingTech-X322532MOB4SI/C9009",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "R_I2C_SDA",
+        "R_I2C_SCL"
+      ],
+      "manufacturer": "UNI-ROYAL",
+      "mpn": "0402WGF4701TCE",
+      "supplier": "jlcpcb",
+      "supplier_part": "C25900",
+      "source_url": "https://jlcpcb.com/partdetail/C25900",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "R_CC_OUT1",
+        "R_CC_OUT2",
+        "R_RESET_MCU",
+        "R_RESET_NRF"
+      ],
+      "manufacturer": "UNI-ROYAL",
+      "mpn": "0402WGF1002TCE",
+      "supplier": "jlcpcb",
+      "supplier_part": "C25744",
+      "source_url": "https://jlcpcb.com/partdetail/C25744",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "R_LED_1",
+        "R_LED_2"
+      ],
+      "manufacturer": "UNI-ROYAL",
+      "mpn": "0402WGF1001TCE",
+      "supplier": "jlcpcb",
+      "supplier_part": "C11702",
+      "source_url": "https://jlcpcb.com/partdetail/C11702",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "R_KEY_PD",
+        "PWR/R_LOGIC_FB_BOT",
+        "PWR/R_MODEM_FB_BOT",
+        "PWR/R_MODEM_EN_PD"
+      ],
+      "manufacturer": "UNI-ROYAL",
+      "mpn": "0402WGF1003TCE",
+      "supplier": "jlcpcb",
+      "supplier_part": "C25741",
+      "source_url": "https://jlcpcb.com/partdetail/C25741",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "R_CC_VBUS",
+        "R_CC_VBUS2",
+        "R_CC_VBUS3"
+      ],
+      "manufacturer": "UNI-ROYAL",
+      "mpn": "0402WGF3003TCE",
+      "supplier": "jlcpcb",
+      "supplier_part": "C25774",
+      "source_url": "https://jlcpcb.com/partdetail/C25774",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "PWR/R_ISET"
+      ],
+      "manufacturer": "UNI-ROYAL",
+      "mpn": "0402WGF2201TCE",
+      "supplier": "jlcpcb",
+      "supplier_part": "C25879",
+      "source_url": "https://jlcpcb.com/partdetail/C25879",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "PWR/R_ILIM"
+      ],
+      "manufacturer": "UNI-ROYAL",
+      "mpn": "0402WGF3301TCE",
+      "supplier": "jlcpcb",
+      "supplier_part": "C25890",
+      "source_url": "https://jlcpcb.com/partdetail/C25890",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "PWR/R_LOGIC_FB_TOP"
+      ],
+      "manufacturer": "UNI-ROYAL",
+      "mpn": "0402WGF5603TCE",
+      "supplier": "jlcpcb",
+      "supplier_part": "C132339",
+      "source_url": "https://jlcpcb.com/partdetail/C132339",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "PWR/R_MODEM_FB_TOP",
+        "PWR/R_MODEM_FB_TOP2"
+      ],
+      "manufacturer": "UNI-ROYAL",
+      "mpn": "0402WGF3303TCE",
+      "supplier": "jlcpcb",
+      "supplier_part": "C25778",
+      "source_url": "https://jlcpcb.com/partdetail/C25778",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "C_MCU",
+        "C_ACCEL",
+        "C_LEVEL_A",
+        "C_LEVEL_B",
+        "C_STATUS_A",
+        "C_STATUS_B",
+        "C_DEC1",
+        "C_NRF_VDD2",
+        "C_NRF_VDD3",
+        "PWR/C_LOGIC_VINA",
+        "PWR/C_MODEM_VINA"
+      ],
+      "manufacturer": "Samsung Electro-Mechanics",
+      "mpn": "CL05B104KO5NNNC",
+      "supplier": "jlcpcb",
+      "supplier_part": "C1525",
+      "source_url": "https://jlcpcb.com/partdetail/C1525",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "C_CC",
+        "C_GNSS",
+        "C_DEC4"
+      ],
+      "manufacturer": "Samsung Electro-Mechanics",
+      "mpn": "CL10A105KB8NNNC",
+      "supplier": "jlcpcb",
+      "supplier_part": "C15849",
+      "source_url": "https://jlcpcb.com/partdetail/C15849",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "C_NRF",
+        "PWR/C_USB"
+      ],
+      "manufacturer": "Samsung Electro-Mechanics",
+      "mpn": "CL10A475KO8NNNC",
+      "supplier": "jlcpcb",
+      "supplier_part": "C19666",
+      "source_url": "https://jlcpcb.com/partdetail/C19666",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "PWR/C_BAT",
+        "PWR/C_SYS",
+        "PWR/C_LOGIC_IN",
+        "PWR/C_MODEM_IN"
+      ],
+      "manufacturer": "Samsung Electro-Mechanics",
+      "mpn": "CL21A106KAYNNNE",
+      "supplier": "jlcpcb",
+      "supplier_part": "C15850",
+      "source_url": "https://jlcpcb.com/partdetail/C15850",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "PWR/C_LOGIC_OUT1",
+        "PWR/C_LOGIC_OUT2",
+        "PWR/C_LOGIC_OUT3",
+        "PWR/C_MODEM_OUT1",
+        "PWR/C_MODEM_OUT2",
+        "PWR/C_MODEM_OUT3"
+      ],
+      "manufacturer": "Samsung Electro-Mechanics",
+      "mpn": "CL21A226MAQNNNE",
+      "supplier": "jlcpcb",
+      "supplier_part": "C45783",
+      "source_url": "https://jlcpcb.com/partdetail/C45783",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "C_MODEM_BULK"
+      ],
+      "manufacturer": "Samsung Electro-Mechanics",
+      "mpn": "CL32A107MQVNNNE",
+      "supplier": "jlcpcb",
+      "supplier_part": "C49066",
+      "source_url": "https://jlcpcb.com/partdetail/C49066",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "C_BT_MATCH"
+      ],
+      "manufacturer": "FH (Guangdong Fenghua Advanced Tech)",
+      "mpn": "0402CG0R8B500NT",
+      "supplier": "jlcpcb",
+      "supplier_part": "C285068",
+      "source_url": "https://jlcpcb.com/partdetail/C285068",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "C_ANT_SERIES"
+      ],
+      "manufacturer": "FH (Guangdong Fenghua Advanced Tech)",
+      "mpn": "0402CG1R0C500NT",
+      "supplier": "jlcpcb",
+      "supplier_part": "C1550",
+      "source_url": "https://jlcpcb.com/partdetail/C1550",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "C_DEC3"
+      ],
+      "manufacturer": "FH (Guangdong Fenghua Advanced Tech)",
+      "mpn": "0402CG101J500NT",
+      "supplier": "jlcpcb",
+      "supplier_part": "C1546",
+      "source_url": "https://jlcpcb.com/partdetail/C1546",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "C_XC1",
+        "C_XC2"
+      ],
+      "manufacturer": "FH (Guangdong Fenghua Advanced Tech)",
+      "mpn": "0402CG180J500NT",
+      "supplier": "jlcpcb",
+      "supplier_part": "C1549",
+      "source_url": "https://jlcpcb.com/partdetail/1901-0402CG180J500NT/C1549",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "L_BT_MATCH",
+        "L_ANT_SERIES"
+      ],
+      "manufacturer": "Murata Electronics",
+      "mpn": "LQG15HS3N9S02D",
+      "supplier": "jlcpcb",
+      "supplier_part": "C77109",
+      "source_url": "https://jlcpcb.com/partdetail/C77109",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "L_ANT_SHUNT"
+      ],
+      "manufacturer": "Murata Electronics",
+      "mpn": "LQG15HS2N7S02D",
+      "supplier": "jlcpcb",
+      "supplier_part": "C77108",
+      "source_url": "https://jlcpcb.com/partdetail/MurataElectronics-LQG15HS2N7S02D/C77108",
+      "checked_on": "2026-10-09",
+      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "asset": "github.com/andenore/CopperLib/packages/circuits/ti/tps63020-buck-boost/assets/tps63020-six-layer-always-on.json",
+  "asset_sha256": "00df9c41afeea329705e2c55cbf2c97e521bcbd426a5b7b8f74d4fa30af1bc67",
+  "name": "logic-buck-boost",
+  "bindings": {
+    "U": "PWR/U_LOGIC", "L": "PWR/L_LOGIC", "C_IN": "PWR/C_LOGIC_IN",
+    "C_VINA": "PWR/C_LOGIC_VINA", "C_OUT1": "PWR/C_LOGIC_OUT1",
+    "C_OUT2": "PWR/C_LOGIC_OUT2", "C_OUT3": "PWR/C_LOGIC_OUT3",
+    "R_TOP": "PWR/R_LOGIC_FB_TOP", "R_BOT": "PWR/R_LOGIC_FB_BOT"
+  },
+  "net_bindings": {"VIN": "PWR/VSYS", "VOUT": "V3V3", "GND": "GND",
+    "FB": "PWR/LOGIC_FB", "L1": "PWR/LOGIC_L1", "L2": "PWR/LOGIC_L2"}
+}
