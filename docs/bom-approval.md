@@ -46,3 +46,14 @@ inventories rebind the assembly digest to
 again preserving every selected component and reviewed flag. Qualification
 reports bound to the previous locks/plan are historical and must be regenerated;
 the unchanged illustrated native geometry is independently source-guarded.
+
+## Plain numeric notation
+
+CopperScript `209e4998223283923c3f1f0fb52f6fb97791cf46` emits ordinary
+fixed-point numbers with declared units instead of scientific notation. The
+tracker's before/after electrical IR was compared after exact decimal parsing:
+values, units, connectivity, library provenance and all 83 selection identities
+are unchanged. Only serialized numeric spelling changes. The assembly digest
+is rebound to `f923a4effa54ebb7829aa85a397e0f302de97b3530dea3c0db0367ebe65a1ecc`,
+preserving every existing selection and reviewed flag. This display change is
+not new production approval; historical qualification bindings stay historical.

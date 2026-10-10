@@ -1,6 +1,6 @@
 {
   "board": "CopperAssetTracker",
-  "electrical_sha256": "9c966dc4dbaa117f3d212b34127aed090f34014ad7839d0b08bc47d03be3491d",
+  "electrical_sha256": "f923a4effa54ebb7829aa85a397e0f302de97b3530dea3c0db0367ebe65a1ecc",
   "schema": "copperscript-assembly-lock/v0.1",
   "selections": [
     {

@@ -18,9 +18,9 @@
       },
       "ref": "C_MCU",
       "value": {
-        "base_value": "1E-7",
+        "base_value": "0.0000001",
         "unit": "nF",
-        "value": "1E+2"
+        "value": "100"
       }
     }
   ],

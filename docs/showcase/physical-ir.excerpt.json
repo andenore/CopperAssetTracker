@@ -11,7 +11,7 @@
       "rotation_degrees": "90",
       "side": "front",
       "source_path": "C_MCU",
-      "value": "1E+2 nF"
+      "value": "100 nF"
     },
     {
       "footprint": "github.com/andenore/CopperLib/packages/parts/simcom/sim7670g-lngv/footprints/SIM7670G_LNGV.kicad_mod",

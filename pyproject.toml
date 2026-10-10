@@ -12,4 +12,4 @@ qualification = ["copperscript[qualification]"]
 package = false
 
 [tool.uv.sources]
-copperscript = { git = "https://github.com/andenore/CopperScript.git", rev = "e5fefc5a292b41462cee14243f647131f4af0c61" }
+copperscript = { git = "https://github.com/andenore/CopperScript.git", rev = "209e4998223283923c3f1f0fb52f6fb97791cf46" }

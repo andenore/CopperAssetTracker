@@ -37,6 +37,17 @@ class ShowcaseTests(unittest.TestCase):
                 self.assertEqual(ElementTree.parse(path).getroot().tag, "{http://www.w3.org/2000/svg}svg")
                 self.assertIn(f"docs/showcase/{name}.svg", readme)
 
+    def test_capacitor_examples_use_plain_numbers_and_engineering_units(self):
+        electrical = json.loads((SHOWCASE / "electrical-ir.excerpt.json").read_text())
+        capacitor = next(c for c in electrical["components"] if c["ref"] == "C_MCU")
+        self.assertEqual(capacitor["value"], {"value": "100", "unit": "nF", "base_value": "0.0000001"})
+        physical = json.loads((SHOWCASE / "physical-ir.excerpt.json").read_text())
+        placement = next(p for p in physical["placements"] if p["reference"] == "C_MCU")
+        self.assertEqual(placement["value"], "100 nF")
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertNotIn("1E+2", readme)
+        self.assertNotIn("1E-7", readme)
+
 
 if __name__ == "__main__":
     unittest.main()

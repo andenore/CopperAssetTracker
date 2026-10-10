@@ -114,8 +114,10 @@ to establish connected fill.
 
 ### Inspect what the compiler understood
 
-This component object is copied from the generated electrical IR. Units and the
-SI base value remain explicit; the decoupling properties survive compilation:
+These component fields come from the generated electrical IR. Human-facing
+values use ordinary numbers and engineering units (`100 nF`), not scientific
+notation. The full IR also carries an exact SI base value for algorithms;
+the decoupling properties survive compilation:
 
 ```json
 {
@@ -124,7 +126,7 @@ SI base value remain explicit; the decoupling properties survive compilation:
   "part": "CAPACITOR",
   "properties": { "decouples": "U_MCU.VDD", "role": "decoupling" },
   "ref": "C_MCU",
-  "value": { "base_value": "1E-7", "unit": "nF", "value": "1E+2" }
+  "value": { "unit": "nF", "value": "100" }
 }
 ```
 
@@ -140,7 +142,7 @@ current-source-checked candidate. Coordinates are integer nanometres (52.505 mm,
   "rotation_degrees": "90",
   "side": "front",
   "source_path": "C_MCU",
-  "value": "1E+2 nF"
+  "value": "100 nF"
 }
 ```
 
@@ -247,7 +249,7 @@ The compiler, CopperLib and KiCad footprints are pinned to published Git commits
 
 | Dependency | Revision / lock |
 | --- | --- |
-| CopperScript | `e5fefc5a292b41462cee14243f647131f4af0c61` in `pyproject.toml` and `uv.lock` |
+| CopperScript | `209e4998223283923c3f1f0fb52f6fb97791cf46` in `pyproject.toml` and `uv.lock` |
 | CopperLib | `f54a03b36e8a785eb512626b3f5110a7f321e37c` in `copper.mod` and `copper.lock` |
 | KiCad footprints | `7ebfa6b23cc292a56f751b7b5f4a0e12eeef69dd` in `copper.mod` and `copper.lock` |
 
