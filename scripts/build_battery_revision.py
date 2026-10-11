@@ -1,7 +1,9 @@
-"""Build an isolated full-board electrical/placement draft with local library inputs.
+"""Compose an isolated full-board source revision with local library inputs.
 
 Board composition only; compiler, geometry, macros and placement use CopperScript.
 Does not alter canonical source/locks or import historical routed copper.
+Default builds need no historical PCB; standard route-board owns placement and
+routing. An explicit pinned pose seed is historical reproduction only.
 """
 import argparse
 from dataclasses import replace
@@ -36,14 +38,14 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--library-review-root", type=Path, required=True)
     parser.add_argument("--kicad-footprint-root", type=Path, required=True)
-    parser.add_argument("--pose-seed", type=Path, required=True)
+    parser.add_argument("--pose-seed", type=Path, help="optional pinned historical placement reproduction; omitted for a fresh source-only build")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--modem-power", action="store_true", help="combine the reusable local modem bypass bank and regional distribution revision")
     args = parser.parse_args()
     library, footprints, work = args.library_review_root.resolve(), args.kicad_footprint_root.resolve(), args.output.resolve()
     if work.exists():
         raise ValueError("output exists; preserve the old review")
-    if hash_file(args.pose_seed) != PRIOR_NATIVE_SHA256:
+    if args.pose_seed is not None and hash_file(args.pose_seed) != PRIOR_NATIVE_SHA256:
         raise ValueError("pose seed must be the pinned RF checkpoint")
     screen = assess(ROOT, library)
     work.mkdir(parents=True, exist_ok=False)
@@ -112,6 +114,29 @@ def main():
                     supplier_part=old.supplier_part, source_url=old.source_url, reviewed=False)
         selections.append(selection)
     (work / "assembly.lock").write_text(lock_to_json(replace(lock, selections=tuple(selections))), encoding="utf-8")
+    if args.pose_seed is None:
+        # Composition only. Do not add another project-local placement/router:
+        # the standard compiler command runs and validates those stages next.
+        document = {"schema": "copperassettracker-battery-revision-build/v0.1",
+            "qualified_release": False, "modem_power_revision": args.modem_power,
+            "library_mode": "explicit_unlocked_working_copy_review", "erc_errors": 0,
+            "components": len(elaborate(design.electrical).components), "copper_layers": 6,
+            "placement_status": "not_run_use_shared_route_board", "preserved_pose_count": 0,
+            "ordinary_historical_copper_imported": False, "assembly_reviewed": False,
+            "inputs": {"prior_native": None, "canonical_board": hash_file(ROOT / "board.copper"),
+                "revision": hash_file(ROOT / "revisions/battery-v1/power_tree.copper"),
+                "revision_procurement": hash_file(ROOT / "revisions/battery-v1/procurement.json"),
+                "placement_choices": hash_file(ROOT / "revisions/battery-v1/placement.json"),
+                "generated_board": hash_file(work / "board.copper"),
+                "builder": hash_file(Path(__file__)), "resolved_lock": hash_file(work / "copper.lock")},
+            "outputs": {"electrical_ir": hash_file(work / "electrical.ir.json"),
+                "assembly_lock": hash_file(work / "assembly.lock")}}
+        if args.modem_power:
+            document['inputs']['modem_revision'] = {name: hash_file(ROOT / 'revisions/modem-power-v1' / name)
+                for name in ('distribution.copper', 'placement.json', 'procurement.json', 'modem-power-macro.json')}
+        (work / "revision-build.json").write_text(json.dumps(document, indent=2, allow_nan=False) + "\n")
+        print(json.dumps(document, indent=2), flush=True)
+        return 0
     board = resolved_physicalize(design, FootprintResolver(base_directory=work, offline=True),
         PrototypePhysicalOptions(copper_layers=6, fabrication_profile="jlcpcb-six-layer"))
     for scene in ("nrf-antenna-macro.json", "logic-power-macro.json", "modem-power-macro.json"):
