@@ -293,7 +293,7 @@ snapshot of all committed copper. Snapshot construction avoids duplicating
 the immutable macro prefix; tests cover preserved obstacles, unchanged limits,
 missing-guide rejection and non-macro model errors.
 
-The reproducible `scripts/probe_clock_routes.py` runs the three ordered jobs
+The historical clock probe (now retired; recoverable from Git history) ran the three ordered jobs
 with real global guides and every immutable macro. XC1 is 7.576589 mm, XC2
 7.847249 mm, and DEC3 1.960366 mm, all connected without vias. It intentionally
 does not route the other interfaces and is not whole-board closure evidence.

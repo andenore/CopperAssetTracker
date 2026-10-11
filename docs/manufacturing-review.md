@@ -1,5 +1,10 @@
 # Native-clean fabrication review — 2026-10-10
 
+New solver work uses `make route-review` and CopperScript's shared `route-board`
+pipeline. Project-local finishing commands are retired after equivalent shared
+closure; historical files below remain unchanged. Release locks and the pinned
+manufacturing workflow are not upgraded by that benchmark result.
+
 Historical checkpoint: the later routing-quality changes relocated the level
 translator and its bypasses. The retained files below are unchanged and do not
 certify current source intent. See [routing-quality review](routing-quality.md)
@@ -42,30 +47,20 @@ a new candidate and must pass its own checks. The locked source/library assets
 and local editable CopperScript changes must also be retained. No generic
 components or compiler algorithms are copied into this project.
 
-The bounded late-contact run is recorded in `routing-attempts.md`; it saved
-`build/late-contact-routed.kicad_pcb` with V5 and two supply contacts pending.
-The application finishing helper can resume that current-source candidate:
+The historical late-contact result is recorded in `routing-attempts.md`;
+its project-specific finishing/cleanup commands have now been retired. Retained
+native boards and reports are unchanged, and tracked scripts remain recoverable
+from Git history. New candidates use the shared pipeline:
 
 ```console
-uv run --locked python scripts/finish_routed_candidate.py --pcb build/late-contact-routed.kicad_pcb --route-v5 --output build/resumed-routed.kicad_pcb
-kicad-cli pcb drc --refill-zones --save-board --format json --severity-all --exit-code-violations -o build/resumed-native.json build/resumed-routed.kicad_pcb
+make route-review REVIEW_COPPER="python -m copperscript" REVIEW_DIR=build/new-review
 ```
 
-The helper uses real global guides when resuming V5. This specific end-to-end
-resume command has not been rerun; the accepted V5 diagnostic used unbiased
-local search, and the final checkpoint's strict source/macro/geometry checks
-and native DRC were verified separately. Do not assume a heuristic rerun will
-reproduce the same copper. Any remaining opens/errors are a failed candidate.
-If native DRC reports only the known short dangling VSYS stub, its exact
-report-identified ordinary segment may be cleaned; macro/critical tracks or
-other warnings may not be waived:
-
-```console
-uv run --locked python scripts/finish_routed_candidate.py --pcb build/resumed-routed.kicad_pcb --native-report build/resumed-native.json --output build/finished-routed.kicad_pcb
-kicad-cli pcb drc --refill-zones --save-board --format json --severity-all --exit-code-violations -o build/finished-native.json build/finished-routed.kicad_pcb
-uv run --locked copper export-manufacturing build/finished-routed.kicad_pcb --kicad-cli kicad-cli --skip-independent-cam -o build/fabrication-review-new
-uv run --locked python scripts/export_assembly_review.py --fabrication build/fabrication-review-new --output build/assembly-review-new
-```
+Activate current reviewed CopperScript first. Both standard balanced and thorough
+Tracker runs achieved current-source native closure on 2026-10-11; see
+[exact evidence and retirement scope](autonomous-routing-review.md). This does
+not upgrade the pinned manufacturing workflow or approve the separate production
+revision. Never copy an old checkpoint's approval flags onto a new reroute.
 
 Native export refuses nonzero opens or violations. `--skip-independent-cam`
 acknowledges an **unqualified file-generation export**, never a release waiver.

@@ -31,11 +31,10 @@ CopperScript's access-aware placement and straight-lead/local surface search
 connect all 13 ordinary bypass associations in the separate local review, with
 zero local-path vias and no pending associations; DEC3 remains specialized.
 `build/decoupling-review-20261010/review.json` records source/algorithm/seed hashes
-and actual path lengths (1.640–3.321 mm). Reproduce it with:
-
-```powershell
-uv run --locked python scripts/review_decoupling.py --pose-seed build/routing-quality-20261010/ground-merged.kicad_pcb --output build/new-local-review --movable C_LEVEL_A --movable C_LEVEL_B --movable C_STATUS_A --movable C_STATUS_B
-```
+and actual path lengths (1.640–3.321 mm). This is a historical experiment;
+its selected-component helper was retired after shared routing closure.
+New reviews use `make route-review` without a pose seed or component selectors;
+see [current shared evidence](autonomous-routing-review.md).
 
 This imports ONLY historical poses, never historical ordinary copper. Current
 fixed source intent, locked footprints and immutable macro assets win. Output
@@ -48,8 +47,8 @@ groups but initially fails the modem USB differential pair. Its ordinary area
 route is correctly gated; full routing/fabrication evidence remains outstanding.
 A second preflight at the legal local-review poses passes all 82 ordinary exits,
 every critical group including both USB pairs, and all bypass reservations. The
-pose-preserving full comparison uses `scripts/route_review_candidate.py`, invoking
-only CopperScript algorithms. It never copies seed copper or overwrites a review.
+historical pose-preserving full comparison used the now-retired project helper.
+The current shared CLI performs placement and routing without that wrapper.
 Reading the saved local native PCB through the exact current-source guard also
 confirms all thirteen surface chains (26 terminals, no proposed repair tracks).
 The earlier ground-only PCB and qualification reports are historical, not

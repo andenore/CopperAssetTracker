@@ -23,7 +23,11 @@ else
 KICAD_PYTHON ?= /usr/bin/python3
 endif
 CAM_AUDIT_ARGS ?=
-.PHONY: all fetch check test compile pcb edit route render verify power-probes assembly manufacturing cam-audit engineering-audit qualification order
+# Explicit current CopperScript command for a review, not a lockfile upgrade.
+REVIEW_COPPER ?=
+REVIEW_DIR ?= $(BUILD)/autonomous-review
+REVIEW_PROFILE ?= balanced
+.PHONY: all fetch check test compile pcb edit route route-review render verify power-probes assembly manufacturing cam-audit engineering-audit qualification order
 all: check test compile pcb
 
 fetch:
@@ -53,12 +57,20 @@ pcb: check
 edit:
 	$(UV) run --locked copper edit-mechanical $(BOARD) $(LOCKED) $(PHYSICAL)
 
+# Retained pinned-build checkpoint. New solver reviews use route-review below.
 route: pcb
 	$(UV) run --locked copper route-board $(BOARD) $(LOCKED) $(PHYSICAL) --candidates 1 --pitch-mm 0.5 --passes 2 --search-budget 30000 --repair-budget-multiplier 2 --fanout --fanout-maze --package-access-trials 0 --package-pattern-trials 0 --package-initial-pair-states 0 --soft-ripup --constrained-pins-first --progressive-guides --no-early-plane-stitch --plane-stitch-step-mm 0.1 --plane-maze-step-mm 0.025 --plane-maze-budget 50000 --plane-contact-radius-mm 3 --plane-stitch-detour-mm 1.5 --progress --verify-plane-fill "$(KICAD_CLI)" --report $(BUILD)/route.json -o $(ROUTED)
 
 # A bounded route can still exit nonzero with a saved draft. See
-# docs/manufacturing-review.md for validated native-checkpoint finishing;
+# docs/autonomous-routing-review.md for shared rerouting and native checks;
 # neither this target nor manufacturing bypasses a failed completion gate.
+
+# Generic orchestration only: no pose seed, selected net/pad or repair script.
+# A new directory is mandatory; a failed run retains its truthful draft/report.
+route-review:
+	$(if $(strip $(REVIEW_COPPER)),,$(error Set REVIEW_COPPER to a current CopperScript command; this target does not upgrade pinned dependencies))
+	$(UV) run --locked python -c "from pathlib import Path; Path('$(REVIEW_DIR)').mkdir(parents=True, exist_ok=False)"
+	$(REVIEW_COPPER) route-board $(BOARD) $(LOCKED) $(PHYSICAL) --routing-profile $(REVIEW_PROFILE) --pitch-mm 0.5 --fanout-maze --soft-ripup --constrained-pins-first --progressive-guides --plane-contact-radius-mm 3 --plane-stitch-detour-mm 1.5 --verify-plane-fill "$(KICAD_CLI)" --native-evidence-directory "$(REVIEW_DIR)/native" --report "$(REVIEW_DIR)/route.json" -o "$(REVIEW_DIR)/candidate.kicad_pcb" --progress
 
 render: pcb
 	"$(KICAD_CLI)" pcb export svg --layers F.Cu,B.Cu --common-layers Edge.Cuts --mode-multi --fit-page-to-board --exclude-drawing-sheet -o $(BUILD)/layers/ $(PCB)

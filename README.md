@@ -56,6 +56,27 @@ CopperLib. This project does not fork the compiler or maintain private copies
 of shared parts. Its composition lives in [board.copper](board.copper) and
 [power_tree.copper](packages/tracker/power_tree.copper).
 
+### Shared autonomous-routing review
+
+New routing improvements run through CopperScript's standard `route-board`,
+not this project's historical selected-net repair helpers. `make route-review`
+requires an explicit current compiler command, for example:
+
+```console
+make route-review REVIEW_COPPER="python -m copperscript" REVIEW_DIR=build/review-new
+```
+
+Activate the current CopperScript environment first. This review target keeps
+the board's locked library inputs, six layers and macro assets, uses the bounded
+`balanced` profile, and saves native evidence plus a failed or completed draft in
+a **new** directory. It does not upgrade compiler pins or replace manufacturing
+artifacts. The 2026-10-11 shared balanced and thorough runs each closed all
+60 ordinary nets, with zero opens, violations and islands after native refill.
+The seven project-local routing/repair entry points have been retired;
+read-only checkpoint validation now delegates to CopperScript. See
+[closure evidence and migration](docs/autonomous-routing-review.md).
+This benchmark does not approve the separate 91-component production revision.
+
 ## From intent to copper
 
 ```text

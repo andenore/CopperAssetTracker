@@ -10,7 +10,7 @@ import unittest
 ROOT = Path(__file__).parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 import build_battery_revision as builder
-import probe_open_routes as probe
+import checkpoint_source as probe
 import check_modem_power_revision as power_check
 
 

@@ -15,7 +15,7 @@ from pcbir.backends.kicad_pcb import KiCadPcbBackend
 from pcbir.backends.kicad_project import write_kicad_project
 from pcbir.loader import load_design
 from pcbir.serializer import board_to_dict
-from finish_routed_candidate import current_candidate
+from checkpoint_source import current_candidate
 
 ROOT = Path(__file__).resolve().parents[1]
 

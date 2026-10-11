@@ -129,11 +129,10 @@ flags remain false. Independent copper/DFM, RF/power/USB modelling, operating
 inputs, CPL review and prototype measurements remain open. No supplier upload
 or order was made.
 
-The application-only `scripts/shorten_cellular_feed.py` migrates the exact earlier
-PCB/source hashes using shared CopperScript algorithms. Reproduce it from the
-earlier `4d7c9d2` source checkpoint, then adopt the source delta and rerun native
-refill/check/export. It deliberately refuses changed source, unknown PCB bytes
-and existing outputs; it is not a general native-board importer.
+The historical RF migration used a project-only helper pinned to the earlier
+`4d7c9d2` source and exact PCB bytes. That helper is now retired and recoverable
+from Git history; retained PCB/evidence files were not deleted. New source
+changes use the shared `route-board` pipeline, not a native-copper migration.
 
 Verification: all 47 tracker unit tests and 10 focused CopperLib contract/GNSS
 footprint tests pass. ZIP integrity and every package SHA256SUMS entry were

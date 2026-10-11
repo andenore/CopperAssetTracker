@@ -14,7 +14,7 @@ from pcbir.placement import transformed_pad_position
 from pcbir.pin_escape import _verified_land_path
 from pcbir.routing_clearance import RoutingClearanceIndex
 from pcbir.qualification import hash_file
-from finish_routed_candidate import current_candidate
+from checkpoint_source import current_candidate
 
 
 def main():
@@ -73,7 +73,8 @@ def main():
             'surface_path_algorithm': hash_file(Path(__import__('pcbir.pin_escape', fromlist=['__file__']).__file__)),
             'local_surface_search_algorithm': hash_file(Path(__import__('pcbir.surface_path', fromlist=['__file__']).__file__)),
             'route_cleanup_algorithm': hash_file(Path(__import__('pcbir.route_cleanup', fromlist=['__file__']).__file__)),
-            'routing_workflow': hash_file(Path(__file__).with_name('finish_routed_candidate.py')),
+            'source_composition': hash_file(Path(__file__).with_name('checkpoint_source.py')),
+            'native_checkpoint_algorithm': hash_file(Path(__import__('pcbir.native_checkpoint', fromlist=['__file__']).__file__)),
             'revision_build': hash_file(args.project_root / 'revision-build.json'),
             'native_report': hash_file(native_report)},
         'unresolved': ['effective local reservoir capacitance and ESR',

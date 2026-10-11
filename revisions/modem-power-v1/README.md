@@ -46,19 +46,24 @@ Build into a new directory (working-copy review, not locked release):
 
 ```powershell
 uv run --project ../CopperScript python scripts/build_battery_revision.py --modem-power --library-review-root ../CopperLib --kicad-footprint-root .copper-cache/pkg/0c22bbbc033f71e79d6d --pose-seed build/fabrication-prototype-rf-20261010/routed.kicad_pcb --output build/new-power-review
-uv run --project ../CopperScript python scripts/route_review_candidate.py --project-root build/new-power-review --unlocked-review --pose-seed build/new-power-review/placed-unrouted.kicad_pcb --output build/new-power-route
+Set-Location build/new-power-review
+uv run --project ../../../CopperScript copper route-board board.copper --offline --layers 6 --fab-profile jlcpcb-six-layer --hard-macro nrf-antenna-macro.json --hard-macro logic-power-macro.json --hard-macro modem-power-macro.json --routing-profile balanced --pitch-mm 0.5 --fanout-maze --soft-ripup --constrained-pins-first --progressive-guides --plane-contact-radius-mm 3 --plane-stitch-detour-mm 1.5 --verify-plane-fill "C:/Program Files/KiCad/10.0/bin/kicad-cli.exe" --native-evidence-directory native-new --report route-new.json -o routed-new.kicad_pcb --progress
 ```
 
-Routing uses current source and preserved legal poses, not historical ordinary
-copper. Independent native refill/DRC is required afterwards. Earlier 83-part
+The second command is the replacement shared workflow, not a reproduction of
+the old pose-frozen helper's route. Use a new review directory and current
+CopperScript environment; it deliberately remains an unlocked working-copy
+review. It places/routes current source, never copies historical ordinary
+copper, and requires independent native refill/DRC. Earlier 83-part
 fabrication archives are preserved and do not describe this 91-part revision.
 
 Local plane access also exposed two distinct issues. CopperScript now honors
 declared neckdown widths in cheap surface paths and the local via-search maze,
 with exact rechecks of emitted pieces. Separately, this board's default-width
 accelerometer power escape was boxed in by neighboring I2C clock copper. The
-repair workflow reserves that supply contact first, then reroutes only the
-ordinary I2C clock net using shared guarded ripup/fanout/routing algorithms.
+historical repair workflow reserved that supply contact first, then rerouted
+the ordinary I2C clock net using shared guarded algorithms. That project-local
+entry point is retired; new repairs belong in CopperScript's shared workflow.
 No pad, clearance, width or via-in-pad permission is waived. Every resulting
 candidate still requires independent native refill/DRC.
 
