@@ -1,24 +1,21 @@
 # Component evidence and credits
 
-Checked 2026-10-09. Exact per-reference candidate selections are in assembly.lock;
+Exact canonical per-reference selections are in assembly.lock;
 grouped selections are in procurement/parts.json. Library inclusion is not a
 stock reservation or a complete design-suitability check.
 
 Reusable component models, custom footprints and their converter now belong to
 CopperLib. Package ownership and evidence are indexed in
 [library package ownership](../../CopperLib/docs/package-layout.md).
-This project retains application bindings, BOM offers and sourcing history;
-the move does not resolve any existing qualification gaps.
+This project owns application bindings and selected offers. The 91-part review
+uses its own candidate selections; see [current status](validation.md).
 
 ## Cat-1 bis modem
 
 [SIM7670G-LNGV C45935408](https://jlcpcb.com/partdetail/48042558-LTE_Cat_1bis/C45935408)
 is the SIMCom listing (Standard PCBA, X-ray required).
-The [sibling modem page](https://jlcpcb.com/partdetail/SIMComWirelessSolutions-SIM7670GMNGV/C45911303)
-contained the exact related record:
-componentCode=C45935408, componentModelEn=SIM7670G-LNGV,
-componentBrandEn=SIMCom Wireless Solutions, stockCount=22.
-The zero-stock JLCPCB Assembly consignment C9900162595 is not selected.
+Select C45935408, not the distinct consignment C9900162595.
+Recheck current stock and assembly eligibility before ordering.
 
 The [SIMCom supplier-linked specification](https://datasheet.lcsc.com/datasheet/pdf/ee03db1eecfc7b8f7e60fb0421704843.pdf?productCode=C45935408)
 identifies SIM7670G as Cat-1 bis. SHA256:
@@ -65,16 +62,14 @@ options and tune the initial 18pF load capacitors on the board.
 
 ## Assembly catalogue
 
-The original 43 of 45 identities returned jlcOnSale=1 in JLC's public EasyEDA
-API. After removal of CAN, 41 of the 43 retained identities have that historical
-evidence; no fresh stock check is implied by deleting the two CAN-only identities.
 The two without API CAD data were verified on JLCPCB part pages:
 [USB4135-GF-A C5438410](https://jlcpcb.com/partdetail/6314253-USB4135_GFA/C5438410),
 [0603USB-601MLC C3211396](https://jlcpcb.com/partdetail/Coilcraft-0603USB601MLC/C3211396).
 Recheck live stock, assembly mode, minimum quantity, attrition and rotations
 for every line at order time. All 83 retained selections are now approved under
 the user's instruction to assume BOM approval; see `bom-approval.md`. This does
-not approve CPL or refresh historical availability evidence.
+not approve CPL or confirm current availability. Changed 91-part selections
+require separate review.
 
 ## Credits
 

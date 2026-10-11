@@ -1,48 +1,52 @@
 # Power architecture and review limits
 
-USB-C VBUS (5 V) -> BQ24072 IN. Protected 1S pack -> BAT.
-Charger OUT -> VSYS -> two TPS63020 buck-boost channels.
-Neither 5 V nor the variable pack/VSYS voltage directly feeds modem VBAT.
+USB-C VBUS (5 V) feeds charger IN; protected 1S pack feeds BAT. Charger OUT
+supplies VSYS and two TPS63020 buck-boost channels. Neither raw 5 V nor variable
+pack/VSYS voltage directly feeds modem VBAT. A buck-only 3.8 V stage is unsuitable
+across a 1S discharge range.
 
-Internal USB detection now uses switched regulated V3V8 with modem VBAT, not
-external USB-C VBUS. The user accepts SIM7672X V1.01 applicability; USB detection
-must remain at least 3.6 V, stricter than VBAT's 3.4 V minimum. The limited static
-corner screen leaves only about 60 mV further droop margin. Actual pin voltage,
-startup/shutdown, power-cycle discharge and firmware/bench operation remain
-unqualified; see `usb-battery-power.md`. This source change is included only in
-the new `fabrication-usb-battery-20261010` review files, not earlier Gerbers.
+Internal USB detection shares switched regulated V3V8 with modem VBAT. The scoped
+SIM7672X V1.01 assumption requires at least 3.6 V at detection, stricter than VBAT's
+3.4 V minimum. The static screen leaves about 60 mV droop margin. Startup,
+shutdown/discharge, burst and host-data-pin behavior require measurement; see
+[USB power requirements](usb-battery-power.md).
 
-Each converter uses a 1.5 uH Bourns SRP4020TA-1R5M, 10 uF input,
-100 nF VINA decoupling and three 22 uF outputs.
-With the nominal 0.5 V feedback reference:
+## Converters and distribution
 
-- Logic: 100k bottom, 560k top -> 3.3 V.
-- Modem: 100k bottom, 330k + 330k top -> 3.8 V.
+Each converter has a 1.5 uH Bourns SRP4020TA-1R5M, 10 uF input, 100 nF VINA bypass
+and three 22 uF outputs. With nominal 0.5 V feedback:
 
-A nominal 100 uF ceramic reservoir sits on modem VBAT. Nominal MLCC values
-are not effective capacitance under DC bias; verify derating/transients.
-No claim of 2 A delivery at every battery voltage/temperature is made.
-Review switching loops, converter limits, pack protection and measured modem
-bursts. JST rates XH at 3 A with AWG22: choose the actual crimp/harness accordingly.
-Firmware must implement a safe low-battery policy above the pack cutoff.
+- Logic: 100 kohm bottom / 560 kohm top targets 3.3 V.
+- Modem: 100 kohm bottom / two 330 kohm top resistors targets 3.8 V.
 
-BQ24072 CE, TD and EN2 are grounded. EN1 follows USB VBUS (USB500 mode).
-R_ISET=2.2k gives about 405 mA nominal charging; R_ILIM=3.3k is present but
-its programmable mode is not selected. TMR is open for the default safety timer.
-TS connects to a compatible pack-mounted NTC and must not be bypassed.
-Verify charging-current tolerance, pack rating, USB source compatibility and
-charger thermals. This charger is not cell protection.
+The 91-part revision adds four pin-associated modem bypass feeds, a widened
+converter tap/via bank and regional distribution intent. Native filled continuity
+passes; filled necks, via current sharing and impedance remain unqualified.
+The nominal 100 uF reservoir needs effective capacitance/ESR evidence under bias
+and temperature. No 2 A guarantee across all pack voltages is established.
 
-J_BAT: 1 BAT+, 2 GND, 3 NTC; both mounting tabs connect to PCB ground.
-Verify actual harness polarity before connection. Logic EN follows VSYS;
-modem EN is PC10-controlled with a 100k pulldown. Both supplies use power-save
-mode. Standby/sleep current is not qualified; modem peaks need battery support.
+Logic EN follows VSYS; modem EN is PC10-controlled with a 100 kohm pull-down.
+Both converters use power-save mode. Review startup, switching/sense paths,
+pack protection, measured bursts and safe low-battery firmware policy.
 
-The original 5 V-only TPS62130A buck/hard macro is not reused: a 1S pack
-falls below a 3.8 V buck output. This project requires a new reviewed power
-layout and does not depend on the earlier uncommitted copper-overlap feature.
+## Charger and external pack
 
-References: [BQ24072](https://www.ti.com/lit/ds/symlink/bq24072.pdf),
-[TPS63020](https://www.ti.com/lit/ds/symlink/tps63020.pdf),
-[Bourns](https://www.bourns.com/docs/Product-Datasheets/SRP4020TA.pdf),
-[JST](https://www.jst-mfg.com/product/pdf/eng/eXH.pdf).
+The latest modem-power/battery revision uses BQ24072T, the 43/39 kohm TS bias
+network with 100 kohm isolation and cell-mounted 103AT-2 sensor, targeting
+roughly 5–35 degrees C. Its 2.2 kohm ISET has static 359–448 mA bounds; 68 kohm
+TMR does not yet establish full recharge including taper. Guaranteed sensor,
+leakage, fault, thermal-tracking and charging limits remain open. See
+[battery integration](battery-selection.md) for exact bounds and sources.
+
+The separate canonical 83-part source uses non-T BQ24072 with a direct NTC and
+open default timer. It is not the selected tighter-window battery implementation.
+Do not use the root source's BOM or charging assumptions for the 91-part review.
+
+J_BAT is 1 BAT+, 2 GND, 3 NTC; mounting tabs connect to PCB GND. Verify harness
+polarity, protected-cell fit, contact losses and wire/connector ratings. Cell
+protection does not replace charger-temperature control; die regulation does not
+establish cell-temperature protection.
+
+Latest validation is in [status](validation.md); electrical and release obligations
+are in [production plan](production-plan.md). Neither routing nor documentation
+establishes battery safety or hardware qualification.

@@ -28,7 +28,7 @@ SIM7670G hardware-guide link actually points to SIM7672X V1.02.
 Under the accepted guide, Tables 17/51 specify USB detection at 3.6-5.2 V, whereas
 VBAT permits 3.4-4.2 V. Direct regulated 3.8 V is a valid nominal design choice,
 not proof that burst droop stays within USB limits. Never use 3.3 V or variable
-VSYS as substitutes. No new regulator or BOM identity is introduced this round.
+VSYS as substitutes. Sharing the detect rail does not require a separate regulator.
 
 ## Static margin screen - not transient qualification
 
@@ -86,93 +86,7 @@ advertise that mode without adding attach control and reviewing its sequencing.
 - Attach external power: no external VBUS backfeed, rail contention or unsafe
   sequencing. Measure startup/attach waveforms, not merely steady-state voltage.
 
-## Implementation todo
 
-- [x] Bind the confirmed requirement and state names in `engineering-plan.json`.
-- [x] Record user-authorized SIM7672X V1.01 applicability and source hash; this
-  removes exact-model confirmation as a prerequisite to design work, not bench work.
-- [x] Compare the existing regulated V3V8 static budget; keep dynamic margin open.
-- [x] Retain reusable source guidance in CopperLib and the arithmetic algorithm
-  in CopperScript. No new generic circuit/part is needed for this net change.
-- [x] Move USB detection to switched V3V8; keep external input V5 separate.
-- [ ] Validate load/startup/backfeed and modem-disabled host data pins; no guessed
-  input current, device tolerance, clamp path or battery envelope.
-- [x] Preserve all 83 exact BOM placements/43 identities and reviewed flags;
-  refresh only source provenance for the changed net.
-- [x] Refresh assembly provenance; rebuild/reroute and generate a new versioned
-  candidate. Earlier Gerbers do not implement the changed hardware.
-- [ ] Attach candidate-bound full-speed/firmware, power-transition and bench
-  evidence. A requirement binding is not a passing electrical review.
 
-The source net changed; prior fabrication Gerbers are now historical and do not
-implement battery-fed USB detection. Rebuild to a new versioned candidate and
-bind fresh reports before using the qualification checkpoint.
-
-## Historical requirement-only checkpoint (before the net change)
-
-All 36 tracker unit tests passed, including the updated battery requirement and
-safe-state bindings. The native board hash remains
-`33adc8ec883a47288d467386e9e0c4992337eac120aa0909223fc6819cf4a270`.
-Library changes this round are Markdown guidance/source notes only; locked part,
-footprint, macro and contract assets and approved BOM identities are unchanged.
-
-Fresh `build/engineering-usb-battery-required-20261010.json` has 8 pass /
-41 incomplete mandatory checks. Fresh
-`build/qualification-usb-battery-required-20261010.json` has 22 pass / 3 incomplete,
-revalidating the unchanged `build/cam-usb-paths-20261010.json` against current
-artifact/algorithm bindings. Both have `qualified_release=false`; neither has
-a failed mandatory check. The USB operating-mode evidence is missing, so these
-counts do not indicate that battery USB works. Audit exit code 1 is expected for
-incomplete qualification. No order, commit or push was performed.
-
-## Historical battery-USB wired/routed checkpoint
-
-New fabrication candidate:
-`build/fabrication-usb-battery-20261010/routed.kicad_pcb`, SHA-256
-`70caf673a789d4a6cfb4eaad1cb6247de70ccd1d47bfcc828c2dd438ac74aa31`.
-The pre-export routed candidate and the exported PCB both pass the strict
-current-source contact/pose/placement/macro guard for all 83 components. Native
-KiCad 10.0.6 refill/DRC and the manufacturing export's DRC find zero violations
-and zero opens. There are 367 vias/drill hits and 552 netlist contacts.
-
-Native old/new comparison finds exactly one changed pad net, U_MODEM.24 from V5
-to V3V8. Only V5/V3V8 track/via geometry changes; USB data and RF copper are
-unchanged. All six native copper layers were exported, rasterized and visually
-inspected; this is a layout review aid, not impedance/power qualification.
-
-Verification: 39 tracker tests, 144 focused CopperScript qualification/native
-reader tests (410 existing warnings), and 10 focused CopperLib contract/footprint
-tests passed. Shared locked library asset bytes/checksum are unchanged; Markdown
-source guidance and the reusable CopperScript calculation changed, not parts.
-
-Fresh reports: `build/engineering-usb-battery-wired-20261010.json` has 8 pass /
-41 incomplete; `build/cam-usb-battery-wired-20261010.json` has 10 pass /
-3 incomplete; `build/qualification-usb-battery-wired-20261010.json` has 22 pass /
-3 incomplete. No mandatory check fails; all have `qualified_release=false`.
-No external simulation/bench result is invented to approve the new USB power path.
-
-Review artifacts:
-
-- `build/fabrication-usb-battery-20261010/gerbers-drill.zip`
-- `build/fabrication-usb-battery-20261010/manufacturing-package.zip`
-- `build/assembly-usb-battery-20261010/assembly-review.zip`
-
-All three archives pass ZIP integrity checks. The fabrication manifest includes
-the unchanged exact BOM; fresh assembly review reports 43 grouped rows,
-83 placements and 83 approved selections, but CPL and live sourcing remain
-unreviewed. Earlier candidates are retained. No order, commit or push occurred.
-
-Next: qualify actual shared-rail margins over the pack/load/temperature envelope,
-implement/verify USB host readiness and safe shutdown/recovery, and measure
-battery-only enumeration/data transfer plus charging-cable removal. Independent
-CAM/DFM, RF/USB signal models, CPL and the other production gates remain open.
-
-## Current prototype RF-length correction
-
-`build/fabrication-prototype-rf-20261010/routed.kicad_pcb` supersedes the wired
-candidate above for current-source review. Only the cellular connector pose
-and CELL_RF tracks changed; exact native comparison preserves every other
-track and via, including battery-fed detection and USB data. Fresh native DRC
-remains clean. See `prototype-plan.md` for current hashes, review archives and
-fresh incomplete qualification reports. None of the outstanding power/USB
-requirements above is waived by the RF correction.
+Latest routed status is in [validation](validation.md); complete the candidate-bound
+firmware, power-transition and bench evidence in [production plan](production-plan.md).

@@ -63,30 +63,19 @@ revision adds [battery/charger composition](revisions/battery-v1/power_tree.copp
 and [regional distribution intent](revisions/modem-power-v1/distribution.copper).
 Its source builder composes these inputs; it does not repair routed copper.
 
-### Shared autonomous-routing review
+### Shared routing review
 
-New routing improvements run through CopperScript's standard `route-board`,
-not this project's historical selected-net repair helpers. `make route-review`
-requires an explicit current compiler command, for example:
+Activate a current reviewed CopperScript environment, then run:
 
 ```console
 make route-review REVIEW_COPPER="python -m copperscript" REVIEW_DIR=build/review-new
 ```
 
-Activate the current CopperScript environment first. This review target keeps
-the board's locked library inputs, six layers and macro assets, uses the bounded
-`balanced` profile, and saves native evidence plus a failed or completed draft in
-a **new** directory. It does not upgrade compiler pins or replace manufacturing
-artifacts. The 2026-10-11 shared balanced and thorough runs each closed all
-60 ordinary nets, with zero opens, violations and islands after native refill.
-The seven project-local routing/repair entry points have been retired;
-read-only checkpoint validation now delegates to CopperScript. See
-[closure evidence and migration](docs/autonomous-routing-review.md).
-That benchmark uses the canonical 83-part source. The illustrated 91-part revision
-also closes through the standard `balanced` CLI: 61 ordinary nets, both USB pairs
-and native-verified GND, 3.3 V and 3.8 V fills. It requires neither a historical
-placement seed nor board-specific routing repairs. Neither result is production
-approval; see [the revision's commands and evidence](revisions/modem-power-v1/README.md).
+Use a new directory. The wrapper uses the canonical 83-part source and locked
+library/macro inputs with the standard bounded shared pipeline. For the
+illustrated 91-part board, use [the revision guide](revisions/modem-power-v1/README.md).
+[Latest validation](docs/validation.md) records each scope and exact evidence;
+neither routing result approves production or advances the release pins.
 
 ## From intent to copper
 
@@ -264,20 +253,11 @@ evidence to a real release decision.
 
 ## Engineering status and evidence
 
-Next steps and acceptance criteria: [production plan](docs/production-plan.md).
-Historical 83-part actual-geometry findings and verification:
-[RF/USB checkpoint](docs/rf-usb-geometry-review.md).
-USB whole-channel gates and pad-centre path follow-up:
-[USB channel review](docs/usb-channel-review.md).
-
-CAM/RF/power assessment commands, tested scope and remaining qualification blockers
-are documented in [engineering qualification](docs/engineering-qualification.md)
-and [the tracker checklist](docs/qualification-todo.md). Generic algorithms remain
-in CopperScript and reusable contracts in CopperLib.
-
-Standalone CopperScript asset-tracker hardware project, extracted from
-`examples/full_vertical` and structured like CopperLedRing. No production order
-has been created.
+Use [latest validation](docs/validation.md) for routing status and artifact bindings,
+[production plan](docs/production-plan.md) for unresolved engineering requirements,
+[prototype checklist](docs/prototype-plan.md) for experimental-build acceptance,
+and [assessment workflow](docs/engineering-qualification.md) for review commands.
+No production order has been created.
 
 ## Hardware
 
@@ -297,15 +277,9 @@ numbers and
 JLCPCB codes in [assembly.lock](assembly.lock) and
 [procurement/parts.json](procurement/parts.json). The readable
 [candidate BOM](procurement/candidate-bom.csv) is for sourcing, **not assembly signoff**.
-41 of the 43 retained identities returned `jlcOnSale=1` in the earlier public EasyEDA catalogue check;
-the USB connector and Coilcraft filter were checked on JLCPCB part pages.
 The 91-part revision generates a separate candidate assembly lock; its changed
-and added selections still need approval. The older lock/BOM is not its CPL or BOM.
-
-The modem's exact C45935408 stock record reported **22** on 2026-10-09.
-JLCPCB requires **Standard PCBA and X-ray inspection** for it. Recheck stock
-before ordering; do not select the similarly named consignment C9900162595.
-See [component evidence](docs/component-evidence.md).
+and added selections still need approval. Recheck live stock for the intended
+quantity. The modem requires Standard PCBA/X-ray; see [component evidence](docs/component-evidence.md).
 
 ## Build
 
@@ -419,47 +393,17 @@ SIM7672X V1.01 applicability is assumed by user instruction; voltage/transient
 margin and firmware/bench operation remain unqualified. See
 [battery USB implementation](docs/usb-battery-power.md).
 
-## Not ready to order
+## Release status
 
-ERC and package resolution are source checks, not hardware qualification.
-The user-approved canonical BOM has 83 reviewed exact selections; this does not approve
-CPL, RF/power/interface performance, CAM/DFM or an order.
+The latest 91-part revision is natively routed but remains an unlocked, unqualified
+review. Native closure does not approve RF/USB impedance/returns, biased reservoir
+capacitance, supply capacity/transients, battery/charger guarantees, thermal behavior,
+independent CAM or prototype performance. Battery-fed USB detection has only about
+60 mV static margin before ripple and burst effects; measure operation across the
+accepted envelope.
 
-Remaining work includes independent CAM/DFM review; RF/USB impedance,
-matching, return-path and signal-integrity evidence; power/current/transient
-and charging-thermal validation; CPL centroid/rotation/polarity approval and
-fresh supplier checks; firmware and prototype measurements. Under the assumed
-SIM7672X guidance, battery-fed USB detection has only about **60 mV static
-downward margin**, before ripple and transient effects: operation must be
-measured, not inferred from connectivity.
-
-The regulator macros pass isolated native DRC in cardinal rotations and use
-owner-scoped width contracts. That does not qualify converter performance.
-CAN and four dedicated parts have been removed to free routing space. The
-source-backed placement/route refinement history is in
-[routing-quality review](docs/routing-quality.md); earlier checkpoints and
-exports are historical, not approval of current source.
-
-See [power design](docs/power-design.md),
-[validation status](docs/validation.md)
-and [manufacturing review](docs/manufacturing-review.md) for the detailed evidence.
-
-The canonical BOM is approved by user instruction (83 exact selections / 43
-identities), separately from pending CPL/board approval. The selected construction
-is JLC06161H-3313, nominal 1.6 mm, outer 1 oz / inner 0.5 oz. Actual RF/USB
-screening found unresolved impedance/reference-model issues; see
-[stackup selection and follow-up](docs/stackup-selection.md). No production order
-is authorized by this assumption.
-
-The historical 83-part prototype-review candidate has zero native
-violations/opens. It
-preserves battery-fed USB detection and all non-cellular routing, while moving
-J_CELL beside the actual west-facing modem antenna edge. The via-free cellular
-feed is now about 18 mm instead of 36 mm, within the assumed SIM7672X guide's
-20 mm limit. This does not qualify its impedance, matching or launch geometry.
-Its review Gerbers/drills are in `build/fabrication-prototype-rf-20261010`, with
-assembly review in `build/assembly-prototype-rf-20261010`. These superseded the
-earlier 83-part candidates for review, not production approval, and do not
-describe the illustrated 91-part revision. See the
-[prototype checklist](docs/prototype-plan.md) for unresolved design decisions
-and the exact candidate/check provenance; no order has been placed.
+Only the canonical 83-part BOM has the user-directed approval assumption. Changed
+91-part selections, CPL and supplier preview need separate review. Bind approved
+release pins, a fresh fabrication/assembly package and candidate-specific evidence
+before any upload decision. Follow [production plan](docs/production-plan.md),
+[BOM approval scope](docs/bom-approval.md) and [power design](docs/power-design.md).

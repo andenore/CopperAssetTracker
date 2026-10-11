@@ -1,32 +1,18 @@
 # Production-readiness plan
 
 The six-layer candidate is a review candidate, not an approved production release.
-BOM approval is assumed as instructed; it does not approve CPL, RF, power or CAM.
+Only the canonical 83-part BOM is approved under the user assumption. The 91-part
+revision needs changed-selection approval; neither scope approves CPL, RF, power or CAM.
 Select JLCPCB **JLC06161H-3313**, nominal 1.6 mm, outer 1 oz / inner 0.5 oz.
 See `stackup-selection.md` and `engineering-plan.json` for source-bound inputs.
 
 ## 1. Characterize actual RF and USB geometry — in progress
 
-- [x] Inventory routed RF widths/layers against the selected construction.
-- [x] Extract USB parallel sections, actual edge gaps, uncoupled breakouts,
-  member lengths and layer transitions. Put the extraction in CopperScript,
-  with board-specific pair bindings here. Do not assume the source gap survived
-  routing or equate total copper length with electrical delay.
 - [ ] Review adjacent reference planes, especially modem USB on In2 beside
   In3 V3V3, and the actual return paths at transitions.
 - [ ] Model RF and USB using actual copper, mask, stackup and launches; record
   solver assumptions, convergence, limits and geometry hashes. Formula screens
   alone cannot close the impedance requirement.
-- [x] Add generic USB/interface design, solver and bench qualification contracts
-  in CopperLib/CopperScript and bind both channels here. Current USB inventories
-  are auxiliary; the checkpoint now requires whole-link USB evidence too.
-- [x] Extract all four explicit pad-centre USB paths and identify transitions,
-  off-path copper, return-via distances and construction-based barrel stubs.
-  Electrical delay and complete copper topology remain outside this screen.
-- [x] Resolve whether USB must work on battery: yes, confirmed 2026-10-10.
-  Internal MCU-to-modem USB cannot depend on the charging cable.
-- [x] Adopt user-authorized SIM7672X V1.01 requirements for this board and move
-  USB detection to switched V3V8, separate from external V5, without a new converter.
 - [ ] Qualify actual detect-pin voltage/transients and USB firmware sequencing;
   see `usb-battery-power.md`. Nominal/shared-rail operation is not bench approval.
 
@@ -38,7 +24,7 @@ radios and both USB paths; no uncovered or unexplained reference transitions.
 - [ ] Review exact MAX-M10S integration guidance: antenna type, matching,
   filtering/ESD/bias, ground/layout and RF feed geometry.
   Source review is recorded in CopperLib; consumer antenna/coexistence choices
-  and detailed layout qualification remain open. See `rf-usb-geometry-review.md`.
+  and detailed layout qualification remain open.
 - [ ] Obtain exact SIM7670G-LNGV hardware guidance or manufacturer confirmation
   of applicability of the related SIM7672X document. Resolve matching/ESD and
   supply burst requirements; do not treat family resemblance as approval.
@@ -51,8 +37,9 @@ is implemented or explicitly justified, with exact document provenance.
 
 ## 3. Qualify power and battery — awaiting operating inputs
 
-- [ ] Obtain pack model/protection, NTC characteristic, battery voltage range,
-  USB source limit, peak/RMS loads and ambient temperature range from the user.
+- [ ] Complete the selected Kjell 32058/103AT-2 pack and sensor guarantees,
+  protection trip/recovery, battery range, USB source limit, peak/RMS loads and
+  ambient envelope; see [battery integration](battery-selection.md).
 - [ ] Review converters and charger, power paths/vias, effective capacitance,
   inductor saturation, transient droop and thermal limits against that envelope.
 - [ ] Keep capacity/transient algorithms in CopperScript and reusable device
@@ -92,4 +79,7 @@ manufacturing/assembly package. This plan does not authorize placing an order.
 Acceptance: reviewed bench evidence and release approval; neither a clean DRC
 nor a nominal impedance calculation substitutes for these measurements.
 
-Implementation checkpoint results are recorded in `qualification-todo.md`.
+Current implementation/status is in [validation](validation.md). The battery-powered
+USB requirement and scoped SIM7672X assumption are in [USB power](usb-battery-power.md).
+Native routing closure and the local bypass bank are implemented in the 91-part
+revision; their electrical adequacy remains subject to the requirements above.
