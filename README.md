@@ -441,7 +441,7 @@ source-backed placement/route refinement history is in
 exports are historical, not approval of current source.
 
 See [power design](docs/power-design.md),
-[validation status](docs/validation.md), [routing attempts](docs/routing-attempts.md)
+[validation status](docs/validation.md)
 and [manufacturing review](docs/manufacturing-review.md) for the detailed evidence.
 
 The canonical BOM is approved by user instruction (83 exact selections / 43

@@ -1,5 +1,9 @@
 # Routing and fabrication attempt — 2026-10-09
 
+> Historical record, archived 2026-10-11. Claims and commands below apply to
+> their recorded revisions, not current usage or approval. Read only when
+> investigating that history; use the current reference guides for new work.
+
 This is an inspection draft, not a production release. No production Gerbers
 have been generated. The pinned compiler, locked CopperLib replacement, actual
 footprints, six-layer JLCPCB profile and Nordic/Johanson hard macro were used.
@@ -84,8 +88,8 @@ they must not be bulk-marked approved to bypass the assembly gate.
 
 The native manufacturing-file exporter explicitly does not provide an
 independently qualified release. Do not label skipped-CAM exports as production
-qualification. See [validation](validation.md), [power design](power-design.md)
-and [component evidence](component-evidence.md).
+qualification. See [validation](../validation.md), [power design](../power-design.md)
+and [component evidence](../component-evidence.md).
 
 ## Regulator macros and short-clock pass — 2026-10-09
 
@@ -364,5 +368,5 @@ Its manifest explicitly has `qualified_release=false`; independent CAM and
 live stock are not checked. Separate `assembly-review-20261010` contains
 candidate BOM/CPL with 43 grouped identities and 83 placements; all 83 original
 review flags remain false. No production approval or external publication was
-made. See [manufacturing review](manufacturing-review.md) for artifacts and
+made. See [manufacturing review](../manufacturing-review.md) for artifacts and
 reproduction, including the checkpoint requirement.

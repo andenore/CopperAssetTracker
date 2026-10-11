@@ -47,7 +47,7 @@ a new candidate and must pass its own checks. The locked source/library assets
 and local editable CopperScript changes must also be retained. No generic
 components or compiler algorithms are copied into this project.
 
-The historical late-contact result is recorded in `routing-attempts.md`;
+The historical late-contact result is recorded in `history/routing-attempts.md`;
 its project-specific finishing/cleanup commands have now been retired. Retained
 native boards and reports are unchanged, and tracked scripts remain recoverable
 from Git history. New candidates use the shared pipeline:

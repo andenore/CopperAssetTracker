@@ -5,6 +5,9 @@ in the active CopperScript environment. Retrieve individual guide topics and
 library contracts as needed. Follow this project's README and build/review targets
 for its board configuration and evidence.
 
+Read only task-relevant evidence. `docs/history/` contains dated investigations;
+consult it only for a specific regression or provenance question.
+
 If the pinned compiler lacks the guide, explicitly select a current compiler for
 guidance/review as the README describes; retain the project's build pins. Generic
 algorithms belong in CopperScript; reusable definitions belong in library

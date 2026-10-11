@@ -67,7 +67,7 @@ The partial board and detailed/native reports are `build/direct-routed.kicad_pcb
 `build/direct-route.json` and `build/direct-drc.json`. Clock routes, USB pair
 geometry, RF stackup/matching and switched-power current paths still need
 reference-layout qualification, in addition to closing all native opens and
-reviewing assembly selections and CAM. See [routing attempts](routing-attempts.md)
+reviewing assembly selections and CAM. See [routing attempts](history/routing-attempts.md)
 for settings, failure diagnostics and the distinct fanout-attempt artifacts.
 
 ## Current power/clock implementation
@@ -104,7 +104,7 @@ opens on VSYS, BAT, V3V8, GND, V3V3 or internal converter nets. The route connec
 remaining interface routes still fail the completion gate. No bounds were
 weakened. Six-layer copper previews were inspected for gross layout, not CAM
 qualification. See the
-[scoped-width reroute](routing-attempts.md#scoped-width-compiler-implementation-and-reroute).
+[scoped-width reroute](history/routing-attempts.md#scoped-width-compiler-implementation-and-reroute).
 No production artwork, commit, publication or order was made.
 
 ## CAN-free source
@@ -124,7 +124,7 @@ improve. Clock/DEC3 routes remain rejected by unchanged length bounds.
 Six-layer copper previews were inspected for gross layout only. The route and
 assembly gates remain closed; no production Gerbers were generated. Previous
 native results above describe historical CAN-equipped boards, not this source.
-See [CAN removal](routing-attempts.md#can-removal-and-comparison-reroute).
+See [CAN removal](history/routing-attempts.md#can-removal-and-comparison-reroute).
 
 ## Finished routing candidate — 2026-10-10
 

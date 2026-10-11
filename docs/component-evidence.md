@@ -6,7 +6,7 @@ stock reservation or a complete design-suitability check.
 
 Reusable component models, custom footprints and their converter now belong to
 CopperLib. Package ownership and evidence are indexed in
-[the migration record](../../CopperLib/docs/asset-tracker-component-migration.md).
+[library package ownership](../../CopperLib/docs/package-layout.md).
 This project retains application bindings, BOM offers and sourcing history;
 the move does not resolve any existing qualification gaps.
 
