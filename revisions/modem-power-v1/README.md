@@ -79,9 +79,9 @@ entry point is retired; new repairs belong in CopperScript's shared workflow.
 No pad, clearance, width or via-in-pad permission is waived. Every resulting
 candidate still requires independent native refill/DRC.
 
-## Fresh shared-flow run, 2026-10-11
+## Initial source-only attempt, 2026-10-11
 
-The latest 91-part revision was rebuilt without a historical placement seed
+The 91-part revision was rebuilt without a historical placement seed
 into `build/latest-power-review-20261011/`. Its generated source hash matches
 the revision recorded below. The complete standard `balanced` flow exported
 `routed-rerun.kicad_pcb` and `route-rerun.json`; all 61 ordinary nets and both
@@ -98,7 +98,7 @@ All four modem supply bypass feeds still pass their via-free F.Cu chain checks.
 The Tracker regression suite passed 55 tests without skips. Root source and
 release locks are unchanged; no manufacturing approval is implied.
 
-## Historical verified routed checkpoint
+## Latest verified source-only checkpoint, 2026-10-11
 
 The later fresh source-only v5 run is now natively closed without that historical
 repair checkpoint: `build/latest-power-review-20261011/route-closure-v5.json`
@@ -116,6 +116,11 @@ initial offline-cache misses; original and replay test reports are retained.
 `closure-v5-result.json` and `compiler-source-v5.json` bind the exact result,
 commands, frozen compiler and output hashes. This remains an unlocked review,
 not a production-approved release.
+
+The main [project README](../../README.md) now illustrates this checkpoint with
+native placement and routed-layer exports and source-bound IR excerpts.
+
+## Historical verified routed checkpoint
 
 The following records the earlier result. Its v15 PCB and v13 source
 directories were not present in the local checkout when the fresh run above

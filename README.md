@@ -13,7 +13,7 @@ manufacturing review files.
 
 ![Actual routed top copper and silkscreen](docs/showcase/routing-top.svg)
 
-*Native KiCad export of the 100 × 80 mm review candidate: 83 placements, 73
+*Native KiCad export of the 100 × 80 mm review candidate: 91 placements, 75
 physical nets and six copper layers. This is a routed prototype design,
 **not a production-approved product**.*
 
@@ -21,14 +21,15 @@ Prototype battery choice: Kjell & Company **32058**, protected 18650, **2600 mAh
 See [battery integration review](docs/battery-selection.md). It is an external
 cell, not a JLCPCB assembly item. The separate battery revision uses a hardware
 temperature window targeting roughly 5–35 °C. The combined
-[91-component modem-power/battery draft](revisions/modem-power-v1/README.md) adds
+[91-component modem-power/battery revision](revisions/modem-power-v1/README.md) adds
 CopperLib's pin-associated modem bypass bank, a wider converter output tap and
 regional power distribution. ERC/placement and fresh routing checks pass;
 native refill/DRC has zero violations and zero opens, with all four modem bypass
-feeds verified via-free. Evidence is recorded separately. Temperature guarantees, reservoir bias
-derating, assembly and battery/burst-load tests remain pending. The illustrated
-83-component board and existing manufacturing files are the unchanged earlier
-checkpoint, not fabrication data for the new revision.
+feeds verified via-free. The figures and excerpts below now show this revision's
+2026-10-11 source-only routing checkpoint. Temperature guarantees, reservoir bias
+derating, assembly and battery/burst-load tests remain pending. The canonical
+83-component source, release locks and older manufacturing files are unchanged;
+they are not fabrication data for the illustrated 91-component revision.
 
 ## Why CopperScript?
 
@@ -56,8 +57,11 @@ version-controlled and testable alongside the connections.
 
 Generic improvements belong in CopperScript; reusable components belong in
 CopperLib. This project does not fork the compiler or maintain private copies
-of shared parts. Its composition lives in [board.copper](board.copper) and
-[power_tree.copper](packages/tracker/power_tree.copper).
+of shared parts. The canonical composition lives in [board.copper](board.copper)
+and [power_tree.copper](packages/tracker/power_tree.copper). The illustrated
+revision adds [battery/charger composition](revisions/battery-v1/power_tree.copper)
+and [regional distribution intent](revisions/modem-power-v1/distribution.copper).
+Its source builder composes these inputs; it does not repair routed copper.
 
 ### Shared autonomous-routing review
 
@@ -78,7 +82,11 @@ artifacts. The 2026-10-11 shared balanced and thorough runs each closed all
 The seven project-local routing/repair entry points have been retired;
 read-only checkpoint validation now delegates to CopperScript. See
 [closure evidence and migration](docs/autonomous-routing-review.md).
-This benchmark does not approve the separate 91-component production revision.
+That benchmark uses the canonical 83-part source. The illustrated 91-part revision
+also closes through the standard `balanced` CLI: 61 ordinary nets, both USB pairs
+and native-verified GND, 3.3 V and 3.8 V fills. It requires neither a historical
+placement seed nor board-specific routing repairs. Neither result is production
+approval; see [the revision's commands and evidence](revisions/modem-power-v1/README.md).
 
 ## From intent to copper
 
@@ -98,11 +106,12 @@ Production approval — a separate engineering decision
 
 ### Describe the circuit
 
-These excerpts come from the actual tracker source, not a second example circuit:
+These excerpts come from the generated modem-power revision's tracker source,
+not a second example circuit:
 
 ```copper
-import simcom "github.com/andenore/CopperLib/packages/parts/simcom/sim7670g-lngv";
-component U_MODEM: simcom.SIM7670G_LNGV;
+import simcom "github.com/andenore/CopperLib/packages/circuits/simcom/sim7670g-vbat-bypass";
+module U_MODEM: simcom.SIM7670G_VBAT_BYPASS;
 
 configure U_MCU.USB_FS as MODEM_USB {
     DP = PA12;
@@ -123,7 +132,10 @@ net V3V8 {
 
 The hierarchical `PWR` module composes CopperLib's charger and converter parts
 into this board's power tree. Compilation preserves that hierarchy; physical
-elaboration resolves actual component references and footprint pads.
+elaboration resolves actual component references and footprint pads. Similarly,
+`U_MODEM` composes CopperLib's modem and four pin-associated bypass capacitors;
+the modem's physical reference becomes `U_MODEM/U`, without duplicating the
+reusable circuit in this project.
 
 ### Give placement and routing semantic intent
 
@@ -168,15 +180,15 @@ the decoupling properties survive compilation:
 ```
 
 The physical IR then records real geometry. This placement object comes from the
-current-source-checked candidate. Coordinates are integer nanometres (52.505 mm,
-21.440002 mm), not diagram coordinates:
+source-checked 91-part candidate. Coordinates are integer nanometres (54,045 um,
+21,190 um, rounded), not diagram coordinates:
 
 ```json
 {
   "footprint": "Capacitor_SMD:C_0402_1005Metric",
-  "position": { "x_nm": 52505000, "y_nm": 21440002 },
+  "position": { "x_nm": 54044976, "y_nm": 21190002 },
   "reference": "C_MCU",
-  "rotation_degrees": "90",
+  "rotation_degrees": "0",
   "side": "front",
   "source_path": "C_MCU",
   "value": "100 nF"
@@ -187,13 +199,14 @@ Browse the [electrical IR excerpt](docs/showcase/electrical-ir.excerpt.json),
 [physical IR excerpt](docs/showcase/physical-ir.excerpt.json), including real track
 segments, and [snapshot provenance](docs/showcase/snapshot.json). These small
 excerpts are not full IR files or qualification reports. `make compile` produces
-the full hierarchical `build/board.json`.
+the canonical full hierarchical `build/board.json`; the revision builder produces
+its own `electrical.ir.json` in the selected review directory.
 
 ### Place components and preserve reference geometry
 
 ![Component placement, pads and courtyards](docs/showcase/placement.svg)
 
-*The same 83 candidate component poses with copper hidden for readability. This
+*The same 91 candidate component poses with copper hidden for readability. This
 is a placement-only illustration of the routed checkpoint, not a fresh
 unconstrained auto-placement or a photograph of assembled hardware.*
 
@@ -203,34 +216,45 @@ critical relative placement and current-loop geometry intact during routing.
 
 ### Route, check and iterate
 
-![In2.Cu signal routing](docs/showcase/routing-inner.svg)
+![In2.Cu regional modem supply and signal routing](docs/showcase/routing-inner.svg)
 
-*In2.Cu signal routing, viewed from above without mirroring. In1.Cu and In4.Cu
-provide ground planes; In3.Cu provides the 3.3 V distribution zone.*
+*In2.Cu regional 3.8 V distribution and signal routing, viewed from above without
+mirroring. In1.Cu and In4.Cu carry ground planes; In3.Cu carries the 3.3 V zone
+and a low-current modem USB-detection spur. Connectivity is checked; return-path
+performance and current capacity are separate qualification gates.*
 
 ![Bottom copper routing](docs/showcase/routing-bottom.svg)
 
 *B.Cu, also viewed from above. A single-layer image does not show every connection.*
 
-The router is experimental. This checkpoint was reached through bounded routing,
-source-backed placement refinement, targeted repairs and native refill/DRC —
-not one unattended command that guarantees a finished board. The source/native
-guard rejects stale pad nets, changed lands, illegal placement and altered macro
-geometry before a checkpoint is reused.
+The router is experimental. This checkpoint was reached from source through the
+standard CLI's bounded placement, routing and native-feedback repair flow.
+Shared CopperScript algorithms close the supply-plane contacts while preserving
+protected package exits and immutable macro geometry; no project-specific
+selected-net repair script is involved. The source/native guard rejects stale
+pad nets, changed lands, illegal placement and altered macro geometry before a
+checkpoint is reused. Success on this board is not a guarantee for every design.
 
 Selected output from the illustrated KiCad 10.0.6 checkpoint:
 
 ```json
 {
-  "component_count": 83,
-  "net_count": 73,
-  "track_count": 1118,
-  "via_count": 367,
+  "component_count": 91,
+  "net_count": 75,
+  "track_count": 921,
+  "via_count": 314,
   "native_drc_violation_count": 0,
   "native_unconnected_item_count": 0,
   "qualified_release": false
 }
 ```
+
+The shared report records 21 of 21 surface-connected decoupling associations.
+An independent checkpoint check also verifies all four modem bypass feeds as
+via-free F.Cu chains, with rounded lengths from 2,011 um to 2,763 um. These are
+connectivity checks, not proof of effective capacitance or high-frequency power
+integrity. The same routing report explicitly retains **11 blocked engineering
+requirements**, including RF/USB impedance and reference/return-path verification.
 
 That last field is intentional: zero opens and DRC violations establish a useful
 routing checkpoint, not RF performance, impedance, charging safety or battery USB
@@ -241,7 +265,7 @@ evidence to a real release decision.
 ## Engineering status and evidence
 
 Next steps and acceptance criteria: [production plan](docs/production-plan.md).
-Latest actual-geometry findings and verification:
+Historical 83-part actual-geometry findings and verification:
 [RF/USB checkpoint](docs/rf-usb-geometry-review.md).
 USB whole-channel gates and pad-centre path follow-up:
 [USB channel review](docs/usb-channel-review.md).
@@ -261,18 +285,22 @@ has been created.
 - SIMCom **SIM7670G-LNGV**, LTE **Cat-1 bis**, JLCPCB **C45935408**.
   Replaces EG800G-EU with its 24 x 24 mm / 124-land footprint and actual used-pin
   connections, 1.8 V UART/STATUS translation and open-drain PWRKEY.
-- USB-C power input and **BQ24072RGTR** 1S Li-ion power-path charger.
+- USB-C power input and **BQ24072TRGTR** 1S Li-ion power-path charger in the
+  illustrated revision, with a reusable thermistor-bias circuit and timer.
 - Three-pin SMT **JST XH battery connector**: 1 BAT+, 2 GND, 3 pack NTC.
 - Two TPS63020DSJR buck-boost supplies: 3.3 V logic and switchable 3.8 V modem.
 - Nano-SIM, two U.FL RF connectors, two SWD headers, debug UART, button/LEDs.
 - Provisional 100 x 80 mm six-layer board; preserved Nordic/Johanson RF hard macro.
 
-All 83 populated references have exact candidate manufacturer part numbers and
+All 83 canonical populated references have exact candidate manufacturer part
+numbers and
 JLCPCB codes in [assembly.lock](assembly.lock) and
 [procurement/parts.json](procurement/parts.json). The readable
 [candidate BOM](procurement/candidate-bom.csv) is for sourcing, **not assembly signoff**.
 41 of the 43 retained identities returned `jlcOnSale=1` in the earlier public EasyEDA catalogue check;
 the USB connector and Coilcraft filter were checked on JLCPCB part pages.
+The 91-part revision generates a separate candidate assembly lock; its changed
+and added selections still need approval. The older lock/BOM is not its CPL or BOM.
 
 The modem's exact C45935408 stock record reported **22** on 2026-10-09.
 JLCPCB requires **Standard PCBA and X-ray inspection** for it. Recheck stock
@@ -282,7 +310,8 @@ See [component evidence](docs/component-evidence.md).
 ## Build
 
 Install [uv](https://docs.astral.sh/uv/), Git, GNU Make and KiCad 10.
-The compiler, CopperLib and KiCad footprints are pinned to published Git commits:
+The canonical 83-part build's compiler, CopperLib and KiCad footprints are pinned
+to published Git commits; these are not the newer illustrated revision's tool inputs:
 
 | Dependency | Revision / lock |
 | --- | --- |
@@ -314,26 +343,63 @@ make manufacturing     # reviewed BOM + route + native DRC required
 Windows: `.\build-windows.ps1 -Target fetch`, then
 `.\build-windows.ps1 -Target all`; optional `-Uv` and `-KiCadCli` paths.
 Default `make` checks/tests/compiles/places; it does not order anything.
-The pictured repaired checkpoint is not guaranteed to be reproduced by a fresh
-bounded `make route` run. `make manufacturing` creates review exports and skips
+These default targets build the canonical 83-part design, not the pictured
+91-part revision. `make manufacturing` creates review exports and skips
 independent CAM; it is not a production-approval shortcut.
 Use pinned managed footprints, not a different system footprint revision;
 the RF and both regulator macros' geometry identities are checked before
 materialization. The reusable regulator assets are owned by CopperLib, not
 this project. Their native geometry checks do not qualify power performance.
 
+### Build and route the illustrated revision on Windows
+
+Use a current CopperScript environment containing the native-closure changes
+(commit `e6f153d20eaae6e82b9e2ee52af307129187fc7d` or newer) and the reviewed
+CopperLib working copy (`df54c3f73cb833a98942d7d4ad326efd189863cb` for the pictured
+checkpoint). Activate that compiler environment before these commands, from the
+Tracker directory. The managed footprint cache must already be populated by
+`make fetch`. Choose a new output directory for each attempt:
+
+```powershell
+python scripts/build_battery_revision.py --modem-power `
+  --library-review-root ../CopperLib `
+  --kicad-footprint-root .copper-cache/pkg/0c22bbbc033f71e79d6d `
+  --output build/new-power-review
+Set-Location build/new-power-review
+python -m copperscript route-board board.copper --offline --layers 6 `
+  --fab-profile jlcpcb-six-layer `
+  --hard-macro nrf-antenna-macro.json --hard-macro logic-power-macro.json `
+  --hard-macro modem-power-macro.json --routing-profile balanced --pitch-mm 0.5 `
+  --fanout-maze --soft-ripup --constrained-pins-first --progressive-guides `
+  --plane-contact-radius-mm 3 --plane-stitch-detour-mm 1.5 `
+  --verify-plane-fill "C:/Program Files/KiCad/10.0/bin/kicad-cli.exe" `
+  --native-evidence-directory native-new --report route-new.json `
+  -o routed-new.kicad_pcb --progress
+```
+
+The first command only composes source, IR and candidate selections; the second
+owns placement, routing and native verification. Use the retained **filled PCB**
+identified by a successful route report's `plane_verification` evidence. A
+failed/incomplete report is not a routed success. Newer tool/library inputs can
+change the result; compare their recorded hashes before reusing evidence.
+
 README illustrations and compact example data live under `docs/showcase`.
 Bulky build attempts, manufacturing archives, dependency caches and downloaded
 vendor PDFs remain excluded from Git. To regenerate these snapshots from a local
-source-matched candidate with adjacent `manifest.json` and `drc.json`:
+source-matched candidate with adjacent native `drc.json` and its matching route
+report. From the Tracker directory, using the current compiler environment:
 
 ```powershell
-uv run --locked python scripts/generate_readme_assets.py `
-  --pcb build/fabrication-prototype-rf-20261010/routed.kicad_pcb `
+python scripts/generate_readme_assets.py `
+  --project-root build/latest-power-review-20261011 --unlocked-review `
+  --pcb build/latest-power-review-20261011/native-closure-v5/verification-003/CopperAssetTracker.kicad_pcb `
+  --route-report build/latest-power-review-20261011/route-closure-v5.json `
   --kicad-cli "C:/Program Files/KiCad/10.0/bin/kicad-cli.exe"
 ```
 
-These are native KiCad SVG exports; `snapshot.json` records source/candidate hashes.
+These are native KiCad SVG exports; `snapshot.json` records source/candidate,
+composition and evidence hashes. The renderer is documentation tooling, not a
+routing repair or a manufacturing export.
 
 ## Battery and firmware
 
@@ -356,7 +422,7 @@ margin and firmware/bench operation remain unqualified. See
 ## Not ready to order
 
 ERC and package resolution are source checks, not hardware qualification.
-The user-approved BOM has 83 reviewed exact selections; this does not approve
+The user-approved canonical BOM has 83 reviewed exact selections; this does not approve
 CPL, RF/power/interface performance, CAM/DFM or an order.
 
 Remaining work includes independent CAM/DFM review; RF/USB impedance,
@@ -378,20 +444,22 @@ See [power design](docs/power-design.md),
 [validation status](docs/validation.md), [routing attempts](docs/routing-attempts.md)
 and [manufacturing review](docs/manufacturing-review.md) for the detailed evidence.
 
-The current BOM is now approved by user instruction (83 exact selections / 43
+The canonical BOM is approved by user instruction (83 exact selections / 43
 identities), separately from pending CPL/board approval. The selected construction
 is JLC06161H-3313, nominal 1.6 mm, outer 1 oz / inner 0.5 oz. Actual RF/USB
 screening found unresolved impedance/reference-model issues; see
 [stackup selection and follow-up](docs/stackup-selection.md). No production order
 is authorized by this assumption.
 
-The current prototype-review candidate has zero native violations/opens. It
+The historical 83-part prototype-review candidate has zero native
+violations/opens. It
 preserves battery-fed USB detection and all non-cellular routing, while moving
 J_CELL beside the actual west-facing modem antenna edge. The via-free cellular
 feed is now about 18 mm instead of 36 mm, within the assumed SIM7672X guide's
 20 mm limit. This does not qualify its impedance, matching or launch geometry.
-Fresh review Gerbers/drills are in `build/fabrication-prototype-rf-20261010`, with
-assembly review in `build/assembly-prototype-rf-20261010`. These supersede the
-earlier candidates for current-source review, not production approval. See the
+Its review Gerbers/drills are in `build/fabrication-prototype-rf-20261010`, with
+assembly review in `build/assembly-prototype-rf-20261010`. These superseded the
+earlier 83-part candidates for review, not production approval, and do not
+describe the illustrated 91-part revision. See the
 [prototype checklist](docs/prototype-plan.md) for unresolved design decisions
 and the exact candidate/check provenance; no order has been placed.

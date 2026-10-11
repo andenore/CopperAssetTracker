@@ -1,14 +1,6 @@
 {
   "components": [
     {
-      "footprint": null,
-      "modes": {},
-      "part": "simcom.SIM7670G_LNGV",
-      "properties": {},
-      "ref": "U_MODEM",
-      "value": null
-    },
-    {
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "modes": {},
       "part": "CAPACITOR",
