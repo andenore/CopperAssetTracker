@@ -1,5 +1,8 @@
 # CopperAssetTracker
 
+LLM agents: start with `copper agent-guide` in the selected CopperScript
+environment; see [the project pointer](AGENTS.md) for older compiler pins.
+
 **A cellular, GNSS and Bluetooth asset tracker — designed as code.**
 
 CopperAssetTracker takes CopperScript's full-vertical example into a standalone,
