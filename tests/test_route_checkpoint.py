@@ -12,9 +12,48 @@ from pcbir.physical import BoardSide, CopperLayer, PadKind, PadReference, PadSha
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 import finish_routed_candidate as checkpoint
 import seed_battery_usb_candidate as usb_migration
+import shorten_cellular_feed as rf_migration
 
 
 class RouteCheckpointTests(unittest.TestCase):
+    def test_rf_migration_refuses_unpinned_input(self):
+        with TemporaryDirectory() as directory:
+            pcb = Path(directory) / 'other.kicad_pcb'
+            pcb.write_text('unrelated input')
+            output = Path(directory) / 'new/routed.kicad_pcb'
+            with patch.object(sys, 'argv', ['rf', '--pcb', str(pcb), '--output', str(output)]), \
+                 patch.object(checkpoint, 'current_candidate') as load:
+                with self.assertRaisesRegex(ValueError, 'Not the pinned PCB'):
+                    rf_migration.main()
+                load.assert_not_called()
+            self.assertFalse(output.parent.exists())
+
+    def test_rf_migration_never_overwrites_a_candidate(self):
+        with TemporaryDirectory() as directory:
+            output = Path(directory) / 'retained.kicad_pcb'
+            output.write_text('retained')
+            with patch.object(sys, 'argv', ['rf', '--pcb', 'missing', '--output', str(output)]):
+                with self.assertRaisesRegex(ValueError, 'Output exists'):
+                    rf_migration.main()
+            self.assertEqual(output.read_text(), 'retained')
+
+    def test_rf_migration_rejects_changed_source_before_loading_candidate(self):
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / 'board.copper').write_text('changed source')
+            pcb = root / 'prior.kicad_pcb'
+            pcb.write_text('pinned fixture')
+            output = root / 'new/routed.kicad_pcb'
+            digest = rf_migration.sha256(pcb.read_bytes()).hexdigest()
+            with patch.object(sys, 'argv', ['rf', '--pcb', str(pcb), '--output', str(output)]), \
+                 patch.object(rf_migration, 'ROOT', root), \
+                 patch.object(rf_migration, 'PRIOR_PCB_SHA256', digest), \
+                 patch.object(checkpoint, 'current_candidate') as load:
+                with self.assertRaisesRegex(ValueError, 'Source changed'):
+                    rf_migration.main()
+                load.assert_not_called()
+            self.assertFalse(output.parent.exists())
+
     def test_usb_migration_refuses_unpinned_input_before_loading_source(self):
         with TemporaryDirectory() as directory:
             pcb = Path(directory) / 'other.kicad_pcb'
@@ -42,7 +81,7 @@ class RouteCheckpointTests(unittest.TestCase):
         a = TrackSegment('A', Point.mm(1, 1), Point.mm(2, 1), 200000, CopperLayer.FRONT)
         b = TrackSegment('A', a.end, a.start, a.width_nm, a.layer)
         other = TrackSegment('A', Point.mm(2, 1), Point.mm(3, 1), 200000, a.layer)
-        board = NS(tracks=(a, b, other), nets=(NS(name='A'),), net_routing_rules=())
+        board = NS(tracks=(a, b, other), vias=(), nets=(NS(name='A'),), net_routing_rules=())
         with TemporaryDirectory() as directory:
             pcb, report = Path(directory) / 'board.kicad_pcb', Path(directory) / 'drc.json'
             pcb.write_text('(kicad_pcb (segment (start 1 1) (end 2 1) (width 0.2) '
@@ -51,7 +90,7 @@ class RouteCheckpointTests(unittest.TestCase):
                 {'type': 'track_dangling', 'severity': 'warning', 'items': [{'uuid': 'u1'}]}]}))
             for owner_tracks in ((), (b,)):
                 with self.subTest(owned=bool(owner_tracks)), \
-                     patch.object(checkpoint, 'posed_source', return_value=NS(tracks=owner_tracks)), \
+                     patch.object(checkpoint, 'posed_source', return_value=NS(tracks=owner_tracks, vias=())), \
                      patch.object(checkpoint, 'distribution_zone_nets', return_value=set()), \
                      patch.object(checkpoint, 'explicit_copper_connectivity',
                                   return_value=NS(net_connected=lambda n: True)), \

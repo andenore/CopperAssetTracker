@@ -1,0 +1,28 @@
+{
+  "asset": "github.com/andenore/CopperLib/packages/circuits/ti/tps63020-buck-boost/assets/tps63020-six-layer-enabled-power-output.json",
+  "asset_sha256": "9aa32c0c1d41b3c47f1e0746b989e872f2c958751af3a5e68169848b840760bd",
+  "name": "modem-buck-boost",
+  "bindings": {
+    "U": "PWR/U_MODEM",
+    "L": "PWR/L_MODEM",
+    "C_IN": "PWR/C_MODEM_IN",
+    "C_VINA": "PWR/C_MODEM_VINA",
+    "C_OUT1": "PWR/C_MODEM_OUT1",
+    "C_OUT2": "PWR/C_MODEM_OUT2",
+    "C_OUT3": "PWR/C_MODEM_OUT3",
+    "R_TOP": "PWR/R_MODEM_FB_TOP",
+    "R_TOP2": "PWR/R_MODEM_FB_TOP2",
+    "R_BOT": "PWR/R_MODEM_FB_BOT",
+    "R_EN_PD": "PWR/R_MODEM_EN_PD"
+  },
+  "net_bindings": {
+    "VIN": "PWR/VSYS",
+    "VOUT": "V3V8",
+    "GND": "GND",
+    "FB": "PWR/MODEM_FB",
+    "FB_SERIES": "PWR/MODEM_FB_SERIES",
+    "L1": "PWR/MODEM_L1",
+    "L2": "PWR/MODEM_L2",
+    "EN": "MODEM_EN"
+  }
+}

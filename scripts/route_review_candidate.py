@@ -33,10 +33,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--pose-seed", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path, help="new directory, never overwritten")
+    parser.add_argument("--project-root", type=Path, default=ROOT)
+    parser.add_argument("--unlocked-review", action="store_true", help="explicit local revision review; never a locked release")
     args = parser.parse_args()
     if args.output.exists():
         raise ValueError("review output already exists; choose a new directory")
-    source = macro_source(posed_source(args.pose_seed))
+    source = macro_source(posed_source(args.pose_seed, project_root=args.project_root, locked=not args.unlocked_review))
     options = PlacementPlannerOptions(candidate_count=1, analytical_iterations=0,
         refinement_passes=0, escape_spacing_passes=0,
         fixed_references=frozenset(p.reference for p in source.placements))
@@ -67,7 +69,8 @@ def main():
     write_kicad_project(KiCadPcbBackend().generate(board), args.output / "routed.kicad_pcb")
     document = {"schema": "copper-asset-tracker-routing-review/v1", "production_ready": False,
         "native_verification_required": True,
-        "source_sha256": sha256((ROOT / "board.copper").read_bytes()).hexdigest(),
+        "source_sha256": sha256((args.project_root / "board.copper").read_bytes()).hexdigest(),
+        "locked_release_input": not args.unlocked_review,
         "pose_seed_sha256": sha256(args.pose_seed.read_bytes()).hexdigest(),
         "pipeline_status": result.status.value, "physical_drc": json.loads(drc.to_json()),
         "failed_critical_nets": sorted(result.package_access.failed_critical_nets),

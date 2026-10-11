@@ -1,0 +1,34 @@
+// SIM7672X V1.01 p26 applies by the user's explicit assumption.
+// In2.Cu regional distribution beside the continuous In1.Cu ground plane.
+// Author's 6 mm corridor; fill min-width 2 mm implements distribution intent,
+// not a current rating. Pad neckdowns and via contacts need transient review.
+constraint copper_zone(V3V8) {
+    id = "modem-power-distribution"; layers = "In2.Cu";
+    polygon_mm = "2,11;8,11;8,45;44,45;44,51;2,51";
+    minimum_width = 2mm; priority = 2;
+    pad_connection = solid; island_policy = "remove_all";
+    reserve_routing = true;
+}
+// Native refill showed the original 6 mm strip split by through-via clearance
+// fields. This broader, unreserved same-rail region lets the 2 mm load fill
+// pass around those fields without relaxing the reserved core or any keepout.
+constraint copper_zone(V3V8) {
+    id = "modem-load-fill-bypass"; layers = "In2.Cu";
+    polygon_mm = "0.5,11;14,11;14,45;0.5,45";
+    minimum_width = 2mm; priority = 3;
+    pad_connection = solid; island_policy = "remove_all";
+}
+// Low-current USB-VBUS detection is at the opposite modem edge (pad 24).
+// This connected spur may neck around signals/vias; it is not the VBAT load
+// path and is deliberately not reserved against the USB signal router.
+// Lower fill priority preserves the main corridor at their overlap and avoids
+// ambiguous equal-priority native fill rules with different minimum widths.
+constraint copper_zone(V3V8) {
+    id = "modem-usb-detect-power-spur"; layers = "In2.Cu,In3.Cu";
+    // Reach the four existing output-tap through vias on both layers; a
+    // floating In3 spur would not bridge the signal-cut In2 fragment.
+    // Keep the lower tie below the accelerometer's 3.3 V plane contacts.
+    polygon_mm = "28,24;34,24;34,49;44,49;44,51;28,51";
+    minimum_width = 0.2mm; priority = 1;
+    pad_connection = solid; island_policy = "remove_all";
+}

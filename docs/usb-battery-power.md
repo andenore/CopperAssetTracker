@@ -125,7 +125,7 @@ a failed mandatory check. The USB operating-mode evidence is missing, so these
 counts do not indicate that battery USB works. Audit exit code 1 is expected for
 incomplete qualification. No order, commit or push was performed.
 
-## Current wired/routed checkpoint
+## Historical battery-USB wired/routed checkpoint
 
 New fabrication candidate:
 `build/fabrication-usb-battery-20261010/routed.kicad_pcb`, SHA-256
@@ -166,3 +166,13 @@ Next: qualify actual shared-rail margins over the pack/load/temperature envelope
 implement/verify USB host readiness and safe shutdown/recovery, and measure
 battery-only enumeration/data transfer plus charging-cable removal. Independent
 CAM/DFM, RF/USB signal models, CPL and the other production gates remain open.
+
+## Current prototype RF-length correction
+
+`build/fabrication-prototype-rf-20261010/routed.kicad_pcb` supersedes the wired
+candidate above for current-source review. Only the cellular connector pose
+and CELL_RF tracks changed; exact native comparison preserves every other
+track and via, including battery-fed detection and USB data. Fresh native DRC
+remains clean. See `prototype-plan.md` for current hashes, review archives and
+fresh incomplete qualification reports. None of the outstanding power/USB
+requirements above is waived by the RF correction.

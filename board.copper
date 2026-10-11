@@ -388,13 +388,14 @@ board CopperAssetTracker {
     constraint fixed_placement(J_POWER) {
         x = 12mm; y = 74mm; rotation = 0; side = front;
     }
-    // RF_ANT (pad 60) moves to the modem's north edge at this rotation.
-    // The U.FL signal land faces south, toward that pad, above the modem.
+    // ANT_MAIN (pad 60) is on the west edge at this rotation: (8 mm, 24 mm).
+    // Upper-left U.FL signal land faces right; the constrained surface feed
+    // stays within the assumed SIM7672X V1.01 p60 maximum of 20 mm.
     constraint fixed_placement(U_MODEM) {
         x = 20mm; y = 24mm; rotation = 90; side = front;
     }
     constraint fixed_placement(J_CELL) {
-        x = 31mm; y = 6mm; rotation = 90; side = front;
+        x = 6mm; y = 8mm; rotation = 180; side = front;
     }
     // SIM insertion faces left; contact lands face right, toward the modem.
     constraint fixed_placement(J_SIM) {
@@ -521,7 +522,7 @@ board CopperAssetTracker {
     }
     constraint routing(CELL_RF) {
         kind = rf_feed; priority = 120; target_impedance_ohms = 50;
-        allowed_layers = "F.Cu"; max_vias = 0;
+        allowed_layers = "F.Cu"; max_vias = 0; max_length = 20mm;
     }
     constraint routing(GNSS_RF) {
         kind = rf_feed; priority = 120; target_impedance_ohms = 50;

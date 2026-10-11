@@ -7,7 +7,15 @@
     "procurement": "../procurement/parts.json",
     "nordic_macro": "../nrf-antenna-macro.json",
     "logic_macro": "../logic-power-macro.json",
-    "modem_macro": "../modem-power-macro.json"
+    "modem_macro": "../modem-power-macro.json",
+    "battery_selection": "battery-selection.json",
+    "battery_revision": "../revisions/battery-v1/power_tree.copper",
+    "battery_revision_placement": "../revisions/battery-v1/placement.json",
+    "battery_revision_procurement": "../revisions/battery-v1/procurement.json",
+    "modem_revision_distribution": "../revisions/modem-power-v1/distribution.copper",
+    "modem_revision_placement": "../revisions/modem-power-v1/placement.json",
+    "modem_revision_procurement": "../revisions/modem-power-v1/procurement.json",
+    "modem_revision_macro": "../revisions/modem-power-v1/modem-power-macro.json"
   },
   "context": {
     "stackup": {

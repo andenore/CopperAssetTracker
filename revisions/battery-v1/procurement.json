@@ -1,0 +1,14 @@
+{
+  "schema": "copperassettracker-revision-procurement/v0.1",
+  "status": "candidates_not_approved",
+  "checked_on": "2026-10-10",
+  "components": {
+    "PWR/U_CHARGE": {"manufacturer": "Texas Instruments", "mpn": "BQ24072TRGTR", "supplier": "jlcpcb", "supplier_part": "C129319", "source_url": "https://jlcpcb.com/partdetail/TexasInstruments-BQ24072TRGTR/C129319", "reviewed": false, "availability": "JLC SMT listing and InStock structured metadata; order quantity not verified"},
+    "PWR/TEMP/R_TOP": {"manufacturer": "UNI-ROYAL", "mpn": "0603WAF4302T5E", "supplier": "jlcpcb", "supplier_part": "C23172", "source_url": "https://www.lcsc.com/product-detail/C23172.html", "reviewed": false, "availability": "Exact LCSC listing; JLC assembly stock not confirmed"},
+    "PWR/TEMP/R_SHUNT": {"manufacturer": "UNI-ROYAL", "mpn": "0402WGF3902TCE", "supplier": "jlcpcb", "supplier_part": "C25783", "source_url": "https://www.lcsc.com/product-detail/C25783.html", "reviewed": false, "availability": "Exact LCSC listing; JLC assembly stock not confirmed"},
+    "PWR/R_TMR": {"manufacturer": "UNI-ROYAL", "mpn": "0402WGF6802TCE", "supplier": "jlcpcb", "supplier_part": "C36871", "source_url": "https://www.lcsc.com/product-detail/C36871.html", "reviewed": false, "availability": "Exact LCSC listing; JLC assembly stock not confirmed"}
+  },
+  "reuse_candidates": {"PWR/TEMP/R_ISOLATION": "PWR/R_MODEM_FB_BOT"},
+  "external_not_pcba": ["kjell.32058", "mpd.bh-18650-w", "semitec.103at-2", "insulated_3_wire_harness"],
+  "notes": "Existing BOM approval is not transferred to the changed charger or new references. Reused 100 kohm candidate still needs voltage/tolerance/drift review in the TS role."
+}

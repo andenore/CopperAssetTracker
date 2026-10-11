@@ -43,9 +43,9 @@ def pad_reference(value):
     return PadReference(*parts)
 
 
-def current_candidate(path):
+def current_candidate(path, **source_options):
     """Reject changed native poses/lands rather than moving existing tracks."""
-    board = posed_source(path, with_copper=True)
+    board = posed_source(path, with_copper=True, **source_options)
     poses = {kicad_reference(p.reference): p for p in board.placements}
     tree = _parse_sexpr(path.read_text(), str(path))
     native_nets = {n[1]: n[2] for n in _children(tree, "net")}
@@ -93,7 +93,7 @@ def current_candidate(path):
     return board
 
 
-def prune_native_stubs(board, pcb, report_path):
+def prune_native_stubs(board, pcb, report_path, **source_options):
     """Resolve native warning UUIDs; CopperScript owns pruning/connectivity."""
     report = json.loads(report_path.read_text())
     require(not report['unconnected_items'], 'Do not prune an incomplete board')
@@ -107,7 +107,7 @@ def prune_native_stubs(board, pcb, report_path):
             'Report does not identify current copper')
     native_nets = {n[1]: n[2] for n in _children(tree, 'net')}
     native_nets.update({n.name: n.name for n in board.nets})
-    owner = posed_source(pcb)
+    owner = posed_source(pcb, **source_options)
     rules = {r.net: r for r in board.net_routing_rules}
     targets = []
     for item in native:
@@ -155,16 +155,33 @@ def prune_native_stubs(board, pcb, report_path):
         require_via_in_pad_arrays(candidate, 'native stub cleanup')
     require(all(explicit_copper_connectivity(candidate, only_nets=names).net_connected(n)
                 for n in nets), 'Pruning changed terminal connectivity')
+    # Native UUIDs identify these ordinary objects; the shared transaction
+    # proves whether any conservative overlapping-stub remnants are redundant.
+    remaining_tracks = tuple((Counter(targets) & Counter(candidate.tracks)).elements())
+    remaining_vias = tuple((Counter(via_targets) & Counter(candidate.vias)).elements())
+    if remaining_tracks or remaining_vias:
+        # This review-only transaction requires the newer compiler; keep the
+        # existing locked loader usable when no such repair is requested.
+        from pcbir.route_cleanup import remove_redundant_ordinary_copper
+        proven = remove_redundant_ordinary_copper(candidate, remaining_tracks, remaining_vias,
+            mutable_tracks=Counter(candidate.tracks) - Counter(owner.tracks),
+            mutable_vias=Counter(candidate.vias) - Counter(owner.vias))
+        if proven is not None:
+            candidate = proven
     return candidate
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--pcb", type=Path, required=True)
+    parser.add_argument("--project-root", type=Path, default=ROOT)
+    parser.add_argument("--unlocked-review", action="store_true", help="explicit local revision, never locked release evidence")
     parser.add_argument("--output", type=Path, default=ROOT / "build/finished-routed.kicad_pcb")
     parser.add_argument("--route-v5", action="store_true")
     parser.add_argument("--net", action="append", default=[],
                         help="bounded ordinary-net repair; keep partial results for review")
+    parser.add_argument("--ripup-net", action="append", default=[],
+                        help="evict an explicitly selected ordinary repair net before stitching; input retained")
     parser.add_argument("--plane-pad", action="append", type=pad_reference, default=[],
                         help="explicit current-source pad needing a prospective plane contact")
     parser.add_argument("--stitch-planes", action="store_true",
@@ -185,7 +202,15 @@ def main():
     require(not args.output.exists(), 'Output exists; choose a new review candidate')
     require(not (args.stitch_planes and args.plane_pad),
             'Choose all plane pads or explicit selectors, not both')
-    board = current_candidate(args.pcb)
+    source_options = dict(project_root=args.project_root, locked=not args.unlocked_review)
+    board = current_candidate(args.pcb, **source_options)
+    if args.ripup_net:
+        from pcbir.route_cleanup import ripup_mutable_nets
+        require(set(args.ripup_net) <= set(args.net), 'Every evicted net must be rerouted')
+        owner = posed_source(args.pcb, **source_options)
+        board = ripup_mutable_nets(board, frozenset(args.ripup_net),
+            mutable_tracks=Counter(board.tracks) - Counter(owner.tracks),
+            mutable_vias=Counter(board.vias) - Counter(owner.vias))
     contacts = None
     if args.plane_pad or args.stitch_planes:
         known = {p for n in board.nets for p in n.pads}
@@ -206,7 +231,7 @@ def main():
         if fanout is not None:
             board = fanout.board
             print('FANOUT_PENDING', fanout.pending_pads, flush=True)
-        guides = route_global(macro_source(posed_source(args.pcb)))
+        guides = route_global(macro_source(posed_source(args.pcb, **source_options)))
         repair = route_detailed(board, guides, DetailedRouterOptions(
             pitch_nm=nm_from_mm(args.pitch_mm), maximum_passes=1,
             maximum_search_states=args.search_states,
@@ -225,7 +250,7 @@ def main():
             maximum_detour_nm=nm_from_mm('1.5'), only_pads=frozenset((
                 PadReference('U_CC', '12'), PadReference('U_MODEM_LEVEL', '10')))))
         require(not contacts.pending_pads, contacts.pending_pads)
-        guides = route_global(macro_source(posed_source(args.pcb)))
+        guides = route_global(macro_source(posed_source(args.pcb, **source_options)))
         routed = route_detailed(contacts.board, guides, DetailedRouterOptions(
             pitch_nm=nm_from_mm('.5'), maximum_passes=1, maximum_search_states=300000,
             layer_preference_cost=0, direction_preference_cost=0,
@@ -239,7 +264,7 @@ def main():
         tree = _parse_sexpr(args.pcb.read_text(), str(args.pcb))
         targets = [t for t in _children(tree, 'segment') if _first(t, 'uuid')[1] in uuids]
         require(len(targets) == len(uuids), 'Native report does not match this board')
-        owner = posed_source(args.pcb)
+        owner = posed_source(args.pcb, **source_options)
         removed = []
         for target in targets:
             a, b = Point.mm(*_first(target, 'start')[1:3]), Point.mm(*_first(target, 'end')[1:3])
@@ -254,7 +279,7 @@ def main():
     if args.prune_native_stubs:
         require(not (args.native_report or args.net or args.route_v5 or contacts is not None),
                 'Native stub cleanup must be a separate current-input stage')
-        board = prune_native_stubs(board, args.pcb, args.prune_native_stubs)
+        board = prune_native_stubs(board, args.pcb, args.prune_native_stubs, **source_options)
         print('Native-identified ordinary stub pruning checked; input retained.', flush=True)
     validate_hard_macros(board)
     drc = run_physical_drc(board, policy=PhysicalDrcPolicy(False))

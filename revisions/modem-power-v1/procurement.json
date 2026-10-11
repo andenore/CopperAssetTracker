@@ -1,0 +1,9 @@
+{
+  "status": "candidates_not_approved",
+  "components": {
+    "U_MODEM/C_10P": {"manufacturer": "Murata Electronics", "mpn": "GRM1555C1H100JA01D", "supplier": "jlcpcb", "supplier_part": "C76946", "source_url": "https://jlcpcb.com/partdetail/MurataElectronics-GRM1555C1H100JA01D/C76946", "reviewed": false},
+    "U_MODEM/C_33N": {"manufacturer": "Samsung Electro-Mechanics", "mpn": "CL05B333KB5VPNC", "supplier": "jlcpcb", "supplier_part": "C472437", "source_url": "https://www.lcsc.com/product-detail/C472437.html", "reviewed": false}
+  },
+  "reuse_candidates": {"U_MODEM/U": "U_MODEM", "U_MODEM/C_100N": "C_MCU", "U_MODEM/C_1U": "C_GNSS"},
+  "notes": "Exact supplier listings identify candidates, not guaranteed assembly inventory or approval. The unchanged 100 uF ceramic remains nominal-only: effective reservoir capacitance is unresolved."
+}

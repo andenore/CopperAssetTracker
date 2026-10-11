@@ -33,13 +33,14 @@ from pcbir.routing import GlobalRoutingResult, GlobalRoutingStatus, GlobalRoutin
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def posed_source(pcb=ROOT / "build/no-can-routed.kicad_pcb", *, with_copper=False):
-    design = load_design(ROOT / "board.copper", locked=True, offline=True)
+def posed_source(pcb=ROOT / "build/no-can-routed.kicad_pcb", *, with_copper=False, project_root=ROOT, locked=True):
+    project_root = Path(project_root).resolve()
+    design = load_design(project_root / "board.copper", locked=locked, offline=True)
     board = resolved_physicalize(design,
-        FootprintResolver(base_directory=ROOT, locked=True, offline=True),
+        FootprintResolver(base_directory=project_root, locked=locked, offline=True),
         PrototypePhysicalOptions(copper_layers=6, fabrication_profile="jlcpcb-six-layer"))
     for scene in ("nrf-antenna-macro.json", "logic-power-macro.json", "modem-power-macro.json"):
-        board = apply_hard_macro_scene(board, ROOT / scene, locked=True, offline=True)
+        board = apply_hard_macro_scene(board, project_root / scene, locked=locked, offline=True)
     tree = _parse_sexpr(pcb.read_text(), str(pcb))
     manifest_path = pcb.with_suffix(".editor-intent.json")
     if manifest_path.exists():

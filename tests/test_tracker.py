@@ -130,6 +130,25 @@ class TrackerTests(unittest.TestCase):
             self.assertEqual(len(apertures), 6)
             self.assertTrue(all(p.kind.value == "aperture" and p.has_solder_paste for p in apertures))
 
+    def test_cellular_feed_has_source_backed_surface_length_limit(self):
+        from pcbir.physical import CopperLayer, Point, RouteKind
+        from pcbir.placement import transformed_pad_position
+        from dataclasses import replace
+        rules = {r.net: r for r in self.physical.net_routing_rules}
+        rule = rules["CELL_RF"]
+        self.assertEqual(rule.kind, RouteKind.RF_FEED)
+        self.assertEqual(rule.max_length_nm, 20000000)
+        self.assertEqual(rule.max_vias, 0)
+        self.assertEqual(rule.allowed_layers, (CopperLayer.FRONT,))
+        fixed = {r.reference: r for r in self.physical.placement_rules}
+        self.assertEqual(fixed["J_CELL"].fixed_position, Point.mm(6, 8))
+        self.assertEqual(fixed["J_CELL"].fixed_rotation_degrees, 180)
+        poses = {p.reference: p for p in self.physical.placements}
+        modem = replace(poses["U_MODEM"], position=fixed["U_MODEM"].fixed_position,
+                        rotation_degrees=fixed["U_MODEM"].fixed_rotation_degrees)
+        self.assertEqual(transformed_pad_position(self.physical, modem, "60"),
+                         Point(8000024, 24000000))
+
     def test_rf_macro_identity(self):
         scene = json.loads((ROOT / "nrf-antenna-macro.json").read_text())
         self.assertEqual(hashlib.sha256((ROOT / scene["asset"]).read_bytes()).hexdigest(), scene["asset_sha256"])

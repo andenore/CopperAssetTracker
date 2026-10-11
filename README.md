@@ -14,6 +14,19 @@ manufacturing review files.
 physical nets and six copper layers. This is a routed prototype design,
 **not a production-approved product**.*
 
+Prototype battery choice: Kjell & Company **32058**, protected 18650, **2600 mAh**.
+See [battery integration review](docs/battery-selection.md). It is an external
+cell, not a JLCPCB assembly item. The separate battery revision uses a hardware
+temperature window targeting roughly 5–35 °C. The combined
+[91-component modem-power/battery draft](revisions/modem-power-v1/README.md) adds
+CopperLib's pin-associated modem bypass bank, a wider converter output tap and
+regional power distribution. ERC/placement and fresh routing checks pass;
+native refill/DRC has zero violations and zero opens, with all four modem bypass
+feeds verified via-free. Evidence is recorded separately. Temperature guarantees, reservoir bias
+derating, assembly and battery/burst-load tests remain pending. The illustrated
+83-component board and existing manufacturing files are the unchanged earlier
+checkpoint, not fabrication data for the new revision.
+
 ## Why CopperScript?
 
 A PCB contains more intent than wires: a capacitor protects a particular pin,
@@ -187,7 +200,7 @@ Selected output from the illustrated KiCad 10.0.6 checkpoint:
 {
   "component_count": 83,
   "net_count": 73,
-  "track_count": 1122,
+  "track_count": 1118,
   "via_count": 367,
   "native_drc_violation_count": 0,
   "native_unconnected_item_count": 0,
@@ -292,7 +305,7 @@ source-matched candidate with adjacent `manifest.json` and `drc.json`:
 
 ```powershell
 uv run --locked python scripts/generate_readme_assets.py `
-  --pcb build/fabrication-usb-battery-20261010/routed.kicad_pcb `
+  --pcb build/fabrication-prototype-rf-20261010/routed.kicad_pcb `
   --kicad-cli "C:/Program Files/KiCad/10.0/bin/kicad-cli.exe"
 ```
 
@@ -348,8 +361,13 @@ screening found unresolved impedance/reference-model issues; see
 [stackup selection and follow-up](docs/stackup-selection.md). No production order
 is authorized by this assumption.
 
-The current battery-USB candidate has zero native violations/opens, with only
-V5/V3V8 copper and modem pad 24's net changed. USB data/RF copper is unchanged.
-Fresh review Gerbers/drills are in `build/fabrication-usb-battery-20261010`, with
-assembly review in `build/assembly-usb-battery-20261010`. These supersede the
-earlier candidates for current-source review, not production approval.
+The current prototype-review candidate has zero native violations/opens. It
+preserves battery-fed USB detection and all non-cellular routing, while moving
+J_CELL beside the actual west-facing modem antenna edge. The via-free cellular
+feed is now about 18 mm instead of 36 mm, within the assumed SIM7672X guide's
+20 mm limit. This does not qualify its impedance, matching or launch geometry.
+Fresh review Gerbers/drills are in `build/fabrication-prototype-rf-20261010`, with
+assembly review in `build/assembly-prototype-rf-20261010`. These supersede the
+earlier candidates for current-source review, not production approval. See the
+[prototype checklist](docs/prototype-plan.md) for unresolved design decisions
+and the exact candidate/check provenance; no order has been placed.

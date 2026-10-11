@@ -1,0 +1,15 @@
+{
+  "schema": "copperassettracker-battery-selection/v0.1",
+  "selected_external_cell": "kjell.32058",
+  "library_specification": "packages/batteries/kjell/32058/specification.json",
+  "library_charger_limits": "packages/parts/ti/bq24072/charging-limits.json",
+  "status": "selected_for_integration_review_not_approved_for_charging",
+  "reviewed_power_source_sha256": "e979128912e736e0f29b88056a8494e06e9d3492f1ba37b3e8457d6d90680742",
+  "connector_reference": "PWR/J_BAT",
+  "connector_pin_assignment": {"1": "protected_positive", "2": "protected_negative", "3": "cell_mounted_ntc_to_protected_negative"},
+  "holder": {"id": "mpd.bh-18650-w", "library_specification": "packages/battery-holders/mpd/bh-18650-w/specification.json", "fit_and_current_reviewed": false},
+  "harness": {"status": "design_pending_validation", "sensor": "semitec.103at-2", "sensor_library_specification": "packages/sensors/semitec/103at-2/specification.json", "polarity_verified": false, "sensor_thermally_coupled_and_insulated": false},
+  "temperature_cutoff_design": {"status": "separate_electrical_revision_not_routed", "source": "revisions/battery-v1/power_tree.copper", "charger": "ti.bq24072t", "library_charger_limits": "packages/parts/ti/bq24072t/charging-limits.json", "nominal_target_min_c": 5, "nominal_target_max_c": 35, "screen_cold_c": 0, "screen_hot_c": 40, "upper_ohms": 43000, "shunt_ohms": 39000, "isolation_ohms": 100000, "resistor_tolerance_percent": 1, "assumed_rt_envelope_percent": 5, "assumed_ts_leakage_na": 100, "assumptions_confirmed": false, "iset_ohms": 2200, "tmr_ohms": 68000},
+  "prototype_quantity": null,
+  "qualified_release": false
+}
