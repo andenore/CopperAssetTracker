@@ -21,10 +21,20 @@ radios and both USB paths; no uncovered or unexplained reference transitions.
 
 ## 2. Close manufacturer integration/layout requirements
 
+- [x] Review Johanson corner guidance and correct the RF review revision's
+  closed clearance island. Shared CopperScript v0.5 host-edge validation and
+  isolated six-layer native refill preserve the matching returns and NC land.
+  This does not close antenna tuning, enclosure or impedance qualification.
+- [x] Review MAX-M10S R05 integrated matching/filtering and reproduce the long
+  host-feed detour. Shared bounded RF surface search accepts a shorter via-free
+  candidate; final whole-board routing and actual reference coverage remain open.
 - [ ] Review exact MAX-M10S integration guidance: antenna type, matching,
   filtering/ESD/bias, ground/layout and RF feed geometry.
   Source review is recorded in CopperLib; consumer antenna/coexistence choices
   and detailed layout qualification remain open.
+  The user selected a passive GNSS antenna: no antenna-power bias circuit.
+  Exact antenna/cable, connector ESD, coexistence and sensitivity qualification
+  remain open. See [RF layout review revision](../revisions/rf-layout-v1/README.md).
 - [ ] Obtain exact SIM7670G-LNGV hardware guidance or manufacturer confirmation
   of applicability of the related SIM7672X document. Resolve matching/ESD and
   supply burst requirements; do not treat family resemblance as approval.

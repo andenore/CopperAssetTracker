@@ -1,0 +1,19 @@
+{
+  "schema": "copperassettracker-antenna-choice/v0.1",
+  "gnss": {
+    "receiver": "U_GNSS",
+    "connector": "J_GNSS",
+    "antenna_type": "passive",
+    "decision_basis": "Explicit user instruction: Use passive antenna",
+    "board_supplied_bias": false,
+    "external_antenna_power_required": false,
+    "antenna_part_selected": false,
+    "unresolved": [
+      "Specific passive antenna, cable and enclosure installation",
+      "Connector ESD and LTE coexistence review",
+      "Actual-stackup feed impedance and ground reference",
+      "Prototype GNSS sensitivity and interference measurements"
+    ]
+  },
+  "qualified_release": false
+}

@@ -41,10 +41,13 @@ def main():
     parser.add_argument("--pose-seed", type=Path, help="optional pinned historical placement reproduction; omitted for a fresh source-only build")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--modem-power", action="store_true", help="combine the reusable local modem bypass bank and regional distribution revision")
+    parser.add_argument("--rf-layout", action="store_true", help="compose the two-edge-open antenna corner revision using its CopperLib asset")
     args = parser.parse_args()
     library, footprints, work = args.library_review_root.resolve(), args.kicad_footprint_root.resolve(), args.output.resolve()
     if work.exists():
         raise ValueError("output exists; preserve the old review")
+    if args.rf_layout and args.pose_seed is not None:
+        raise ValueError("RF layout revision requires a fresh source-only build, not a historical pose seed")
     if args.pose_seed is not None and hash_file(args.pose_seed) != PRIOR_NATIVE_SHA256:
         raise ValueError("pose seed must be the pinned RF checkpoint")
     screen = assess(ROOT, library)
@@ -69,6 +72,17 @@ def main():
             'max_distance(C_MODEM_BULK, U_MODEM/U.VBAT_1) { distance = 7mm; }')
         source = source.rstrip()[:-1] + '\n' + (ROOT / 'revisions/modem-power-v1/distribution.copper').read_text() + '\n}\n'
         pose_changes.update(load_json(ROOT / 'revisions/modem-power-v1/placement.json')['poses'])
+    if args.rf_layout:
+        shutil.copy2(ROOT / 'revisions/rf-layout-v1/nrf-antenna-macro.json', work / 'nrf-antenna-macro.json')
+        pose_changes.update(load_json(ROOT / 'revisions/rf-layout-v1/placement.json')['poses'])
+        antenna = load_json(ROOT / 'revisions/rf-layout-v1/antenna-selection.json')
+        if (antenna['gnss']['antenna_type'] != 'passive'
+                or antenna['gnss']['board_supplied_bias'] is not False
+                or antenna['gnss']['external_antenna_power_required'] is not False):
+            raise ValueError("RF revision implements only the approved passive GNSS input")
+        shutil.copy2(ROOT / 'revisions/rf-layout-v1/antenna-selection.json', work / 'antenna-selection.json')
+        source = source.replace('constraint max_distance(J_GNSS, U_GNSS.RF_IN)',
+            '// User-selected passive GNSS antenna: no board-powered bias injection.\n    constraint max_distance(J_GNSS, U_GNSS.RF_IN)')
     for reference, pose in pose_changes.items():
         rule = f"constraint fixed_placement({reference}) {{ x = {pose['x_mm']}mm; y = {pose['y_mm']}mm; rotation = {pose['rotation']}; side = front; }}"
         pattern = r"constraint fixed_placement\(" + re.escape(reference) + r"\)\s*\{[^}]*\}"
@@ -119,6 +133,7 @@ def main():
         # the standard compiler command runs and validates those stages next.
         document = {"schema": "copperassettracker-battery-revision-build/v0.1",
             "qualified_release": False, "modem_power_revision": args.modem_power,
+            "rf_layout_revision": args.rf_layout,
             "library_mode": "explicit_unlocked_working_copy_review", "erc_errors": 0,
             "components": len(elaborate(design.electrical).components), "copper_layers": 6,
             "placement_status": "not_run_use_shared_route_board", "preserved_pose_count": 0,
@@ -134,6 +149,14 @@ def main():
         if args.modem_power:
             document['inputs']['modem_revision'] = {name: hash_file(ROOT / 'revisions/modem-power-v1' / name)
                 for name in ('distribution.copper', 'placement.json', 'procurement.json', 'modem-power-macro.json')}
+        if args.rf_layout:
+            document['inputs']['rf_revision'] = {name: hash_file(ROOT / 'revisions/rf-layout-v1' / name)
+                for name in ('placement.json', 'nrf-antenna-macro.json', 'README.md', 'antenna-selection.json')}
+            document['gnss_antenna_type'] = antenna['gnss']['antenna_type']
+            scene = load_json(work / 'nrf-antenna-macro.json')
+            document['inputs']['rf_asset'] = hash_file(library / scene['asset'].split('CopperLib/', 1)[1])
+            if document['inputs']['rf_asset'] != scene['asset_sha256']:
+                raise ValueError("RF macro library asset identity changed")
         (work / "revision-build.json").write_text(json.dumps(document, indent=2, allow_nan=False) + "\n")
         print(json.dumps(document, indent=2), flush=True)
         return 0
