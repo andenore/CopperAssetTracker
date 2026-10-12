@@ -16,11 +16,21 @@ Bluetooth and motion sensing on a six-layer board. Readable circuit intent becom
 inspectable intermediate representations, placed components, routed copper and
 manufacturing review files.
 
-![Actual routed top copper and silkscreen](docs/showcase/routing-top.svg)
+![Native KiCad export of the latest CopperAssetTracker manufacturing review candidate](docs/showcase/routing-top.svg)
 
-*Native KiCad export of the 100 × 80 mm review candidate: 91 placements, 75
-physical nets and six copper layers. This is a routed prototype design,
-**not a production-approved product**.*
+*Native KiCad export of the 100 × 80 mm `prototype-preorder-v3-20261012`
+manufacturing review candidate: 97 footprints, 968 routed track segments and
+six copper layers. This is an unapproved prototype candidate, **not a released
+production package**.*
+
+The current figures show the exact exported PCB in the five-unit prototype
+preview candidate. Its native DRC report records zero violations and zero
+unconnected items, while the route summary still has **13 blocked electrical
+requirement checks**. Five DRC check types were ignored, independent CAM was
+skipped, and supplier availability plus assembly-preview placement review remain
+incomplete. The candidate is **not approved for production or ordering**. Older
+91-part checkpoints described farther below are historical intermediate
+revisions, not the PCB shown in these figures.
 
 Prototype battery choice: Kjell & Company **32058**, protected 18650, **2600 mAh**.
 See [battery integration review](docs/battery-selection.md). It is an external
@@ -30,9 +40,10 @@ temperature window targeting roughly 5–35 °C. The combined
 CopperLib's pin-associated modem bypass bank, a wider converter output tap and
 regional power distribution. ERC/placement and fresh routing checks pass;
 native refill/DRC has zero violations and zero opens, with all four modem bypass
-feeds verified via-free. The figures and excerpts below now show this revision's
-2026-10-11 source-only routing checkpoint. Temperature guarantees, reservoir bias
-derating, assembly and battery/burst-load tests remain pending. The canonical
+feeds verified via-free. That paragraph describes the historical 2026-10-11
+checkpoint, not the latest manufacturing candidate pictured above. Temperature
+guarantees, reservoir-bias derating, assembly and battery/burst-load tests remain
+pending. The canonical
 83-component source, release locks and older manufacturing files are unchanged;
 they are not fabrication data for the illustrated 91-component revision.
 
@@ -202,36 +213,33 @@ the decoupling properties survive compilation:
 }
 ```
 
-The physical IR then records real geometry. This placement object comes from the
-source-checked 91-part candidate. Coordinates are integer nanometres (54,045 um,
-21,190 um, rounded), not diagram coordinates:
+The latest manufacturing candidate's native PCB export records real geometry.
+This selected placement excerpt is read from that exact board file (units are
+millimetres); it is not a substitute for the complete CopperScript physical IR:
 
 ```json
 {
-  "footprint": "Capacitor_SMD:C_0402_1005Metric",
-  "position": { "x_nm": 54044976, "y_nm": 21190002 },
+  "footprint": "CopperScript:C_0402_1005Metric__86575c98c1bd84414ad1",
+  "position_mm": { "x": "53.599976", "y": "21.190002" },
   "reference": "C_MCU",
-  "rotation_degrees": "0",
-  "side": "front",
-  "source_path": "C_MCU",
-  "value": "100 nF"
+  "rotation_degrees": "90"
 }
 ```
 
 Browse the [electrical IR excerpt](docs/showcase/electrical-ir.excerpt.json),
-[physical IR excerpt](docs/showcase/physical-ir.excerpt.json), including real track
-segments, and [snapshot provenance](docs/showcase/snapshot.json). These small
-excerpts are not full IR files or qualification reports. `make compile` produces
-the canonical full hierarchical `build/board.json`; the revision builder produces
-its own `electrical.ir.json` in the selected review directory.
+[native PCB placement excerpt](docs/showcase/physical-ir.excerpt.json), and
+[candidate snapshot and evidence hashes](docs/showcase/snapshot.json). These are
+small excerpts, not full IR files or qualification reports. `make compile`
+produces the canonical full hierarchical `build/board.json`; the revision builder
+produces its own `electrical.ir.json` in the selected review directory.
 
 ### Place components and preserve reference geometry
 
 ![Component placement, pads and courtyards](docs/showcase/placement.svg)
 
-*The same 91 candidate component poses with copper hidden for readability. This
-is a placement-only illustration of the routed checkpoint, not a fresh
-unconstrained auto-placement or a photograph of assembled hardware.*
+*Placement and courtyard layers from the same 97-footprint exported candidate,
+with copper omitted for readability. This is not a fresh placement run or a
+photograph of assembled hardware.*
 
 The flow combines board-specific fixed anchors, generic placement decisions,
 pin-associated decoupling and rigid RF/power hard macros. Macro ownership keeps
@@ -258,26 +266,26 @@ selected-net repair script is involved. The source/native guard rejects stale
 pad nets, changed lands, illegal placement and altered macro geometry before a
 checkpoint is reused. Success on this board is not a guarantee for every design.
 
-Selected output from the illustrated KiCad 10.0.6 checkpoint:
+Selected output from the illustrated KiCad 10.0.6 manufacturing review
+candidate:
 
 ```json
 {
-  "component_count": 91,
-  "net_count": 75,
-  "track_count": 921,
-  "via_count": 314,
+  "component_count": 97,
+  "track_count": 968,
+  "via_count": 340,
   "native_drc_violation_count": 0,
   "native_unconnected_item_count": 0,
+  "blocked_requirement_count": 13,
   "qualified_release": false
 }
 ```
 
-The shared report records 21 of 21 surface-connected decoupling associations.
-An independent checkpoint check also verifies all four modem bypass feeds as
-via-free F.Cu chains, with rounded lengths from 2,011 um to 2,763 um. These are
-connectivity checks, not proof of effective capacitance or high-frequency power
-integrity. The same routing report explicitly retains **11 blocked engineering
-requirements**, including RF/USB impedance and reference/return-path verification.
+These routing and native DRC results do not close the remaining electrical
+requirements. In particular, RF/USB impedance and return-path verification,
+independent CAM, live supplier checks, assembly-placement approval and prototype
+tests remain open. Zero native DRC violations is one checkpoint, not production
+approval.
 
 That last field is intentional: zero opens and DRC violations establish a useful
 routing checkpoint, not RF performance, impedance, charging safety or battery USB
@@ -429,15 +437,21 @@ margin and firmware/bench operation remain unqualified. See
 
 ## Release status
 
-The latest 91-part revision is natively routed but remains an unlocked, unqualified
-review. Native closure does not approve RF/USB impedance/returns, biased reservoir
-capacitance, supply capacity/transients, battery/charger guarantees, thermal behavior,
-independent CAM or prototype performance. Battery-fed USB detection has only about
-60 mV static margin before ripple and burst effects; measure operation across the
-accepted envelope.
+The current `prototype-preorder-v3-20261012` candidate has 97 physical
+components and 95 fitted selections, including LTE DC blocking/tuning/ESD,
+passive GNSS ESD and the selected external antennas. Its native report is bound
+to the shown PCB, but 13 route requirements remain blocked; independent CAM,
+GNSS/LTE coexistence and installed RF tests are still gates.
 
-Only the canonical 83-part BOM has the user-directed approval assumption. Changed
-91-part selections, CPL and supplier preview need separate review. Bind approved
-release pins, a fresh fabrication/assembly package and candidate-specific evidence
-before any upload decision. Follow [production plan](docs/production-plan.md),
+The retained 91-part revision is natively routed but remains an unlocked,
+unqualified review. Native closure does not approve RF/USB impedance/returns,
+biased reservoir capacitance, supply capacity/transients, battery/charger
+guarantees, thermal behavior, independent CAM or prototype performance.
+Battery-fed USB detection has only about 60 mV static margin before ripple and
+burst effects; measure operation across the accepted envelope.
+
+The BOM selection has user approval; that does not approve the generated CPL,
+supplier substitutions, assembly preview or production release. Bind final
+release inputs and complete the candidate-specific evidence before ordering.
+Follow [production plan](docs/production-plan.md),
 [BOM approval scope](docs/bom-approval.md) and [power design](docs/power-design.md).
