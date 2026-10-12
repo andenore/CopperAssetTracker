@@ -45,6 +45,8 @@ version-controlled and testable alongside the connections.
 
 - **Readable hardware source:** components, peripheral selection, nets, supply
   domains and physical constraints in `.copper` files.
+- **Mechanical and placement intent:** explicit poses, placement regions,
+  pin-aware distance limits and routing rules, with a shared floorplan editor.
 - **Reusable engineering:** CopperLib parts, footprints, regulator hard macros
   and qualification contracts instead of per-board copies.
 - **Inspectable automation:** electrical IR, physical geometry, routing reports,
@@ -56,8 +58,8 @@ version-controlled and testable alongside the connections.
 
 | Repository | Owns |
 | --- | --- |
-| [CopperScript](https://github.com/andenore/CopperScript) | Language/compiler/ERC, physical IR, placement/routing algorithms, KiCad export and generic assessment tools |
-| [CopperLib](https://github.com/andenore/CopperLib) | Shared components, footprints, reusable circuits/hard macros, stackup profiles and engineering contracts |
+| [CopperScript](https://github.com/andenore/CopperScript) | Language/compiler/ERC, mechanical editor, physical IR, constraint-driven placement/routing, KiCad export and generic assessment tools |
+| [CopperLib](https://github.com/andenore/CopperLib) | Shared components, footprints, reusable circuits/hard macros, mechanical/stackup profiles and engineering contracts |
 | CopperAssetTracker | This board's composition, power configuration, placement intent, exact BOM and board-specific evidence |
 
 Generic improvements belong in CopperScript; reusable components belong in
@@ -154,6 +156,33 @@ surface-feed decisions; it does not forbid necessary ground-return vias. The
 ground-zone permission lets compatible board/macro fills overlap without allowing
 ordinary routing to rewrite immutable converter copper. Native refill still has
 to establish connected fill.
+
+### Mechanical and placement intent
+
+The tracker's [board source](board.copper) fixes the position, rotation and front
+side of connectors, modem and power assemblies, assigns the MCU a placement
+region, and declares pin-aware maximum distances for bypass and RF components.
+Net routing constraints also specify widths, clearances and supported layer or
+pair intent. The canonical source has no mechanical outline block; the
+illustrated build uses the provisional 100 × 80 mm board. These declarations
+do not imply a qualified enclosure design.
+
+For example, the canonical source keeps the GNSS antenna connection close to its
+receiver:
+
+```copper
+constraint max_distance(J_GNSS, U_GNSS.RF_IN) { distance = 5mm; }
+```
+
+`make edit` opens the shared mechanical/floorplan editor with this board's pinned
+compiler, six-layer configuration and hard macros. CopperScript's current
+[mechanical features](https://github.com/andenore/CopperScript/blob/main/docs/mechanical-language.md)
+also support source-defined outlines, cutouts, holes, slots, datums, attachments
+and enclosure/access constraints. Its current
+[editor](https://github.com/andenore/CopperScript/blob/main/docs/mechanical-editor.md)
+supports placement previews and reviewed source saves. To evaluate features
+beyond the pinned build, explicitly select a current review compiler as described
+below; keep this project's release pins and evidence bindings intact.
 
 ### Inspect what the compiler understood
 
