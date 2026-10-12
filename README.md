@@ -5,6 +5,11 @@ environment; see [the project pointer](AGENTS.md) for older compiler pins.
 
 **A cellular, GNSS and Bluetooth asset tracker — designed as code.**
 
+[CopperScript website](https://andenore.github.io/CopperScript/) ·
+[Language and compiler](https://github.com/andenore/CopperScript) ·
+[Reusable library](https://github.com/andenore/CopperLib) ·
+[Current board status](docs/validation.md)
+
 CopperAssetTracker takes CopperScript's full-vertical example into a standalone,
 rechargeable hardware project: an STM32 host, LTE Cat-1 bis connectivity, GNSS,
 Bluetooth and motion sensing on a six-layer board. Readable circuit intent becomes
