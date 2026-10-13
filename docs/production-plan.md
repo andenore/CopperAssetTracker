@@ -3,7 +3,13 @@
 The six-layer candidate is a review candidate, not an approved production release.
 Only the canonical 83-part BOM is approved under the user assumption. The 91-part
 revision needs changed-selection approval; neither scope approves CPL, RF, power or CAM.
-Select JLCPCB **JLC06161H-3313**, nominal 1.6 mm, outer 1 oz / inner 0.5 oz.
+The current 97-physical / 95-fitted pre-prototype scope is tracked separately in
+[the preorder plan](prototype-preorder-plan.md); the user excludes mechanical
+fit/test-access work for that pass, not assembly-process or electrical review.
+Its v3 source/lock and current routing status are in [validation](validation.md).
+The current GNSS model uses the corrected R08 open-selector supply limits.
+Select JLCPCB **JLC06161H-3313 / NP-155F**, nominal 1600 um,
+outer 1 oz / inner 1/2 oz. The RF revision hashes that exact selection.
 See `stackup-selection.md` and `engineering-plan.json` for source-bound inputs.
 
 ## 1. Characterize actual RF and USB geometry — in progress
@@ -28,16 +34,31 @@ radios and both USB paths; no uncovered or unexplained reference transitions.
 - [x] Review MAX-M10S R05 integrated matching/filtering and reproduce the long
   host-feed detour. Shared bounded RF surface search accepts a shorter via-free
   candidate; final whole-board routing and actual reference coverage remain open.
-- [ ] Review exact MAX-M10S integration guidance: antenna type, matching,
+- [x] Review exact MAX-M10S integration guidance: antenna type, matching,
   filtering/ESD/bias, ground/layout and RF feed geometry.
   Source review is recorded in CopperLib; consumer antenna/coexistence choices
   and detailed layout qualification remain open.
   The user selected a passive GNSS antenna: no antenna-power bias circuit.
-  Exact antenna/cable, connector ESD, coexistence and sensitivity qualification
-  remain open. See [RF layout review revision](../revisions/rf-layout-v1/README.md).
-- [ ] Obtain exact SIM7670G-LNGV hardware guidance or manufacturer confirmation
-  of applicability of the related SIM7672X document. Resolve matching/ESD and
-  supply burst requirements; do not treat family resemblance as approval.
+  Exact passive antenna/cable and connector ESD are selected in RF-support v1;
+  coexistence, system ESD and sensitivity qualification remain open.
+  See [RF support revision](../revisions/rf-support-v1/README.md).
+- [x] Select applicable modem reference basis: the user explicitly accepted
+  SIM7672X applicability. This is a scoped assumption, not manufacturer-confirmed
+  exact-variant equivalence; do not repeatedly ask for the same assumption.
+- [x] Select the external cellular antenna: Taoglas FXUB16.07.0150AQ, factory
+  150 mm U.FL-compatible assembly. Reusable source/band facts belong in CopperLib.
+- [x] Select passive GNSS Taoglas FXP611.07.0092C with its factory 92 mm cable;
+  retain integrated receiver DC isolation and reserve enclosure/metal clearance.
+- [x] Perform cellular schematic/reference/actual-copper review and record its
+  findings in [the design review](../revisions/rf-layout-v1/cellular-design-review.md).
+- [x] Implement an isolated source revision with library-owned LTE initial
+  DC-block/tuning/ESD support and passive GNSS ESD; select both external antennas.
+  See [RF support implementation and remaining gates](../revisions/rf-support-v1/README.md).
+- [ ] Verify the new protection/tuning layout and close GNSS coexistence/filter
+  design, then close the review findings: system RF ESD and installed matching,
+  launch/return modelling, supplier process acceptance and enclosure placement.
+  The review outcome is changes required, not passed design approval.
+- [ ] Qualify modem supply burst requirements and exact-variant limitations.
 - [ ] Review Nordic/Johanson macro adaptations and antenna/enclosure keepouts.
 - [ ] Keep reusable manufacturer guidance and qualification contracts in
   CopperLib; record only the tracker implementation/review decisions here.

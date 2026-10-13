@@ -86,3 +86,91 @@ zone observations, not those electrical requirements. The five-region visual
 review, refreshed showcase figures, antenna/cable/ESD/coexistence review,
 independent CAM, changed assembly/CPL review, prototype measurements and final
 release approval still remain. No new production exports are claimed.
+
+## Cellular connector and nominal impedance revision — 2026-10-12
+
+- [x] Inspect the actual SIM7670G ANT_MAIN land: pad 60, west edge at
+  x = 8000 um, y = 24000 um with the current modem rotation.
+- [x] Move J_CELL from y = 26100 um to y = 25300 um, retaining x = 4400 um
+  and rotation = 180 degrees. Its signal land faces the modem. Move the four
+  local bypasses upward by 800 um to make room; retain their pin-associated
+  3 mm bounds, orientation and via-free routing intent. The reservoir is unchanged.
+  A straight y = 24000 um connector placement conflicts with the bypass bank's
+  real courtyards; no courtyard or distance rule was waived to force it.
+- [x] Check JLCPCB's current calculator on standard JLC06161H-3313, L1
+  coplanar single-ended over L2, 50 ohm, 1 oz exterior / 0.5 oz interior,
+  nominal 1600 um order thickness and 201 um input ground gap.
+  It returns width = 141986 nm and ground gap = 200660 nm. Source geometry
+  rounds these to 142 um / 201 um in `cellular-feed.copper`.
+- [x] Fix native clearance export generically in CopperScript. The same-stem
+  `.kicad_dru` keeps the RF clearance during native refill; a default-control
+  regression confirms native 90 um versus explicit 201 um gaps.
+- [x] Complete the fresh full-board run and independent source/native check in
+  `build/cellular-impedance-full-20261012/`.
+- [x] Retain the corrected source-matched export/refill under
+  `build/cellular-impedance-export-v2-20261012/`, with unchanged explicit routed
+  copper, 91 parts, six layers, 908 tracks, 310 vias, all 21 surface bypasses,
+  zero native opens and zero native violations.
+- [x] Compare actual uniform-section ground gaps and adjacent L2 coverage.
+  Ten uniform-section samples measure 201500..201501 nm gaps, within the
+  declared 1000 nm geometry-screen tolerance around the 201 um source minimum.
+  The whole conductor projection and an authored 300 um reference margin are
+  covered by actual In1.Cu ground fill. This margin is not a vendor/solver bound.
+- [ ] Review excluded pad launches/bends, connected ground-via returns,
+  matching/ESD boundary and complete-path RF behaviour.
+- [ ] Complete full RF/process/enclosure and prototype qualification.
+
+Calculator evidence/settings are in `cellular-impedance-calculator.json` and
+`jlc-cellular-coplanar-20261012.jpg`. The standard tab now labels its finished
+thickness as 1540 um with 10 percent tolerance; that is not a new nominal order
+choice. Keep the published 99400 nm L1-to-L2 prepreg separation; do not stretch
+dielectrics to make the construction sum equal the nominal 1600 um order label.
+
+The [JLCPCB guide](https://jlcpcb.com/help/article/user-guide-to-the-jlcpcb-impedance-calculator)
+uses NP-155F for six layers, with mask and trapezoidal etch parameters. Its
+40640 nm exterior copper model differs from the 35000 nm construction-table
+entry; the earlier isolated-microstrip approximation must not silently substitute
+for this model. The guide's material must be selected/confirmed when ordering.
+The calculator's numerical 0.5 percent setting is not a manufacturing guarantee.
+142 um / 201 um is **nominal 50 ohm design intent**, not a measured or
+full-board RF-qualified result. No production gate is cleared by this screen.
+
+The corrected filled review PCB is
+`build/cellular-impedance-export-v2-20261012/native/verification-001/CopperAssetTracker.kicad_pcb`,
+SHA-256 `08635abdaed273d276d3a971ef3668ee0c35fd1ff7c4e5d4c7ffea658fe7e9b1`.
+The cellular feed is 3089 um long instead of 3420 um, on F.Cu with zero vias.
+The signal land is x = 5450 um, y = 25300 um. Both connector ground lands have
+a nearest GND via 1000 um away by centre distance; this inventory does not
+qualify an electrically connected RF via fence.
+
+`reexport-result.json`, `plane-verification.json`, `independent-native-drc.json`
+and `cellular-rf-review.json` bind the exact compiler, source, native PCB, rules,
+stackup, calculation screenshot and measurement algorithms. The first isolated
+compiler snapshot accidentally omitted the RF rule from its native rules file;
+its routing-closed PCB is **superseded for impedance evaluation**. The corrected
+snapshot was tested directly, then the shared backend re-exported this turn's
+source-matched copper and refilled it. No tracks, vias or poses were hand-repaired.
+Keep the corrected `.kicad_dru` and `.kicad_pro` with the retained PCB.
+
+The first 22-sample screen is retained, including seven deviations around the
+large launches. A separate ten-sample screen excludes source-derived land
+bounding circles plus clearance/half minimum fill width and a declared bend
+region. Those exclusions are explicitly unqualified, not erased failures:
+uniform sections match the selected cross-section; the entire connector-to-modem
+path has **not** been established as 50 ohm. No matching network is presumed
+unnecessary or silently supplied by an external antenna assembly.
+
+## LTE antenna / exact stackup design review - 2026-10-12
+
+The [cellular design review](cellular-design-review.md) selects Taoglas
+**FXUB16.07.0150AQ**, a passive cabled antenna covering the reviewed EU LTE bands,
+and locks JLCPCB **JLC06161H-3313 / NP-155F** in
+[`fabrication-selection.json`](fabrication-selection.json). External antenna
+facts and the fabrication models remain library-owned; source composition
+copies their exact hashed companion documents into `rf-library-evidence/`.
+
+The new read-only build evidence is under `build/cellular-design-review-20261012/`.
+The review outcome is **changes required**, not RF-approved: RF ESD and matching/
+DC-isolation adaptation are unresolved, launches/returns need field modelling,
+and antenna enclosure/bench qualification is absent. The original routed PCB is
+unchanged; no new production Gerbers, orders or release approvals are claimed.

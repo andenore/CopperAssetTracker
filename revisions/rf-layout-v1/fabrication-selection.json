@@ -1,0 +1,43 @@
+{
+  "schema": "copperassettracker-fabrication-selection/v0.1",
+  "supplier": "JLCPCB",
+  "selected_profile": "JLC06161H-3313",
+  "material": "Nan Ya Plastics NP-155F",
+  "copper_layers": 6,
+  "nominal_order_thickness_um": 1600,
+  "outer_copper_weight": "1 oz",
+  "inner_copper_weight": "1/2 oz",
+  "library_profile": "packages/profiles/jlcpcb/jlc06161h-3313/stackup.json",
+  "library_profile_sha256": "97d53c37e9d563b3aea1f07f3f32baf1f6091ec91d5481ad5c610cbd034809b2",
+  "library_calculator_model": "packages/profiles/jlcpcb/jlc06161h-3313/calculator-model.json",
+  "library_calculator_model_sha256": "25ce5778af917ad60e66d511027a69f33c6fbf68d41c5dd5f789e0d4e4c51db9",
+  "layer_order": ["F.Cu", "In1.Cu", "In2.Cu", "In3.Cu", "In4.Cu", "B.Cu"],
+  "cellular_feed": {
+    "net": "CELL_RF",
+    "type": "masked grounded coplanar, L1 with adjacent L2 GND",
+    "nominal_impedance_ohms": 50,
+    "source_width_um": 142,
+    "source_minimum_coplanar_clearance_um": 201,
+    "signal_layer": "F.Cu",
+    "reference_layer": "In1.Cu",
+    "reference_net": "GND",
+    "maximum_signal_vias": 0,
+    "maximum_trace_length_um": 20000,
+    "controlled_impedance_required": true,
+    "requested_fabrication_impedance_tolerance_percent": 10,
+    "tolerance_basis": "Authored prototype order requirement; subject to supplier acceptance, not the calculator's numerical iteration tolerance",
+    "supplier_acceptance_received": false,
+    "coupon_measurement_requested": true,
+    "other_rf_and_usb_channels_qualified": false
+  },
+  "order_instructions": [
+    "Choose the exact JLC06161H-3313 construction, not No requirement or another 3313 suffix",
+    "Select/confirm NP-155F material for consistency with the manufacturer calculator",
+    "Preserve the published 99400 nm L1-to-L2 dielectric, never scale it to nominal total thickness",
+    "Confirm controlled impedance for actual 142 um / 201 um CELL_RF geometry and request measurement evidence",
+    "Do not permit a stackup, material or trace geometry substitution without renewed review",
+    "Native board nominal thickness alone does not encode the selected physical stackup; supply this specification with fabrication files"
+  ],
+  "status": "exact_construction_selected_not_supplier_confirmed",
+  "qualified_release": false
+}

@@ -1,0 +1,64 @@
+{
+  "schema": "copperassettracker-gnss-antenna-recommendation/v0.1",
+  "checked_on": "2026-10-12",
+  "status": "recommended_prototype_candidate_not_release_selection",
+  "receiver": "U_GNSS",
+  "receiver_mpn": "MAX-M10S-00B",
+  "connector": "J_GNSS",
+  "net": "GNSS_RF",
+  "manufacturer": "Taoglas",
+  "mpn": "FXP611.07.0092C",
+  "antenna_type": "passive_cabled_flex",
+  "board_supplied_bias": false,
+  "external_antenna_power_required": false,
+  "assembly_quantity": 1,
+  "assembly_scope": "external installation after PCBA; not a CPL item",
+  "library_specification": "packages/antennas/taoglas/fxp611-07-0092c/specification.json",
+  "library_specification_sha256": "ca30150e70a0b2286e3598204868cbe19bf6e088884054493e9b386e2fe343b7",
+  "library_contract": "packages/antennas/taoglas/fxp611-07-0092c/qualification.json",
+  "library_contract_sha256": "50d2156d80eb654ebd012e4b03a14ff37da2cb54cb50b68deaaf72c9a4bb8cc8",
+  "nominal_impedance_ohms": 50,
+  "band_compatibility": {
+    "antenna_range_mhz": [1559, 1610],
+    "receiver_signals_in_range": ["GPS/QZSS/SBAS L1", "Galileo E1", "GLONASS L1OF", "BeiDou B1I/B1C"],
+    "assessment": "Frequency/nominal port compatibility only; installed performance and firmware constellation configuration not qualified"
+  },
+  "procurement": {
+    "supplier": "DigiKey",
+    "supplier_part": "931-1236-ND",
+    "source_url": "https://www.digikey.com/en/products/detail/taoglas-limited/FXP611-07-0092C/3945623",
+    "norway_listing_url": "https://www.digikey.no/en/products/detail/taoglas-limited/FXP611-07-0092C/3945623",
+    "displayed_stock_snapshot": 2097,
+    "stock_scope": "US distributor product page retrieved 2026-10-12; Norway page could not be retrieved",
+    "norway_delivery_confirmed": false,
+    "purchase_authorized": false,
+    "notes": "Common distributor SKU; recheck current price, stock and Norway shipping before purchase. Not a JLCPCB assembly requirement."
+  },
+  "installation": {
+    "mounting_surface": "plastic enclosure wall with useful sky exposure",
+    "required_space_um": [40000, 40000, 200],
+    "manufacturer_minimum_metal_or_main_ground_plane_clearance_um": 10000,
+    "factory_cable_length_um": 92000,
+    "verified_fit": false,
+    "do_not_trim_cable": true,
+    "lte_antenna_placement": "Maximize separation from cellular antenna; no unsupported universal isolation distance or pass threshold is inferred"
+  },
+  "receiver_reference": {
+    "url": "https://content.u-blox.com/sites/default/files/MAX-M10S_IntegrationManual_UBX-20053088.pdf",
+    "revision": "UBX-20053088 R05, 28-Apr-2026",
+    "locator": "p6 passive front-end and L1 constellations; pp77-81 DC block, internal matching/filtering, LTE immunity and layout",
+    "sha256": "5a7510ef84f7e2757c57e362a25e3c16bcf8c80af5a4f70790c2e51032dbcd13"
+  },
+  "matching_review": "MAX-M10S has integrated 50 ohm matching, DC block and LNA. No blind pi network or active-antenna bias is justified. Host feed, RF ESD and any extra SAW filtering remain unqualified; evaluate LTE coupling against the manufacturer's immunity limits.",
+  "unresolved": [
+    "Exact enclosure fit with battery/metal and main ground plane at least 10 mm away from the radiator",
+    "Delivered connector mating details and mechanical drawing discrepancy confirmation",
+    "Factory cable bend radius, retention and reliable connector access",
+    "GNSS feed and support layout/impedance on selected JLC06161H-3313 stackup",
+    "RF ESD selection and LTE isolation/extra SAW filter decision with insertion-loss tradeoff",
+    "Installed antenna match, cold-start time, tracking C/N0 and sensitivity during LTE/BLE traffic and USB charging"
+  ],
+  "changes_to_previous_source_board_or_release_locks": false,
+  "previous_review_snapshot_preserved": true,
+  "qualified_release": false
+}

@@ -1,0 +1,500 @@
+{
+  "schema": "copperassettracker-prototype-public-catalogue-review/v0.1",
+  "review_recorded_utc": "2026-10-12 14:00:38 UTC",
+  "review_date": "2026-10-12",
+  "assembly_lock_sha256": "bc5d6121fbd48143e889eabfb54288084c5e3550af04c19d64733c35ace1d55c",
+  "fitted_references": 95,
+  "unique_ordering_codes": 51,
+  "ordering_approved": false,
+  "confirmed_order_specific_pcba_inventory": false,
+  "uploaded_to_supplier": false,
+  "method": "Read-only official JLCPCB catalogue fetches/searches; cache age is not current stock evidence. Returned exact identity or failed fetch/no result are distinguished. No alternate part or ordering code was selected.",
+  "limitations": [
+    "No prototype quantity supplied",
+    "No account-specific BOM stock/reservation review",
+    "Catalogue fetch failures do not prove unavailability",
+    "LCSC warehouse inventory is not JLCPCB PCBA availability",
+    "Some returned pages/search views are cached"
+  ],
+  "selections": [
+    {
+      "ordering_code": "C106231",
+      "mpn": "RC0402FR-070RL",
+      "selected_source_url": "https://jlcpcb.com/partdetail/YAGEO-RC0402FR070RL/C106231",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/RC0402FR-070RL/C106231",
+      "public_catalogue_status": "cached_identity_stock_risk_fresh_fetch_failed",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C11702",
+      "mpn": "0402WGF1001TCE",
+      "selected_source_url": "https://jlcpcb.com/partdetail/C11702",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/C11702",
+      "public_catalogue_status": "exact_identity_returned",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C129319",
+      "mpn": "BQ24072TRGTR",
+      "selected_source_url": "https://jlcpcb.com/partdetail/TexasInstruments-BQ24072TRGTR/C129319",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/TexasInstruments-BQ24072TRGTR/C129319",
+      "public_catalogue_status": "exact_identity_returned",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C132339",
+      "mpn": "0402WGF5603TCE",
+      "selected_source_url": "https://jlcpcb.com/partdetail/C132339",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/C132339",
+      "public_catalogue_status": "selected_url_fetch_failed",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C132554",
+      "mpn": "TUSB320LAIRWBR",
+      "selected_source_url": "https://jlcpcb.com/partdetail/C132554",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/TexasInstruments-TUSB320LAIRWBR/C132554",
+      "public_catalogue_status": "exact_identity_returned",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null,
+      "assembly_process": [
+        "Standard PCBA"
+      ],
+      "crawl_age": "one month"
+    },
+    {
+      "ordering_code": "C1525",
+      "mpn": "CL05B104KO5NNNC",
+      "selected_source_url": "https://jlcpcb.com/partdetail/C1525",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/C1525",
+      "public_catalogue_status": "exact_identity_returned",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C1546",
+      "mpn": "0402CG101J500NT",
+      "selected_source_url": "https://jlcpcb.com/partdetail/0402CG101J500NT/C1546",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/0402CG101J500NT/C1546",
+      "public_catalogue_status": "selected_url_fetch_failed",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C15483",
+      "mpn": "TPS63020DSJR",
+      "selected_source_url": "https://jlcpcb.com/partdetail/C15483",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/TexasInstruments-TPS63020DSJR/C15483",
+      "public_catalogue_status": "exact_identity_returned",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C1549",
+      "mpn": "0402CG180J500NT",
+      "selected_source_url": "https://jlcpcb.com/partdetail/1901-0402CG180J500NT/C1549",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/1901-0402CG180J500NT/C1549",
+      "public_catalogue_status": "exact_identity_returned",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C1550",
+      "mpn": "0402CG1R0C500NT",
+      "selected_source_url": "https://jlcpcb.com/partdetail/C1550",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/C1550",
+      "public_catalogue_status": "selected_url_fetch_failed",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C15849",
+      "mpn": "CL10A105KB8NNNC",
+      "selected_source_url": "https://jlcpcb.com/partdetail/C15849",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/C15849",
+      "public_catalogue_status": "exact_identity_returned",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C15850",
+      "mpn": "CL21A106KAYNNNE",
+      "selected_source_url": "https://jlcpcb.com/partdetail/C15850",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/C15850",
+      "public_catalogue_status": "exact_identity_returned",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C161860",
+      "mpn": "S3B-XH-SM4-TB(LF)(SN)",
+      "selected_source_url": "https://jlcpcb.com/partdetail/173241-S3B_XH_SM4_TB_LF_SN/C161860",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/173241-S3B_XH_SM4_TB_LF_SN/C161860",
+      "public_catalogue_status": "exact_identity_returned",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C161861",
+      "mpn": "S4B-XH-SM4-TB(LF)(SN)",
+      "selected_source_url": "https://jlcpcb.com/partdetail/JST-S4B_XH_SM4_TB_LF_SN/C161861",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/JST-S4B_XH_SM4_TB_LF_SN/C161861",
+      "public_catalogue_status": "exact_identity_returned",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C17430588",
+      "mpn": "2450AT18A0100001E",
+      "selected_source_url": "https://jlcpcb.com/partdetail/C17430588",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/C17430588",
+      "public_catalogue_status": "selected_url_fetch_failed",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C1882550",
+      "mpn": "SN74AXC2T245RSWR",
+      "selected_source_url": "https://jlcpcb.com/partdetail/C1882550",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/C1882550",
+      "public_catalogue_status": "selected_url_fetch_failed",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C189624",
+      "mpn": "LIS2DW12TR",
+      "selected_source_url": "https://jlcpcb.com/partdetail/C189624",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/C189624",
+      "public_catalogue_status": "selected_url_fetch_failed",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C19666",
+      "mpn": "CL10A475KO8NNNC",
+      "selected_source_url": "https://jlcpcb.com/partdetail/C19666",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/C19666",
+      "public_catalogue_status": "selected_url_fetch_failed",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C20336388",
+      "mpn": "RCLAMP1561PQTCT",
+      "selected_source_url": "https://jlcpcb.com/partdetail/SEMTECH-RCLAMP1561PQTCT/C20336388",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/SEMTECH-RCLAMP1561PQTCT/C20336388",
+      "public_catalogue_status": "exact_identity_returned",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C2286",
+      "mpn": "KT-0603R",
+      "selected_source_url": "https://jlcpcb.com/partdetail/C2286",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/C2286",
+      "public_catalogue_status": "selected_url_fetch_failed",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C23172",
+      "mpn": "0603WAF4302T5E",
+      "selected_source_url": "https://www.lcsc.com/product-detail/C23172.html",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/23899-0603WAF4302T5E/C23172",
+      "public_catalogue_status": "exact_identity_returned",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C25741",
+      "mpn": "0402WGF1003TCE",
+      "selected_source_url": "https://jlcpcb.com/partdetail/C25741",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/C25741",
+      "public_catalogue_status": "exact_identity_returned",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C25744",
+      "mpn": "0402WGF1002TCE",
+      "selected_source_url": "https://jlcpcb.com/partdetail/C25744",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/C25744",
+      "public_catalogue_status": "exact_identity_returned",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C25774",
+      "mpn": "0402WGF3003TCE",
+      "selected_source_url": "https://jlcpcb.com/partdetail/C25774",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/C25774",
+      "public_catalogue_status": "selected_url_fetch_failed",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C25778",
+      "mpn": "0402WGF3303TCE",
+      "selected_source_url": "https://jlcpcb.com/partdetail/C25778",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/C25778",
+      "public_catalogue_status": "selected_url_fetch_failed",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C25783",
+      "mpn": "0402WGF3902TCE",
+      "selected_source_url": "https://www.lcsc.com/product-detail/C25783.html",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/26526-0402WGF3902TCE/C25783",
+      "public_catalogue_status": "exact_identity_returned",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C25879",
+      "mpn": "0402WGF2201TCE",
+      "selected_source_url": "https://jlcpcb.com/partdetail/C25879",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/C25879",
+      "public_catalogue_status": "selected_url_fetch_failed",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C25890",
+      "mpn": "0402WGF3301TCE",
+      "selected_source_url": "https://jlcpcb.com/partdetail/C25890",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/C25890",
+      "public_catalogue_status": "exact_identity_returned",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C25900",
+      "mpn": "0402WGF4701TCE",
+      "selected_source_url": "https://jlcpcb.com/partdetail/C25900",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/C25900",
+      "public_catalogue_status": "selected_url_fetch_failed",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C285068",
+      "mpn": "0402CG0R8B500NT",
+      "selected_source_url": "https://jlcpcb.com/partdetail/C285068",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/C285068",
+      "public_catalogue_status": "selected_url_fetch_failed",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C2886898",
+      "mpn": "TL3342F160QG",
+      "selected_source_url": "https://jlcpcb.com/partdetail/C2886898",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/C2886898",
+      "public_catalogue_status": "selected_url_fetch_failed",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C3211396",
+      "mpn": "0603USB-601MLC",
+      "selected_source_url": "https://jlcpcb.com/partdetail/Coilcraft-0603USB601MLC/C3211396",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/Coilcraft-0603USB601MLC/C3211396",
+      "public_catalogue_status": "selected_url_fetch_failed",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C3231062",
+      "mpn": "STM32G0C1RET6",
+      "selected_source_url": "https://jlcpcb.com/partdetail/C3231062",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/C3231062",
+      "public_catalogue_status": "selected_url_fetch_failed",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C3233727",
+      "mpn": "SRP4020TA-1R5M",
+      "selected_source_url": "https://jlcpcb.com/partdetail/C3233727",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/C3233727",
+      "public_catalogue_status": "selected_url_fetch_failed",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C36871",
+      "mpn": "0402WGF6802TCE",
+      "selected_source_url": "https://www.lcsc.com/product-detail/C36871.html",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/37849-0402WGF6802TCE/C36871",
+      "public_catalogue_status": "exact_identity_returned",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C4153167",
+      "mpn": "MAX-M10S-00B",
+      "selected_source_url": "https://jlcpcb.com/partdetail/UBLOX-MAX_M10S00B/C4153167",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/U_BLOXAG-MAX_M10S00B/C4153167",
+      "public_catalogue_status": "exact_identity_returned",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null,
+      "assembly_process": [
+        "MSL 4 handling",
+        "moisture/reflow acceptance"
+      ],
+      "crawl_age": "one day"
+    },
+    {
+      "ordering_code": "C45783",
+      "mpn": "CL21A226MAQNNNE",
+      "selected_source_url": "https://jlcpcb.com/partdetail/C45783",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/C45783",
+      "public_catalogue_status": "exact_identity_returned",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C45935408",
+      "mpn": "SIM7670G-LNGV",
+      "selected_source_url": "https://jlcpcb.com/partdetail/48042558-LTE_Cat_1bis/C45935408",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/48042558-LTE_Cat_1bis/C45935408",
+      "public_catalogue_status": "exact_identity_returned",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null,
+      "assembly_process": [
+        "Standard PCBA",
+        "support fixture",
+        "X-ray"
+      ],
+      "cached_count": {
+        "in_stock": 45,
+        "available_order_qty": 43,
+        "crawl_age": "five months",
+        "current_confirmation": false
+      }
+    },
+    {
+      "ordering_code": "C472437",
+      "mpn": "CL05B333KB5VPNC",
+      "selected_source_url": "https://www.lcsc.com/product-detail/C472437.html",
+      "catalogue_url_checked": null,
+      "public_catalogue_status": "exact_jlcpcb_search_no_result",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C49066",
+      "mpn": "CL32A107MQVNNNE",
+      "selected_source_url": "https://jlcpcb.com/partdetail/C49066",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/C49066",
+      "public_catalogue_status": "selected_url_fetch_failed",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C52895",
+      "mpn": "BSS138",
+      "selected_source_url": "https://jlcpcb.com/partdetail/Onsemi-BSS138/C52895",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/Onsemi-BSS138/C52895",
+      "public_catalogue_status": "exact_identity_returned",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C5296739",
+      "mpn": "FTSH-105-01-L-DV-007-K",
+      "selected_source_url": "https://jlcpcb.com/partdetail/C5296739",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/C5296739",
+      "public_catalogue_status": "selected_url_fetch_failed",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C5438410",
+      "mpn": "USB4135-GF-A",
+      "selected_source_url": "https://jlcpcb.com/partdetail/6314253-USB4135_GFA/C5438410",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/6314253-USB4135_GFA/C5438410",
+      "public_catalogue_status": "exact_identity_returned",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C6296715",
+      "mpn": "SIM8060-6-0-14-00-A",
+      "selected_source_url": "https://jlcpcb.com/partdetail/7243741-SIM8060_6_0_14_00A/C6296715",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/7243741-SIM8060_6_0_14_00A/C6296715",
+      "public_catalogue_status": "exact_identity_returned",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C76946",
+      "mpn": "GRM1555C1H100JA01D",
+      "selected_source_url": "https://jlcpcb.com/partdetail/MurataElectronics-GRM1555C1H100JA01D/C76946",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/MurataElectronics-GRM1555C1H100JA01D/C76946",
+      "public_catalogue_status": "exact_identity_returned",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C77108",
+      "mpn": "LQG15HS2N7S02D",
+      "selected_source_url": "https://jlcpcb.com/partdetail/MurataElectronics-LQG15HS2N7S02D/C77108",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/MurataElectronics-LQG15HS2N7S02D/C77108",
+      "public_catalogue_status": "exact_identity_returned",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C77109",
+      "mpn": "LQG15HS3N9S02D",
+      "selected_source_url": "https://jlcpcb.com/partdetail/C77109",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/C77109",
+      "public_catalogue_status": "selected_url_fetch_failed",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C77540",
+      "mpn": "NRF52832-QFAA-R",
+      "selected_source_url": "https://jlcpcb.com/partdetail/C77540",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/C77540",
+      "public_catalogue_status": "selected_url_fetch_failed",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C779389",
+      "mpn": "TPD1E01B04DPYR",
+      "selected_source_url": "https://jlcpcb.com/partdetail/TexasInstruments-TPD1E01B04DPYR/C779389",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/TexasInstruments-TPD1E01B04DPYR/C779389",
+      "public_catalogue_status": "exact_identity_returned",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C88373",
+      "mpn": "U.FL-R-SMT-1(10)",
+      "selected_source_url": "https://jlcpcb.com/partdetail/C88373",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/C88373",
+      "public_catalogue_status": "selected_url_fetch_failed",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    },
+    {
+      "ordering_code": "C9009",
+      "mpn": "X322532MOB4SI",
+      "selected_source_url": "https://jlcpcb.com/partdetail/YangxingTech-X322532MOB4SI/C9009",
+      "catalogue_url_checked": "https://jlcpcb.com/partdetail/YangxingTech-X322532MOB4SI/C9009",
+      "public_catalogue_status": "exact_identity_returned",
+      "live_pcba_available_quantity": null,
+      "reserved_quantity": null
+    }
+  ]
+}

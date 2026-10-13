@@ -1,0 +1,19 @@
+{
+  "schema": "copperassettracker-prototype-risk-acceptance/v0.1",
+  "accepted_by": "user",
+  "acceptance_received": "2026-10-12",
+  "scope": "Prepare a five-unit restricted GNSS prototype candidate for supplier stock, DFM and assembly-preview review; ordering approval will be given later.",
+  "source_candidate": "prototype-preorder-v3-20261012",
+  "source_sha256": "60d44faa43321811788604fa76b4d94297bbb314df47886452e2dd306cf05826",
+  "gnss_front_end": "MAX-M10S integrated receiver front end with passive antenna; no external SAW filter is populated",
+  "experiment_controls": [
+    "Initial GNSS baseline with modem physically unpowered and LTE/BLE transmission disabled.",
+    "Verify the modem rail is off; do not infer no-transmit from a post-boot firmware command.",
+    "Before modem power-up, use a separately reviewed RF configuration for controlled coexistence measurements.",
+    "Routine simultaneous LTE/GNSS operation is not approved by this experiment acceptance."
+  ],
+  "ordering_approved": false,
+  "supplier_upload_scope": "JLCPCB stock availability, DFM and assembly-preview review only",
+  "payment_or_order_authorized": false,
+  "mechanical_fit_and_test_access": "excluded"
+}

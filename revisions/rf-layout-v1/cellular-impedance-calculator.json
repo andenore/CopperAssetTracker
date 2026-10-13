@@ -1,0 +1,67 @@
+{
+  "schema": "copperassettracker-cellular-cross-section-review/v0.1",
+  "qualified_release": false,
+  "evidence_grade": "manufacturer_calculator_nominal_cross_section_only",
+  "checked_on": "2026-10-12",
+  "net": "CELL_RF",
+  "connector": "J_CELL",
+  "calculator_url": "https://jlcpcb.com/pcb-impedance-calculator",
+  "guide_url": "https://jlcpcb.com/help/article/user-guide-to-the-jlcpcb-impedance-calculator",
+  "guide_revision": "2026-09-16",
+  "screenshot": "jlc-cellular-coplanar-20261012.jpg",
+  "screenshot_sha256": "a021746f7b1a29126736190ac5701b546b5bce1bd5beae285e4f5e41cd8f4525",
+  "inputs": {
+    "board_type": "Rigid",
+    "copper_layers": 6,
+    "nominal_order_thickness_nm": 1600000,
+    "outer_copper_oz": 1,
+    "inner_copper_oz": "0.5",
+    "selected_stackup": "JLC06161H-3313",
+    "material_assumption": "Nan Ya Plastics NP-155F",
+    "l1_to_l2_dielectric_nm": 99400,
+    "supplier_profile_sha256": "97d53c37e9d563b3aea1f07f3f32baf1f6091ec91d5481ad5c610cbd034809b2",
+    "type": "Coplanar Single Ended",
+    "target_ohms": 50,
+    "signal_layer": "L1",
+    "top_reference": null,
+    "bottom_reference": "L2",
+    "input_gap_nm": 201000,
+    "width_spacing_complement": false,
+    "numerical_iteration_tolerance_percent": "0.5"
+  },
+  "calculator_parameters_from_guide": {
+    "outer_copper_model_thickness_nm": 40640,
+    "inner_half_oz_model_thickness_nm": 15240,
+    "mask_base_thickness_nm": 30480,
+    "mask_over_trace_thickness_nm": 15240,
+    "mask_between_traces_thickness_nm": 30480,
+    "mask_relative_permittivity": "3.8",
+    "trace_top_narrower_than_base_nm": 17780,
+    "internal_material_model_exported": false
+  },
+  "outputs": {
+    "trace_width_nm": 141986,
+    "trace_to_coplanar_ground_gap_nm": 200660,
+    "standard_finished_thickness_label_nm": 1540000,
+    "construction_table_sum_nm": 1538400,
+    "standard_finished_thickness_tolerance_percent": 10
+  },
+  "rounded_source_geometry": {
+    "trace_width_nm": 142000,
+    "minimum_clearance_nm": 201000,
+    "signal_layer": "F.Cu",
+    "reference_ground_layer": "In1.Cu",
+    "signal_vias_allowed": 0,
+    "nominal_impedance_ohms": 50,
+    "impedance_measured_on_prototype": false
+  },
+  "limitations": [
+    "The calculator solves a uniform nominal cross-section, not the complete routed board",
+    "Output gap is quantized by the calculator; rounded source dimensions are not an exact forward-solved impedance result",
+    "Native zone clearance is a minimum; actual coplanar gaps and L2 reference coverage must be measured after refill",
+    "Connector/module pad launches, bends, via fences, material/process tolerances and ground continuity need separate review",
+    "The numerical iteration tolerance is not a fabrication impedance guarantee",
+    "NP-155F material and the selected standard construction must be confirmed with the fabricator",
+    "RF/enclosure/coexistence simulation, prototype measurements and final release approval remain open"
+  ]
+}

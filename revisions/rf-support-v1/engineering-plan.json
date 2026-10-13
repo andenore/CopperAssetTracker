@@ -1,0 +1,147 @@
+{
+  "schema": "copperscript-engineering-plan/v0.1",
+  "input_files": {
+    "source": "../../build/rf-support-v8-20261012/source/board.copper",
+    "library_lock": "../../build/rf-support-v8-20261012/source/copper.lock",
+    "assembly_selection": "../../build/rf-support-v8-20261012/source/assembly.lock",
+    "antenna_selection": "antenna-selection.json",
+    "coexistence_screen": "coexistence-screen.json",
+    "support_composition": "support.copper",
+    "placement": "placement.json",
+    "procurement": "procurement.json",
+    "fabrication_selection": "../../build/rf-support-v8-20261012/source/fabrication-selection.json"
+  },
+  "context": {
+    "stackup": {
+      "reviewed": true,
+      "profile_path": "../../build/rf-support-v8-20261012/source/rf-library-evidence/selected-stackup.json"
+    },
+    "operating_envelope": {
+      "reviewed": false,
+      "source": "Actual receiver gain configuration, measured LTE coupling and complete RF/power operating envelope remain required."
+    }
+  },
+  "contracts": [
+    {
+      "scope": "cellular",
+      "path": "../../../CopperLib/packages/parts/simcom/sim7670g-lngv/qualification.json",
+      "bindings": {
+        "reference-coverage": {
+          "basis": "Authored geometric screening margin only; not inductance or impedance qualification.",
+          "net": "CELL_RF",
+          "reference_net": "GND",
+          "reference_layer": "In1.Cu",
+          "margin_nm": 300000
+        }
+      }
+    },
+    {
+      "scope": "cellular-support",
+      "path": "../../../CopperLib/packages/circuits/simcom/lte-antenna-support/qualification.json",
+      "bindings": {}
+    },
+    {
+      "scope": "cellular-esd",
+      "path": "../../../CopperLib/packages/parts/semtech/rclamp1561pq/qualification.json",
+      "bindings": {}
+    },
+    {
+      "scope": "gnss",
+      "path": "../../../CopperLib/packages/parts/u-blox/max-m10s/qualification.json",
+      "bindings": {
+        "reference-coverage": {
+          "net": "GNSS_RF",
+          "reference_net": "GND",
+          "reference_layer": "In1.Cu",
+          "margin_nm": 300000
+        }
+      }
+    },
+    {
+      "scope": "gnss-esd",
+      "path": "../../../CopperLib/packages/parts/ti/tpd1e01b04/qualification.json",
+      "bindings": {}
+    },
+    {
+      "scope": "cellular-antenna",
+      "path": "../../build/rf-support-v8-20261012/source/rf-library-evidence/cellular-antenna-contract.json",
+      "bindings": {}
+    },
+    {
+      "scope": "gnss-antenna",
+      "path": "../../build/rf-support-v8-20261012/source/rf-library-evidence/gnss-antenna-contract.json",
+      "bindings": {}
+    }
+  ],
+  "route_path_screens": [
+    {
+      "id": "cellular-host-segment",
+      "net": "CELL_RF",
+      "return_net": "GND",
+      "terminals": [
+        {
+          "component": "U_MODEM_U",
+          "pad": "60",
+          "layer": "F.Cu"
+        },
+        {
+          "component": "CELL_MATCH_R_LINK",
+          "pad": "1",
+          "layer": "F.Cu"
+        }
+      ]
+    },
+    {
+      "id": "cellular-between-series-parts",
+      "net": "CELL_MATCH/TUNE",
+      "return_net": "GND",
+      "terminals": [
+        {
+          "component": "CELL_MATCH_R_LINK",
+          "pad": "2",
+          "layer": "F.Cu"
+        },
+        {
+          "component": "CELL_MATCH_C_DC",
+          "pad": "1",
+          "layer": "F.Cu"
+        }
+      ]
+    },
+    {
+      "id": "cellular-connector-segment",
+      "net": "CELL_ANT",
+      "return_net": "GND",
+      "terminals": [
+        {
+          "component": "CELL_MATCH_C_DC",
+          "pad": "2",
+          "layer": "F.Cu"
+        },
+        {
+          "component": "J_CELL",
+          "pad": "1",
+          "layer": "F.Cu"
+        }
+      ]
+    },
+    {
+      "id": "gnss-feed",
+      "net": "GNSS_RF",
+      "return_net": "GND",
+      "terminals": [
+        {
+          "component": "U_GNSS",
+          "pad": "11",
+          "layer": "F.Cu"
+        },
+        {
+          "component": "J_GNSS",
+          "pad": "1",
+          "layer": "F.Cu"
+        }
+      ]
+    }
+  ],
+  "evidence": {}
+}

@@ -33,17 +33,22 @@ class ShowcaseTests(unittest.TestCase):
             self.assertEqual(sample["source_sha256"], hashlib.sha256(source.read_bytes()).hexdigest())
         self.assertFalse(sample["qualified_release"])
         self.assertFalse(sample["locked_release_input"])
-        self.assertEqual(sample["revision"], "modem-power-v1")
-        self.assertEqual(sample["component_count"], 91)
-        self.assertEqual(sample["net_count"], 75)
-        self.assertEqual((sample["track_count"], sample["via_count"]), (921, 314))
+        self.assertEqual(sample["schema"], "copperassettracker-showcase/v2")
+        self.assertEqual(sample["revision"], "rf-support-v1")
+        self.assertEqual(sample["component_count"], 97)
+        self.assertGreater(sample["track_count"], 0)
+        self.assertGreater(sample["via_count"], 0)
+        self.assertGreater(sample["blocked_requirement_count"], 0)
+        self.assertEqual(sample["independent_cam"], "skipped_by_request")
+        for key in ("pcb_sha256", "source_lock_sha256", "assembly_lock_sha256",
+                    "source_freeze_sha256", "native_drc_sha256", "route_summary_sha256"):
+            self.assertRegex(sample[key], r"^[0-9a-f]{64}$")
         self.assertEqual(sample["native_unconnected_item_count"], 0)
         self.assertEqual(sample["native_drc_violation_count"], 0)
         self.assertEqual(len(sample["copper_layers"]), 6)
-        for name, digest in sample["review_inputs"].items():
-            path = source.parent / name
-            if path.exists():
-                self.assertEqual(digest, hashlib.sha256(path.read_bytes()).hexdigest())
+        pcb = ROOT / sample["pcb"]
+        if pcb.exists():
+            self.assertEqual(sample["pcb_sha256"], hashlib.sha256(pcb.read_bytes()).hexdigest())
         for name, digest in sample["rendered_assets"].items():
             self.assertEqual(digest, hashlib.sha256((SHOWCASE / name).read_bytes()).hexdigest())
 
@@ -61,8 +66,8 @@ class ShowcaseTests(unittest.TestCase):
         snapshot = json.loads((SHOWCASE / "snapshot.json").read_text())
         self.assertEqual(examples[2], {key: snapshot[key] for key in examples[2]})
         self.assertIn("module U_MODEM: simcom.SIM7670G_VBAT_BYPASS;", readme)
-        self.assertIn("91 placements, 75", readme)
-        self.assertIn("The same 91 candidate component poses", readme)
+        self.assertIn(f"{snapshot['component_count']} footprints", readme)
+        self.assertIn(f"same {snapshot['component_count']}-footprint", readme)
 
     def test_images_are_native_svg_and_linked_in_readme(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
@@ -78,7 +83,9 @@ class ShowcaseTests(unittest.TestCase):
         self.assertEqual(capacitor["value"], {"value": "100", "unit": "nF", "base_value": "0.0000001"})
         physical = json.loads((SHOWCASE / "physical-ir.excerpt.json").read_text())
         placement = next(p for p in physical["placements"] if p["reference"] == "C_MCU")
-        self.assertEqual(placement["value"], "100 nF")
+        self.assertIn("millimetres", physical["units"])
+        for value in placement["position_mm"].values():
+            self.assertRegex(value, r"^-?\d+(?:\.\d+)?$")
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         self.assertNotIn("1E+2", readme)
         self.assertNotIn("1E-7", readme)

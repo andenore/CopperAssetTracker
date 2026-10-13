@@ -32,20 +32,22 @@ incomplete. The candidate is **not approved for production or ordering**. Older
 91-part checkpoints described farther below are historical intermediate
 revisions, not the PCB shown in these figures.
 
-Prototype battery choice: Kjell & Company **32058**, protected 18650, **2600 mAh**.
-See [battery integration review](docs/battery-selection.md). It is an external
-cell, not a JLCPCB assembly item. The separate battery revision uses a hardware
-temperature window targeting roughly 5–35 °C. The combined
-[91-component modem-power/battery revision](revisions/modem-power-v1/README.md) adds
-CopperLib's pin-associated modem bypass bank, a wider converter output tap and
-regional power distribution. ERC/placement and fresh routing checks pass;
-native refill/DRC has zero violations and zero opens, with all four modem bypass
-feeds verified via-free. That paragraph describes the historical 2026-10-11
-checkpoint, not the latest manufacturing candidate pictured above. Temperature
-guarantees, reservoir-bias derating, assembly and battery/burst-load tests remain
-pending. The canonical
-83-component source, release locks and older manufacturing files are unchanged;
-they are not fabrication data for the illustrated 91-component revision.
+The current candidate includes the newer [cellular RF review](revisions/rf-layout-v1/README.md)
+and its 100 × 80 mm, six-layer board outline. Its RF and USB paths still require
+completed geometry/electrical checks and prototype measurement; a routed line is
+not proof of controlled impedance or RF performance.
+
+The [cellular design review](revisions/rf-layout-v1/cellular-design-review.md)
+now selects Taoglas **FXUB16.07.0150AQ**, an external passive antenna with a
+150 mm U.FL-compatible cable, and locks JLCPCB **JLC06161H-3313 / NP-155F**.
+The review found unresolved RF ESD and matching/DC-isolation adaptations;
+full-path modelling and enclosure/prototype tests still prevent RF approval.
+
+For the separate u-blox GNSS receiver, the
+[passive antenna recommendation](revisions/rf-layout-v1/gnss-antenna-review.md)
+is Taoglas **FXP611.07.0092C** with a 92 mm U.FL-compatible cable. It requires
+plastic mounting and at least 10 mm clearance from metal/main PCB ground.
+It is a prototype candidate; enclosure fit and LTE coexistence remain unverified.
 
 ## Why CopperScript?
 
@@ -229,9 +231,9 @@ millimetres); it is not a substitute for the complete CopperScript physical IR:
 Browse the [electrical IR excerpt](docs/showcase/electrical-ir.excerpt.json),
 [native PCB placement excerpt](docs/showcase/physical-ir.excerpt.json), and
 [candidate snapshot and evidence hashes](docs/showcase/snapshot.json). These are
-small excerpts, not full IR files or qualification reports. `make compile`
-produces the canonical full hierarchical `build/board.json`; the revision builder
-produces its own `electrical.ir.json` in the selected review directory.
+small excerpts, not full IR files or qualification reports. `make compile` produces
+the canonical full hierarchical `build/board.json`; the revision builder produces
+its own `electrical.ir.json` in the selected review directory.
 
 ### Place components and preserve reference geometry
 
@@ -443,12 +445,12 @@ passive GNSS ESD and the selected external antennas. Its native report is bound
 to the shown PCB, but 13 route requirements remain blocked; independent CAM,
 GNSS/LTE coexistence and installed RF tests are still gates.
 
-The retained 91-part revision is natively routed but remains an unlocked,
-unqualified review. Native closure does not approve RF/USB impedance/returns,
-biased reservoir capacitance, supply capacity/transients, battery/charger
-guarantees, thermal behavior, independent CAM or prototype performance.
-Battery-fed USB detection has only about 60 mV static margin before ripple and
-burst effects; measure operation across the accepted envelope.
+The retained 91-part revision is natively routed but remains an unlocked, unqualified
+review. Native closure does not approve RF/USB impedance/returns, biased reservoir
+capacitance, supply capacity/transients, battery/charger guarantees, thermal behavior,
+independent CAM or prototype performance. Battery-fed USB detection has only about
+60 mV static margin before ripple and burst effects; measure operation across the
+accepted envelope.
 
 The BOM selection has user approval; that does not approve the generated CPL,
 supplier substitutions, assembly preview or production release. Bind final

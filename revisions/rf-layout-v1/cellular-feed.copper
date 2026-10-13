@@ -1,0 +1,8 @@
+// JLC06161H-3313, L1 coplanar single-ended over L2, mask included.
+// JLCPCB calculator nominal 50 ohm: 141986 nm width / 200660 nm gap.
+// Rounded source geometry below is a nominal cross-section, not RF signoff.
+constraint routing(CELL_RF) {
+    kind = rf_feed; priority = 120; target_impedance_ohms = 50;
+    width = 142um; clearance = 201um;
+    allowed_layers = "F.Cu"; max_vias = 0; max_length = 20mm;
+}

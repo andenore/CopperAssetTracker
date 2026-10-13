@@ -1,0 +1,281 @@
+{
+  "schema": "copperassettracker-rf-coexistence-screen/v0.1",
+  "status": "incomplete",
+  "qualified_release": false,
+  "inputs": {
+    "C:\\Users\\anden\\Documents\\dev\\CopperLib\\packages\\parts\\u-blox\\max-m10s\\coexistence-limits.json": "282833f1e1c175dfe846ba6622d43aaeb0161a6c056797039ca929c85be99585",
+    "C:\\Users\\anden\\Documents\\dev\\CopperLib\\packages\\circuits\\simcom\\lte-antenna-support\\reference-limits.json": "94f71d7671eee40473ec11d9fbe5ae27a6caedab7b056109d3d3546160a21b19",
+    "C:\\Users\\anden\\Documents\\dev\\CopperLib\\packages\\parts\\u-blox\\max-m10s\\filter-candidates\\b4327-review.json": "8aa15288a7ddd2c5ac662d337137c082730cfa8c391efd8ed1c4a3139096b0e7",
+    "C:\\Users\\anden\\Documents\\dev\\CopperScript\\pcbir\\rf_coexistence.py": "a59b2b71dd624d37876a10cda886714c0b29db5af91d3b72385931cf5c6a956f"
+  },
+  "receiver_gain_mode_confirmed": false,
+  "receiver_point_data_typical_not_guaranteed": true,
+  "guard_mdb": 3000,
+  "guard_basis": "Authored provisional margin, not a manufacturer value",
+  "measured_isolation_available": false,
+  "candidate_filter_implemented": false,
+  "scope": "Point-frequency conditional low-gain screen only; no band interpolation, no PCB/supply/harmonic coupling or filter ESD/power qualification",
+  "samples": [
+    {
+      "frequency_mhz": 699,
+      "current_no_external_filter": {
+        "transmitter_max_mdbm": 25700,
+        "receiver_immunity_mdbm": -15000,
+        "guard_mdb": 3000,
+        "isolation_min_mdb": null,
+        "filter_rejection_min_mdb": 0,
+        "required_total_attenuation_mdb": 43700,
+        "required_isolation_mdb": 43700,
+        "predicted_receiver_input_mdbm": null,
+        "margin_mdb": null,
+        "status": "incomplete",
+        "qualified_release": false
+      },
+      "candidate_filter": {
+        "transmitter_max_mdbm": 25700,
+        "receiver_immunity_mdbm": -15000,
+        "guard_mdb": 3000,
+        "isolation_min_mdb": null,
+        "filter_rejection_min_mdb": 40000,
+        "required_total_attenuation_mdb": 43700,
+        "required_isolation_mdb": 3700,
+        "predicted_receiver_input_mdbm": null,
+        "margin_mdb": null,
+        "status": "incomplete",
+        "qualified_release": false
+      }
+    },
+    {
+      "frequency_mhz": 785,
+      "current_no_external_filter": {
+        "transmitter_max_mdbm": 25700,
+        "receiver_immunity_mdbm": -35000,
+        "guard_mdb": 3000,
+        "isolation_min_mdb": null,
+        "filter_rejection_min_mdb": 0,
+        "required_total_attenuation_mdb": 63700,
+        "required_isolation_mdb": 63700,
+        "predicted_receiver_input_mdbm": null,
+        "margin_mdb": null,
+        "status": "incomplete",
+        "qualified_release": false
+      },
+      "candidate_filter": {
+        "transmitter_max_mdbm": 25700,
+        "receiver_immunity_mdbm": -35000,
+        "guard_mdb": 3000,
+        "isolation_min_mdb": null,
+        "filter_rejection_min_mdb": 40000,
+        "required_total_attenuation_mdb": 63700,
+        "required_isolation_mdb": 23700,
+        "predicted_receiver_input_mdbm": null,
+        "margin_mdb": null,
+        "status": "incomplete",
+        "qualified_release": false
+      }
+    },
+    {
+      "frequency_mhz": 915,
+      "current_no_external_filter": {
+        "transmitter_max_mdbm": 25700,
+        "receiver_immunity_mdbm": -17000,
+        "guard_mdb": 3000,
+        "isolation_min_mdb": null,
+        "filter_rejection_min_mdb": 0,
+        "required_total_attenuation_mdb": 45700,
+        "required_isolation_mdb": 45700,
+        "predicted_receiver_input_mdbm": null,
+        "margin_mdb": null,
+        "status": "incomplete",
+        "qualified_release": false
+      },
+      "candidate_filter": {
+        "transmitter_max_mdbm": 25700,
+        "receiver_immunity_mdbm": -17000,
+        "guard_mdb": 3000,
+        "isolation_min_mdb": null,
+        "filter_rejection_min_mdb": 39000,
+        "required_total_attenuation_mdb": 45700,
+        "required_isolation_mdb": 6700,
+        "predicted_receiver_input_mdbm": null,
+        "margin_mdb": null,
+        "status": "incomplete",
+        "qualified_release": false
+      }
+    },
+    {
+      "frequency_mhz": 1710,
+      "current_no_external_filter": {
+        "transmitter_max_mdbm": 25700,
+        "receiver_immunity_mdbm": -25000,
+        "guard_mdb": 3000,
+        "isolation_min_mdb": null,
+        "filter_rejection_min_mdb": 0,
+        "required_total_attenuation_mdb": 53700,
+        "required_isolation_mdb": 53700,
+        "predicted_receiver_input_mdbm": null,
+        "margin_mdb": null,
+        "status": "incomplete",
+        "qualified_release": false
+      },
+      "candidate_filter": {
+        "transmitter_max_mdbm": 25700,
+        "receiver_immunity_mdbm": -25000,
+        "guard_mdb": 3000,
+        "isolation_min_mdb": null,
+        "filter_rejection_min_mdb": 34000,
+        "required_total_attenuation_mdb": 53700,
+        "required_isolation_mdb": 19700,
+        "predicted_receiver_input_mdbm": null,
+        "margin_mdb": null,
+        "status": "incomplete",
+        "qualified_release": false
+      }
+    },
+    {
+      "frequency_mhz": 1880,
+      "current_no_external_filter": {
+        "transmitter_max_mdbm": 25700,
+        "receiver_immunity_mdbm": -25000,
+        "guard_mdb": 3000,
+        "isolation_min_mdb": null,
+        "filter_rejection_min_mdb": 0,
+        "required_total_attenuation_mdb": 53700,
+        "required_isolation_mdb": 53700,
+        "predicted_receiver_input_mdbm": null,
+        "margin_mdb": null,
+        "status": "incomplete",
+        "qualified_release": false
+      },
+      "candidate_filter": {
+        "transmitter_max_mdbm": 25700,
+        "receiver_immunity_mdbm": -25000,
+        "guard_mdb": 3000,
+        "isolation_min_mdb": null,
+        "filter_rejection_min_mdb": 38000,
+        "required_total_attenuation_mdb": 53700,
+        "required_isolation_mdb": 15700,
+        "predicted_receiver_input_mdbm": null,
+        "margin_mdb": null,
+        "status": "incomplete",
+        "qualified_release": false
+      }
+    },
+    {
+      "frequency_mhz": 1980,
+      "current_no_external_filter": {
+        "transmitter_max_mdbm": 25700,
+        "receiver_immunity_mdbm": -25000,
+        "guard_mdb": 3000,
+        "isolation_min_mdb": null,
+        "filter_rejection_min_mdb": 0,
+        "required_total_attenuation_mdb": 53700,
+        "required_isolation_mdb": 53700,
+        "predicted_receiver_input_mdbm": null,
+        "margin_mdb": null,
+        "status": "incomplete",
+        "qualified_release": false
+      },
+      "candidate_filter": {
+        "transmitter_max_mdbm": 25700,
+        "receiver_immunity_mdbm": -25000,
+        "guard_mdb": 3000,
+        "isolation_min_mdb": null,
+        "filter_rejection_min_mdb": 39000,
+        "required_total_attenuation_mdb": 53700,
+        "required_isolation_mdb": 14700,
+        "predicted_receiver_input_mdbm": null,
+        "margin_mdb": null,
+        "status": "incomplete",
+        "qualified_release": false
+      }
+    },
+    {
+      "frequency_mhz": 2350,
+      "current_no_external_filter": {
+        "transmitter_max_mdbm": 25700,
+        "receiver_immunity_mdbm": -18000,
+        "guard_mdb": 3000,
+        "isolation_min_mdb": null,
+        "filter_rejection_min_mdb": 0,
+        "required_total_attenuation_mdb": 46700,
+        "required_isolation_mdb": 46700,
+        "predicted_receiver_input_mdbm": null,
+        "margin_mdb": null,
+        "status": "incomplete",
+        "qualified_release": false
+      },
+      "candidate_filter": {
+        "transmitter_max_mdbm": 25700,
+        "receiver_immunity_mdbm": -18000,
+        "guard_mdb": 3000,
+        "isolation_min_mdb": null,
+        "filter_rejection_min_mdb": null,
+        "required_total_attenuation_mdb": 46700,
+        "required_isolation_mdb": null,
+        "predicted_receiver_input_mdbm": null,
+        "margin_mdb": null,
+        "status": "incomplete",
+        "qualified_release": false
+      }
+    },
+    {
+      "frequency_mhz": 2440,
+      "current_no_external_filter": {
+        "transmitter_max_mdbm": 25700,
+        "receiver_immunity_mdbm": -18000,
+        "guard_mdb": 3000,
+        "isolation_min_mdb": null,
+        "filter_rejection_min_mdb": 0,
+        "required_total_attenuation_mdb": 46700,
+        "required_isolation_mdb": 46700,
+        "predicted_receiver_input_mdbm": null,
+        "margin_mdb": null,
+        "status": "incomplete",
+        "qualified_release": false
+      },
+      "candidate_filter": {
+        "transmitter_max_mdbm": 25700,
+        "receiver_immunity_mdbm": -18000,
+        "guard_mdb": 3000,
+        "isolation_min_mdb": null,
+        "filter_rejection_min_mdb": 43000,
+        "required_total_attenuation_mdb": 46700,
+        "required_isolation_mdb": 3700,
+        "predicted_receiver_input_mdbm": null,
+        "margin_mdb": null,
+        "status": "incomplete",
+        "qualified_release": false
+      }
+    },
+    {
+      "frequency_mhz": 2690,
+      "current_no_external_filter": {
+        "transmitter_max_mdbm": 25700,
+        "receiver_immunity_mdbm": -18000,
+        "guard_mdb": 3000,
+        "isolation_min_mdb": null,
+        "filter_rejection_min_mdb": 0,
+        "required_total_attenuation_mdb": 46700,
+        "required_isolation_mdb": 46700,
+        "predicted_receiver_input_mdbm": null,
+        "margin_mdb": null,
+        "status": "incomplete",
+        "qualified_release": false
+      },
+      "candidate_filter": {
+        "transmitter_max_mdbm": 25700,
+        "receiver_immunity_mdbm": -18000,
+        "guard_mdb": 3000,
+        "isolation_min_mdb": null,
+        "filter_rejection_min_mdb": 34000,
+        "required_total_attenuation_mdb": 46700,
+        "required_isolation_mdb": 12700,
+        "predicted_receiver_input_mdbm": null,
+        "margin_mdb": null,
+        "status": "incomplete",
+        "qualified_release": false
+      }
+    }
+  ]
+}

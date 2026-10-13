@@ -1,0 +1,11 @@
+{
+  "status": "candidates_not_approved",
+  "components": {
+    "CELL_MATCH/D_ESD": {"manufacturer": "Semtech", "mpn": "RCLAMP1561PQTCT", "supplier": "jlcpcb", "supplier_part": "C20336388", "source_url": "https://jlcpcb.com/partdetail/SEMTECH-RCLAMP1561PQTCT/C20336388"},
+    "D_GNSS_ESD": {"manufacturer": "Texas Instruments", "mpn": "TPD1E01B04DPYR", "supplier": "jlcpcb", "supplier_part": "C779389", "source_url": "https://jlcpcb.com/partdetail/TexasInstruments-TPD1E01B04DPYR/C779389"},
+    "CELL_MATCH/R_LINK": {"manufacturer": "YAGEO", "mpn": "RC0402FR-070RL", "supplier": "jlcpcb", "supplier_part": "C106231", "source_url": "https://jlcpcb.com/partdetail/YAGEO-RC0402FR070RL/C106231"},
+    "CELL_MATCH/C_DC": {"manufacturer": "FH (Guangdong Fenghua Advanced Tech)", "mpn": "0402CG101J500NT", "supplier": "jlcpcb", "supplier_part": "C1546", "source_url": "https://jlcpcb.com/partdetail/0402CG101J500NT/C1546"}
+  },
+  "reuse_candidates": {},
+  "notes": "100 pF, 50 V C0G initial DC-block candidate. RF self-resonance, impedance/loss and resistor pulse/current ratings not approved. Indexed/listed part identities do not guarantee live PCBA stock. C_HOST/C_ANT are physical DNP lands, not fitted BOM items. No purchase authorized."
+}

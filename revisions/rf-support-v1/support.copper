@@ -1,0 +1,27 @@
+    module CELL_MATCH: cell_support.LTE_ANTENNA_SUPPORT;
+    component D_GNSS_ESD: gnss_esd.TPD1E01B04DPYR;
+    net CELL_ANT { CELL_MATCH.ANTENNA; J_CELL.SIGNAL; }
+    // All host feed segments use the same nominal cross-section, including
+    // module-internal nets. Full launch/ESD/tuning EM qualification stays open.
+    // Segment budgets add to 20 mm; verify actual continuous end-to-end path.
+    constraint routing(CELL_RF) {
+        kind = rf_feed; priority = 120; target_impedance_ohms = 50;
+        topology = "tree"; // Include the physical shunt tuning land.
+        width = 142um; clearance = 201um;
+        allowed_layers = "F.Cu"; max_vias = 0; max_length = 5mm;
+    }
+    constraint routing(CELL_MATCH/TUNE) {
+        kind = rf_feed; priority = 120; target_impedance_ohms = 50;
+        width = 142um; clearance = 201um;
+        allowed_layers = "F.Cu"; max_vias = 0; max_length = 3mm;
+    }
+    constraint routing(CELL_ANT) {
+        kind = rf_feed; priority = 120; target_impedance_ohms = 50;
+        topology = "tree"; // Include TVS and physical shunt tuning land.
+        width = 142um; clearance = 201um;
+        allowed_layers = "F.Cu"; max_vias = 0; max_length = 12mm;
+    }
+    // These are authored pad-distance limits, not vendor numerical maxima.
+    constraint max_distance(CELL_MATCH/R_LINK.P1, U_MODEM/U.ANT_MAIN) { distance = 3mm; }
+    constraint max_distance(CELL_MATCH/D_ESD.IO, J_CELL.SIGNAL) { distance = 3.6mm; }
+    constraint max_distance(D_GNSS_ESD.IO, J_GNSS.SIGNAL) { distance = 2mm; }

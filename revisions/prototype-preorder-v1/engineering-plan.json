@@ -1,0 +1,76 @@
+{
+  "schema": "copperscript-engineering-plan/v0.1",
+  "input_files": {
+    "source": "../../build/prototype-preorder-v3-20261012/source/board.copper",
+    "library_lock": "../../build/prototype-preorder-v3-20261012/source/copper.lock",
+    "assembly_selection": "../../build/prototype-preorder-v3-20261012/source/assembly.lock",
+    "antenna_selection": "../../build/prototype-preorder-v3-20261012/source/antenna-selection.json",
+    "fabrication_selection": "../../build/prototype-preorder-v3-20261012/source/fabrication-selection.json",
+    "gnss_decision": "../../build/prototype-preorder-v3-20261012/source/gnss-prototype-decision.json",
+    "gnss_options": "../../build/prototype-preorder-v3-20261012/source/rf-library-evidence/gnss-prototype-options.json",
+    "gnss_datasheet_review": "../../build/prototype-preorder-v3-20261012/source/rf-library-evidence/gnss-datasheet-review.json",
+    "source_freeze": "../../build/prototype-preorder-v3-20261012/source-freeze.json",
+    "public_catalogue_review": "public-catalogue-review.json",
+    "electrical_review": "../../docs/prototype-electrical-review.md",
+    "sourcing_review": "../../docs/prototype-sourcing-review.md",
+    "battery_screen": "../../build/prototype-preorder-v3-20261012/source/battery-screen.json",
+    "coexistence_screen": "../rf-support-v1/coexistence-screen.json"
+  },
+  "context": {
+    "stackup": {
+      "reviewed": true,
+      "profile_path": "../../build/prototype-preorder-v3-20261012/source/rf-library-evidence/selected-stackup.json"
+    },
+    "operating_envelope": {
+      "reviewed": false,
+      "source": "Exact peak/RMS currents, minimum efficiency, battery protection and rail startup/burst/temperature limits are unresolved. Initial GNSS baseline disables LTE/BLE transmit."
+    }
+  },
+  "contracts": [
+    {"scope": "cellular", "path": "../../../CopperLib/packages/parts/simcom/sim7670g-lngv/qualification.json",
+     "bindings": {"reference-coverage": {
+       "basis": "Authored 300 um projection screen, not impedance or return inductance qualification",
+       "net": "CELL_RF", "reference_net": "GND", "reference_layer": "In1.Cu", "margin_nm": 300000}}},
+    {"scope": "cellular-support", "path": "../../../CopperLib/packages/circuits/simcom/lte-antenna-support/qualification.json", "bindings": {}},
+    {"scope": "cellular-esd", "path": "../../../CopperLib/packages/parts/semtech/rclamp1561pq/qualification.json", "bindings": {}},
+    {"scope": "gnss", "path": "../../../CopperLib/packages/parts/u-blox/max-m10s/qualification.json",
+     "bindings": {"reference-coverage": {
+       "basis": "Authored 300 um projection screen, not matching/coexistence/ESD qualification",
+       "net": "GNSS_RF", "reference_net": "GND", "reference_layer": "In1.Cu", "margin_nm": 300000}}},
+    {"scope": "gnss-esd", "path": "../../../CopperLib/packages/parts/ti/tpd1e01b04/qualification.json", "bindings": {}},
+    {"scope": "cellular-antenna", "path": "../../build/prototype-preorder-v3-20261012/source/rf-library-evidence/cellular-antenna-contract.json", "bindings": {}},
+    {"scope": "gnss-antenna", "path": "../../build/prototype-preorder-v3-20261012/source/rf-library-evidence/gnss-antenna-contract.json", "bindings": {}},
+    {"scope": "logic-power", "path": "../../../CopperLib/packages/circuits/ti/tps63020-buck-boost/qualification.json", "bindings": {}},
+    {"scope": "modem-power", "path": "../../../CopperLib/packages/circuits/ti/tps63020-buck-boost/qualification.json", "bindings": {}},
+    {"scope": "charger", "path": "../../../CopperLib/packages/parts/ti/bq24072t/qualification.json", "bindings": {}},
+    {"scope": "modem-bypass", "path": "../../../CopperLib/packages/circuits/simcom/sim7670g-vbat-bypass/qualification.json", "bindings": {}},
+    {"scope": "usb-channel", "path": "../../../CopperLib/packages/interfaces/usb/usb2-channel/qualification.json", "bindings": {}}
+  ],
+  "microstrip_screens": [
+    {"id": "cellular-host-cross-section", "net": "CELL_RF", "reference_layer": "In1.Cu", "reference_net": "GND"},
+    {"id": "cellular-series-cross-section", "net": "CELL_MATCH/TUNE", "reference_layer": "In1.Cu", "reference_net": "GND"},
+    {"id": "cellular-connector-cross-section", "net": "CELL_ANT", "reference_layer": "In1.Cu", "reference_net": "GND"},
+    {"id": "gnss-cross-section", "net": "GNSS_RF", "reference_layer": "In1.Cu", "reference_net": "GND"}
+  ],
+  "route_path_screens": [
+    {"id": "cellular-host-path", "net": "CELL_RF", "return_net": "GND", "terminals": [
+      {"component": "U_MODEM_U", "pad": "60", "layer": "F.Cu"},
+      {"component": "CELL_MATCH_R_LINK", "pad": "1", "layer": "F.Cu"}]},
+    {"id": "cellular-series-path", "net": "CELL_MATCH/TUNE", "return_net": "GND", "terminals": [
+      {"component": "CELL_MATCH_R_LINK", "pad": "2", "layer": "F.Cu"},
+      {"component": "CELL_MATCH_C_DC", "pad": "1", "layer": "F.Cu"}]},
+    {"id": "cellular-connector-path", "net": "CELL_ANT", "return_net": "GND", "terminals": [
+      {"component": "CELL_MATCH_C_DC", "pad": "2", "layer": "F.Cu"},
+      {"component": "J_CELL", "pad": "1", "layer": "F.Cu"}]},
+    {"id": "cellular-tvs-branch", "net": "CELL_ANT", "return_net": "GND", "terminals": [
+      {"component": "CELL_MATCH_D_ESD", "pad": "1", "layer": "F.Cu"},
+      {"component": "J_CELL", "pad": "1", "layer": "F.Cu"}]},
+    {"id": "gnss-main-path", "net": "GNSS_RF", "return_net": "GND", "terminals": [
+      {"component": "U_GNSS", "pad": "11", "layer": "F.Cu"},
+      {"component": "J_GNSS", "pad": "1", "layer": "F.Cu"}]},
+    {"id": "gnss-tvs-branch", "net": "GNSS_RF", "return_net": "GND", "terminals": [
+      {"component": "D_GNSS_ESD", "pad": "1", "layer": "F.Cu"},
+      {"component": "J_GNSS", "pad": "1", "layer": "F.Cu"}]}
+  ],
+  "evidence": {}
+}

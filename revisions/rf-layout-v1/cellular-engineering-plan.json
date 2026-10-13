@@ -1,0 +1,57 @@
+{
+  "schema": "copperscript-engineering-plan/v0.1",
+  "input_files": {
+    "source": "../../build/cellular-design-review-20261012/source/board.copper",
+    "library_lock": "../../build/cellular-design-review-20261012/source/copper.lock",
+    "assembly_selection": "../../build/cellular-design-review-20261012/source/assembly.lock",
+    "antenna_selection": "antenna-selection.json",
+    "fabrication_selection": "fabrication-selection.json",
+    "design_inspection": "cellular-design-review.json",
+    "calculator_cross_section": "cellular-impedance-calculator.json",
+    "native_layout_inventory": "../../build/cellular-design-review-20261012/layout-inventory-v2.json",
+    "antenna_specification": "../../build/cellular-design-review-20261012/source/rf-library-evidence/cellular-antenna-specification.json",
+    "calculator_model": "../../build/cellular-design-review-20261012/source/rf-library-evidence/selected-calculator-model.json"
+  },
+  "context": {
+    "stackup": {
+      "reviewed": true,
+      "profile_path": "../../build/cellular-design-review-20261012/source/rf-library-evidence/selected-stackup.json"
+    },
+    "operating_envelope": {
+      "reviewed": false,
+      "source": "Board battery, USB charging and LTE burst/coexistence scenarios still require sourced electrical bounds"
+    }
+  },
+  "contracts": [
+    {
+      "scope": "cellular",
+      "path": "../../../CopperLib/packages/parts/simcom/sim7670g-lngv/qualification.json",
+      "bindings": {
+        "reference-coverage": {
+          "basis": "Authored geometric screening envelope: conductor plus 300 um margin. This is not a supplier/solver-derived fringing bound or ground-inductance approval.",
+          "net": "CELL_RF",
+          "reference_net": "GND",
+          "reference_layer": "In1.Cu",
+          "margin_nm": 300000
+        }
+      }
+    },
+    {
+      "scope": "cellular-antenna",
+      "path": "../../build/cellular-design-review-20261012/source/rf-library-evidence/cellular-antenna-contract.json",
+      "bindings": {}
+    }
+  ],
+  "route_path_screens": [
+    {
+      "id": "cellular-feed-path",
+      "net": "CELL_RF",
+      "return_net": "GND",
+      "terminals": [
+        {"component": "U_MODEM_U", "pad": "60", "layer": "F.Cu"},
+        {"component": "J_CELL", "pad": "1", "layer": "F.Cu"}
+      ]
+    }
+  ],
+  "evidence": {}
+}

@@ -1,0 +1,60 @@
+{
+  "schema": "copperassettracker-rf-support-verification/v0.1",
+  "checked_on": "2026-10-12",
+  "qualified_release": false,
+  "candidate": "build/rf-support-v8-20261012",
+  "physical_components": 97,
+  "fitted_selections": 95,
+  "erc_errors": 0,
+  "artifacts": {
+    "source": {
+      "path": "../../build/rf-support-v8-20261012/source/board.copper",
+      "sha256": "f48d47a491ca35f213c481d049af6a658cd975ca06f111ac9fab4136f06a7362"
+    },
+    "resolved_library_lock": {
+      "path": "../../build/rf-support-v8-20261012/source/copper.lock",
+      "sha256": "b94c5569c42507075b43e854149d7db434fb3c00b5adad635c3eae105cba2dac"
+    },
+    "assembly_lock": {
+      "path": "../../build/rf-support-v8-20261012/source/assembly.lock",
+      "sha256": "e4f4844bcd9e54022c9e1fa302f608dea24204c0ebb1e45d0442854842678637"
+    },
+    "unrouted_inspection_pcb": {
+      "path": "../../build/rf-support-v8-20261012/placement-inspection.kicad_pcb",
+      "sha256": "4c108928999b77d6078eac598f654b3b25f15c100546413cb80651c9d1fd4043"
+    },
+    "placement_report": {
+      "path": "../../build/rf-support-v8-20261012/placement-inspection.json",
+      "sha256": "1a1fd659097873e2ec1bd021147828aa9b9017fb74632f1e16785fe785fa83fc"
+    }
+  },
+  "placement": {
+    "command": "python -m copperscript plan-layout build/rf-support-v8-20261012/source/board.copper --locked --offline --layers 6 --fab-profile jlcpcb-six-layer --candidates 1 --hard-macro build/rf-support-v8-20261012/source/nrf-antenna-macro.json --hard-macro build/rf-support-v8-20261012/source/logic-power-macro.json --hard-macro build/rf-support-v8-20261012/source/modem-power-macro.json -o build/rf-support-v8-20261012/placement-inspection.kicad_pcb --report build/rf-support-v8-20261012/placement-inspection.json",
+    "exit_code": 0,
+    "gate": "warning",
+    "summary": "Legal placement produced with routability warnings; hard-macro physical acceptance completed",
+    "cellular_tvs_signal_pad_to_connector_nominal_um": 3575,
+    "authored_maximum_um": 3600
+  },
+  "route_stage": "not_run",
+  "native_routing_drc": "not_run",
+  "release_verification": "blocked",
+  "source_build_tests": {"passed": 8, "skipped": 0},
+  "focused_copperscript_tests": {"passed": 62, "skipped": 0, "full_suite_run": false},
+  "native_readback": {
+    "tool": "Installed KiCad pcbnew; read-only inspection of the hashed unrouted PCB",
+    "physical_components": 97,
+    "fitted_bom_count": 95,
+    "cellular_tvs_signal_pad_to_connector_um": 3575,
+    "both_dnp_tuning_parts_excluded_from_cpl": true,
+    "is_routing_drc_or_rf_qualification": false
+  },
+  "remaining": [
+    "Additional GNSS filter decision, power/protection/matching design and actual receiver gain mode",
+    "Measured antenna isolation in the intended enclosure across every enabled LTE transmit band",
+    "Fresh routing/native fill and independent source-bound RF geometry review",
+    "Complete launch/return field model and supplier process acceptance",
+    "Installed antenna match, sensitivity/coexistence and system ESD validation",
+    "New fitted BOM/CPL review and exact-package prototype/release evidence"
+  ]
+}
