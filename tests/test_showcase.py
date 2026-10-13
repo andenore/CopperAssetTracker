@@ -26,15 +26,20 @@ class ShowcaseTests(unittest.TestCase):
 
     def test_snapshot_is_source_bound_and_not_a_release(self):
         sample = json.loads((SHOWCASE / "snapshot.json").read_text())
-        # These renders retain their original input bindings; they are historical.
-        self.assertEqual(sample["canonical_source_status"], "historical_input_before_macro_source_migration")
-        self.assertNotEqual(sample["canonical_source_sha256"], hashlib.sha256((ROOT / "board.copper").read_bytes()).hexdigest())
         self.assertRegex(sample["canonical_source_commit"], r"^[0-9a-f]{40}$")
-        def historical_bytes(name):
-            return subprocess.check_output(["git", "show", sample["canonical_source_commit"] + ":" + name], cwd=ROOT)
-        self.assertEqual(sample["canonical_source_sha256"], hashlib.sha256(historical_bytes("board.copper")).hexdigest())
+        historical = sample["canonical_source_status"] == "historical_input_before_macro_source_migration"
+        if historical:
+            self.assertNotEqual(sample["canonical_source_sha256"], hashlib.sha256((ROOT / "board.copper").read_bytes()).hexdigest())
+            def input_bytes(name):
+                return subprocess.check_output(["git", "show", sample["canonical_source_commit"] + ":" + name], cwd=ROOT)
+        else:
+            self.assertEqual(sample["canonical_source_status"], "current_source")
+            self.assertEqual(sample["macro_binding"], "in_language")
+            def input_bytes(name):
+                return (ROOT / name).read_bytes()
+        self.assertEqual(sample["canonical_source_sha256"], hashlib.sha256(input_bytes("board.copper")).hexdigest())
         for name, digest in sample["composition_inputs"].items():
-            self.assertEqual(digest, hashlib.sha256(historical_bytes(name)).hexdigest())
+            self.assertEqual(digest, hashlib.sha256(input_bytes(name)).hexdigest())
         source = ROOT / sample["source"]
         if source.exists():
             self.assertEqual(sample["source_sha256"], hashlib.sha256(source.read_bytes()).hexdigest())
@@ -46,7 +51,7 @@ class ShowcaseTests(unittest.TestCase):
         self.assertGreater(sample["track_count"], 0)
         self.assertGreater(sample["via_count"], 0)
         self.assertGreater(sample["blocked_requirement_count"], 0)
-        self.assertEqual(sample["independent_cam"], "skipped_by_request")
+        self.assertEqual(sample["independent_cam"], "skipped_by_request" if historical else "not_run_for_this_routing_review")
         for key in ("pcb_sha256", "source_lock_sha256", "assembly_lock_sha256",
                     "source_freeze_sha256", "native_drc_sha256", "route_summary_sha256"):
             self.assertRegex(sample[key], r"^[0-9a-f]{64}$")

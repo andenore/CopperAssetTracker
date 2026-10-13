@@ -16,18 +16,19 @@ Bluetooth and motion sensing on a six-layer board. Readable circuit intent becom
 inspectable intermediate representations, placed components, routed copper and
 manufacturing review files.
 
-![Native KiCad export of the latest CopperAssetTracker manufacturing review candidate](docs/showcase/routing-top.svg)
+![Native KiCad export of the latest source-matched CopperAssetTracker routing review](docs/showcase/routing-top.svg)
 
-*Native KiCad export of the 100 × 80 mm `prototype-preorder-v3-20261012`
-manufacturing review candidate: 97 footprints, 968 routed track segments and
+*Native KiCad export of the 100 × 80 mm `promo-reroute-20261013`
+source-matched routing review: 97 footprints, 968 routed track segments and
 six copper layers. This is an unapproved prototype candidate, **not a released
 production package**.*
 
-The current figures show the exact exported PCB in the five-unit prototype
-preview candidate. Its native DRC report records zero violations and zero
+The current figures show a fresh full route of the latest source, including
+in-language physical macros. Its native DRC report records zero included violations and zero
 unconnected items, while the route summary still has **13 blocked electrical
-requirement checks**. Five DRC check types were ignored, independent CAM was
-skipped, and supplier availability plus assembly-preview placement review remain
+requirement checks**. Five DRC check types were ignored. Independent CAM and new
+manufacturing exports were not run for this routing review; supplier availability
+and assembly-preview placement review remain
 incomplete. The candidate is **not approved for production or ordering**. Older
 91-part checkpoints described farther below are historical intermediate
 revisions, not the PCB shown in these figures.
@@ -93,7 +94,7 @@ make route-review REVIEW_COPPER="python -m copperscript" REVIEW_DIR=build/review
 
 Use a new directory. The wrapper uses the canonical 83-part source and locked
 library/macro inputs with the standard bounded shared pipeline. For the
-illustrated 91-part board, use [the revision guide](revisions/modem-power-v1/README.md).
+illustrated 97-part board, use [the fresh routing and figure guide](docs/promo-reroute-20261013.md).
 [Latest validation](docs/validation.md) records each scope and exact evidence;
 neither routing result approves production or advances the release pins.
 
@@ -225,7 +226,7 @@ the decoupling properties survive compilation:
 }
 ```
 
-The latest manufacturing candidate's native PCB export records real geometry.
+The latest routing review's native PCB export records real geometry.
 This selected placement excerpt is read from that exact board file (units are
 millimetres); it is not a substitute for the complete CopperScript physical IR:
 
@@ -249,9 +250,9 @@ its own `electrical.ir.json` in the selected review directory.
 
 ![Component placement, pads and courtyards](docs/showcase/placement.svg)
 
-*Placement and courtyard layers from the same 97-footprint exported candidate,
-with copper omitted for readability. This is not a fresh placement run or a
-photograph of assembled hardware.*
+*Native front fabrication and courtyard layers from the same 97-footprint fresh
+route, with copper omitted for readability. These are the router's actual final
+poses, not a photograph of assembled hardware.*
 
 The flow combines board-specific fixed anchors, generic placement decisions,
 pin-associated decoupling and rigid RF/power hard macros. Macro ownership keeps
@@ -278,8 +279,7 @@ selected-net repair script is involved. The source/native guard rejects stale
 pad nets, changed lands, illegal placement and altered macro geometry before a
 checkpoint is reused. Success on this board is not a guarantee for every design.
 
-Selected output from the illustrated KiCad 10.0.6 manufacturing review
-candidate:
+Selected output from the illustrated KiCad 10.0.6 source-matched routing review:
 
 ```json
 {

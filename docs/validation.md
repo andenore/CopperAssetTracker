@@ -1,10 +1,16 @@
 # Latest validation status
 
+The latest source-matched full route and promo figures are recorded in
+[the 13 October reroute review](promo-reroute-20261013.md). Native filled-board
+DRC passes with zero included violations, zero opens and all 21 surface
+decoupling connections. This is a routing review, not a new manufacturing
+export; 13 electrical checks and the production approval gates remain open.
+
 The active source and compiler now use in-language macro bindings (2026-10-13).
 See [the source migration record](macro-source-migration.md). Macro asset/maps
 are preserved and checked; the retained assembly lock is stale for the new IR,
-and previous native/route evidence remains historical. A new full-board route
-and fresh assembly review have not been claimed for these changed inputs.
+and previous native/route evidence remains historical. The fresh full-board
+route above covers these changed inputs; fresh assembly approval is not claimed.
 
 ## Prior change-validation checkpoint
 
