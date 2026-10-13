@@ -1,0 +1,13 @@
+{
+  "poses": {
+    "J_CELL": {"x_mm": 4.4, "y_mm": 31.9, "rotation": 180},
+    "CELL_MATCH/R_LINK": {"x_mm": 5.55, "y_mm": 23.8, "rotation": 0},
+    "CELL_MATCH/C_DC": {"x_mm": 5.58, "y_mm": 25.8, "rotation": 180},
+    "CELL_MATCH/C_HOST": {"x_mm": 3.1, "y_mm": 23.8, "rotation": 180},
+    "CELL_MATCH/C_ANT": {"x_mm": 3.1, "y_mm": 25.8, "rotation": 180},
+    "CELL_MATCH/D_ESD": {"x_mm": 5.45, "y_mm": 27.9, "rotation": 90},
+    "J_GNSS": {"x_mm": 94.3, "y_mm": 58, "rotation": 0},
+    "D_GNSS_ESD": {"x_mm": 91, "y_mm": 58, "rotation": 180}
+  },
+  "notes": "Authored prototype placement; not approved RF layout. Standard compiler placement must check actual footprints and all constraints. Ground-return topology and launches need independent review."
+}

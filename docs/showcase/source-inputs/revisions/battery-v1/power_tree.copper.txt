@@ -1,0 +1,108 @@
+// USB-C 5 V -> 1S power-path charger -> two buck-boost rails.
+// Battery integration draft: Kjell 32058 protected cell + insulated cell-mounted 103AT-2.
+// Nominal temperature target 5-35 degC; pending guaranteed corners and bench review.
+// USB500 mode is fixed in hardware. Do not draw modem peaks without a battery.
+module AssetTrackerPowerTree {
+    use library "tiny";
+    import charger "github.com/andenore/CopperLib/packages/parts/ti/bq24072t";
+    import ts_bias "github.com/andenore/CopperLib/packages/circuits/ti/bq24072t-ts-43k-39k";
+    import battery_header "github.com/andenore/CopperLib/packages/parts/jst/xh-sm4";
+    import buck_boost "github.com/andenore/CopperLib/packages/parts/ti/tps63020";
+    import bourns "github.com/andenore/CopperLib/packages/parts/bourns/srp4020ta";
+    port VIN5: power_in;
+    port GND: power_in;
+    port MODEM_EN: input;
+    port V3V3: power_out;
+    port V3V8: power_out;
+    component U_CHARGE: charger.BQ24072TRGTR;
+    module TEMP: ts_bias.BQ24072T_TS_43K_39K;
+    component R_TMR: RESISTOR { value = 68kohm; footprint = "Resistor_SMD:R_0402_1005Metric"; }
+    component J_BAT: battery_header.JST_S3B_XH_SM4_TB;
+    component U_LOGIC: buck_boost.TPS63020DSJR;
+    component U_MODEM: buck_boost.TPS63020DSJR;
+    component L_LOGIC: bourns.SRP4020TA_1R5M { value = 1.5uH; }
+    component L_MODEM: bourns.SRP4020TA_1R5M { value = 1.5uH; }
+    component R_ISET: RESISTOR { value = 2.2kohm; footprint = "Resistor_SMD:R_0402_1005Metric"; }
+    component R_ILIM: RESISTOR { value = 3.3kohm; footprint = "Resistor_SMD:R_0402_1005Metric"; }
+    component R_LOGIC_FB_TOP: RESISTOR { value = 560kohm; footprint = "Resistor_SMD:R_0402_1005Metric"; }
+    component R_MODEM_FB_TOP: RESISTOR { value = 330kohm; footprint = "Resistor_SMD:R_0402_1005Metric"; }
+    component R_MODEM_FB_TOP2: RESISTOR { value = 330kohm; footprint = "Resistor_SMD:R_0402_1005Metric"; }
+    component R_LOGIC_FB_BOT: RESISTOR { value = 100kohm; footprint = "Resistor_SMD:R_0402_1005Metric"; }
+    component R_MODEM_FB_BOT: RESISTOR { value = 100kohm; footprint = "Resistor_SMD:R_0402_1005Metric"; }
+    component R_MODEM_EN_PD: RESISTOR { value = 100kohm; footprint = "Resistor_SMD:R_0402_1005Metric"; }
+    component C_USB: CAPACITOR { value = 4.7uF; footprint = "Capacitor_SMD:C_0603_1608Metric"; role = decoupling; decouples = "U_CHARGE.IN"; }
+    component C_BAT: CAPACITOR { value = 10uF; footprint = "Capacitor_SMD:C_0805_2012Metric"; role = decoupling; decouples = "U_CHARGE.BAT_2"; }
+    component C_SYS: CAPACITOR { value = 10uF; footprint = "Capacitor_SMD:C_0805_2012Metric"; role = decoupling; decouples = "U_CHARGE.OUT_10"; }
+    component C_LOGIC_IN: CAPACITOR { value = 10uF; footprint = "Capacitor_SMD:C_0805_2012Metric"; }
+    component C_MODEM_IN: CAPACITOR { value = 10uF; footprint = "Capacitor_SMD:C_0805_2012Metric"; }
+    component C_LOGIC_VINA: CAPACITOR { value = 100nF; footprint = "Capacitor_SMD:C_0402_1005Metric"; }
+    component C_MODEM_VINA: CAPACITOR { value = 100nF; footprint = "Capacitor_SMD:C_0402_1005Metric"; }
+    component C_LOGIC_OUT1: CAPACITOR { value = 22uF; footprint = "Capacitor_SMD:C_0805_2012Metric"; }
+    component C_LOGIC_OUT2: CAPACITOR { value = 22uF; footprint = "Capacitor_SMD:C_0805_2012Metric"; }
+    component C_LOGIC_OUT3: CAPACITOR { value = 22uF; footprint = "Capacitor_SMD:C_0805_2012Metric"; }
+    component C_MODEM_OUT1: CAPACITOR { value = 22uF; footprint = "Capacitor_SMD:C_0805_2012Metric"; }
+    component C_MODEM_OUT2: CAPACITOR { value = 22uF; footprint = "Capacitor_SMD:C_0805_2012Metric"; }
+    component C_MODEM_OUT3: CAPACITOR { value = 22uF; footprint = "Capacitor_SMD:C_0805_2012Metric"; }
+    net VIN5 { port.VIN5; U_CHARGE.IN; U_CHARGE.EN1; C_USB.1; TEMP.VIN; }
+    net BAT { J_BAT.P1; U_CHARGE.BAT_2; U_CHARGE.BAT_3; C_BAT.1; }
+    net BAT_NTC { J_BAT.P3; TEMP.NTC; }
+    net TS_SENSE { TEMP.TS; U_CHARGE.TS; }
+    net TMR { U_CHARGE.TMR; R_TMR.1; }
+    net VSYS {
+        U_CHARGE.OUT_10; U_CHARGE.OUT_11; C_SYS.1;
+        U_LOGIC.VIN_10; U_LOGIC.VIN_11; U_LOGIC.VINA; U_LOGIC.EN;
+        U_MODEM.VIN_10; U_MODEM.VIN_11; U_MODEM.VINA;
+        C_LOGIC_IN.1; C_MODEM_IN.1; C_LOGIC_VINA.1; C_MODEM_VINA.1;
+    }
+    net ISET { U_CHARGE.ISET; R_ISET.1; }
+    net ILIM { U_CHARGE.ILIM; R_ILIM.1; }
+    net MODEM_EN { port.MODEM_EN; U_MODEM.EN; R_MODEM_EN_PD.1; }
+    net LOGIC_L1 { U_LOGIC.L1_8; U_LOGIC.L1_9; L_LOGIC.A; }
+    net LOGIC_L2 { U_LOGIC.L2_6; U_LOGIC.L2_7; L_LOGIC.B; }
+    net MODEM_L1 { U_MODEM.L1_8; U_MODEM.L1_9; L_MODEM.A; }
+    net MODEM_L2 { U_MODEM.L2_6; U_MODEM.L2_7; L_MODEM.B; }
+    net LOGIC_FB { U_LOGIC.FB; R_LOGIC_FB_TOP.2; R_LOGIC_FB_BOT.1; }
+    net MODEM_FB { U_MODEM.FB; R_MODEM_FB_TOP2.2; R_MODEM_FB_BOT.1; }
+    net MODEM_FB_SERIES { R_MODEM_FB_TOP.2; R_MODEM_FB_TOP2.1; }
+    net V3V3 {
+        port.V3V3; U_LOGIC.VOUT_4; U_LOGIC.VOUT_5; R_LOGIC_FB_TOP.1;
+        C_LOGIC_OUT1.1; C_LOGIC_OUT2.1; C_LOGIC_OUT3.1;
+    }
+    net V3V8 {
+        port.V3V8; U_MODEM.VOUT_4; U_MODEM.VOUT_5; R_MODEM_FB_TOP.1;
+        C_MODEM_OUT1.1; C_MODEM_OUT2.1; C_MODEM_OUT3.1;
+    }
+    net GND {
+        port.GND; J_BAT.P2; J_BAT.MP; U_CHARGE.VSS; U_CHARGE.EP; TEMP.GND; R_TMR.2;
+        U_CHARGE.CE; U_CHARGE.TD; U_CHARGE.EN2;
+        U_LOGIC.GND; U_LOGIC.PGND; U_LOGIC.PS_SYNC;
+        U_MODEM.GND; U_MODEM.PGND; U_MODEM.PS_SYNC;
+        R_ISET.2; R_ILIM.2; R_LOGIC_FB_BOT.2; R_MODEM_FB_BOT.2; R_MODEM_EN_PD.2;
+        C_USB.2; C_BAT.2; C_SYS.2; C_LOGIC_IN.2; C_MODEM_IN.2;
+        C_LOGIC_VINA.2; C_MODEM_VINA.2;
+        C_LOGIC_OUT1.2; C_LOGIC_OUT2.2; C_LOGIC_OUT3.2;
+        C_MODEM_OUT1.2; C_MODEM_OUT2.2; C_MODEM_OUT3.2;
+    }
+    // 68 kohm TMR: nominal 30600 s; 23562-37774 s independent corners.
+    // Completion for the 2600 mAh cell remains unresolved; never disable safety timer.
+    // TD and CE stay low; TS cutoff is hardware-controlled, independent of firmware.
+    // Nominal annotations are not claims about the variable battery/VSYS rails.
+    supply INPUT5V { net = VIN5; voltage = 5V; external = true; }
+    supply BATTERY { net = BAT; voltage = 3.7V; external = true; }
+    supply SYSTEM { net = VSYS; voltage = 3.7V; source = U_CHARGE.OUT_10; }
+    supply LOGIC { net = V3V3; voltage = 3.3V; source = U_LOGIC.VOUT_4; }
+    supply MODEM { net = V3V8; voltage = 3.8V; source = U_MODEM.VOUT_4; }
+    supply GROUND { net = GND; voltage = 0V; external = true; }
+    constraint max_distance(TEMP/R_ISOLATION.P2, U_CHARGE.TS) { distance = 2mm; }
+    constraint max_distance(R_TMR.1, U_CHARGE.TMR) { distance = 3mm; }
+    constraint routing(TS_SENSE) { allowed_layers = "F.Cu"; max_vias = 0; }
+    constraint max_distance(C_USB, U_CHARGE.IN) { distance = 3mm; }
+    constraint max_distance(C_BAT, U_CHARGE.BAT_2) { distance = 3mm; }
+    constraint max_distance(C_SYS, U_CHARGE.OUT_10) { distance = 3mm; }
+    constraint max_distance(L_MODEM, U_MODEM.L1_8) { distance = 4mm; }
+    constraint max_distance(L_LOGIC, U_LOGIC.L1_8) { distance = 4mm; }
+    constraint max_distance(C_MODEM_IN, U_MODEM.VIN_10) { distance = 3mm; }
+    constraint max_distance(C_LOGIC_IN, U_LOGIC.VIN_10) { distance = 3mm; }
+    constraint max_distance(C_MODEM_OUT1, U_MODEM.VOUT_4) { distance = 3mm; }
+    constraint max_distance(C_LOGIC_OUT1, U_LOGIC.VOUT_4) { distance = 3mm; }
+}

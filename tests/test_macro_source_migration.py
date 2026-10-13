@@ -10,6 +10,11 @@ from pcbir.footprints import FootprintResolver
 from pcbir.hard_macros import apply_hard_macro_scene
 from pcbir.macro_bindings import prepare_macro_bindings
 from pcbir.physicalize import PrototypePhysicalOptions, resolved_physicalize
+from pcbir.macro_definitions import canonical_macro_bytes
+from pcbir.packages import resolve_module_asset
+from hashlib import sha256
+from decimal import Decimal
+from pcbir.quantities import decimal_text
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
@@ -29,7 +34,20 @@ class MacroSourceMigrationTests(unittest.TestCase):
         for filename in ('nrf-antenna-macro.json', 'logic-power-macro.json', 'modem-power-macro.json'):
             scene = json.loads((ROOT / filename).read_text())
             prepared = selected[scene['name']]
-            self.assertEqual(prepared.digest, scene['asset_sha256'])
+            self.assertTrue(prepared.binding.asset.symbol)
+            self.assertEqual(prepared.digest, sha256(canonical_macro_bytes(prepared.data)).hexdigest())
+            asset = scene['asset']
+            legacy_path = (resolve_module_asset(ROOT / 'board.copper', asset, locked=True, offline=True)
+                           if asset.startswith('github.com/') else ROOT / asset)
+            self.assertEqual(sha256(legacy_path.read_bytes()).hexdigest(), scene['asset_sha256'])
+            prior = json.loads(legacy_path.read_bytes())
+            prior['vias'] = [{'finish': 'standard', **v} for v in prior['vias']]
+            for key in prior.keys() - {'schema', 'members'}:
+                self.assertEqual(prepared.data[key], prior[key], key)
+            for a,b in zip(prior['members'], prepared.data['members'], strict=True):
+                a['rotation_degrees'] = decimal_text(Decimal(str(a['rotation_degrees'])))
+                self.assertEqual({k:v for k,v in a.items() if k not in {'footprint', 'footprint_digest'}},
+                                 {k:v for k,v in b.items() if k not in {'footprint', 'footprint_digest'}})
             self.assertEqual({m.key: m.target for m in prepared.binding.mappings if m.kind == 'member'}, scene['bindings'])
             self.assertEqual({m.key: m.target for m in prepared.binding.mappings if m.kind == 'net'}, scene['net_bindings'])
 
@@ -38,7 +56,8 @@ class MacroSourceMigrationTests(unittest.TestCase):
         legacy = resolved_physicalize(plain, FootprintResolver(ROOT, locked=True, offline=True), self.options)
         for filename in ('nrf-antenna-macro.json', 'logic-power-macro.json', 'modem-power-macro.json'):
             legacy = apply_hard_macro_scene(legacy, ROOT / filename, locked=True, offline=True)
-        self.assertEqual(legacy.hard_macros, self.physical.hard_macros)
+        self.assertEqual([replace(m, asset_sha256='0' * 64) for m in legacy.hard_macros],
+                         [replace(m, asset_sha256='0' * 64) for m in self.physical.hard_macros])
         self.assertEqual(legacy.rigid_clusters, self.physical.rigid_clusters)
         self.assertEqual(legacy.nets, self.physical.nets)
 

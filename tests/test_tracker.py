@@ -154,7 +154,10 @@ class TrackerTests(unittest.TestCase):
         self.assertEqual(hashlib.sha256((ROOT / scene["asset"]).read_bytes()).hexdigest(), scene["asset_sha256"])
         macros = {m.cluster: m for m in self.physical.hard_macros}
         self.assertEqual(len(macros), 3)
-        self.assertEqual(macros["nordic-antenna"].asset_sha256, scene["asset_sha256"])
+        from pcbir.macro_bindings import prepare_macro_bindings
+        selected = next(p for p in prepare_macro_bindings(self.board, locked=True, offline=True) if p.binding.name == 'nordic-antenna')
+        self.assertEqual(macros["nordic-antenna"].asset_sha256, selected.digest)
+        self.assertEqual(selected.binding.asset.symbol, 'NRF52832_JOHANSON_MANAGED_SIX_LAYER')
         cluster = next(c for c in self.physical.rigid_clusters if c.name == "nordic-antenna")
         self.assertEqual(len(cluster.members), 7)
 

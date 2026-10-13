@@ -1,0 +1,13 @@
+{
+  "asset": "github.com/andenore/CopperLib/packages/circuits/nordic/nrf52832-johanson-reference/assets/nrf52832-johanson-managed-corner.json",
+  "asset_sha256": "8b517ce564d6a0f8fe7fe090971c149329be6a9171fdad7dafba119fd2d22f4c",
+  "bindings": {
+    "ANT": "ANT_BT", "C3": "C_BT_MATCH", "CA": "C_ANT_SERIES",
+    "L1": "L_BT_MATCH", "LA": "L_ANT_SHUNT", "LB": "L_ANT_SERIES", "U1": "U_NRF"
+  },
+  "name": "nordic-antenna",
+  "net_bindings": {
+    "antenna": "ANT_FEED", "feed": "NRF_RF_ANT", "ground": "GND",
+    "raw": "NRF_RF_RAW", "tee": "ANT_TEE"
+  }
+}

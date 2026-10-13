@@ -1,0 +1,18 @@
+{
+  "schema": "copperassettracker-prototype-rf-decision/v0.1",
+  "selected_option": "integrated-front-end-baseline",
+  "library_options": "packages/parts/u-blox/max-m10s/passive-coexistence-options.json",
+  "library_datasheet_review": "packages/parts/u-blox/max-m10s/datasheet-review.json",
+  "library_datasheet_review_sha256": "26a62125976fca4f49e9706075240c36832a347ad557088bee0bbdc488dba25f",
+  "antenna": "Taoglas FXP611.07.0092C",
+  "protection": "TPD1E01B04DPYR near J_GNSS; system ESD and loading not validated",
+  "external_saw_fitted": false,
+  "external_saw_footprint_reserved": false,
+  "receiver_mode_required": "low_gain",
+  "receiver_mode_actual_verified": false,
+  "initial_operating_restriction": "LTE transmit and BLE transmit disabled during initial GNSS characterization. Concurrent operation only in controlled testing after rail and RF limits have been checked.",
+  "filter_alternative": "B4327 remains a future filtered redesign, not a populate/bypass option on this PCB. Required protection/matching values and coupling evidence are absent.",
+  "prototype_risk_acceptance_required": true,
+  "prototype_risk_acceptance_received": false,
+  "production_approved": false
+}

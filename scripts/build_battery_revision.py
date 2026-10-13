@@ -190,6 +190,18 @@ def main():
                             ("modem-power-macro.json", "modem_layout")):
         scene = load_json(work / filename)
         asset = scene["asset"]
+        variant = Path(asset).name
+        exports = {
+            'nrf52832-johanson-managed-footprints.json': ('nordic/nrf52832-johanson-reference', 'NRF52832_JOHANSON_MANAGED_SIX_LAYER'),
+            'nrf52832-johanson-managed-corner.json': ('nordic/nrf52832-johanson-reference', 'NRF52832_JOHANSON_MANAGED_CORNER'),
+            'tps63020-six-layer-always-on.json': ('ti/tps63020-buck-boost', 'TPS63020_SIX_LAYER_ALWAYS_ON'),
+            'tps63020-six-layer-enabled-series-feedback.json': ('ti/tps63020-buck-boost', 'TPS63020_SIX_LAYER_ENABLED_SERIES_FEEDBACK'),
+            'tps63020-six-layer-enabled-power-output.json': ('ti/tps63020-buck-boost', 'TPS63020_SIX_LAYER_ENABLED_POWER_OUTPUT'),
+        }
+        if variant not in exports:
+            raise ValueError('no reviewed Copper macro export for historical selection: ' + asset)
+        package, symbol = exports[variant]
+        asset = 'github.com/andenore/CopperLib/packages/circuits/' + package
         if not asset.startswith(("github.com/", "gitlab.com/", "https://")):
             asset = "./" + asset
         source, count = re.subn(r'import ' + re.escape(alias) + r' "[^"]+";',
@@ -197,12 +209,12 @@ def main():
         if count != 1:
             raise ValueError("missing or duplicate macro asset import")
         source, count = re.subn(r'physical_macro ' + re.escape(scene["name"])
-            + r'\s*:\s*' + re.escape(alias) + r'(?:\s+on\s+[^{}]+)?\s*\{[^}]*\}', '', source)
+            + r'\s*:\s*' + re.escape(alias) + r'(?:\.[A-Za-z_][A-Za-z0-9_-]*)*(?:\s+on\s+[^{}]+)?\s*\{[^}]*\}', '', source)
         if count != 1:
             raise ValueError("missing or duplicate canonical macro binding")
         mappings = [f"        member {key} = {target};" for key, target in scene["bindings"].items()]
         mappings += [f"        net {key} = {target};" for key, target in scene["net_bindings"].items()]
-        declaration = f'    physical_macro {scene["name"]}: {alias} {{\n' + "\n".join(mappings) + "\n    }"
+        declaration = f'    physical_macro {scene["name"]}: {alias}.{symbol} {{\n' + "\n".join(mappings) + "\n    }"
         source = source.rstrip()[:-1].rstrip() + "\n" + declaration + "\n}\n"
     (work / "board.copper").write_text(source, encoding="utf-8")
     manifest = (ROOT / "copper.mod").read_text(encoding="utf-8")

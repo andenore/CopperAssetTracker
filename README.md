@@ -16,15 +16,15 @@ Bluetooth and motion sensing on a six-layer board. Readable circuit intent becom
 inspectable intermediate representations, placed components, routed copper and
 manufacturing review files.
 
-![Native KiCad export of the latest source-matched CopperAssetTracker routing review](docs/showcase/routing-top.svg)
+![Native KiCad export of the retained CopperAssetTracker routing review](docs/showcase/routing-top.svg)
 
 *Native KiCad export of the 100 × 80 mm `promo-reroute-20261013`
 source-matched routing review: 97 footprints, 968 routed track segments and
 six copper layers. This is an unapproved prototype candidate, **not a released
 production package**.*
 
-The current figures show a fresh full route of the latest source, including
-in-language physical macros. Its native DRC report records zero included violations and zero
+These figures retain the source-matched routing review from before the Copper
+macro-definition migration. Its native DRC report records zero included violations and zero
 unconnected items, while the route summary still has **13 blocked electrical
 requirement checks**. Five DRC check types were ignored. Independent CAM and new
 manufacturing exports were not run for this routing review; supplier availability
@@ -198,7 +198,7 @@ supports placement previews and reviewed source saves. To evaluate features
 beyond the pinned build, explicitly select a current review compiler as described
 below; keep this project's release pins and evidence bindings intact.
 
-The active board now imports physical macro assets and declares the Nordic,
+The active board now imports named CopperLib Copper macro definitions and declares the Nordic,
 logic-rail and modem-rail bindings directly in `board.copper`. Power bindings
 use `on PWR` and checked module-relative member/net references. `copper.mod`
 selects library versions and `copper.lock` verifies asset hashes; no SHA appears
@@ -343,8 +343,8 @@ to published Git commits; these are not the newer illustrated revision's tool in
 
 | Dependency | Revision / lock |
 | --- | --- |
-| CopperScript | `db125738d3cdc0cde8293fc9476e8a0a12366317` in `pyproject.toml` and `uv.lock` |
-| CopperLib | `f54a03b36e8a785eb512626b3f5110a7f321e37c` in `copper.mod` and `copper.lock` |
+| CopperScript | `17ebc6f488dcc8f80a3e0052a18af35760a9b759` in `pyproject.toml` and `uv.lock` |
+| CopperLib | `50655eff5613690a606c9dd1de456b2adae249df` in `copper.mod` and `copper.lock` |
 | KiCad footprints | `7ebfa6b23cc292a56f751b7b5f4a0e12eeef69dd` in `copper.mod` and `copper.lock` |
 
 No sibling source checkout is needed and no compiler code is copied into the
@@ -466,3 +466,5 @@ supplier substitutions, assembly preview or production release. Bind final
 release inputs and complete the candidate-specific evidence before ordering.
 Follow [production plan](docs/production-plan.md),
 [BOM approval scope](docs/bom-approval.md) and [power design](docs/power-design.md).
+
+Current macro-definition migration and native probe evidence: [validation record](docs/macro-definition-migration.md). Historical full-board figures are not evidence for these changed inputs.

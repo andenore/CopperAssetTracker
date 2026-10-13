@@ -1,5 +1,14 @@
 # Latest validation status
 
+The active source now consumes named Copper hard-macro definitions under updated
+compiler/library pins. ERC, geometry equivalence, consumer tests and isolated
+native power probes pass; see [the definition migration](macro-definition-migration.md).
+Previous full-board routes, manufacturing data and assembly review are historical
+for these changed inputs. No fresh full-board routing or production approval is
+claimed by this format migration.
+
+## Prior full-board routing review
+
 The latest source-matched full route and promo figures are recorded in
 [the 13 October reroute review](promo-reroute-20261013.md). Native filled-board
 DRC passes with zero included violations, zero opens and all 21 surface
@@ -9,8 +18,8 @@ export; 13 electrical checks and the production approval gates remain open.
 The active source and compiler now use in-language macro bindings (2026-10-13).
 See [the source migration record](macro-source-migration.md). Macro asset/maps
 are preserved and checked; the retained assembly lock is stale for the new IR,
-and previous native/route evidence remains historical. The fresh full-board
-route above covers these changed inputs; fresh assembly approval is not claimed.
+and previous native/route evidence remains historical. The retained full-board
+route above covers the earlier binding migration, not the new definition inputs; fresh assembly approval is not claimed.
 
 ## Prior change-validation checkpoint
 

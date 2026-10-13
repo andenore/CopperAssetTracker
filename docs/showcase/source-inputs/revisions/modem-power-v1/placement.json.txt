@@ -1,0 +1,16 @@
+{
+  "poses": {
+    "R_CC_VBUS": {"x_mm": 36, "y_mm": 54.3, "rotation": 0},
+    "R_CC_VBUS2": {"x_mm": 38.5, "y_mm": 54.3, "rotation": 0},
+    "R_CC_VBUS3": {"x_mm": 41, "y_mm": 54.3, "rotation": 0},
+    "J_CELL": {"x_mm": 4.4, "y_mm": 26.1, "rotation": 180},
+    "U_MODEM_STATUS": {"x_mm": 4.5, "y_mm": 34, "rotation": 0},
+    "C_STATUS_A": {"x_mm": 5.0685, "y_mm": 31.27, "rotation": 90},
+    "C_STATUS_B": {"x_mm": 5.0685, "y_mm": 36.73, "rotation": 270},
+    "C_MODEM_BULK": {"x_mm": 4.2, "y_mm": 13.5, "rotation": 90},
+    "U_MODEM/C_10P": {"x_mm": 5.55, "y_mm": 17.6, "rotation": 180},
+    "U_MODEM/C_33N": {"x_mm": 5.55, "y_mm": 19.1, "rotation": 180},
+    "U_MODEM/C_100N": {"x_mm": 5.55, "y_mm": 20.6, "rotation": 180},
+    "U_MODEM/C_1U": {"x_mm": 5, "y_mm": 22.3, "rotation": 180}
+  }
+}

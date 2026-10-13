@@ -5,9 +5,9 @@
     "library_lock": "../copper.lock",
     "assembly_selection": "../assembly.lock",
     "procurement": "../procurement/parts.json",
-    "nordic_macro": "../nrf-antenna-macro.json",
-    "logic_macro": "../logic-power-macro.json",
-    "modem_macro": "../modem-power-macro.json",
+    "nordic_macro": "../.copper-cache/pkg/4aa6e2e0848860db51b0/packages/circuits/nordic/nrf52832-johanson-reference/managed-layout.copper",
+    "logic_macro": "../.copper-cache/pkg/4aa6e2e0848860db51b0/packages/circuits/ti/tps63020-buck-boost/always-on-layout.copper",
+    "modem_macro": "../.copper-cache/pkg/4aa6e2e0848860db51b0/packages/circuits/ti/tps63020-buck-boost/enabled-series-feedback-layout.copper",
     "battery_selection": "battery-selection.json",
     "battery_revision": "../revisions/battery-v1/power_tree.copper",
     "battery_revision_placement": "../revisions/battery-v1/placement.json",
@@ -20,7 +20,7 @@
   "context": {
     "stackup": {
       "reviewed": true,
-      "profile_path": "../.copper-cache/pkg/04c18f9f44312ecb2f06/packages/profiles/jlcpcb/jlc06161h-3313/stackup.json"
+      "profile_path": "../.copper-cache/pkg/4aa6e2e0848860db51b0/packages/profiles/jlcpcb/jlc06161h-3313/stackup.json"
     },
     "operating_envelope": {
       "reviewed": false,
@@ -52,12 +52,12 @@
   "contracts": [
     {
       "scope": "ble",
-      "path": "../.copper-cache/pkg/04c18f9f44312ecb2f06/packages/circuits/nordic/nrf52832-johanson-reference/qualification.json",
+      "path": "../.copper-cache/pkg/4aa6e2e0848860db51b0/packages/circuits/nordic/nrf52832-johanson-reference/qualification.json",
       "bindings": {}
     },
     {
       "scope": "cellular",
-      "path": "../.copper-cache/pkg/04c18f9f44312ecb2f06/packages/parts/simcom/sim7670g-lngv/qualification.json",
+      "path": "../.copper-cache/pkg/4aa6e2e0848860db51b0/packages/parts/simcom/sim7670g-lngv/qualification.json",
       "bindings": {
         "reference-coverage": {
           "basis": "Project-only minimum geometric screen: cover the projected track width with zero extra margin. Not a sourced RF return-fringing margin or impedance qualification.",
@@ -70,7 +70,7 @@
     },
     {
       "scope": "gnss",
-      "path": "../.copper-cache/pkg/04c18f9f44312ecb2f06/packages/parts/u-blox/max-m10s/qualification.json",
+      "path": "../.copper-cache/pkg/4aa6e2e0848860db51b0/packages/parts/u-blox/max-m10s/qualification.json",
       "bindings": {
         "reference-coverage": {
           "basis": "Project-only minimum geometric screen: cover the projected track width with zero extra margin. Matching/ESD/antenna configuration and return-fringing margin remain unresolved.",
@@ -83,7 +83,7 @@
     },
     {
       "scope": "logic-supply",
-      "path": "../.copper-cache/pkg/04c18f9f44312ecb2f06/packages/circuits/ti/tps63020-buck-boost/qualification.json",
+      "path": "../.copper-cache/pkg/4aa6e2e0848860db51b0/packages/circuits/ti/tps63020-buck-boost/qualification.json",
       "bindings": {
         "host-conductor-width": null,
         "input-demand": {
@@ -107,7 +107,7 @@
     },
     {
       "scope": "modem-supply",
-      "path": "../.copper-cache/pkg/04c18f9f44312ecb2f06/packages/circuits/ti/tps63020-buck-boost/qualification.json",
+      "path": "../.copper-cache/pkg/4aa6e2e0848860db51b0/packages/circuits/ti/tps63020-buck-boost/qualification.json",
       "bindings": {
         "host-conductor-width": null,
         "input-demand": {
@@ -131,12 +131,12 @@
     },
     {
       "scope": "charger",
-      "path": "../.copper-cache/pkg/04c18f9f44312ecb2f06/packages/parts/ti/bq24072/qualification.json",
+      "path": "../.copper-cache/pkg/4aa6e2e0848860db51b0/packages/parts/ti/bq24072/qualification.json",
       "bindings": {}
     },
     {
       "scope": "usb-link",
-      "path": "../.copper-cache/pkg/04c18f9f44312ecb2f06/packages/interfaces/usb/usb2-channel/qualification.json",
+      "path": "../.copper-cache/pkg/4aa6e2e0848860db51b0/packages/interfaces/usb/usb2-channel/qualification.json",
       "bindings": {
         "operating-mode": {
           "basis": "STM32G0C1 full-speed host; user authorizes SIM7672X Hardware Design V1.01 applicability to SIM7670G-LNGV on 2026-10-10; firmware and supply margins still require qualification",
@@ -147,8 +147,16 @@
           "reviewed": false,
           "required_battery_usb_operation": true,
           "requirement_basis": "User confirmation 2026-10-10: USB to modem must work on battery",
-          "required_functional_states": ["battery-only", "external-power-with-battery", "charging-cable-unplug-with-battery"],
-          "required_safe_states": ["modem-disabled", "battery-undervoltage", "external-power-attach"],
+          "required_functional_states": [
+            "battery-only",
+            "external-power-with-battery",
+            "charging-cable-unplug-with-battery"
+          ],
+          "required_safe_states": [
+            "modem-disabled",
+            "battery-undervoltage",
+            "external-power-attach"
+          ],
           "external_connector_backfeed_allowed": false,
           "modem_vbus_net": "V3V8",
           "current_detect_supply_available_on_battery": true,
@@ -161,32 +169,149 @@
         },
         "layout-review": {
           "basis": "Complete MCU-to-modem channel through FL_USB; do not qualify net sections in isolation",
-          "positive_sections": ["USB_DP_MCU", "USB_DP_MODEM"],
-          "negative_sections": ["USB_DM_MCU", "USB_DM_MODEM"],
-          "inline_components": ["FL_USB"],
+          "positive_sections": [
+            "USB_DP_MCU",
+            "USB_DP_MODEM"
+          ],
+          "negative_sections": [
+            "USB_DM_MCU",
+            "USB_DM_MODEM"
+          ],
+          "inline_components": [
+            "FL_USB"
+          ],
           "reviewed": false
         }
       }
     }
   ],
   "microstrip_screens": [
-    {"id": "cellular.width-screen", "net": "CELL_RF", "reference_layer": "In1.Cu", "reference_net": "GND"},
-    {"id": "gnss.width-screen", "net": "GNSS_RF", "reference_layer": "In1.Cu", "reference_net": "GND"},
-    {"id": "ble.width-screen", "net": "NRF_RF_ANT", "reference_layer": "In1.Cu", "reference_net": "GND"},
-    {"id": "usb.mcu-dp-width-screen", "net": "USB_DP_MCU", "reference_layer": "In1.Cu", "reference_net": "GND"},
-    {"id": "usb.mcu-dm-width-screen", "net": "USB_DM_MCU", "reference_layer": "In1.Cu", "reference_net": "GND"},
-    {"id": "usb.modem-dp-width-screen", "net": "USB_DP_MODEM", "reference_layer": "In1.Cu", "reference_net": "GND"},
-    {"id": "usb.modem-dm-width-screen", "net": "USB_DM_MODEM", "reference_layer": "In1.Cu", "reference_net": "GND"}
+    {
+      "id": "cellular.width-screen",
+      "net": "CELL_RF",
+      "reference_layer": "In1.Cu",
+      "reference_net": "GND"
+    },
+    {
+      "id": "gnss.width-screen",
+      "net": "GNSS_RF",
+      "reference_layer": "In1.Cu",
+      "reference_net": "GND"
+    },
+    {
+      "id": "ble.width-screen",
+      "net": "NRF_RF_ANT",
+      "reference_layer": "In1.Cu",
+      "reference_net": "GND"
+    },
+    {
+      "id": "usb.mcu-dp-width-screen",
+      "net": "USB_DP_MCU",
+      "reference_layer": "In1.Cu",
+      "reference_net": "GND"
+    },
+    {
+      "id": "usb.mcu-dm-width-screen",
+      "net": "USB_DM_MCU",
+      "reference_layer": "In1.Cu",
+      "reference_net": "GND"
+    },
+    {
+      "id": "usb.modem-dp-width-screen",
+      "net": "USB_DP_MODEM",
+      "reference_layer": "In1.Cu",
+      "reference_net": "GND"
+    },
+    {
+      "id": "usb.modem-dm-width-screen",
+      "net": "USB_DM_MODEM",
+      "reference_layer": "In1.Cu",
+      "reference_net": "GND"
+    }
   ],
   "differential_pair_screens": [
-    {"id": "usb.mcu-pair-geometry", "positive_net": "USB_DP_MCU", "negative_net": "USB_DM_MCU", "maximum_search_gap_nm": 400000},
-    {"id": "usb.modem-pair-geometry", "positive_net": "USB_DP_MODEM", "negative_net": "USB_DM_MODEM", "maximum_search_gap_nm": 400000}
+    {
+      "id": "usb.mcu-pair-geometry",
+      "positive_net": "USB_DP_MCU",
+      "negative_net": "USB_DM_MCU",
+      "maximum_search_gap_nm": 400000
+    },
+    {
+      "id": "usb.modem-pair-geometry",
+      "positive_net": "USB_DP_MODEM",
+      "negative_net": "USB_DM_MODEM",
+      "maximum_search_gap_nm": 400000
+    }
   ],
   "route_path_screens": [
-    {"id": "usb.mcu-dp-path", "net": "USB_DP_MCU", "return_net": "GND", "terminals": [{"component": "U_MCU", "pad": "44", "layer": "F.Cu"}, {"component": "FL_USB", "pad": "1", "layer": "F.Cu"}]},
-    {"id": "usb.mcu-dm-path", "net": "USB_DM_MCU", "return_net": "GND", "terminals": [{"component": "U_MCU", "pad": "43", "layer": "F.Cu"}, {"component": "FL_USB", "pad": "4", "layer": "F.Cu"}]},
-    {"id": "usb.modem-dp-path", "net": "USB_DP_MODEM", "return_net": "GND", "terminals": [{"component": "FL_USB", "pad": "2", "layer": "F.Cu"}, {"component": "U_MODEM", "pad": "27", "layer": "F.Cu"}]},
-    {"id": "usb.modem-dm-path", "net": "USB_DM_MODEM", "return_net": "GND", "terminals": [{"component": "FL_USB", "pad": "3", "layer": "F.Cu"}, {"component": "U_MODEM", "pad": "28", "layer": "F.Cu"}]}
+    {
+      "id": "usb.mcu-dp-path",
+      "net": "USB_DP_MCU",
+      "return_net": "GND",
+      "terminals": [
+        {
+          "component": "U_MCU",
+          "pad": "44",
+          "layer": "F.Cu"
+        },
+        {
+          "component": "FL_USB",
+          "pad": "1",
+          "layer": "F.Cu"
+        }
+      ]
+    },
+    {
+      "id": "usb.mcu-dm-path",
+      "net": "USB_DM_MCU",
+      "return_net": "GND",
+      "terminals": [
+        {
+          "component": "U_MCU",
+          "pad": "43",
+          "layer": "F.Cu"
+        },
+        {
+          "component": "FL_USB",
+          "pad": "4",
+          "layer": "F.Cu"
+        }
+      ]
+    },
+    {
+      "id": "usb.modem-dp-path",
+      "net": "USB_DP_MODEM",
+      "return_net": "GND",
+      "terminals": [
+        {
+          "component": "FL_USB",
+          "pad": "2",
+          "layer": "F.Cu"
+        },
+        {
+          "component": "U_MODEM",
+          "pad": "27",
+          "layer": "F.Cu"
+        }
+      ]
+    },
+    {
+      "id": "usb.modem-dm-path",
+      "net": "USB_DM_MODEM",
+      "return_net": "GND",
+      "terminals": [
+        {
+          "component": "FL_USB",
+          "pad": "3",
+          "layer": "F.Cu"
+        },
+        {
+          "component": "U_MODEM",
+          "pad": "28",
+          "layer": "F.Cu"
+        }
+      ]
+    }
   ],
   "evidence": {}
 }

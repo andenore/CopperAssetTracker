@@ -26,6 +26,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def isolated_probe(physical, scene_path, rotation=0, *, port_consumers=True):
+    asset_data = None
     if isinstance(scene_path, PreparedMacroBinding):
         prepared = scene_path
         binding = prepared.binding
@@ -33,6 +34,10 @@ def isolated_probe(physical, scene_path, rotation=0, *, port_consumers=True):
                  "bindings": {m.key: m.target for m in binding.mappings if m.kind == "member"},
                  "net_bindings": {m.key: m.target for m in binding.mappings if m.kind == "net"}}
         asset, digest = prepared.path, prepared.digest
+        if binding.asset.symbol:
+            from pcbir.macro_definitions import canonical_macro_bytes, verify_macro_inputs
+            verify_macro_inputs(prepared.provenance['inputs'])
+            asset_data = canonical_macro_bytes(prepared.data)
     else:
         # Retained historical tests/candidates may still select a legacy scene.
         scene = json.loads(scene_path.read_text())
@@ -49,7 +54,7 @@ def isolated_probe(physical, scene_path, rotation=0, *, port_consumers=True):
         zones=tuple(z for z in physical.zones if z.id == "ground-return-plane"),
         metadata={"prototype_placement": "false", "fabrication_ready": "false"})
     board = bind_hard_macro(board, asset, expected_sha256=digest,
-        name=scene["name"], bindings=scene["bindings"], net_bindings=scene["net_bindings"])
+        name=scene["name"], bindings=scene["bindings"], net_bindings=scene["net_bindings"], asset_data=asset_data)
     cluster = board.rigid_clusters[0]
     poses = {p.reference: p for p in board.placements}
     anchor = replace(poses[cluster.anchor.reference], position=Point.mm(50, 40), rotation_degrees=rotation)

@@ -1,0 +1,15 @@
+{
+  "schema": "copperassettracker-revision-placement/v0.1",
+  "status": "draft_validate_against_actual_footprints",
+  "poses": {
+    "PWR/C_BAT": {"x_mm": "71.6", "y_mm": "33.15", "rotation": 90},
+    "PWR/C_USB": {"x_mm": "66.5", "y_mm": "39.3", "rotation": 0},
+    "PWR/C_SYS": {"x_mm": "63.8", "y_mm": "34.5", "rotation": 90},
+    "PWR/R_ILIM": {"x_mm": "63.5", "y_mm": "37.2", "rotation": 180},
+    "PWR/R_ISET": {"x_mm": "71.8", "y_mm": "37.8", "rotation": 0},
+    "PWR/TEMP/R_ISOLATION": {"x_mm": "71.55", "y_mm": "35.825", "rotation": 180},
+    "PWR/TEMP/R_TOP": {"x_mm": "76.1", "y_mm": "35.8", "rotation": 90},
+    "PWR/TEMP/R_SHUNT": {"x_mm": "73.92", "y_mm": "35.8", "rotation": 0},
+    "PWR/R_TMR": {"x_mm": "69.425", "y_mm": "38.1", "rotation": 0}
+  }
+}

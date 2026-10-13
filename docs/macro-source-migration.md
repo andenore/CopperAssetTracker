@@ -1,3 +1,6 @@
+> Historical binding-syntax migration record. The current definition migration is
+> recorded in [macro-definition-migration.md](macro-definition-migration.md).
+
 # Source macro migration
 
 2026-10-13. The active board imports the Nordic physical asset and the two

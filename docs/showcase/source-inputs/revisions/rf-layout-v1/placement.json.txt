@@ -1,0 +1,19 @@
+{
+  "poses": {
+    "J_CELL": {"x_mm": 4.4, "y_mm": 25.3, "rotation": 180},
+    "U_MODEM/C_10P": {"x_mm": 5.55, "y_mm": 16.8, "rotation": 180},
+    "U_MODEM/C_33N": {"x_mm": 5.55, "y_mm": 18.3, "rotation": 180},
+    "U_MODEM/C_100N": {"x_mm": 5.55, "y_mm": 19.8, "rotation": 180},
+    "U_MODEM/C_1U": {"x_mm": 5, "y_mm": 21.5, "rotation": 180},
+    "U_NRF": {"x_mm": 84, "y_mm": 12, "rotation": 0},
+    "C_DEC1": {"x_mm": 79.4, "y_mm": 9.8, "rotation": 90},
+    "C_DEC3": {"x_mm": 89.03, "y_mm": 10.13, "rotation": 0},
+    "C_DEC4": {"x_mm": 82, "y_mm": 6.35, "rotation": 90},
+    "C_NRF_VDD2": {"x_mm": 86, "y_mm": 7.2, "rotation": 0},
+    "C_NRF_VDD3": {"x_mm": 79.8, "y_mm": 7.4, "rotation": 0},
+    "Y_NRF": {"x_mm": 90.4, "y_mm": 7.07, "rotation": 90},
+    "C_XC1": {"x_mm": 93.06, "y_mm": 7.69, "rotation": 90},
+    "C_XC2": {"x_mm": 89.55, "y_mm": 4, "rotation": 0},
+    "R_RESET_NRF": {"x_mm": 88, "y_mm": 16.9, "rotation": 0}
+  }
+}

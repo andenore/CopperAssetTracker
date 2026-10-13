@@ -1,6 +1,6 @@
 module github.com/andenore/CopperAssetTracker
 
-require github.com/andenore/CopperLib f54a03b36e8a785eb512626b3f5110a7f321e37c
+require github.com/andenore/CopperLib 50655eff5613690a606c9dd1de456b2adae249df
 require github.com/KiCad/kicad-footprints 7ebfa6b23cc292a56f751b7b5f4a0e12eeef69dd
 
 footprint-library Connector_Debug github.com/andenore/CopperLib/packages/parts/samtec/ftsh-105-01-l-dv-007-k/footprints

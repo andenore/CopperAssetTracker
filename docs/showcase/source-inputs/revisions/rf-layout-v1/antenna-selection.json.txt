@@ -1,0 +1,68 @@
+{
+  "schema": "copperassettracker-antenna-choice/v0.1",
+  "cellular": {
+    "modem": "U_MODEM/U",
+    "connector": "J_CELL",
+    "antenna_type": "passive_cabled_flex",
+    "antenna_part_selected": true,
+    "manufacturer": "Taoglas",
+    "mpn": "FXUB16.07.0150AQ",
+    "library_specification": "packages/antennas/taoglas/fxub16-07-0150aq/specification.json",
+    "library_specification_sha256": "5d7bafe3290c0ffcc6d8850d2c156329307d1322712a72a1b7af7191cce67127",
+    "library_contract": "packages/antennas/taoglas/fxub16-07-0150aq/qualification.json",
+    "library_contract_sha256": "9204cb74e3b2cbedcd171e4921a2fe09a553be48259bac01090070e8e96c1e7a",
+    "nominal_impedance_ohms": 50,
+    "board_supplied_bias": false,
+    "external_antenna_power_required": false,
+    "eu_lte_bands": [1, 3, 7, 8, 20, 28],
+    "additional_tdd_bands": [38, 40, 41],
+    "assembly_quantity": 1,
+    "assembly_scope": "external installation after PCBA; not a CPL item",
+    "procurement": {
+      "supplier": "DigiKey Norway",
+      "supplier_part": "931-FXUB16.07.0150AQ-ND",
+      "source_url": "https://www.digikey.no/en/products/detail/taoglas-limited/FXUB16-07-0150AQ/25622267",
+      "checked_on": "2026-10-12",
+      "indexed_stock_snapshot": 476,
+      "live_stock_confirmed": false,
+      "notes": "Indexed distributor listing supports prototype sourcing; Octopart live lookup hit its account quota. Recheck stock before purchase. No purchase authorized."
+    },
+    "installation": {
+      "surface": "non-metal enclosure wall",
+      "reserved_body_length_um": 90400,
+      "reserved_body_width_um": 15000,
+      "body_thickness_um": 240,
+      "factory_cable_length_um": 150000,
+      "factory_cable_diameter_um": 1370,
+      "metal_clearance_design_provision_um": 20000,
+      "clearance_basis": "Authored prototype packaging allowance, not an FXUB16 manufacturer minimum or verified enclosure clearance",
+      "enclosure_cad_selected": false,
+      "verified_fit": false,
+      "do_not_trim_cable": true
+    },
+    "matching_adaptation": "unresolved; a factory 50 ohm antenna does not establish host DC isolation or RF ESD",
+    "unresolved": [
+      "RF ESD protection implementation and appropriate return layout",
+      "Explicit SIM7672X Figure30 matching/DC-blocking adaptation",
+      "Complete launch/return electromagnetic model and supplier process confirmation",
+      "Enclosure fit, metal/battery clearance, cable bend radius and retention",
+      "Installed antenna match, gain restrictions, radio sensitivity and GNSS/BLE coexistence"
+    ]
+  },
+  "gnss": {
+    "receiver": "U_GNSS",
+    "connector": "J_GNSS",
+    "antenna_type": "passive",
+    "decision_basis": "Explicit user instruction: Use passive antenna",
+    "board_supplied_bias": false,
+    "external_antenna_power_required": false,
+    "antenna_part_selected": false,
+    "unresolved": [
+      "Specific passive antenna, cable and enclosure installation",
+      "Connector ESD and LTE coexistence review",
+      "Actual-stackup feed impedance and ground reference",
+      "Prototype GNSS sensitivity and interference measurements"
+    ]
+  },
+  "qualified_release": false
+}
