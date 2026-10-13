@@ -11,7 +11,7 @@ BOARD := board.copper
 BUILD := build
 PCB := $(BUILD)/placed.kicad_pcb
 ROUTED := $(BUILD)/routed.kicad_pcb
-PHYSICAL := --layers 6 --fab-profile jlcpcb-six-layer --hard-macro nrf-antenna-macro.json --hard-macro logic-power-macro.json --hard-macro modem-power-macro.json
+PHYSICAL := --layers 6 --fab-profile jlcpcb-six-layer
 LOCKED := --locked --offline
 QUALIFICATION_DIR ?= $(BUILD)/manufacturing
 QUALIFICATION_PCB ?= $(QUALIFICATION_DIR)/$(notdir $(ROUTED))
@@ -32,6 +32,7 @@ all: check test compile pcb
 
 fetch:
 	$(UV) sync --locked
+	$(UV) run --locked copper lock $(BOARD) --locked
 	$(UV) run --locked copper check $(BOARD) --locked
 	$(UV) run --locked copper audit-footprints $(BOARD) --locked
 
@@ -39,7 +40,7 @@ check:
 	$(UV) run --locked copper check $(BOARD) $(LOCKED)
 
 test:
-	$(UV) run --locked python -m unittest discover -s tests -v
+	$(UV) run --locked python -m pytest tests -q
 
 # Isolated terminated-port fixtures; never a full-board production signoff.
 power-probes: check

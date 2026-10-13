@@ -20,8 +20,10 @@ def posed_source(pcb, *, with_copper=False, project_root=ROOT, locked=True):
     board = resolved_physicalize(design,
         FootprintResolver(base_directory=project_root, locked=locked, offline=True),
         PrototypePhysicalOptions(copper_layers=6, fabrication_profile="jlcpcb-six-layer"))
-    for scene in ("nrf-antenna-macro.json", "logic-power-macro.json", "modem-power-macro.json"):
-        board = apply_hard_macro_scene(board, project_root / scene, locked=locked, offline=True)
+    # Retained historical candidates may still use external scene bindings.
+    if not board.hard_macros:
+        for scene in ("nrf-antenna-macro.json", "logic-power-macro.json", "modem-power-macro.json"):
+            board = apply_hard_macro_scene(board, project_root / scene, locked=locked, offline=True)
     return read_front_native_checkpoint(board, pcb, include_copper=with_copper)
 
 

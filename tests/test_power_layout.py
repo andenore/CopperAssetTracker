@@ -52,9 +52,8 @@ class PowerLayoutTests(unittest.TestCase):
         p = f.pads[0]
         footprints[pose.footprint] = replace(f, pads=(replace(p,
             position=replace(p.position, x_nm=p.position.x_nm + 1000)), *f.pads[1:]))
-        altered = replace(self.physical, footprints=footprints)
-        with self.assertRaisesRegex(ValueError, "footprint identity mismatch"):
-            apply_hard_macro_scene(altered, ROOT / "logic-power-macro.json", locked=True, offline=True)
+        with self.assertRaisesRegex(ValueError, "footprint .*mismatch"):
+            replace(self.physical, footprints=footprints)
 
     def test_macro_branches_with_actual_host_rail_widths(self):
         for scene in ("logic-power-macro.json", "modem-power-macro.json"):

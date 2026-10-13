@@ -197,6 +197,16 @@ supports placement previews and reviewed source saves. To evaluate features
 beyond the pinned build, explicitly select a current review compiler as described
 below; keep this project's release pins and evidence bindings intact.
 
+The active board now imports physical macro assets and declares the Nordic,
+logic-rail and modem-rail bindings directly in `board.copper`. Power bindings
+use `on PWR` and checked module-relative member/net references. `copper.mod`
+selects library versions and `copper.lock` verifies asset hashes; no SHA appears
+in the source declarations and no `--hard-macro` flags are needed. Root JSON
+scenes remain as historical revision-selection templates; the revision builder
+converts those selections into fresh source declarations before compilation.
+Changing the board/compiler inputs invalidates older source-bound evidence;
+see [the migration validation record](docs/macro-source-migration.md).
+
 ### Inspect what the compiler understood
 
 These component fields come from the generated electrical IR. Human-facing
@@ -333,7 +343,7 @@ to published Git commits; these are not the newer illustrated revision's tool in
 
 | Dependency | Revision / lock |
 | --- | --- |
-| CopperScript | `209e4998223283923c3f1f0fb52f6fb97791cf46` in `pyproject.toml` and `uv.lock` |
+| CopperScript | `db125738d3cdc0cde8293fc9476e8a0a12366317` in `pyproject.toml` and `uv.lock` |
 | CopperLib | `f54a03b36e8a785eb512626b3f5110a7f321e37c` in `copper.mod` and `copper.lock` |
 | KiCad footprints | `7ebfa6b23cc292a56f751b7b5f4a0e12eeef69dd` in `copper.mod` and `copper.lock` |
 
@@ -386,8 +396,7 @@ python scripts/build_battery_revision.py --modem-power `
 Set-Location build/new-power-review
 python -m copperscript route-board board.copper --offline --layers 6 `
   --fab-profile jlcpcb-six-layer `
-  --hard-macro nrf-antenna-macro.json --hard-macro logic-power-macro.json `
-  --hard-macro modem-power-macro.json --routing-profile balanced --pitch-mm 0.5 `
+  --routing-profile balanced --pitch-mm 0.5 `
   --fanout-maze --soft-ripup --constrained-pins-first --progressive-guides `
   --plane-contact-radius-mm 3 --plane-stitch-detour-mm 1.5 `
   --verify-plane-fill "C:/Program Files/KiCad/10.0/bin/kicad-cli.exe" `

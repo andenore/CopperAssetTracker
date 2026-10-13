@@ -20,7 +20,7 @@ from pcbir.compiler import compile_design_file
 from pcbir.elaborate import elaborate
 from pcbir.erc import check, has_errors
 from pcbir.footprints import FootprintResolver
-from pcbir.hard_macros import apply_hard_macro_scene, materialize_hard_macros
+from pcbir.hard_macros import materialize_hard_macros
 from pcbir.importers.kicad_mod import _children, _first, _parse_sexpr
 from pcbir.physical import Point
 from pcbir.physicalize import PrototypePhysicalOptions, resolved_physicalize
@@ -183,6 +183,27 @@ def main():
             raise ValueError("duplicate source pose")
         if count == 0:
             source = source.rstrip()[:-1] + "\n    " + rule + "\n}\n"
+    # Revision JSON files are retained historical selection templates. Fresh
+    # generated boards carry their selected bindings directly in the source.
+    for filename, alias in (("nrf-antenna-macro.json", "nordic_layout"),
+                            ("logic-power-macro.json", "logic_layout"),
+                            ("modem-power-macro.json", "modem_layout")):
+        scene = load_json(work / filename)
+        asset = scene["asset"]
+        if not asset.startswith(("github.com/", "gitlab.com/", "https://")):
+            asset = "./" + asset
+        source, count = re.subn(r'import ' + re.escape(alias) + r' "[^"]+";',
+            lambda _: f'import {alias} "{asset}";', source)
+        if count != 1:
+            raise ValueError("missing or duplicate macro asset import")
+        source, count = re.subn(r'physical_macro ' + re.escape(scene["name"])
+            + r'\s*:\s*' + re.escape(alias) + r'(?:\s+on\s+[^{}]+)?\s*\{[^}]*\}', '', source)
+        if count != 1:
+            raise ValueError("missing or duplicate canonical macro binding")
+        mappings = [f"        member {key} = {target};" for key, target in scene["bindings"].items()]
+        mappings += [f"        net {key} = {target};" for key, target in scene["net_bindings"].items()]
+        declaration = f'    physical_macro {scene["name"]}: {alias} {{\n' + "\n".join(mappings) + "\n    }"
+        source = source.rstrip()[:-1].rstrip() + "\n" + declaration + "\n}\n"
     (work / "board.copper").write_text(source, encoding="utf-8")
     manifest = (ROOT / "copper.mod").read_text(encoding="utf-8")
     manifest += f"\nreplace github.com/andenore/CopperLib => {library.as_posix()}\n"
@@ -270,8 +291,6 @@ def main():
         return 0
     board = resolved_physicalize(design, FootprintResolver(base_directory=work, offline=True),
         PrototypePhysicalOptions(copper_layers=6, fabrication_profile="jlcpcb-six-layer"))
-    for scene in ("nrf-antenna-macro.json", "logic-power-macro.json", "modem-power-macro.json"):
-        board = apply_hard_macro_scene(board, work / scene, offline=True)
     reverse = {kicad_reference(p.reference): p.reference for p in board.placements}
     if args.modem_power:
         reverse['U_MODEM'] = 'U_MODEM/U'

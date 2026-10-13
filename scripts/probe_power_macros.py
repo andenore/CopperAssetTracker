@@ -16,6 +16,7 @@ from pcbir.drc import PhysicalDrcPolicy, run_physical_drc
 from pcbir.footprints import FootprintResolver
 from pcbir.hard_macros import bind_hard_macro, materialize_hard_macros
 from pcbir.loader import load_design
+from pcbir.macro_bindings import PreparedMacroBinding, prepare_macro_bindings
 from pcbir.packages import resolve_module_asset
 from pcbir.physical import CopperLayer, PadReference, PhysicalBoard, PhysicalNet, Point, TrackSegment, Via
 from pcbir.placement import transformed_local_point
@@ -25,7 +26,18 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def isolated_probe(physical, scene_path, rotation=0, *, port_consumers=True):
-    scene = json.loads(scene_path.read_text())
+    if isinstance(scene_path, PreparedMacroBinding):
+        prepared = scene_path
+        binding = prepared.binding
+        scene = {"name": binding.name,
+                 "bindings": {m.key: m.target for m in binding.mappings if m.kind == "member"},
+                 "net_bindings": {m.key: m.target for m in binding.mappings if m.kind == "net"}}
+        asset, digest = prepared.path, prepared.digest
+    else:
+        # Retained historical tests/candidates may still select a legacy scene.
+        scene = json.loads(scene_path.read_text())
+        asset = resolve_module_asset(scene_path, scene["asset"], locked=True, offline=True)
+        digest = scene["asset_sha256"]
     references = set(scene["bindings"].values())
     # Preserve every physical contact and net membership within the selected
     # circuit; shared rails are truncated only in this explicitly isolated probe.
@@ -36,8 +48,7 @@ def isolated_probe(physical, scene_path, rotation=0, *, port_consumers=True):
         nets=nets, stackup=physical.stackup, rules=physical.rules,
         zones=tuple(z for z in physical.zones if z.id == "ground-return-plane"),
         metadata={"prototype_placement": "false", "fabrication_ready": "false"})
-    asset = resolve_module_asset(scene_path, scene["asset"], locked=True, offline=True)
-    board = bind_hard_macro(board, asset, expected_sha256=scene["asset_sha256"],
+    board = bind_hard_macro(board, asset, expected_sha256=digest,
         name=scene["name"], bindings=scene["bindings"], net_bindings=scene["net_bindings"])
     cluster = board.rigid_clusters[0]
     poses = {p.reference: p for p in board.placements}
@@ -86,8 +97,9 @@ def main():
     physical = resolved_physicalize(design, FootprintResolver(base_directory=ROOT, locked=True, offline=True),
         PrototypePhysicalOptions(copper_layers=6, fabrication_profile="jlcpcb-six-layer"))
     args.output_dir.mkdir(parents=True, exist_ok=True)
-    for scene_name in ("logic-power-macro.json", "modem-power-macro.json"):
-        board = isolated_probe(physical, ROOT / scene_name, args.rotation)
+    selections = {p.binding.name: p for p in prepare_macro_bindings(design, locked=True, offline=True)}
+    for name in ("logic-buck-boost", "modem-buck-boost"):
+        board = isolated_probe(physical, selections[name], args.rotation)
         drc = run_physical_drc(board, policy=PhysicalDrcPolicy(False))
         stem = board.name + f"-{args.rotation}"
         (args.output_dir / f"{stem}-physical.json").write_text(drc.to_json())

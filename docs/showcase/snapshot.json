@@ -3,7 +3,9 @@
   "assembly_preview_review": "required; verify centroid, pin 1, polarity and supplier rotation",
   "blocked_requirement_count": 13,
   "candidate": "prototype-preorder-v3-20261012 / manufacturing-NOT-APPROVED",
+  "canonical_source_commit": "1524b3fb02ff65e603b50ce81905f66def4f67e1",
   "canonical_source_sha256": "03883bab0bd8e5734127711bc1137698ea355e77c202afc825b2807430e2baff",
+  "canonical_source_status": "historical_input_before_macro_source_migration",
   "component_count": 97,
   "composition_inputs": {
     "board.copper": "03883bab0bd8e5734127711bc1137698ea355e77c202afc825b2807430e2baff",

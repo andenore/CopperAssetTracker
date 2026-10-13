@@ -8,7 +8,6 @@ from pcbir.assembly import check_assembly, load_lock, snapshot
 from pcbir.elaborate import elaborate
 from pcbir.erc import check, has_errors
 from pcbir.footprints import FootprintResolver
-from pcbir.hard_macros import apply_hard_macro_scene
 from pcbir.loader import load_design
 from pcbir.physicalize import PrototypePhysicalOptions, resolved_physicalize
 
@@ -82,9 +81,10 @@ class TrackerTests(unittest.TestCase):
     def test_manufacturing_review_gate(self):
         r = check_assembly(self.board, self.lock)
         self.assertEqual(r["exact_selection_count"], len(self.lock.selections))
-        # This assembly API approves exact BOM selections only, not CPL/CAM/RF.
-        self.assertTrue(r["passed"])
-        self.assertEqual(r["issues"], [])
+        # New source/compiler inputs invalidate the retained assembly snapshot.
+        # Exact reviewed selections remain facts, but are not reapproved here.
+        self.assertFalse(r["passed"])
+        self.assertEqual({issue["code"] for issue in r["issues"]}, {"STALE_LOCK"})
         self.assertEqual(r["reviewed_count"], 83)
 
     def test_battery_and_power_path(self):
@@ -152,9 +152,11 @@ class TrackerTests(unittest.TestCase):
     def test_rf_macro_identity(self):
         scene = json.loads((ROOT / "nrf-antenna-macro.json").read_text())
         self.assertEqual(hashlib.sha256((ROOT / scene["asset"]).read_bytes()).hexdigest(), scene["asset_sha256"])
-        bound = apply_hard_macro_scene(self.physical, ROOT / "nrf-antenna-macro.json", locked=True, offline=True)
-        self.assertEqual(len(bound.hard_macros), 1)
-        self.assertEqual(len(bound.rigid_clusters[0].members), 7)
+        macros = {m.cluster: m for m in self.physical.hard_macros}
+        self.assertEqual(len(macros), 3)
+        self.assertEqual(macros["nordic-antenna"].asset_sha256, scene["asset_sha256"])
+        cluster = next(c for c in self.physical.rigid_clusters if c.name == "nordic-antenna")
+        self.assertEqual(len(cluster.members), 7)
 
 if __name__ == "__main__":
     unittest.main()

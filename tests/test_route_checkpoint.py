@@ -1,5 +1,6 @@
 """The project composes intent; shared CopperScript owns native geometry guards."""
 from pathlib import Path
+from types import SimpleNamespace
 from unittest.mock import patch
 import sys
 import unittest
@@ -18,7 +19,7 @@ class RouteCheckpointTests(unittest.TestCase):
 
     def test_composition_delegates_all_geometry_to_shared_reader(self):
         project = ROOT / 'build/test-only-root'
-        path, design, board, result = Path('candidate.kicad_pcb'), object(), object(), object()
+        path, design, board, result = Path('candidate.kicad_pcb'), object(), SimpleNamespace(hard_macros=()), object()
         with patch.object(checkpoint, 'load_design', return_value=design) as load, \
              patch.object(checkpoint, 'FootprintResolver') as resolver, \
              patch.object(checkpoint, 'resolved_physicalize', return_value=board), \

@@ -23,6 +23,10 @@ board CopperAssetTracker {
     import yxc "github.com/andenore/CopperLib/packages/parts/yxc/ysx321sl";
     import kento "github.com/andenore/CopperLib/packages/parts/kento/kt0603r";
 
+    import nordic_layout "./assets/nrf52832-johanson-managed-footprints.json";
+    import logic_layout "github.com/andenore/CopperLib/packages/circuits/ti/tps63020-buck-boost/assets/tps63020-six-layer-always-on.json";
+    import modem_layout "github.com/andenore/CopperLib/packages/circuits/ti/tps63020-buck-boost/assets/tps63020-six-layer-enabled-series-feedback.json";
+
     component J_POWER: gct_usb.GCT_USB4135_GF_A;
     component U_CC: tusb.TUSB320LAI;
     module PWR: tracker.AssetTrackerPowerTree;
@@ -586,6 +590,60 @@ board CopperAssetTracker {
         priority = 1; pad_connection = solid; island_policy = "remove_all";
         allow_same_net_hard_macro_overlap = true;
     }
+
+    // Source-selected realizations; asset versions and hashes come from dependencies.
+    physical_macro nordic-antenna: nordic_layout {
+        member ANT = ANT_BT;
+        member C3 = C_BT_MATCH;
+        member CA = C_ANT_SERIES;
+        member L1 = L_BT_MATCH;
+        member LA = L_ANT_SHUNT;
+        member LB = L_ANT_SERIES;
+        member U1 = U_NRF;
+        net antenna = ANT_FEED;
+        net feed = NRF_RF_ANT;
+        net ground = GND;
+        net raw = NRF_RF_RAW;
+        net tee = ANT_TEE;
+    }
+
+    physical_macro logic-buck-boost: logic_layout on PWR {
+        member U = U_LOGIC;
+        member L = L_LOGIC;
+        member C_IN = C_LOGIC_IN;
+        member C_VINA = C_LOGIC_VINA;
+        member C_OUT1 = C_LOGIC_OUT1;
+        member C_OUT2 = C_LOGIC_OUT2;
+        member C_OUT3 = C_LOGIC_OUT3;
+        member R_TOP = R_LOGIC_FB_TOP;
+        member R_BOT = R_LOGIC_FB_BOT;
+        net VIN = VSYS;
+        net VOUT = port.V3V3;
+        net GND = port.GND;
+        net FB = LOGIC_FB;
+        net L1 = LOGIC_L1;
+        net L2 = LOGIC_L2;
+    }
+
+    physical_macro modem-buck-boost: modem_layout on PWR {
+        member U = U_MODEM;
+        member L = L_MODEM;
+        member C_IN = C_MODEM_IN;
+        member C_VINA = C_MODEM_VINA;
+        member C_OUT1 = C_MODEM_OUT1;
+        member C_OUT2 = C_MODEM_OUT2;
+        member C_OUT3 = C_MODEM_OUT3;
+        member R_TOP = R_MODEM_FB_TOP;
+        member R_TOP2 = R_MODEM_FB_TOP2;
+        member R_BOT = R_MODEM_FB_BOT;
+        member R_EN_PD = R_MODEM_EN_PD;
+        net VIN = VSYS;
+        net VOUT = port.V3V8;
+        net GND = port.GND;
+        net FB = MODEM_FB;
+        net FB_SERIES = MODEM_FB_SERIES;
+        net L1 = MODEM_L1;
+        net L2 = MODEM_L2;
+        net EN = port.MODEM_EN;
+    }
 }
-
-

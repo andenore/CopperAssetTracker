@@ -1,5 +1,13 @@
 # Latest validation status
 
+The active source and compiler now use in-language macro bindings (2026-10-13).
+See [the source migration record](macro-source-migration.md). Macro asset/maps
+are preserved and checked; the retained assembly lock is stale for the new IR,
+and previous native/route evidence remains historical. A new full-board route
+and fresh assembly review have not been claimed for these changed inputs.
+
+## Prior change-validation checkpoint
+
 Fresh pending-change review: **2026-10-13**. The 97-footprint revision has a new
 successful full route, independent source/macro checkpoint and native DRC
 readback; the full reviewed test suites pass (with explicit environment skips). See

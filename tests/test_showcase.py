@@ -3,6 +3,7 @@ import hashlib
 import json
 from pathlib import Path
 import re
+import subprocess
 import unittest
 from xml.etree import ElementTree
 
@@ -25,9 +26,15 @@ class ShowcaseTests(unittest.TestCase):
 
     def test_snapshot_is_source_bound_and_not_a_release(self):
         sample = json.loads((SHOWCASE / "snapshot.json").read_text())
-        self.assertEqual(sample["canonical_source_sha256"], hashlib.sha256((ROOT / "board.copper").read_bytes()).hexdigest())
+        # These renders retain their original input bindings; they are historical.
+        self.assertEqual(sample["canonical_source_status"], "historical_input_before_macro_source_migration")
+        self.assertNotEqual(sample["canonical_source_sha256"], hashlib.sha256((ROOT / "board.copper").read_bytes()).hexdigest())
+        self.assertRegex(sample["canonical_source_commit"], r"^[0-9a-f]{40}$")
+        def historical_bytes(name):
+            return subprocess.check_output(["git", "show", sample["canonical_source_commit"] + ":" + name], cwd=ROOT)
+        self.assertEqual(sample["canonical_source_sha256"], hashlib.sha256(historical_bytes("board.copper")).hexdigest())
         for name, digest in sample["composition_inputs"].items():
-            self.assertEqual(digest, hashlib.sha256((ROOT / name).read_bytes()).hexdigest())
+            self.assertEqual(digest, hashlib.sha256(historical_bytes(name)).hexdigest())
         source = ROOT / sample["source"]
         if source.exists():
             self.assertEqual(sample["source_sha256"], hashlib.sha256(source.read_bytes()).hexdigest())
