@@ -18,7 +18,7 @@ manufacturing review files.
 
 ![Native KiCad export of the retained CopperAssetTracker routing review](docs/showcase/routing-top.svg)
 
-*Native KiCad export of the 100 × 80 mm `promo-reroute-20261013`
+*Native KiCad export with package pads highlighted gold, of the 100 × 80 mm `promo-reroute-20261013`
 source-matched routing review: 97 footprints, 968 routed track segments and
 six copper layers. This is an unapproved prototype candidate, **not a released
 production package**.*
@@ -250,8 +250,8 @@ its own `electrical.ir.json` in the selected review directory.
 
 ![Component placement, pads and courtyards](docs/showcase/placement.svg)
 
-*Native front fabrication and courtyard layers from the same 97-footprint fresh
-route, with copper omitted for readability. These are the router's actual final
+*Native front pads (gold), fabrication outlines and courtyards from the same 97-footprint
+route, with tracks, vias, fills and reference labels hidden for readability. These are the router's actual final
 poses, not a photograph of assembled hardware.*
 
 The flow combines board-specific fixed anchors, generic placement decisions,
@@ -259,6 +259,13 @@ pin-associated decoupling and rigid RF/power hard macros. Macro ownership keeps
 critical relative placement and current-loop geometry intact during routing.
 
 ### Route, check and iterate
+
+![All six copper layers with native pads, tracks and vias, without copper fills](docs/showcase/routing-all.svg)
+
+*All six copper layers viewed together from above. Native package pads are gold;
+zone fills and solid copper fill graphics are hidden in a temporary plotting copy.
+Package outlines are shown; reference labels are hidden for clarity. The recorded
+PCB and its routing evidence are unchanged.*
 
 ![In2.Cu regional modem supply and signal routing](docs/showcase/routing-inner.svg)
 

@@ -113,6 +113,41 @@ with the new captions and candidate identifier, with no horizontal overflow at
 desktop width or 390 px mobile width. Browser cache keys were updated to avoid
 mixing older artwork/scripts with the new snapshot.
 
+### Figure refresh — 15 October 2026
+
+The five illustrations now show native surface package pads highlighted in gold.
+This makes lands connected to a same-colour plane visible. Placement includes
+native pads as well as fabrication outlines/courtyards. A new combined view shows
+all six copper layers, tracks, vias and package outlines, with zones and solid
+copper fill graphics hidden. Reference/value labels are hidden in placement and
+combined views to avoid overlaps. All views remain unmirrored.
+
+The shared renderer lives in CopperScript's `scripts/render_board_showcase.py`.
+It asks KiCad to plot exact native geometry, making temporary presentation copies
+without saving or refilling the authoritative PCB. `rendering.json` records 97
+footprints, 641 pads, 1,308 track/via items and their preserved geometry hashes;
+the combined view omits 34 zones and nine solid copper graphics.
+
+The retained PCB was relocated to the local validation archive. To refresh its
+artwork, supply that exact file (SHA256 `935320e5d9e65f1438de27f233fec3428af5fcd1e74ccaa69167fe74261f31a8`):
+
+```powershell
+python scripts/generate_readme_assets.py --refresh-figures `
+  --pcb <path-to-retained-CopperAssetTracker.kicad_pcb> `
+  --kicad-cli "C:/Program Files/KiCad/10.0/bin/kicad-cli.exe" `
+  --renderer ../CopperScript/scripts/render_board_showcase.py
+```
+
+This mode verifies the retained PCB, DRC and previous asset hashes before
+rendering. It updates only artwork, rendering metadata and asset hashes, retaining
+the historical source status, input bindings and review results. It does not
+revalidate today's migrated source or change routing/qualification claims.
+
+Refresh checks passed: 12 focused renderer/showcase tests, recorded asset hashes,
+and all five browser view controls at 1,440 px and 390 px widths with no horizontal
+overflow. The full-size link follows the selected view; direct SVG view links
+also work with JavaScript disabled.
+
 Five native check types are ignored: `missing_courtyard`,
 `track_not_centered_on_via`, `tuning_profile_track_geometries`,
 `footprint_filters_mismatch`, `footprint_type_mismatch`. Native fill reconciles

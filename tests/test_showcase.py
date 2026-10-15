@@ -90,11 +90,23 @@ class ShowcaseTests(unittest.TestCase):
 
     def test_images_are_native_svg_and_linked_in_readme(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
-        for name in ("placement", "routing-top", "routing-inner", "routing-bottom"):
+        for name in ("placement", "routing-top", "routing-inner", "routing-bottom", "routing-all"):
             with self.subTest(name=name):
                 path = SHOWCASE / f"{name}.svg"
                 self.assertEqual(ElementTree.parse(path).getroot().tag, "{http://www.w3.org/2000/svg}svg")
                 self.assertIn(f"docs/showcase/{name}.svg", readme)
+
+    def test_rendering_preserves_recorded_board_and_includes_fill_free_stack(self):
+        snapshot = json.loads((SHOWCASE / "snapshot.json").read_text())
+        rendering = json.loads((SHOWCASE / "rendering.json").read_text())
+        self.assertEqual(rendering["pcb_sha256"], snapshot["pcb_sha256"])
+        self.assertEqual(rendering["all_layers"], snapshot["copper_layers"])
+        self.assertEqual(rendering["native_geometry"]["footprints"], snapshot["component_count"])
+        self.assertEqual(rendering["native_geometry"]["tracks_and_vias"], snapshot["track_count"] + snapshot["via_count"])
+        self.assertGreater(rendering["native_geometry"]["pads"], 0)
+        self.assertFalse(rendering["views"]["routing-all.svg"]["copper_fills"])
+        for name in ("placement.svg", "routing-top.svg", "routing-all.svg"):
+            self.assertIn(rendering["pad_color"], (SHOWCASE / name).read_text())
 
     def test_capacitor_examples_use_plain_numbers_and_engineering_units(self):
         electrical = json.loads((SHOWCASE / "electrical-ir.excerpt.json").read_text())

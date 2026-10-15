@@ -1,14 +1,19 @@
 """Board-specific showcase snapshots; never routing or production signoff.
 
 Use the compiler's source/native checkpoint guard and authoritative electrical
-serializer. Placement illustrations deliberately hide copper, keeping the exact
-candidate poses; routing plots use the untouched filled native candidate.
+serializer. Native pads remain visible; a combined view hides fills in a
+temporary presentation copy. The authoritative native candidate is untouched.
 """
 import hashlib
 import json
 from pathlib import Path
 import subprocess
 import argparse
+import shutil
+import sys
+import tempfile
+
+import pcbir
 
 from pcbir.loader import load_design
 from pcbir.serializer import board_to_dict
@@ -18,6 +23,7 @@ from decimal import Decimal
 from checkpoint_source import current_candidate
 
 ROOT = Path(__file__).resolve().parents[1]
+VIEWS = ("placement.svg", "routing-top.svg", "routing-inner.svg", "routing-bottom.svg", "routing-all.svg")
 
 
 def write_json(path, data):
@@ -27,6 +33,44 @@ def write_json(path, data):
 
 def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def render_assets(pcb, cli, renderer, output):
+    with tempfile.TemporaryDirectory(prefix="tracker-figures-") as folder:
+        rendered = Path(folder)
+        subprocess.run([sys.executable, str(renderer), "--pcb", str(pcb),
+                        "--kicad-cli", str(cli), "--output", str(rendered)], check=True)
+        metadata = json.loads((rendered / "rendering.json").read_text())
+        if metadata["pcb_sha256"] != digest(pcb):
+            raise ValueError("Rendering metadata does not describe the native PCB")
+        output.mkdir(parents=True, exist_ok=True)
+        for name in (*VIEWS, "rendering.json"):
+            shutil.copyfile(rendered / name, output / name)
+    return {"renderer_sha256": digest(renderer), "metadata": "rendering.json"}
+
+
+def describe_rendering(snapshot, rendering):
+    snapshot["rendering"] = rendering
+    snapshot["placement_view"] = "Native front package pads (gold), fabrication outlines and courtyards at the recorded poses; tracks, vias and fills omitted; reference/value labels hidden."
+    snapshot["routing_views"] = "Native KiCad exports of the recorded review candidate, with surface package pads highlighted gold; unmirrored top view. The combined six-copper-layer view hides zones and solid copper fill graphics in a temporary copy, preserving native pads, tracks and vias."
+
+
+def refresh_figures(pcb, cli, renderer, output):
+    """Refresh an exact retained candidate without claiming current-source validation."""
+    snapshot_path = output / "snapshot.json"
+    snapshot = json.loads(snapshot_path.read_text(encoding="utf-8"))
+    if digest(pcb) != snapshot["pcb_sha256"]:
+        raise ValueError("The retained snapshot does not describe this PCB")
+    if digest(pcb.parent / "drc.json") != snapshot["native_drc_sha256"]:
+        raise ValueError("Native DRC does not match the retained snapshot")
+    for name, expected in snapshot["rendered_assets"].items():
+        if digest(output / name) != expected:
+            raise ValueError(f"Existing showcase asset does not match its snapshot: {name}")
+    rendering = render_assets(pcb, cli, renderer, output)
+    describe_rendering(snapshot, rendering)
+    for name in (*VIEWS, "rendering.json"):
+        snapshot["rendered_assets"][name] = digest(output / name)
+    write_json(snapshot_path, snapshot)
 
 
 def native_placement_excerpt(pcb):
@@ -52,8 +96,15 @@ def main():
     parser.add_argument("--unlocked-review", action="store_true", help="explicit working-copy revision, not a locked release")
     parser.add_argument("--route-report", type=Path, help="shared route report instead of a manufacturing manifest")
     parser.add_argument("--candidate", help="display identifier for this exact fresh routing review")
+    parser.add_argument("--renderer", type=Path, default=Path(pcbir.__file__).resolve().parents[1] / "scripts/render_board_showcase.py",
+                        help="shared CopperScript native showcase renderer")
+    parser.add_argument("--refresh-figures", action="store_true",
+                        help="refresh only artwork of the checksum-bound retained snapshot; preserve historical source/review evidence")
     args = parser.parse_args()
     pcb = args.pcb.resolve()
+    if args.refresh_figures:
+        refresh_figures(pcb, args.kicad_cli, args.renderer.resolve(), ROOT / "docs/showcase")
+        return
     project = args.project_root.resolve()
     pcb_digest = hashlib.sha256(pcb.read_bytes()).hexdigest()
     board = current_candidate(pcb, project_root=project, locked=True)
@@ -142,24 +193,7 @@ def main():
         "placement_view": "Same candidate poses and pads, with tracks/vias/zones hidden for illustration.",
         "routing_views": "Native KiCad exports of the unchanged filled review candidate; unmirrored top view.",
     }
-    # Select native artwork layers instead of rebuilding or editing copper.
-    # This also preserves required via arrays and immutable macro ownership.
-    snapshot["placement_view"] = "Native front fabrication/courtyard artwork from the same fresh route, with copper omitted."
-    plots = (
-        (pcb, "F.Fab,F.CrtYd,Edge.Cuts", "placement.svg"),
-        (pcb, "F.Cu,F.SilkS,Edge.Cuts", "routing-top.svg"),
-        (pcb, "In2.Cu,Edge.Cuts", "routing-inner.svg"),
-        (pcb, "B.Cu,Edge.Cuts", "routing-bottom.svg"),
-    )
-    for source, layers, name in plots:
-        subprocess.run([args.kicad_cli, "pcb", "export", "svg", "--layers", layers,
-                        "--mode-single", "--fit-page-to-board", "--exclude-drawing-sheet",
-                        "--output", str(output / name), str(source)], check=True)
-        # KiCad emits trailing spaces; normalize text without changing geometry.
-        plot = output / name
-        plot.write_text("\n".join(line.rstrip() for line in
-                                   plot.read_text(encoding="utf-8").splitlines()) + "\n",
-                        encoding="utf-8", newline="\n")
+    describe_rendering(snapshot, render_assets(pcb, args.kicad_cli, args.renderer.resolve(), output))
     if hashlib.sha256(pcb.read_bytes()).hexdigest() != pcb_digest:
         raise ValueError("Rendering changed the authoritative PCB")
     write_json(output / "electrical-ir.excerpt.json", electrical_excerpt)
@@ -167,7 +201,7 @@ def main():
     snapshot["rendered_assets"] = {
         name: hashlib.sha256((output / name).read_bytes()).hexdigest()
         for name in ("electrical-ir.excerpt.json", "physical-ir.excerpt.json",
-                     *(name for _, _, name in plots))
+                     *VIEWS, "rendering.json")
     }
     write_json(output / "snapshot.json", snapshot)
 
