@@ -403,8 +403,8 @@ python scripts/build_battery_revision.py --modem-power `
 Set-Location build/new-power-review
 python -m copperscript route-board board.copper --offline --layers 6 `
   --fab-profile jlcpcb-six-layer `
-  --routing-profile balanced --pitch-mm 0.5 `
-  --fanout-maze --soft-ripup --constrained-pins-first --progressive-guides `
+  --routing-profile balanced `
+  --fanout-maze `
   --plane-contact-radius-mm 3 --plane-stitch-detour-mm 1.5 `
   --verify-plane-fill "C:/Program Files/KiCad/10.0/bin/kicad-cli.exe" `
   --native-evidence-directory native-new --report route-new.json `

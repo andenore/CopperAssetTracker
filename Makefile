@@ -60,7 +60,7 @@ edit:
 
 # Retained pinned-build checkpoint. New solver reviews use route-review below.
 route: pcb
-	$(UV) run --locked copper route-board $(BOARD) $(LOCKED) $(PHYSICAL) --candidates 1 --pitch-mm 0.5 --passes 2 --search-budget 30000 --repair-budget-multiplier 2 --fanout --fanout-maze --package-access-trials 0 --package-pattern-trials 0 --package-initial-pair-states 0 --soft-ripup --constrained-pins-first --progressive-guides --no-early-plane-stitch --plane-stitch-step-mm 0.1 --plane-maze-step-mm 0.025 --plane-maze-budget 50000 --plane-contact-radius-mm 3 --plane-stitch-detour-mm 1.5 --progress --verify-plane-fill "$(KICAD_CLI)" --report $(BUILD)/route.json -o $(ROUTED)
+	$(UV) run --locked copper route-board $(BOARD) $(LOCKED) $(PHYSICAL) --candidates 1 --fanout --fanout-maze --package-initial-pair-states 0 --no-early-plane-stitch --plane-stitch-step-mm 0.1 --plane-maze-step-mm 0.025 --plane-maze-budget 50000 --plane-contact-radius-mm 3 --plane-stitch-detour-mm 1.5 --progress --verify-plane-fill "$(KICAD_CLI)" --report $(BUILD)/route.json -o $(ROUTED)
 
 # A bounded route can still exit nonzero with a saved draft. See
 # docs/autonomous-routing-review.md for shared rerouting and native checks;
@@ -71,7 +71,7 @@ route: pcb
 route-review:
 	$(if $(strip $(REVIEW_COPPER)),,$(error Set REVIEW_COPPER to a current CopperScript command; this target does not upgrade pinned dependencies))
 	$(UV) run --locked python -c "from pathlib import Path; Path('$(REVIEW_DIR)').mkdir(parents=True, exist_ok=False)"
-	$(REVIEW_COPPER) route-board $(BOARD) $(LOCKED) $(PHYSICAL) --routing-profile $(REVIEW_PROFILE) --pitch-mm 0.5 --fanout-maze --soft-ripup --constrained-pins-first --progressive-guides --plane-contact-radius-mm 3 --plane-stitch-detour-mm 1.5 --verify-plane-fill "$(KICAD_CLI)" --native-evidence-directory "$(REVIEW_DIR)/native" --report "$(REVIEW_DIR)/route.json" -o "$(REVIEW_DIR)/candidate.kicad_pcb" --progress
+	$(REVIEW_COPPER) route-board $(BOARD) $(LOCKED) $(PHYSICAL) --routing-profile $(REVIEW_PROFILE) --fanout-maze --plane-contact-radius-mm 3 --plane-stitch-detour-mm 1.5 --verify-plane-fill "$(KICAD_CLI)" --native-evidence-directory "$(REVIEW_DIR)/native" --report "$(REVIEW_DIR)/route.json" -o "$(REVIEW_DIR)/candidate.kicad_pcb" --progress
 
 render: pcb
 	"$(KICAD_CLI)" pcb export svg --layers F.Cu,B.Cu --common-layers Edge.Cuts --mode-multi --fit-page-to-board --exclude-drawing-sheet -o $(BUILD)/layers/ $(PCB)
