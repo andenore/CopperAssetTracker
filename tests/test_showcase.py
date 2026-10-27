@@ -7,8 +7,7 @@ import subprocess
 import unittest
 from xml.etree import ElementTree
 
-from pcbir.loader import load_design
-from pcbir.serializer import board_to_dict
+from copper_cli import compile_board
 
 ROOT = Path(__file__).resolve().parents[1]
 SHOWCASE = ROOT / "docs/showcase"
@@ -16,7 +15,7 @@ SHOWCASE = ROOT / "docs/showcase"
 
 class ShowcaseTests(unittest.TestCase):
     def test_electrical_excerpt_matches_current_authoritative_ir(self):
-        current = board_to_dict(load_design(ROOT / "board.copper", locked=True, offline=True))
+        current = compile_board()
         sample = json.loads((SHOWCASE / "electrical-ir.excerpt.json").read_text())
         for key in ("schema", "kind", "name"):
             self.assertEqual(sample[key], current[key])

@@ -1,5 +1,5 @@
 param(
-    [ValidateSet('all','fetch','check','test','compile','pcb','edit','route','render','verify','power-probes','assembly','manufacturing','order')]
+    [ValidateSet('all','fetch','check','test','compile','pcb','edit','route','render','verify','assembly','manufacturing','order')]
     [string]$Target = 'all',
     [string]$Uv = 'uv',
     [string]$KiCadCli = "$env:ProgramW6432/KiCad/10.0/bin/kicad-cli.exe"
