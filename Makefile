@@ -27,7 +27,7 @@ CAM_AUDIT_ARGS ?=
 REVIEW_COPPER ?=
 REVIEW_DIR ?= $(BUILD)/autonomous-review
 REVIEW_PROFILE ?= balanced
-.PHONY: all fetch check test compile pcb edit route route-review render verify power-probes assembly manufacturing cam-audit engineering-audit qualification order
+.PHONY: all fetch check test compile pcb edit route route-review render verify assembly manufacturing cam-audit engineering-audit qualification order
 all: check test compile pcb
 
 fetch:
@@ -41,13 +41,6 @@ check:
 
 test:
 	$(UV) run --locked python -m pytest tests -q
-
-# Isolated terminated-port fixtures; never a full-board production signoff.
-power-probes: check
-	$(UV) run --locked python scripts/probe_power_macros.py --rotation 0 --kicad-cli "$(KICAD_CLI)"
-	$(UV) run --locked python scripts/probe_power_macros.py --rotation 90 --kicad-cli "$(KICAD_CLI)"
-	$(UV) run --locked python scripts/probe_power_macros.py --rotation 180 --kicad-cli "$(KICAD_CLI)"
-	$(UV) run --locked python scripts/probe_power_macros.py --rotation 270 --kicad-cli "$(KICAD_CLI)"
 
 compile: check
 	$(UV) run --locked copper compile $(BOARD) $(LOCKED) -o $(BUILD)/board.json

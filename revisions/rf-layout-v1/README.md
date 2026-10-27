@@ -174,3 +174,6 @@ The review outcome is **changes required**, not RF-approved: RF ESD and matching
 DC-isolation adaptation are unresolved, launches/returns need field modelling,
 and antenna enclosure/bench qualification is absent. The original routed PCB is
 unchanged; no new production Gerbers, orders or release approvals are claimed.
+
+> `scripts/build_battery_revision.py` is retired (it read private CopperScript
+> internals); recover it from Git history to rebuild this revision.
