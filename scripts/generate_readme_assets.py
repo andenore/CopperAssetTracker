@@ -182,7 +182,7 @@ def main():
         "macro_binding": "in_language" if design.electrical.physical_macros else "historical_scenes",
         "review_inputs": {name: hashlib.sha256((project / name).read_bytes()).hexdigest() for name in (
             "board.copper", "copper.mod", "copper.lock", "assembly.lock",
-            "packages/tracker/power_tree.copper", "nrf-antenna-macro.json",
+            "src/tracker/power_tree.copper", "nrf-antenna-macro.json",
             "logic-power-macro.json", "modem-power-macro.json")},
         "component_count": len(board.placements), "net_count": len(board.nets),
         "track_count": len(board.tracks), "via_count": len(board.vias),

@@ -29,7 +29,7 @@ class TrackerTests(unittest.TestCase):
         self.assertFalse(has_errors(check(self.board)))
 
     def test_reusable_parts_are_library_owned(self):
-        self.assertEqual({p.name for p in (ROOT / "packages/tracker").glob("*.copper")}, {"power_tree.copper"})
+        self.assertEqual({p.name for p in (ROOT / "src/tracker").glob("*.copper")}, {"power_tree.copper"})
         self.assertFalse(list((ROOT / "footprints").rglob("*.kicad_mod")))
         self.assertFalse((ROOT / "scripts/import_modem_footprint.py").exists())
         expected = {

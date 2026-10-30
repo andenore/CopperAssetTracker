@@ -1,1 +1,9 @@
 * text=auto eol=lf
+
+# Portable Rust client configuration and authored source bytes.
+*.mk text eol=lf
+Makefile text eol=lf
+.copper-version text eol=lf
+*.copper text eol=lf
+*.cjs text eol=lf
+*.yml text eol=lf

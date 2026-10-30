@@ -65,7 +65,7 @@ def main():
         'native_violations': len(native['violations']),
         'native_error_count': sum(v['severity'] == 'error' for v in native['violations']),
         'inputs': {'pcb': pcb_hash, 'source': hash_file(args.project_root / 'board.copper'),
-            'power_composition': hash_file(args.project_root / 'packages/tracker/power_tree.copper'),
+            'power_composition': hash_file(args.project_root / 'src/tracker/power_tree.copper'),
             'resolved_lock': hash_file(args.project_root / 'copper.lock'),
             'assembly_lock': hash_file(args.project_root / 'assembly.lock'),
             'modem_macro_scene': hash_file(args.project_root / 'modem-power-macro.json'),

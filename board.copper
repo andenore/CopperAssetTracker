@@ -13,7 +13,7 @@ board CopperAssetTracker {
     import gct_sim "github.com/andenore/CopperLib/packages/parts/gct/sim8060";
     import johanson "github.com/andenore/CopperLib/packages/parts/johanson/2450at18a0100001e";
     import swd "github.com/andenore/CopperLib/packages/interfaces/arm/swd-10pin";
-    import tracker "./packages/tracker";
+    import tracker "./src/tracker";
     import simcom "github.com/andenore/CopperLib/packages/parts/simcom/sim7670g-lngv";
     import translator "github.com/andenore/CopperLib/packages/parts/ti/sn74axc2t245";
     import onsemi "github.com/andenore/CopperLib/packages/parts/onsemi/bss138";

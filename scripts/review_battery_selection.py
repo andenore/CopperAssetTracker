@@ -22,7 +22,7 @@ def assess(root: Path, library: Path):
     if cell["id"] != selection["selected_external_cell"] or charger["id"] != "ti.bq24072":
         raise ValueError("unexpected selected cell or charger identity")
     pack = cell["datasheet_pack"]
-    actual_source = hash_file(root / "packages/tracker/power_tree.copper")
+    actual_source = hash_file(root / "src/tracker/power_tree.copper")
     source_matches = actual_source == selection["reviewed_power_source_sha256"]
     checks = []
     for identifier, metric, value, maximum, basis in (

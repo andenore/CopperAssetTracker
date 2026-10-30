@@ -57,11 +57,11 @@ def main():
         raise ValueError("pose seed must be the pinned RF checkpoint")
     screen = assess(ROOT, library)
     work.mkdir(parents=True, exist_ok=False)
-    shutil.copytree(ROOT / "packages", work / "packages")
+    shutil.copytree(ROOT / "src", work / "src")
     shutil.copytree(ROOT / "assets", work / "assets")
     for name in ("board.copper", "nrf-antenna-macro.json", "logic-power-macro.json", "modem-power-macro.json"):
         shutil.copy2(ROOT / name, work / name)
-    shutil.copy2(ROOT / "revisions/battery-v1/power_tree.copper", work / "packages/tracker/power_tree.copper")
+    shutil.copy2(ROOT / "revisions/battery-v1/power_tree.copper", work / "src/tracker/power_tree.copper")
     pose_changes = load_json(ROOT / "revisions/battery-v1/placement.json")["poses"]
     source = (work / "board.copper").read_text(encoding="utf-8")
     if args.modem_power:

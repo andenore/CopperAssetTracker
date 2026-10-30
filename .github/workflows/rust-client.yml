@@ -1,0 +1,35 @@
+name: Rust source checks (migration subset, not release)
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  source:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-latest]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install pinned Rust compiler
+        run: |
+          rustup toolchain install 1.97.0 --profile minimal
+          cargo +1.97.0 install --git https://github.com/andenore/CopperScript.git --rev "$(cat .copper-version)" --locked --force copper
+      - name: Resolve exact locked inputs and check each active board
+        run: |
+          set -euo pipefail
+          copper lock board.copper --locked
+          copper check board.copper --locked --offline
+          copper compile board.copper --locked --offline -o build/ci/main.json
+      - name: Public CLI acceptance subset
+        env:
+          COPPER_TEST_BIN: copper
+        run: node --test tests/rust-cli.test.cjs

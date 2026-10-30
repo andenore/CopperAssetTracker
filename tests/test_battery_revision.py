@@ -22,7 +22,7 @@ class BatteryRevisionSourceTests(unittest.TestCase):
 
     def test_new_circuit_is_separate_from_current_locked_source(self):
         draft = (ROOT / "revisions/battery-v1/power_tree.copper").read_text()
-        canonical = (ROOT / "packages/tracker/power_tree.copper").read_text()
+        canonical = (ROOT / "src/tracker/power_tree.copper").read_text()
         self.assertIn("charger.BQ24072TRGTR", draft)
         self.assertIn("charger.BQ24072RGTR", canonical)
         self.assertIn("role = decoupling", draft)
