@@ -1,3 +1,7 @@
+# Compiler commands use the Rust binary; Python remains for project helpers/tests.
+CARGO_HOME ?= $(if $(USERPROFILE),$(subst \,/,$(USERPROFILE))/.cargo,$(HOME)/.cargo)
+COPPER ?= "$(CARGO_HOME)/bin/copper$(if $(filter Windows_NT,$(OS)),.exe,)"
+COPPER_RUST_REV := 9c0b61b354c5eb4771ddb22204889a80e67600ac
 # Build algorithms come from the pinned CopperScript dependency.
 .DEFAULT_GOAL := all
 .NOTPARALLEL:
@@ -23,21 +27,21 @@ else
 KICAD_PYTHON ?= /usr/bin/python3
 endif
 CAM_AUDIT_ARGS ?=
-# Explicit current CopperScript command for a review, not a lockfile upgrade.
-REVIEW_COPPER ?=
+# Reviews use the same Rust compiler by default.
+REVIEW_COPPER ?= $(COPPER)
 REVIEW_DIR ?= $(BUILD)/autonomous-review
 REVIEW_PROFILE ?= balanced
 .PHONY: all fetch check test compile pcb edit route route-review render verify power-probes assembly manufacturing cam-audit engineering-audit qualification order
 all: check test compile pcb
 
 fetch:
-	$(UV) sync --locked
-	$(UV) run --locked copper lock $(BOARD) --locked
-	$(UV) run --locked copper check $(BOARD) --locked
-	$(UV) run --locked copper audit-footprints $(BOARD) --locked
+	$(UV) sync --locked --all-extras
+	$(COPPER) lock $(BOARD) --locked
+	$(COPPER) check $(BOARD) --locked
+	$(COPPER) audit-footprints $(BOARD) --locked
 
 check:
-	$(UV) run --locked copper check $(BOARD) $(LOCKED)
+	$(COPPER) check $(BOARD) $(LOCKED)
 
 test:
 	$(UV) run --locked python -m pytest tests -q
@@ -50,17 +54,17 @@ power-probes: check
 	$(UV) run --locked python scripts/probe_power_macros.py --rotation 270 --kicad-cli "$(KICAD_CLI)"
 
 compile: check
-	$(UV) run --locked copper compile $(BOARD) $(LOCKED) -o $(BUILD)/board.json
+	$(COPPER) compile $(BOARD) $(LOCKED) -o $(BUILD)/board.json
 
 pcb: check
-	$(UV) run --locked copper plan-layout $(BOARD) $(LOCKED) $(PHYSICAL) --candidates 1 -o $(PCB) --report $(BUILD)/placement.json
+	$(COPPER) plan-layout $(BOARD) $(LOCKED) $(PHYSICAL) --candidates 1 -o $(PCB) --report $(BUILD)/placement.json
 
 edit:
-	$(UV) run --locked copper edit-mechanical $(BOARD) $(LOCKED) $(PHYSICAL)
+	$(COPPER) edit-mechanical $(BOARD) $(LOCKED) $(PHYSICAL)
 
-# Retained pinned-build checkpoint. New solver reviews use route-review below.
+# Rust routing and independent native verification remain mandatory.
 route: pcb
-	$(UV) run --locked copper route-board $(BOARD) $(LOCKED) $(PHYSICAL) --candidates 1 --pitch-mm 0.5 --passes 2 --search-budget 30000 --repair-budget-multiplier 2 --fanout --fanout-maze --package-access-trials 0 --package-pattern-trials 0 --package-initial-pair-states 0 --soft-ripup --constrained-pins-first --progressive-guides --no-early-plane-stitch --plane-stitch-step-mm 0.1 --plane-maze-step-mm 0.025 --plane-maze-budget 50000 --plane-contact-radius-mm 3 --plane-stitch-detour-mm 1.5 --progress --verify-plane-fill "$(KICAD_CLI)" --report $(BUILD)/route.json -o $(ROUTED)
+	$(COPPER) route-board $(BOARD) $(LOCKED) $(PHYSICAL) --candidates 1 --fanout --fanout-maze --package-initial-pair-states 0 --no-early-plane-stitch --plane-stitch-step-mm 0.1 --plane-maze-step-mm 0.025 --plane-maze-budget 50000 --plane-contact-radius-mm 3 --plane-stitch-detour-mm 1.5 --progress --verify-plane-fill "$(KICAD_CLI)" --report $(BUILD)/route.json -o $(ROUTED)
 
 # A bounded route can still exit nonzero with a saved draft. See
 # docs/autonomous-routing-review.md for shared rerouting and native checks;
@@ -71,7 +75,7 @@ route: pcb
 route-review:
 	$(if $(strip $(REVIEW_COPPER)),,$(error Set REVIEW_COPPER to a current CopperScript command; this target does not upgrade pinned dependencies))
 	$(UV) run --locked python -c "from pathlib import Path; Path('$(REVIEW_DIR)').mkdir(parents=True, exist_ok=False)"
-	$(REVIEW_COPPER) route-board $(BOARD) $(LOCKED) $(PHYSICAL) --routing-profile $(REVIEW_PROFILE) --pitch-mm 0.5 --fanout-maze --soft-ripup --constrained-pins-first --progressive-guides --plane-contact-radius-mm 3 --plane-stitch-detour-mm 1.5 --verify-plane-fill "$(KICAD_CLI)" --native-evidence-directory "$(REVIEW_DIR)/native" --report "$(REVIEW_DIR)/route.json" -o "$(REVIEW_DIR)/candidate.kicad_pcb" --progress
+	$(REVIEW_COPPER) route-board $(BOARD) $(LOCKED) $(PHYSICAL) --routing-profile $(REVIEW_PROFILE) --fanout-maze --plane-contact-radius-mm 3 --plane-stitch-detour-mm 1.5 --verify-plane-fill "$(KICAD_CLI)" --native-evidence-directory "$(REVIEW_DIR)/native" --report "$(REVIEW_DIR)/route.json" -o "$(REVIEW_DIR)/candidate.kicad_pcb" --progress
 
 render: pcb
 	"$(KICAD_CLI)" pcb export svg --layers F.Cu,B.Cu --common-layers Edge.Cuts --mode-multi --fit-page-to-board --exclude-drawing-sheet -o $(BUILD)/layers/ $(PCB)
@@ -82,22 +86,27 @@ verify:
 
 # Exact BOM selections are user-approved; CPL/engineering gates remain separate.
 assembly: check
-	$(UV) run --locked copper assembly check $(BOARD) $(LOCKED) --lock assembly.lock --report $(BUILD)/assembly.json
-	$(UV) run --locked copper assembly bom $(BOARD) $(LOCKED) --lock assembly.lock -o $(BUILD)/bom.csv
+	$(COPPER) assembly check $(BOARD) $(LOCKED) --lock assembly.lock --report $(BUILD)/assembly.json
+	$(COPPER) assembly bom $(BOARD) $(LOCKED) --lock assembly.lock -o $(BUILD)/bom.csv
 
 manufacturing: assembly route verify
-	$(UV) run --locked copper export-manufacturing $(ROUTED) --kicad-cli "$(KICAD_CLI)" --skip-independent-cam --bom $(BUILD)/bom.csv --replace -o $(BUILD)/manufacturing
+	$(COPPER) export-manufacturing $(ROUTED) --kicad-cli "$(KICAD_CLI)" --skip-independent-cam --bom $(BUILD)/bom.csv --replace -o $(BUILD)/manufacturing
 
 cam-audit: check
-	$(UV) run --locked --extra qualification copper audit-cam $(QUALIFICATION_DIR) --kicad-python "$(KICAD_PYTHON)" $(CAM_AUDIT_ARGS) --report $(QUALIFICATION_REPORTS)/cam.json
+	$(COPPER) audit-cam $(QUALIFICATION_DIR) --kicad-python "$(KICAD_PYTHON)" $(CAM_AUDIT_ARGS) --report $(QUALIFICATION_REPORTS)/cam.json
 
 engineering-audit: check
-	$(UV) run --locked --extra qualification copper assess-engineering $(QUALIFICATION_PCB) --plan docs/engineering-plan.json --kicad-python "$(KICAD_PYTHON)" --report $(QUALIFICATION_REPORTS)/engineering.json
+	$(COPPER) assess-engineering $(QUALIFICATION_PCB) --plan docs/engineering-plan.json --kicad-python "$(KICAD_PYTHON)" --report $(QUALIFICATION_REPORTS)/engineering.json
 
 # Audits intentionally stop on incomplete evidence; run the two audit targets
 # separately to collect both reports. Choose a new QUALIFICATION_RUN each time.
 qualification:
-	$(UV) run --locked --extra qualification copper qualification-gate $(QUALIFICATION_DIR) --plan docs/engineering-plan.json --cam-report $(QUALIFICATION_REPORTS)/cam.json --engineering-report $(QUALIFICATION_REPORTS)/engineering.json --report $(QUALIFICATION_REPORTS)/gate.json
+	$(COPPER) qualification-gate $(QUALIFICATION_DIR) --plan docs/engineering-plan.json --cam-report $(QUALIFICATION_REPORTS)/cam.json --engineering-report $(QUALIFICATION_REPORTS)/engineering.json --report $(QUALIFICATION_REPORTS)/gate.json
 
 order: manufacturing cam-audit engineering-audit qualification
 	$(UV) run --locked python -c "print('Recheck live stock, RF/battery qualification and JLC Standard PCBA BOM/CPL preview before uploading build/manufacturing. This command does not order anything.')"
+
+.PHONY: install-compiler
+install-compiler:
+	rustup toolchain install 1.97.0 --profile minimal
+	cargo +1.97.0 install --git https://github.com/andenore/CopperScript.git --rev $(COPPER_RUST_REV) --locked --force copper

@@ -34,8 +34,9 @@ class EngineeringPlanTests(unittest.TestCase):
         makefile = (ROOT / "Makefile").read_text()
         self.assertIn("order: manufacturing cam-audit engineering-audit qualification", makefile)
         self.assertIn("manufacturing: assembly route verify", makefile)
-        self.assertIn("copper qualification-gate", makefile)
-        self.assertEqual(makefile.count("--extra qualification copper"), 3)
+        for command in ("audit-cam", "assess-engineering", "qualification-gate"):
+            self.assertEqual(makefile.count("$(COPPER) " + command + " "), 1)
+        self.assertIn('"$(CARGO_HOME)/bin/copper', makefile)
         lock = json.loads((ROOT / "assembly.lock").read_text())
         self.assertEqual(len(lock["selections"]), 83)
         self.assertTrue(all(selection["reviewed"] for selection in lock["selections"]))

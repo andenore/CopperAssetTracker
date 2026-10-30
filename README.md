@@ -1,5 +1,20 @@
 # CopperAssetTracker
 
+## Rust compiler (default)
+
+The normal Make and Windows build commands select Cargo's Rust copper executable,
+using CARGO_HOME/bin/copper (normally ~/.cargo/bin/copper). The compiler and
+Python helper source are pinned to CopperScript 9c0b61b354c5eb4771ddb22204889a80e67600ac.
+
+    make install-compiler
+    uv sync --locked --all-extras
+
+
+COPPER can select another explicit Rust executable. Python is retained for
+project helpers and tests, not as a compiler fallback. Rust does not yet implement audit-cam, assess-engineering or qualification-gate. These targets fail explicitly; their required gates are retained.
+The library, assembly and board inputs are unchanged. Historical results below
+retain their recorded compiler and inputs; this migration does not qualify a new run.
+
 LLM agents: start with `copper agent-guide` in the selected CopperScript
 environment; see [the project pointer](AGENTS.md) for older compiler pins.
 
@@ -89,7 +104,7 @@ Its source builder composes these inputs; it does not repair routed copper.
 Activate a current reviewed CopperScript environment, then run:
 
 ```console
-make route-review REVIEW_COPPER="python -m copperscript" REVIEW_DIR=build/review-new
+make route-review REVIEW_DIR=build/review-new
 ```
 
 Use a new directory. The wrapper uses the canonical 83-part source and locked

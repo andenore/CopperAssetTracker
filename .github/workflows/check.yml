@@ -11,5 +11,7 @@ jobs:
         with:
           path: CopperAssetTracker
       - uses: astral-sh/setup-uv@v6
+      - name: Install pinned Rust compiler
+        run: make install-compiler
       - run: make fetch
       - run: make check test compile
