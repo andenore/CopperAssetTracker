@@ -79,20 +79,14 @@ insulated harness are not JLCPCB assembly components. Crimp/terminate holder and
 sensor leads to the specified connector assignment; verify polarity by measurement
 before connecting the board. A ready-made 18650 cable is not automatically safe.
 
-## Reproduce the bounded review
+## Bounded review record
 
-From this project, with the new CopperLib working copy explicitly supplied:
-
-```powershell
-uv run --locked python scripts/review_battery_selection.py --library-review-root ../CopperLib --output build/battery-selection-20261010-v2.json
-```
-
-The output is exclusive: preserve old reports and choose a new name for a later
-review. Exit 1 means a failed screen; exit 2 means unresolved checks. Neither
-authorizes charging or ordering. A power-source hash mismatch invalidates both
-voltage and nominal-temperature screens. No PCB, BOM or lock is modified.
-The report hashes inputs and shared algorithms, has `qualified_release=false`,
-and explicitly identifies its **unlocked** library review. Native RF/CAM checks do not assess battery suitability; these are separate
+The review script, `scripts/review_battery_selection.py`, drove CopperScript's
+internal Python APIs and has been removed; it remains in the history at
+`8ac4fea`. Its saved reports stay the record: each hashes its inputs and shared
+algorithms, has `qualified_release=false`, and explicitly identifies its
+**unlocked** library review. Neither a failed nor an unresolved screen
+authorized charging or ordering. Native RF/CAM checks do not assess battery suitability; these are separate
 requirements.
 
 The combined modem-power/battery revision is the latest routed review. Follow its

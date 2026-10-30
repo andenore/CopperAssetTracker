@@ -1,13 +1,39 @@
 """Board bindings stay local; reusable requirements/algorithms do not."""
 import json
+import os
 from pathlib import Path
+import shutil
+import subprocess
 import unittest
 
-from pcbir.engineering_qualification import load_contract
-from pcbir.packages import resolve_module_root
-from pcbir.stackup_qualification import resolve_stackup_context
-
 ROOT = Path(__file__).parents[1]
+CACHE = ROOT / ".copper-cache/pkg"
+# Requirements every contract of a kind must name; each needs reviewed external evidence.
+REQUIRED = {
+    "rf": {"matching-review", "impedance", "prototype-rf"},
+    "power": {"component-ratings", "current-capacity", "layout-review", "transient", "prototype-power"},
+    "interface": {"operating-mode", "layout-review", "impedance", "signal-integrity", "prototype-interface"},
+}
+
+
+def load_contract(path):
+    contract = json.loads(Path(path).read_text(encoding="utf-8"))
+    assert contract["schema"] == "copperscript-engineering-contract/v0.1" and contract["kind"] in REQUIRED, path
+    ids = [item["id"] for item in contract["requirements"]]
+    assert len(ids) == len(set(ids)) and REQUIRED[contract["kind"]] <= set(ids), path
+    for item in contract["requirements"]:
+        assert item["stage"] in {"design", "simulation", "bench"} and item["description"].strip(), item
+        if item["id"] in REQUIRED[contract["kind"]]:
+            assert item["algorithm"] == "external", item
+    return contract
+
+
+def library_root(path):
+    """The verified CopperLib cache entry (`make fetch`) that holds a plan input."""
+    relative = path.resolve().relative_to(CACHE.resolve())
+    root = CACHE / relative.parts[0]
+    assert "module github.com/andenore/CopperLib" in (root / "copper.mod").read_text(), root
+    return root.resolve()
 
 
 class EngineeringPlanTests(unittest.TestCase):
@@ -15,28 +41,39 @@ class EngineeringPlanTests(unittest.TestCase):
         plan_path = ROOT / "docs/engineering-plan.json"
         plan = json.loads(plan_path.read_text())
         self.assertEqual(len(plan["contracts"]), 7)
-        library = resolve_module_root(ROOT / "board.copper", "github.com/andenore/CopperLib",
-                                      locked=True, offline=True)
+        roots = set()
         for entry in plan["contracts"]:
             path = (plan_path.parent / entry["path"]).resolve()
-            self.assertTrue(path.is_relative_to(library))
+            roots.add(library_root(path))
             self.assertFalse(load_contract(path)["production_publishable"])
-        context = resolve_stackup_context(plan_path, plan)
-        self.assertTrue(context["stackup"]["reviewed"])
-        self.assertEqual(context["stackup"]["selected_profile"], "JLC06161H-3313")
-        self.assertEqual(sum(layer["thickness_nm"] for layer in context["stackup"]["physical_layers"]), 1538400)
-        self.assertIsNone(context["stackup"]["finished_via_plating_nm"])
-        self.assertTrue(all(layer["loss_tangent"] is None for layer in context["stackup"]["physical_layers"] if layer["kind"] == "dielectric"))
+        self.assertEqual(len(roots), 1)
+        selected = plan["context"]["stackup"]
+        # Consumers select and review; supplier facts live only in the library profile.
+        self.assertEqual(set(selected), {"profile_path", "reviewed"})
+        self.assertTrue(selected["reviewed"])
+        profile_path = plan_path.parent / selected["profile_path"]
+        self.assertEqual(library_root(profile_path), roots.pop())
+        stackup = json.loads(profile_path.read_text())
+        self.assertEqual(stackup["schema"], "copperscript-fabrication-stackup/v0.1")
+        self.assertEqual(stackup["selected_profile"], "JLC06161H-3313")
+        self.assertEqual(sum(layer["thickness_nm"] for layer in stackup["physical_layers"]), 1538400)
+        self.assertIsNone(stackup["finished_via_plating_nm"])
+        self.assertTrue(all(layer["loss_tangent"] is None for layer in stackup["physical_layers"] if layer["kind"] == "dielectric"))
         self.assertFalse(plan["context"]["operating_envelope"]["reviewed"])
         self.assertEqual(plan["evidence"], {})
 
     def test_ordering_keeps_existing_review_and_new_qualification_gates(self):
-        makefile = (ROOT / "Makefile").read_text()
-        self.assertIn("order: manufacturing cam-audit engineering-audit qualification", makefile)
-        self.assertIn("manufacturing: assembly route verify", makefile)
-        for command in ("audit-cam", "assess-engineering", "qualification-gate"):
-            self.assertEqual(makefile.count("$(COPPER) " + command + " "), 1)
-        self.assertIn('"$(CARGO_HOME)/bin/copper', makefile)
+        make = shutil.which("make")
+        self.assertIsNotNone(make, "GNU Make is required for the workflow gate test")
+        shell = Path(os.environ.get("ProgramFiles", "C:/Program Files")) / "Git/bin/bash.exe"
+        for action in ("package", "manufacturing", "order"):
+            args = [make, action]
+            if os.name == "nt" and shell.is_file():
+                args.append("SHELL=" + str(shell).replace("\\", "/"))
+            result = subprocess.run(args, cwd=ROOT, capture_output=True, text=True, timeout=30)
+            self.assertNotEqual(result.returncode, 0, action)
+            self.assertIn("Unsupported migration operation:", result.stderr)
+            self.assertIn("No files exported", result.stderr)
         lock = json.loads((ROOT / "assembly.lock").read_text())
         self.assertEqual(len(lock["selections"]), 83)
         self.assertTrue(all(selection["reviewed"] for selection in lock["selections"]))

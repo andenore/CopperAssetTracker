@@ -1,7 +1,7 @@
 # Thin Windows entry point; all settings and commands live in the Make adapter.
 [CmdletBinding()]
 param(
- [ValidateSet('fetch','check','compile','power-check','layout','edit','test-smoke','test','route','route-draft','assembly','package','manufacturing','order','install-compiler')]
+ [ValidateSet('fetch','check','compile','power-check','layout','edit','test-smoke','test-board','test','route','route-draft','assembly','package','manufacturing','order','install-compiler')]
  [string]$Action='check',
  [string]$Target='main',
  [string]$Copper='copper',

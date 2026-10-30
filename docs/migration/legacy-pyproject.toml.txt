@@ -12,10 +12,7 @@ qualification = ["copperscript[qualification]"]
 package = false
 
 [tool.uv.sources]
-copperscript = { git = "https://github.com/andenore/CopperScript.git", rev = "9c0b61b354c5eb4771ddb22204889a80e67600ac" }
+copperscript = { git = "https://github.com/andenore/CopperScript.git", rev = "eb926375f2318ea15c89ec92873c3263af730609" }
 
 [dependency-groups]
 dev = ["pytest>=8"]
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]

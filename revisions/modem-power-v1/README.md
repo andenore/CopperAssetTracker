@@ -65,3 +65,6 @@ nets and both USB pairs connected, zero native opens/violations/islands and four
 verified via-free modem bypass feeds. It remains an unlocked, unqualified review.
 Exact artifacts, input bindings and remaining release obligations are maintained
 in [validation](../../docs/validation.md) and [production plan](../../docs/production-plan.md).
+
+> `scripts/build_battery_revision.py` is retired (it read private CopperScript
+> internals); recover it from Git history to rebuild this revision.

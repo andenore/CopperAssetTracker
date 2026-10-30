@@ -71,8 +71,8 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "copperscript", git = "https://github.com/andenore/CopperScript.git?rev=9c0b61b354c5eb4771ddb22204889a80e67600ac" },
-    { name = "copperscript", extras = ["qualification"], marker = "extra == 'qualification'", git = "https://github.com/andenore/CopperScript.git?rev=9c0b61b354c5eb4771ddb22204889a80e67600ac" },
+    { name = "copperscript", git = "https://github.com/andenore/CopperScript.git?rev=eb926375f2318ea15c89ec92873c3263af730609" },
+    { name = "copperscript", extras = ["qualification"], marker = "extra == 'qualification'", git = "https://github.com/andenore/CopperScript.git?rev=eb926375f2318ea15c89ec92873c3263af730609" },
 ]
 provides-extras = ["qualification"]
 
@@ -82,7 +82,7 @@ dev = [{ name = "pytest", specifier = ">=8" }]
 [[package]]
 name = "copperscript"
 version = "0.1.0"
-source = { git = "https://github.com/andenore/CopperScript.git?rev=9c0b61b354c5eb4771ddb22204889a80e67600ac#9c0b61b354c5eb4771ddb22204889a80e67600ac" }
+source = { git = "https://github.com/andenore/CopperScript.git?rev=eb926375f2318ea15c89ec92873c3263af730609#eb926375f2318ea15c89ec92873c3263af730609" }
 dependencies = [
     { name = "numpy" },
 ]

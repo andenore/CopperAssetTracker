@@ -2,6 +2,7 @@
 SHELL := bash
 .DEFAULT_GOAL := check
 COPPER ?= copper
+PYTHON ?= python
 COPPER_RUST_REV := $(strip $(file <.copper-version))
 TARGET ?= main
 include make/targets/$(TARGET).mk
@@ -10,7 +11,7 @@ OUT := build/$(TARGET)
 KICAD_CLI ?= kicad-cli
 RUN_DIR ?=
 EXTRA_ROUTE_ARGS ?=
-.PHONY: check compile power-check layout edit fetch install-compiler test-smoke test route route-draft assembly package manufacturing order
+.PHONY: check compile power-check layout edit fetch install-compiler test-smoke test-board test route route-draft assembly package manufacturing order
 fetch:
 	"$(COPPER)" lock "$(SOURCE)" --locked
 	"$(COPPER)" audit-footprints "$(SOURCE)" --locked
@@ -26,6 +27,8 @@ edit:
 	"$(COPPER)" edit-mechanical "$(SOURCE)" $(RESOLVE_ARGS) --layers $(LAYERS) --fab-profile $(FAB_PROFILE)
 test-smoke:
 	COPPER_TEST_BIN="$(COPPER)" node --test tests/rust-cli.test.cjs
+test-board:
+	COPPER="$(COPPER)" "$(PYTHON)" -m pytest tests -q
 test:
 	@echo "Full acceptance is not migrated; see docs/project-migration.md. Run test-smoke for the public-CLI subset." >&2; exit 3
 # Diagnostic route, not a freshness-checked package/release operation.

@@ -1,7 +1,7 @@
 # Rust project migration
 
-Branch: `codex/rust-client-layout`. Preparation, not completed board qualification.
-Compiler: `21b2ca44aee63665feeb67e39da1713ac693e934` (Rust only); exact dependency and assembly pins are preserved.
+Layout migration: `codex/rust-client-layout`, integrated into `main`. Board qualification remains incomplete.
+Compiler: `c14c73ac040849dee9c96b4c22071b291b5f046b` (Rust only, from CopperScript main); exact dependency and assembly pins are preserved.
 
 ## Active layout
 
@@ -34,9 +34,9 @@ on Windows and Linux. Normal check/compile operations do not need Python, uv or 
 
 ## Remaining coverage
 
-The Python board/revision/probe suites and removed CAM/engineering commands require migration. Source-selected macros remain bound to the same libraries. Historical root JSON macro snapshots stay at their old paths for the retained probes; the active board uses managed source macros.
+Upstream main ported the board suite to public CLI calls and removed obsolete revision/probe helpers. Run `make test-board` with Python and pytest to exercise that suite against Rust. Removed CAM/engineering commands and native release coverage remain pending. Source-selected macros remain bound to the same libraries. Historical root JSON macro snapshots stay at their old paths for the retained probes; the active board uses managed source macros.
 
-Legacy scripts/tests are retained so their checks can be ported, not deleted.
+Upstream main intentionally removed obsolete compiler-internal helpers. Remaining historical scripts/tests document coverage still to be ported.
 Archived workflow recipes are in `docs/migration/legacy-ci/`; the new workflow
 checks sources and the explicitly named acceptance subset only. Re-enable native
 route/package CI after equivalent gates exist; a green source job is not release
@@ -67,3 +67,24 @@ Compiler: Rust-only `21b2ca44aee63665feeb67e39da1713ac693e934`.
 - Full routing, native KiCad DRC and manufacturing export were not rerun.
 - Windows entry-point execution was checked on LedRing and Bench prototype;
   all five PowerShell wrappers parsed. Linux CI has not run on these local branches.
+
+## Retired Python compiler environment
+
+The former pyproject.toml and uv.lock are archived under docs/migration.
+They pin the removed Python compiler package and are not an installation path
+for the Rust compiler. Use make install-compiler and .copper-version.
+
+For the upstream CLI board suite, install requirements-test.txt and run
+make test-board (override PYTHON if needed). Python is only its test runner;
+all compiler operations invoke the pinned Rust binary. Artifact-dependent
+RF review tests retain their explicit environment prerequisites.
+
+## Integration with main
+
+The compiler pin now selects CopperScript main revision
+`c14c73ac040849dee9c96b4c22071b291b5f046b`. Compilation, locked/offline ERC,
+and the public-CLI regression subset passed again against that exact Rust build.
+Full routing, native DRC and manufacturing exports were not rerun.
+
+The upstream CLI board suite passed: 35 tests and 22 subtests; two artifact-dependent
+RF review tests were explicitly skipped for their missing review inputs.

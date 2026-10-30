@@ -1,17 +1,18 @@
 # CopperAssetTracker
 
-## Migration branch: Rust and standard layout
+## Rust compiler and standard layout
 
 The active compiler is pinned in [.copper-version](.copper-version) to the
-Rust-only CopperScript revision `21b2ca44aee63665feeb67e39da1713ac693e934`.
+Rust-only CopperScript revision `c14c73ac040849dee9c96b4c22071b291b5f046b`.
 Run `make install-compiler`, `make fetch`, `make check` and `make compile`.
 The same commands support `TARGET=main`; `COPPER` selects an explicit binary.
 On Windows use `./build.ps1 -Action check` (GNU Make and Git Bash shortcut).
 Later README sections retain historical build/evidence descriptions; use this
 section and the migration guide for current commands.
 See [migration status and remaining gates](docs/project-migration.md).
-Normal source commands require no Python compiler package. Existing Python
-tests/generators are retained for porting, not silently counted as passing.
+Normal source commands require no Python compiler package. The upstream board
+tests invoke Rust through its public CLI: install requirements-test.txt and run
+make test-board. Remaining historical checks have separate prerequisites.
 The source CI is a subset, not a routing, packaging or release approval.
 
 
@@ -385,7 +386,6 @@ make render            # front/back SVG
 make edit              # shared mechanical editor
 make route             # experimental full-board routing
 make verify            # native KiCad refill/DRC of routed board
-make power-probes      # isolated regulator macros, all cardinal rotations
 make assembly          # check approved exact selections and export BOM
 make manufacturing     # reviewed BOM + route + native DRC required
 ```
@@ -401,54 +401,15 @@ the RF and both regulator macros' geometry identities are checked before
 materialization. The reusable regulator assets are owned by CopperLib, not
 this project. Their native geometry checks do not qualify power performance.
 
-### Build and route the illustrated revision on Windows
+### Build and route the illustrated revision
 
-Use a current CopperScript environment containing the native-closure changes
-(commit `e6f153d20eaae6e82b9e2ee52af307129187fc7d` or newer) and the reviewed
-CopperLib working copy (`df54c3f73cb833a98942d7d4ad326efd189863cb` for the pictured
-checkpoint). Activate that compiler environment before these commands, from the
-Tracker directory. The managed footprint cache must already be populated by
-`make fetch`. Choose a new output directory for each attempt:
-
-```powershell
-python scripts/build_battery_revision.py --modem-power `
-  --library-review-root ../CopperLib `
-  --kicad-footprint-root .copper-cache/pkg/0c22bbbc033f71e79d6d `
-  --output build/new-power-review
-Set-Location build/new-power-review
-python -m copperscript route-board board.copper --offline --layers 6 `
-  --fab-profile jlcpcb-six-layer `
-  --routing-profile balanced --pitch-mm 0.5 `
-  --fanout-maze --soft-ripup --constrained-pins-first --progressive-guides `
-  --plane-contact-radius-mm 3 --plane-stitch-detour-mm 1.5 `
-  --verify-plane-fill "C:/Program Files/KiCad/10.0/bin/kicad-cli.exe" `
-  --native-evidence-directory native-new --report route-new.json `
-  -o routed-new.kicad_pcb --progress
-```
-
-The first command only composes source, IR and candidate selections; the second
-owns placement, routing and native verification. Use the retained **filled PCB**
-identified by a successful route report's `plane_verification` evidence. A
-failed/incomplete report is not a routed success. Newer tool/library inputs can
-change the result; compare their recorded hashes before reusing evidence.
-
-README illustrations and compact example data live under `docs/showcase`.
-Bulky build attempts, manufacturing archives, dependency caches and downloaded
-vendor PDFs remain excluded from Git. To regenerate these snapshots from a local
-source-matched candidate with adjacent native `drc.json` and its matching route
-report. From the Tracker directory, using the current compiler environment:
-
-```powershell
-python scripts/generate_readme_assets.py `
-  --project-root build/latest-power-review-20261011 --unlocked-review `
-  --pcb build/latest-power-review-20261011/native-closure-v5/verification-003/CopperAssetTracker.kicad_pcb `
-  --route-report build/latest-power-review-20261011/route-closure-v5.json `
-  --kicad-cli "C:/Program Files/KiCad/10.0/bin/kicad-cli.exe"
-```
-
-These are native KiCad SVG exports; `snapshot.json` records source/candidate,
-composition and evidence hashes. The renderer is documentation tooling, not a
-routing repair or a manufacturing export.
+The pictured 91-part revision was composed by `scripts/build_battery_revision.py`
+and its README figures by `scripts/generate_readme_assets.py`. Both read private
+CopperScript internals and are retired; recover them from Git history (before
+this change) with the compiler commit they record if that revision must be
+rebuilt. `docs/showcase/snapshot.json` keeps the recorded source, candidate,
+composition and evidence hashes. Bulky build attempts, manufacturing archives,
+dependency caches and downloaded vendor PDFs remain excluded from Git.
 
 ## Battery and firmware
 

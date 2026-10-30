@@ -29,6 +29,15 @@ jobs:
           copper lock board.copper --locked
           copper check board.copper --locked --offline
           copper compile board.copper --locked --offline -o build/ci/main.json
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - name: Install board test runner
+        run: python -m pip install -r requirements-test.txt
+      - name: Board tests against the Rust CLI
+        env:
+          COPPER: copper
+        run: python -m pytest tests -q
       - name: Public CLI acceptance subset
         env:
           COPPER_TEST_BIN: copper
