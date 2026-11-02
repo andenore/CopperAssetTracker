@@ -193,13 +193,13 @@
         "J_CELL",
         "J_GNSS"
       ],
-      "manufacturer": "Hirose",
-      "mpn": "U.FL-R-SMT-1(10)",
-      "supplier": "jlcpcb",
-      "supplier_part": "C88373",
-      "source_url": "https://jlcpcb.com/partdetail/C88373",
-      "checked_on": "2026-10-09",
-      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+      "manufacturer": "Molex",
+      "mpn": "73251-2200",
+      "supplier": "DigiKey",
+      "supplier_part": "WM9352-ND",
+      "source_url": "https://www.digikey.com/en/products/result?keywords=0732512200",
+      "checked_on": "2026-11-02",
+      "availability": "Not stocked by JLCPCB: consigned, hand-fitted through-hole; DigiKey search page; recheck live stock"
     },
     {
       "references": [

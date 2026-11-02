@@ -78,7 +78,8 @@ class EngineeringPlanTests(unittest.TestCase):
         lock = json.loads((ROOT / "assembly.lock").read_text())
         self.assertEqual(len(lock["selections"]), 83)
         unreviewed = {selection["reference"] for selection in lock["selections"] if not selection["reviewed"]}
-        self.assertEqual(unreviewed, {"U_GNSS", "U_MCU"})
+        # The edge SMA jacks await review of the new connector selection.
+        self.assertEqual(unreviewed, {"J_CELL", "J_GNSS"})
 
     def test_actual_usb_pair_bindings_are_board_specific_screens(self):
         plan = json.loads((ROOT / "docs/engineering-plan.json").read_text())

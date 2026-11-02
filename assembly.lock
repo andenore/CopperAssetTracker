@@ -3,6 +3,13 @@
   "schema": "copperscript-assembly-lock/v0.4",
   "selections": [
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/johanson-technology-inc/2450AT18A0100001E/1560676",
+          "supplier": "DigiKey",
+          "supplier_part": "712-2450AT18A0100001ECT-ND"
+        }
+      ],
       "electrical_sha256": "7b145e6693da834a6a888fed947eaaffe2afec04bc0e3eefaca8734d43a712e4",
       "footprint": "RF_Antenna:Johanson_2450AT18x100",
       "manufacturer": "Johanson Technology",
@@ -16,6 +23,18 @@
       "supplier_part": "C17430588"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL05B104KO5NNNC/3886659",
+          "supplier": "DigiKey",
+          "supplier_part": "1276-1001-1-ND"
+        },
+        {
+          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl05b104ko5nnnc/cap-0-1uf-16v-mlcc-0402/dp/3013349",
+          "supplier": "Farnell",
+          "supplier_part": "3013349"
+        }
+      ],
       "electrical_sha256": "37a6f1ab3d8160cbbf420f2ef65ec1b1bbb286a28f2febc34abd0f683688d896",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
@@ -55,6 +74,23 @@
       "supplier_part": "C285068"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL10A105KB8NNNC/3887518",
+          "supplier": "DigiKey",
+          "supplier_part": "1276-1860-1-ND"
+        },
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL10A105KB8NNNC?qs=ktYoCbbtCSJz4pFCLWXd5g%3D%3D",
+          "supplier": "Mouser",
+          "supplier_part": "187-CL10A105KB8NNNC"
+        },
+        {
+          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl10a105kb8nnnc/cap-1uf-50v-mlcc-0603/dp/3013383",
+          "supplier": "Farnell",
+          "supplier_part": "3013383"
+        }
+      ],
       "electrical_sha256": "ae437435264e8f10c4854aeb19301ee3ee1670f7eaeeeb9f2d160c197e82d0f2",
       "footprint": "Capacitor_SMD:C_0603_1608Metric",
       "manufacturer": "Samsung Electro-Mechanics",
@@ -68,6 +104,18 @@
       "supplier_part": "C15849"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL05B104KO5NNNC/3886659",
+          "supplier": "DigiKey",
+          "supplier_part": "1276-1001-1-ND"
+        },
+        {
+          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl05b104ko5nnnc/cap-0-1uf-16v-mlcc-0402/dp/3013349",
+          "supplier": "Farnell",
+          "supplier_part": "3013349"
+        }
+      ],
       "electrical_sha256": "15e2b461d8c1bc1a068c26c8443653d6828fdae494e490646f7ffbde9aa0c70e",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
@@ -94,6 +142,23 @@
       "supplier_part": "C1546"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL10A105KB8NNNC/3887518",
+          "supplier": "DigiKey",
+          "supplier_part": "1276-1860-1-ND"
+        },
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL10A105KB8NNNC?qs=ktYoCbbtCSJz4pFCLWXd5g%3D%3D",
+          "supplier": "Mouser",
+          "supplier_part": "187-CL10A105KB8NNNC"
+        },
+        {
+          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl10a105kb8nnnc/cap-1uf-50v-mlcc-0603/dp/3013383",
+          "supplier": "Farnell",
+          "supplier_part": "3013383"
+        }
+      ],
       "electrical_sha256": "b864caf81248fc543323017eac47be0f899b9e09f544972bd2264cc9d71b0961",
       "footprint": "Capacitor_SMD:C_0603_1608Metric",
       "manufacturer": "Samsung Electro-Mechanics",
@@ -107,6 +172,23 @@
       "supplier_part": "C15849"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL10A105KB8NNNC/3887518",
+          "supplier": "DigiKey",
+          "supplier_part": "1276-1860-1-ND"
+        },
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL10A105KB8NNNC?qs=ktYoCbbtCSJz4pFCLWXd5g%3D%3D",
+          "supplier": "Mouser",
+          "supplier_part": "187-CL10A105KB8NNNC"
+        },
+        {
+          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl10a105kb8nnnc/cap-1uf-50v-mlcc-0603/dp/3013383",
+          "supplier": "Farnell",
+          "supplier_part": "3013383"
+        }
+      ],
       "electrical_sha256": "9c8fe906b902d6f63829e9bd1fde49a796400db09a93e19bf67baa9f6bcde9cd",
       "footprint": "Capacitor_SMD:C_0603_1608Metric",
       "manufacturer": "Samsung Electro-Mechanics",
@@ -120,6 +202,18 @@
       "supplier_part": "C15849"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL05B104KO5NNNC/3886659",
+          "supplier": "DigiKey",
+          "supplier_part": "1276-1001-1-ND"
+        },
+        {
+          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl05b104ko5nnnc/cap-0-1uf-16v-mlcc-0402/dp/3013349",
+          "supplier": "Farnell",
+          "supplier_part": "3013349"
+        }
+      ],
       "electrical_sha256": "ad532e0ea3f262f2c1fc521b74a807fd464ab35f4f260f1713b139ef90deab09",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
@@ -133,6 +227,18 @@
       "supplier_part": "C1525"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL05B104KO5NNNC/3886659",
+          "supplier": "DigiKey",
+          "supplier_part": "1276-1001-1-ND"
+        },
+        {
+          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl05b104ko5nnnc/cap-0-1uf-16v-mlcc-0402/dp/3013349",
+          "supplier": "Farnell",
+          "supplier_part": "3013349"
+        }
+      ],
       "electrical_sha256": "4b06a8f7f17b2292264f296df07a8309da27a3753a83051be49735391762efae",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
@@ -146,6 +252,18 @@
       "supplier_part": "C1525"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL05B104KO5NNNC/3886659",
+          "supplier": "DigiKey",
+          "supplier_part": "1276-1001-1-ND"
+        },
+        {
+          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl05b104ko5nnnc/cap-0-1uf-16v-mlcc-0402/dp/3013349",
+          "supplier": "Farnell",
+          "supplier_part": "3013349"
+        }
+      ],
       "electrical_sha256": "19bc8904604d09954ee2754b063563684e859d96790fe7a6e2077d5290fe692d",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
@@ -159,6 +277,18 @@
       "supplier_part": "C1525"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL32A107MQVNNNE/3886750",
+          "supplier": "DigiKey",
+          "supplier_part": "1276-1092-1-ND"
+        },
+        {
+          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl32a107mqvnnne/capacitor-mlc-100uf-6-3v-1210/dp/4539172",
+          "supplier": "Farnell",
+          "supplier_part": "4539172"
+        }
+      ],
       "electrical_sha256": "5f56293765b56c128391bd433552b2a40f534474557368056ce2eab8760f3920",
       "footprint": "Capacitor_SMD:C_1210_3225Metric",
       "manufacturer": "Samsung Electro-Mechanics",
@@ -172,6 +302,18 @@
       "supplier_part": "C49066"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL10A475KO8NNNC/3887442",
+          "supplier": "DigiKey",
+          "supplier_part": "1276-1784-1-ND"
+        },
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL10A475KO8NNNC?qs=X6jEic%2FHinAbIjmLnFfqqQ%3D%3D",
+          "supplier": "Mouser",
+          "supplier_part": "187-CL10A475KO8NNNC"
+        }
+      ],
       "electrical_sha256": "77d04e7f58e49e050caa977270b70d70b8c8dde6a3cf439fa737ffd213192e54",
       "footprint": "Capacitor_SMD:C_0603_1608Metric",
       "manufacturer": "Samsung Electro-Mechanics",
@@ -185,6 +327,18 @@
       "supplier_part": "C19666"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL05B104KO5NNNC/3886659",
+          "supplier": "DigiKey",
+          "supplier_part": "1276-1001-1-ND"
+        },
+        {
+          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl05b104ko5nnnc/cap-0-1uf-16v-mlcc-0402/dp/3013349",
+          "supplier": "Farnell",
+          "supplier_part": "3013349"
+        }
+      ],
       "electrical_sha256": "420245feacb39f6fb27dcc452ba5c9355f7e8a1acc1078949eb7a518c00d21da",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
@@ -198,6 +352,18 @@
       "supplier_part": "C1525"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL05B104KO5NNNC/3886659",
+          "supplier": "DigiKey",
+          "supplier_part": "1276-1001-1-ND"
+        },
+        {
+          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl05b104ko5nnnc/cap-0-1uf-16v-mlcc-0402/dp/3013349",
+          "supplier": "Farnell",
+          "supplier_part": "3013349"
+        }
+      ],
       "electrical_sha256": "34990c512b4544852db8af2a80babac82aecf8c73b913ee573ce4502f76a206d",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
@@ -211,6 +377,18 @@
       "supplier_part": "C1525"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL05B104KO5NNNC/3886659",
+          "supplier": "DigiKey",
+          "supplier_part": "1276-1001-1-ND"
+        },
+        {
+          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl05b104ko5nnnc/cap-0-1uf-16v-mlcc-0402/dp/3013349",
+          "supplier": "Farnell",
+          "supplier_part": "3013349"
+        }
+      ],
       "electrical_sha256": "01ba3aef3a3a7f22d0feaaa3afac7c9c8f985e5136d4acb9f5867abb603f0721",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
@@ -224,6 +402,18 @@
       "supplier_part": "C1525"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL05B104KO5NNNC/3886659",
+          "supplier": "DigiKey",
+          "supplier_part": "1276-1001-1-ND"
+        },
+        {
+          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl05b104ko5nnnc/cap-0-1uf-16v-mlcc-0402/dp/3013349",
+          "supplier": "Farnell",
+          "supplier_part": "3013349"
+        }
+      ],
       "electrical_sha256": "fc318bd8d48e60f972139a5900aa97fc348651b50cbf578bef01854fa6181969",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
@@ -263,7 +453,14 @@
       "supplier_part": "C1549"
     },
     {
-      "electrical_sha256": "a92b3c5ab1cfd23bca31e598bb7e25139a5daf8271a3cc69d2bf2ed15efd8e89",
+      "alternates": [
+        {
+          "source_url": "https://de.farnell.com/coilcraft/0603usb-601mlc/gleichtaktfilter-37nh-0-5a/dp/2458096",
+          "supplier": "Farnell",
+          "supplier_part": "2458096"
+        }
+      ],
+      "electrical_sha256": "329dcb23a9633283c6e2dfbafe3408cbf94be7cac493b617e256b96e436ac5fd",
       "footprint": "Inductor_SMD:L_CommonModeChoke_Coilcraft_0603USB",
       "manufacturer": "Coilcraft",
       "mpn": "0603USB-601MLC",
@@ -276,19 +473,43 @@
       "supplier_part": "C3211396"
     },
     {
-      "electrical_sha256": "5410edb4657e9545c7f30553494a686f94df47bfda937f4b281b7163c9738fe9",
-      "footprint": "Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical",
-      "manufacturer": "Hirose",
-      "mpn": "U.FL-R-SMT-1(10)",
-      "part": "hirose.U_FL_R_SMT_1",
-      "populate": "supplier",
+      "alternates": [
+        {
+          "source_url": "https://uk.farnell.com/molex/73251-2200/rf-coax-conn-sma-jack-50-ohm-panel/dp/2293854",
+          "supplier": "Farnell",
+          "supplier_part": "2293854"
+        }
+      ],
+      "electrical_sha256": "6e964d3c93ab69705eda1c427b8f85b42c1b5ba71025357eb0e6bcb47dc2cb84",
+      "footprint": "Connector_Coaxial:SMA_Molex_73251-2200_Horizontal",
+      "manufacturer": "Molex",
+      "mpn": "73251-2200",
+      "part": "molex_sma.MOLEX_73251_2200",
+      "populate": "consigned",
       "reference": "J_CELL",
-      "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C88373",
-      "supplier": "jlcpcb",
-      "supplier_part": "C88373"
+      "reviewed": false,
+      "source_url": "https://www.digikey.com/en/products/result?keywords=0732512200",
+      "supplier": "DigiKey",
+      "supplier_part": "WM9352-ND"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/jst-sales-america-inc/S4B-XH-SM4-TB/1651064",
+          "supplier": "DigiKey",
+          "supplier_part": "455-2262-1-ND"
+        },
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/JST-Commercial/S4B-XH-SM4-TBLFSN?qs=QpmGXVUTftFIPbbIXV0K6A%3D%3D",
+          "supplier": "Mouser",
+          "supplier_part": "306-S4BXHSM4TBLFSN"
+        },
+        {
+          "source_url": "https://uk.farnell.com/jst-japan-solderless-terminals/s4b-xh-sm4-tb-lf-sn/connector-header-4pos-2-5mm-1row/dp/2399335",
+          "supplier": "Farnell",
+          "supplier_part": "2399335"
+        }
+      ],
       "electrical_sha256": "be8c43a0c0b3a564a3da7535f4b691d4bc9a41e59ec6123a51246de3df55ab77",
       "footprint": "github.com/andenore/CopperLib/packages/parts/jst/xh-sm4/footprints/JST_S4B_XH_SM4_TB.kicad_mod",
       "manufacturer": "JST",
@@ -302,19 +523,43 @@
       "supplier_part": "C161861"
     },
     {
-      "electrical_sha256": "ca067eefd089d60327f078def1578d095103352abd31cef3d769b982fd8daf77",
-      "footprint": "Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical",
-      "manufacturer": "Hirose",
-      "mpn": "U.FL-R-SMT-1(10)",
-      "part": "hirose.U_FL_R_SMT_1",
-      "populate": "supplier",
+      "alternates": [
+        {
+          "source_url": "https://uk.farnell.com/molex/73251-2200/rf-coax-conn-sma-jack-50-ohm-panel/dp/2293854",
+          "supplier": "Farnell",
+          "supplier_part": "2293854"
+        }
+      ],
+      "electrical_sha256": "46c1d8daac3d483dbd2e2c9bd02aba72bed2bb88531b9a3b30d7234563e02ccd",
+      "footprint": "Connector_Coaxial:SMA_Molex_73251-2200_Horizontal",
+      "manufacturer": "Molex",
+      "mpn": "73251-2200",
+      "part": "molex_sma.MOLEX_73251_2200",
+      "populate": "consigned",
       "reference": "J_GNSS",
-      "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C88373",
-      "supplier": "jlcpcb",
-      "supplier_part": "C88373"
+      "reviewed": false,
+      "source_url": "https://www.digikey.com/en/products/result?keywords=0732512200",
+      "supplier": "DigiKey",
+      "supplier_part": "WM9352-ND"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/gct/USB4135-GF-A/16036137",
+          "supplier": "DigiKey",
+          "supplier_part": "2073-USB4135-GF-ACT-ND"
+        },
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/GCT/USB4135-GF-A?qs=Li%2BoUPsLEnt6HRo6RUvaXA%3D%3D",
+          "supplier": "Mouser",
+          "supplier_part": "640-USB4135-GF-A"
+        },
+        {
+          "source_url": "https://uk.farnell.com/gct-global-connector-technology/usb4135-gf-a/usb-conn-type-c-r-a-rcpt-6pos/dp/3973076",
+          "supplier": "Farnell",
+          "supplier_part": "3973076"
+        }
+      ],
       "electrical_sha256": "eba99602d6bb795f16e9d1bd299ca2a6aa15ff42c4227c3e5e8f0e849e64dca3",
       "footprint": "github.com/andenore/CopperLib/packages/parts/gct/usb4135/footprints/Connector_USB.pretty/USB_C_Receptacle_GCT_USB4135-GF-A_6P_TopMnt_Horizontal.kicad_mod",
       "manufacturer": "GCT",
@@ -328,6 +573,23 @@
       "supplier_part": "C5438410"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/gct/SIM8060-6-0-14-00-A/9859630",
+          "supplier": "DigiKey",
+          "supplier_part": "2073-SIM8060-6-0-14-00-ACT-ND"
+        },
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/GCT/SIM8060-6-0-14-00-A?qs=KUoIvG%2F9IlbzypIn11lBRw%3D%3D",
+          "supplier": "Mouser",
+          "supplier_part": "640-SIM8060601400A"
+        },
+        {
+          "source_url": "https://uk.farnell.com/gct-global-connector-technology/sim8060-6-0-14-00-a/connector-nano-sim-6pos-hinged/dp/3873351",
+          "supplier": "Farnell",
+          "supplier_part": "3873351"
+        }
+      ],
       "electrical_sha256": "d641cbcb08f33b85cc18f8ab6e82ca6f3584733aced29d389549c9f16f9e74ca",
       "footprint": "github.com/andenore/CopperLib/packages/parts/gct/sim8060/footprints/Connector_Card.pretty/nanoSIM_GCT_SIM8060-6-0-14-00.kicad_mod",
       "manufacturer": "GCT",
@@ -341,6 +603,18 @@
       "supplier_part": "C6296715"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/samtec-inc/FTSH-105-01-L-DV-007-K/6678175",
+          "supplier": "DigiKey",
+          "supplier_part": "SAM9438-ND"
+        },
+        {
+          "source_url": "https://uk.farnell.com/samtec/ftsh-105-01-l-dv-007-k/conn-header-10pos-2row-1-27mm/dp/3550957",
+          "supplier": "Farnell",
+          "supplier_part": "3550957"
+        }
+      ],
       "electrical_sha256": "f4248e24e740c0c4be7b47174e042d1972226604f0ef5c33f25f9e81f04527bc",
       "footprint": "Connector_Debug:FTSH-105-01-L-DV-007-K",
       "manufacturer": "Samtec",
@@ -354,6 +628,18 @@
       "supplier_part": "C5296739"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/samtec-inc/FTSH-105-01-L-DV-007-K/6678175",
+          "supplier": "DigiKey",
+          "supplier_part": "SAM9438-ND"
+        },
+        {
+          "source_url": "https://uk.farnell.com/samtec/ftsh-105-01-l-dv-007-k/conn-header-10pos-2row-1-27mm/dp/3550957",
+          "supplier": "Farnell",
+          "supplier_part": "3550957"
+        }
+      ],
       "electrical_sha256": "4ae5deee2440eba8e6116002d84859375f7feba7c000c25d12885293e11b8184",
       "footprint": "Connector_Debug:FTSH-105-01-L-DV-007-K",
       "manufacturer": "Samtec",
@@ -393,6 +679,13 @@
       "supplier_part": "C2286"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/murata-electronics/LQG15HS3N9S02D/662866",
+          "supplier": "DigiKey",
+          "supplier_part": "490-2617-1-ND"
+        }
+      ],
       "electrical_sha256": "fe87ecfc31338d057c538a59a1b71d63db2112ffbdc6889e90988b36330eb4ac",
       "footprint": "Inductor_SMD:L_0402_1005Metric",
       "manufacturer": "Murata Electronics",
@@ -406,6 +699,18 @@
       "supplier_part": "C77109"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/murata-electronics/LQG15HS2N7S02D/662864",
+          "supplier": "DigiKey",
+          "supplier_part": "490-2615-1-ND"
+        },
+        {
+          "source_url": "https://uk.farnell.com/murata/lqg15hs2n7s02d/inductor-2-7nh-0-8a-0402-multilayer/dp/2840116",
+          "supplier": "Farnell",
+          "supplier_part": "2840116"
+        }
+      ],
       "electrical_sha256": "b983985b17031d03b42b22d08233c0dbe11545541f93cd7f11a95dbd58a4f5e1",
       "footprint": "Inductor_SMD:L_0402_1005Metric",
       "manufacturer": "Murata Electronics",
@@ -419,6 +724,13 @@
       "supplier_part": "C77108"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/murata-electronics/LQG15HS3N9S02D/662866",
+          "supplier": "DigiKey",
+          "supplier_part": "490-2617-1-ND"
+        }
+      ],
       "electrical_sha256": "a7922ace807da170a429de018829e6442879a94cca75ad654b59a08d7e5c184b",
       "footprint": "Inductor_SMD:L_0402_1005Metric",
       "manufacturer": "Murata Electronics",
@@ -432,6 +744,23 @@
       "supplier_part": "C77109"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A106KAYNNNE/3888549",
+          "supplier": "DigiKey",
+          "supplier_part": "1276-2891-1-ND"
+        },
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL21A106KAYNNNE?qs=yOVawPpwOwmTXAd4dJtNjA%3D%3D",
+          "supplier": "Mouser",
+          "supplier_part": "187-CL21A106KAYNNNE"
+        },
+        {
+          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl21a106kaynnne/cap-10uf-25v-mlcc-0805/dp/3013452",
+          "supplier": "Farnell",
+          "supplier_part": "3013452"
+        }
+      ],
       "electrical_sha256": "564efa878c0072ed8d1d96965ea9daf4b9beb0c2cde7fce3ab4eaebf00f3ca81",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "manufacturer": "Samsung Electro-Mechanics",
@@ -445,6 +774,23 @@
       "supplier_part": "C15850"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A106KAYNNNE/3888549",
+          "supplier": "DigiKey",
+          "supplier_part": "1276-2891-1-ND"
+        },
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL21A106KAYNNNE?qs=yOVawPpwOwmTXAd4dJtNjA%3D%3D",
+          "supplier": "Mouser",
+          "supplier_part": "187-CL21A106KAYNNNE"
+        },
+        {
+          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl21a106kaynnne/cap-10uf-25v-mlcc-0805/dp/3013452",
+          "supplier": "Farnell",
+          "supplier_part": "3013452"
+        }
+      ],
       "electrical_sha256": "8ecac549ad442002e0b93e9f4103ee1a86b8e87615b09ea6e8a3e3438ab617f1",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "manufacturer": "Samsung Electro-Mechanics",
@@ -458,6 +804,18 @@
       "supplier_part": "C15850"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A226MAQNNNE/3888566",
+          "supplier": "DigiKey",
+          "supplier_part": "1276-2908-2-ND"
+        },
+        {
+          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl21a226maqnnne/cap-22uf-25v-mlcc-0805/dp/3013459",
+          "supplier": "Farnell",
+          "supplier_part": "3013459"
+        }
+      ],
       "electrical_sha256": "8d8b0508ede040722d54c2f762e81198076a6a2a9a84238d84ffb7e66c03e2aa",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "manufacturer": "Samsung Electro-Mechanics",
@@ -471,6 +829,18 @@
       "supplier_part": "C45783"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A226MAQNNNE/3888566",
+          "supplier": "DigiKey",
+          "supplier_part": "1276-2908-2-ND"
+        },
+        {
+          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl21a226maqnnne/cap-22uf-25v-mlcc-0805/dp/3013459",
+          "supplier": "Farnell",
+          "supplier_part": "3013459"
+        }
+      ],
       "electrical_sha256": "f9347d6ae78332e1bca305177e618b574e1017d50dbbb42974bbde8e0c5800f7",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "manufacturer": "Samsung Electro-Mechanics",
@@ -484,6 +854,18 @@
       "supplier_part": "C45783"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A226MAQNNNE/3888566",
+          "supplier": "DigiKey",
+          "supplier_part": "1276-2908-2-ND"
+        },
+        {
+          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl21a226maqnnne/cap-22uf-25v-mlcc-0805/dp/3013459",
+          "supplier": "Farnell",
+          "supplier_part": "3013459"
+        }
+      ],
       "electrical_sha256": "e82fb19b53691f6be748b5a36a137be9430f0835c3ba6f8343a5dec54eb75959",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "manufacturer": "Samsung Electro-Mechanics",
@@ -497,6 +879,18 @@
       "supplier_part": "C45783"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL05B104KO5NNNC/3886659",
+          "supplier": "DigiKey",
+          "supplier_part": "1276-1001-1-ND"
+        },
+        {
+          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl05b104ko5nnnc/cap-0-1uf-16v-mlcc-0402/dp/3013349",
+          "supplier": "Farnell",
+          "supplier_part": "3013349"
+        }
+      ],
       "electrical_sha256": "82ec292fbca92af1afefa4328b7628a14ff989fb1930d025c9b70e69a9501444",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
@@ -510,6 +904,23 @@
       "supplier_part": "C1525"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A106KAYNNNE/3888549",
+          "supplier": "DigiKey",
+          "supplier_part": "1276-2891-1-ND"
+        },
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL21A106KAYNNNE?qs=yOVawPpwOwmTXAd4dJtNjA%3D%3D",
+          "supplier": "Mouser",
+          "supplier_part": "187-CL21A106KAYNNNE"
+        },
+        {
+          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl21a106kaynnne/cap-10uf-25v-mlcc-0805/dp/3013452",
+          "supplier": "Farnell",
+          "supplier_part": "3013452"
+        }
+      ],
       "electrical_sha256": "6d44eeeddb8d33bbbb7b7238c700fe3e338b2d370bdf083fe739146817e07545",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "manufacturer": "Samsung Electro-Mechanics",
@@ -523,6 +934,18 @@
       "supplier_part": "C15850"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A226MAQNNNE/3888566",
+          "supplier": "DigiKey",
+          "supplier_part": "1276-2908-2-ND"
+        },
+        {
+          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl21a226maqnnne/cap-22uf-25v-mlcc-0805/dp/3013459",
+          "supplier": "Farnell",
+          "supplier_part": "3013459"
+        }
+      ],
       "electrical_sha256": "c8503a5a059198c5f11079c2b69fe6998fb3a981dc9917c45b43f0c415a7e283",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "manufacturer": "Samsung Electro-Mechanics",
@@ -536,6 +959,18 @@
       "supplier_part": "C45783"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A226MAQNNNE/3888566",
+          "supplier": "DigiKey",
+          "supplier_part": "1276-2908-2-ND"
+        },
+        {
+          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl21a226maqnnne/cap-22uf-25v-mlcc-0805/dp/3013459",
+          "supplier": "Farnell",
+          "supplier_part": "3013459"
+        }
+      ],
       "electrical_sha256": "08710bfa82f32119633a294a43df2aa6202681007ee48f8955ca1fef607e71a4",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "manufacturer": "Samsung Electro-Mechanics",
@@ -549,6 +984,18 @@
       "supplier_part": "C45783"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A226MAQNNNE/3888566",
+          "supplier": "DigiKey",
+          "supplier_part": "1276-2908-2-ND"
+        },
+        {
+          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl21a226maqnnne/cap-22uf-25v-mlcc-0805/dp/3013459",
+          "supplier": "Farnell",
+          "supplier_part": "3013459"
+        }
+      ],
       "electrical_sha256": "c671a6a47c188244d37bb9de9e6a15304f3c20d8fadf6ebf0b94550f44d9c517",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "manufacturer": "Samsung Electro-Mechanics",
@@ -562,6 +1009,18 @@
       "supplier_part": "C45783"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL05B104KO5NNNC/3886659",
+          "supplier": "DigiKey",
+          "supplier_part": "1276-1001-1-ND"
+        },
+        {
+          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl05b104ko5nnnc/cap-0-1uf-16v-mlcc-0402/dp/3013349",
+          "supplier": "Farnell",
+          "supplier_part": "3013349"
+        }
+      ],
       "electrical_sha256": "0a678070855c891d06c8fefd8883d85fc1b4de353c8257d6da79dae2a798b999",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
@@ -575,6 +1034,23 @@
       "supplier_part": "C1525"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A106KAYNNNE/3888549",
+          "supplier": "DigiKey",
+          "supplier_part": "1276-2891-1-ND"
+        },
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL21A106KAYNNNE?qs=yOVawPpwOwmTXAd4dJtNjA%3D%3D",
+          "supplier": "Mouser",
+          "supplier_part": "187-CL21A106KAYNNNE"
+        },
+        {
+          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl21a106kaynnne/cap-10uf-25v-mlcc-0805/dp/3013452",
+          "supplier": "Farnell",
+          "supplier_part": "3013452"
+        }
+      ],
       "electrical_sha256": "2fa7c480d02049b0ddc0845dcd49af436ac695117fe4e882fb2d149666b78c49",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "manufacturer": "Samsung Electro-Mechanics",
@@ -588,6 +1064,18 @@
       "supplier_part": "C15850"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL10A475KO8NNNC/3887442",
+          "supplier": "DigiKey",
+          "supplier_part": "1276-1784-1-ND"
+        },
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL10A475KO8NNNC?qs=X6jEic%2FHinAbIjmLnFfqqQ%3D%3D",
+          "supplier": "Mouser",
+          "supplier_part": "187-CL10A475KO8NNNC"
+        }
+      ],
       "electrical_sha256": "8d5e2ed58392cf429fcc352d713340a3aeab745a7973ac83a96f0c423ad1a3d3",
       "footprint": "Capacitor_SMD:C_0603_1608Metric",
       "manufacturer": "Samsung Electro-Mechanics",
@@ -601,6 +1089,18 @@
       "supplier_part": "C19666"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/jst-sales-america-inc/S3B-XH-SM4-TB/1651065",
+          "supplier": "DigiKey",
+          "supplier_part": "455-S3B-XH-SM4-TBCT-ND"
+        },
+        {
+          "source_url": "https://uk.farnell.com/jst-japan-solderless-terminals/s3b-xh-sm4-tb-lf-sn/connector-header-3pos-2-5mm-1row/dp/2399334",
+          "supplier": "Farnell",
+          "supplier_part": "2399334"
+        }
+      ],
       "electrical_sha256": "ffe248f33cf1c0e0a668e894b19e7777d61bfbdf39e3a82414689dd998787284",
       "footprint": "github.com/andenore/CopperLib/packages/parts/jst/xh-sm4/footprints/JST_S3B_XH_SM4_TB.kicad_mod",
       "manufacturer": "JST",
@@ -614,6 +1114,17 @@
       "supplier_part": "C161860"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/bourns-inc/SRP4020TA-1R5M/4901003",
+          "supplier": "DigiKey",
+          "supplier_part": "SRP4020TA-1R5MCT-ND"
+        },
+        {
+          "supplier": "Farnell",
+          "supplier_part": "2434801"
+        }
+      ],
       "electrical_sha256": "f63bda614c5412fa479854a8b9f389fd19d5b1c9cfce7766fbfb523117e37136",
       "footprint": "github.com/andenore/CopperLib/packages/parts/bourns/srp4020ta/footprints/Bourns_SRP4020TA.kicad_mod",
       "manufacturer": "Bourns",
@@ -627,6 +1138,17 @@
       "supplier_part": "C3233727"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/bourns-inc/SRP4020TA-1R5M/4901003",
+          "supplier": "DigiKey",
+          "supplier_part": "SRP4020TA-1R5MCT-ND"
+        },
+        {
+          "supplier": "Farnell",
+          "supplier_part": "2434801"
+        }
+      ],
       "electrical_sha256": "4218658489b08d49f0951f5d282bc0785d56c696ad97ce9daa398bb7d13254e9",
       "footprint": "github.com/andenore/CopperLib/packages/parts/bourns/srp4020ta/footprints/Bourns_SRP4020TA.kicad_mod",
       "manufacturer": "Bourns",
@@ -653,6 +1175,13 @@
       "supplier_part": "C25890"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/Royalohm/0402WGF2201TCE?qs=e8oIoAS2J1QvBi%2FbAiHH2g%3D%3D",
+          "supplier": "Mouser",
+          "supplier_part": "303-0402WGF2201TCE"
+        }
+      ],
       "electrical_sha256": "789c06025797566e48731aceccc2e0e8104a38e0c41573eaa265f8c9d1d9d16a",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
       "manufacturer": "UNI-ROYAL",
@@ -744,6 +1273,17 @@
       "supplier_part": "C25778"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/texas-instruments/BQ24072RGTR/2047261",
+          "supplier": "DigiKey",
+          "supplier_part": "296-38871-1-ND"
+        },
+        {
+          "supplier": "Mouser",
+          "supplier_part": "595-BQ24072RGTR"
+        }
+      ],
       "electrical_sha256": "7ab8af3716b35051c60ed0fb7c7d2017550f8821d36904b42eae1f689214c394",
       "footprint": "Package_DFN_QFN:VQFN-16-1EP_3x3mm_P0.5mm_EP1.68x1.68mm",
       "manufacturer": "Texas Instruments",
@@ -757,6 +1297,23 @@
       "supplier_part": "C140288"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/texas-instruments/TPS63020DSJR/2353761",
+          "supplier": "DigiKey",
+          "supplier_part": "296-36491-1-ND"
+        },
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/Texas-Instruments/TPS63020DSJR?qs=C44r%2BX3hXgL3LjjgiOMWew%3D%3D",
+          "supplier": "Mouser",
+          "supplier_part": "595-TPS63020DSJR"
+        },
+        {
+          "source_url": "https://uk.farnell.com/texas-instruments/tps63020dsjr/dc-dc-conv-buck-boost-2-4mhz-vson/dp/3007457",
+          "supplier": "Farnell",
+          "supplier_part": "3007457"
+        }
+      ],
       "electrical_sha256": "b15b491d79412ed99f2e0057deae838ddc0be7d4e47c081f0add003ffb7a7f48",
       "footprint": "github.com/andenore/CopperLib/packages/parts/ti/tps63020/footprints/TI_DSJ0014_TPS63020.kicad_mod",
       "manufacturer": "Texas Instruments",
@@ -770,6 +1327,23 @@
       "supplier_part": "C15483"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/texas-instruments/TPS63020DSJR/2353761",
+          "supplier": "DigiKey",
+          "supplier_part": "296-36491-1-ND"
+        },
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/Texas-Instruments/TPS63020DSJR?qs=C44r%2BX3hXgL3LjjgiOMWew%3D%3D",
+          "supplier": "Mouser",
+          "supplier_part": "595-TPS63020DSJR"
+        },
+        {
+          "source_url": "https://uk.farnell.com/texas-instruments/tps63020dsjr/dc-dc-conv-buck-boost-2-4mhz-vson/dp/3007457",
+          "supplier": "Farnell",
+          "supplier_part": "3007457"
+        }
+      ],
       "electrical_sha256": "45c827c6172d480058bcef24b328a6b6b39d182047c48da66469c81b4314bee6",
       "footprint": "github.com/andenore/CopperLib/packages/parts/ti/tps63020/footprints/TI_DSJ0014_TPS63020.kicad_mod",
       "manufacturer": "Texas Instruments",
@@ -783,6 +1357,13 @@
       "supplier_part": "C15483"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/Royalohm/0402WGF1002TCE?qs=e8oIoAS2J1T9%2FSfQTy4YqQ%3D%3D",
+          "supplier": "Mouser",
+          "supplier_part": "303-0402WGF1002TCE"
+        }
+      ],
       "electrical_sha256": "a3aa27d9d9e24c74c6acfa0b0f8596e475b67563de9e39a3a1756c4b9052f84b",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
       "manufacturer": "UNI-ROYAL",
@@ -796,6 +1377,13 @@
       "supplier_part": "C25744"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/Royalohm/0402WGF1002TCE?qs=e8oIoAS2J1T9%2FSfQTy4YqQ%3D%3D",
+          "supplier": "Mouser",
+          "supplier_part": "303-0402WGF1002TCE"
+        }
+      ],
       "electrical_sha256": "4a74551afd6d91a890ce05e4655c9a26005696ffd820fecb2c7fd370ad66e350",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
       "manufacturer": "UNI-ROYAL",
@@ -913,6 +1501,13 @@
       "supplier_part": "C11702"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/Royalohm/0402WGF1002TCE?qs=e8oIoAS2J1T9%2FSfQTy4YqQ%3D%3D",
+          "supplier": "Mouser",
+          "supplier_part": "303-0402WGF1002TCE"
+        }
+      ],
       "electrical_sha256": "82a51f9a3c69e0c129d1e8a15db637280e1cf5e8e280d3b1e63f52473a00179b",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
       "manufacturer": "UNI-ROYAL",
@@ -926,6 +1521,13 @@
       "supplier_part": "C25744"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/Royalohm/0402WGF1002TCE?qs=e8oIoAS2J1T9%2FSfQTy4YqQ%3D%3D",
+          "supplier": "Mouser",
+          "supplier_part": "303-0402WGF1002TCE"
+        }
+      ],
       "electrical_sha256": "e34a333bcd002f30c831c9224c7e6316208da99c9d981345c7e5bb973615a97d",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
       "manufacturer": "UNI-ROYAL",
@@ -939,6 +1541,18 @@
       "supplier_part": "C25744"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/e-switch/TL3342F160QG-TR/379003",
+          "supplier": "DigiKey",
+          "supplier_part": "EG2531CT-ND"
+        },
+        {
+          "source_url": "https://uk.farnell.com/e-switch/tl3342f160qg/switch-tactile-spst-no-50ma-12vdc/dp/2830674",
+          "supplier": "Farnell",
+          "supplier_part": "2830674"
+        }
+      ],
       "electrical_sha256": "f0d0bbd087a8d388602884177d480a8b20c2f107b8aca1ad0ce3f133418ae17b",
       "footprint": "Button_Switch_SMD:SW_SPST_TL3342",
       "manufacturer": "E-Switch",
@@ -952,6 +1566,23 @@
       "supplier_part": "C2886898"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/stmicroelectronics/LIS2DW12TR/7914708",
+          "supplier": "DigiKey",
+          "supplier_part": "497-17718-1-ND"
+        },
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/STMicroelectronics/LIS2DW12TR?qs=u4fy%2FsgLU9NZAt0DqrAehA%3D%3D",
+          "supplier": "Mouser",
+          "supplier_part": "511-LIS2DW12TR"
+        },
+        {
+          "source_url": "https://uk.farnell.com/stmicroelectronics/lis2dw12tr/lga-12-i-mems-digital-o-p-motion/dp/2849615",
+          "supplier": "Farnell",
+          "supplier_part": "2849615"
+        }
+      ],
       "electrical_sha256": "8643274fb689977d907133bfa2315932519ff748cf6421d67d7d8e760d10df4b",
       "footprint": "Package_LGA:LGA-12_2x2mm_P0.5mm",
       "manufacturer": "STMicroelectronics",
@@ -965,6 +1596,18 @@
       "supplier_part": "C189624"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/texas-instruments/TUSB320LAIRWBR/5722618",
+          "supplier": "DigiKey",
+          "supplier_part": "296-TUSB320LAIRWBRCT-ND"
+        },
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/Texas-Instruments/TUSB320LAIRWBR?qs=9xotKOP9MLapokFcaOP5ag%3D%3D",
+          "supplier": "Mouser",
+          "supplier_part": "595-TUSB320LAIRWBR"
+        }
+      ],
       "electrical_sha256": "62573a41885ac380f015c297930f06a6d05ff98665d1d623beff5a266bcefc5e",
       "footprint": "Package_DFN_QFN:Texas_X2QFN-12_1.6x1.6mm_P0.4mm",
       "manufacturer": "Texas Instruments",
@@ -978,6 +1621,17 @@
       "supplier_part": "C132554"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/u-blox/MAX-M10S-00B/15712906",
+          "supplier": "DigiKey",
+          "supplier_part": "672-MAX-M10S-00BCT-ND"
+        },
+        {
+          "supplier": "Mouser",
+          "supplier_part": "377-MAX-M10S-00B"
+        }
+      ],
       "electrical_sha256": "bdd8b4c972452a7e7ffeac4648b403f58cc45d3bf20a73c5f2e7be6e3930e59d",
       "footprint": "MAX_M10S:u-blox_MAX-M10S",
       "manufacturer": "u-blox",
@@ -985,12 +1639,29 @@
       "part": "ublox.MAX_M10S_00B",
       "populate": "supplier",
       "reference": "U_GNSS",
-      "reviewed": false,
+      "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/UBLOX-MAX_M10S00B/C4153167",
       "supplier": "jlcpcb",
       "supplier_part": "C4153167"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/stmicroelectronics/STM32G0C1RET6/14313370",
+          "supplier": "DigiKey",
+          "supplier_part": "497-STM32G0C1RET6-ND"
+        },
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/STMicroelectronics/STM32G0C1RET6?qs=CiayqK2gdcIMlkiJDRCzQQ%3D%3D",
+          "supplier": "Mouser",
+          "supplier_part": "511-STM32G0C1RET6"
+        },
+        {
+          "source_url": "https://uk.farnell.com/stmicroelectronics/stm32g0c1ret6/mcu-32bit-64mhz-lqfp-64/dp/3772958",
+          "supplier": "Farnell",
+          "supplier_part": "3772958"
+        }
+      ],
       "electrical_sha256": "7fd11de367ef1f88c4372a81d31fbb9d0f5505a40c9e309f2332534bc10d7fb5",
       "footprint": "Package_QFP:LQFP-64_10x10mm_P0.5mm",
       "manufacturer": "STMicroelectronics",
@@ -998,7 +1669,7 @@
       "part": "st_mcu.STM32G0C1RET6",
       "populate": "supplier",
       "reference": "U_MCU",
-      "reviewed": false,
+      "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C3231062",
       "supplier": "jlcpcb",
       "supplier_part": "C3231062"
@@ -1017,6 +1688,23 @@
       "supplier_part": "C45935408"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/onsemi/BSS138/244210",
+          "supplier": "DigiKey",
+          "supplier_part": "BSS138CT-ND"
+        },
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/onsemi/BSS138?qs=HK+eIG1iaahCeqBvjB4arg%3D%3D",
+          "supplier": "Mouser",
+          "supplier_part": "512-BSS138"
+        },
+        {
+          "source_url": "https://uk.farnell.com/onsemi/bss138/mosfet-n-chan-50v-220ma-sot-23/dp/9845330",
+          "supplier": "Farnell",
+          "supplier_part": "9845330"
+        }
+      ],
       "electrical_sha256": "c961a0189eb4dcdbd48ac87b415c40178b76ed4c2960ba65e75842b35fe8c39c",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "manufacturer": "onsemi",
@@ -1030,6 +1718,18 @@
       "supplier_part": "C52895"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/texas-instruments/SN74AXC2T245RSWR/12642205",
+          "supplier": "DigiKey",
+          "supplier_part": "296-SN74AXC2T245RSWRCT-ND"
+        },
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/Texas-Instruments/SN74AXC2T245RSWR?qs=sPbYRqrBIVldTSxYeyyecg%3D%3D",
+          "supplier": "Mouser",
+          "supplier_part": "595-SN74AXC2T245RSWR"
+        }
+      ],
       "electrical_sha256": "6488c8ae8b7d93ac32969c9a2c7f608f93c48e1a2ef2cac82994a22b3780c6c8",
       "footprint": "Package_DFN_QFN:UQFN-10_1.4x1.8mm_P0.4mm",
       "manufacturer": "Texas Instruments",
@@ -1043,6 +1743,18 @@
       "supplier_part": "C1882550"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/texas-instruments/SN74AXC2T245RSWR/12642205",
+          "supplier": "DigiKey",
+          "supplier_part": "296-SN74AXC2T245RSWRCT-ND"
+        },
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/Texas-Instruments/SN74AXC2T245RSWR?qs=sPbYRqrBIVldTSxYeyyecg%3D%3D",
+          "supplier": "Mouser",
+          "supplier_part": "595-SN74AXC2T245RSWR"
+        }
+      ],
       "electrical_sha256": "45b1b64139cf3f508e88c6e336fabd6bb5b39eed543ff0ee926710d8b2911a69",
       "footprint": "Package_DFN_QFN:UQFN-10_1.4x1.8mm_P0.4mm",
       "manufacturer": "Texas Instruments",
@@ -1056,6 +1768,18 @@
       "supplier_part": "C1882550"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.digikey.com/en/products/detail/nordic-semiconductor-asa/NRF52832-QFAA-R/5428660",
+          "supplier": "DigiKey",
+          "supplier_part": "4823-NRF52832-QFAA-RCT-ND"
+        },
+        {
+          "source_url": "https://uk.farnell.com/nordic-semiconductor/nrf52832-qfaa-r/bluetooth-soc-2mbps-2-5ghz-qfn/dp/3596261",
+          "supplier": "Farnell",
+          "supplier_part": "3596261"
+        }
+      ],
       "electrical_sha256": "1c82c4153b5cb73480b8ccb182f051a90789cbf23b2a630a485565ca1230eb18",
       "footprint": "Package_DFN_QFN:QFN-48-1EP_6x6mm_P0.4mm_EP4.2x4.2mm",
       "manufacturer": "Nordic Semiconductor",

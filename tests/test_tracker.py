@@ -60,8 +60,10 @@ class TrackerTests(unittest.TestCase):
         expected = {s["reference"] for s in assembly_snapshot()["selections"]}
         self.assertEqual(expected, set(self.selections))
         self.assertEqual(len(expected), len(self.lock["selections"]))
-        self.assertTrue(all(s["supplier"] == "jlcpcb" and s["mpn"] and s["supplier_part"]
-                            for s in self.lock["selections"]))
+        # JLCPCB places everything but the hand-fitted SMA jacks.
+        self.assertTrue(all(s["mpn"] and s["supplier_part"] for s in self.lock["selections"]))
+        self.assertEqual({s["reference"] for s in self.lock["selections"] if s["supplier"] != "jlcpcb"},
+                         {s["reference"] for s in self.lock["selections"] if s["populate"] == "consigned"})
         groups = json.loads((ROOT / "procurement/parts.json").read_text())["groups"]
         refs = [r for g in groups for r in g["references"]]
         self.assertEqual(expected, set(refs))
@@ -79,12 +81,11 @@ class TrackerTests(unittest.TestCase):
     def test_manufacturing_review_gate(self):
         r = assembly_check()
         self.assertEqual(r["exact_selection_count"], len(self.lock["selections"]))
-        # Each selection is bound to its own component; the CopperLib update
-        # changed the MCU and GNSS part definitions, so only those two need
-        # review again. Nothing is reapproved here.
+        # Each selection is bound to its own component; only the new edge SMA
+        # jacks still need review. Nothing is reapproved here.
         self.assertFalse(r["passed"])
         self.assertEqual({issue["code"] for issue in r["issues"]}, {"REVIEW_REQUIRED"})
-        self.assertEqual({issue["reference"] for issue in r["issues"]}, {"U_GNSS", "U_MCU"})
+        self.assertEqual({issue["reference"] for issue in r["issues"]}, {"J_CELL", "J_GNSS"})
         self.assertEqual(r["reviewed_count"], 81)
 
     def test_battery_and_power_path(self):
@@ -138,8 +139,8 @@ class TrackerTests(unittest.TestCase):
         self.assertEqual(rule["max_vias"], 0)
         self.assertEqual(rule["allowed_layers"], "F.Cu")
         fixed = fixed_placements()["J_CELL"]
-        self.assertEqual((nanometres(fixed["x"]), nanometres(fixed["y"])), (6000000, 8000000))
-        self.assertEqual(fixed["rotation"], 180)
+        self.assertEqual((nanometres(fixed["x"]), nanometres(fixed["y"])), (4400000, 23500000))
+        self.assertEqual(fixed["rotation"], 90)
 
     def test_rf_macro_identity(self):
         scene = json.loads((ROOT / "nrf-antenna-macro.json").read_text())

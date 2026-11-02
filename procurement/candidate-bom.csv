@@ -14,7 +14,7 @@ Status,Designator,Manufacturer,MPN,LCSC Part #,Source URL
 "CANDIDATE - NOT REVIEWED","J_DEBUG","JST","S4B-XH-SM4-TB(LF)(SN)","C161861","https://jlcpcb.com/partdetail/JST-S4B_XH_SM4_TB_LF_SN/C161861"
 "CANDIDATE - NOT REVIEWED","J_POWER","GCT","USB4135-GF-A","C5438410","https://jlcpcb.com/partdetail/6314253-USB4135_GFA/C5438410"
 "CANDIDATE - NOT REVIEWED","J_SIM","GCT","SIM8060-6-0-14-00-A","C6296715","https://jlcpcb.com/partdetail/7243741-SIM8060_6_0_14_00A/C6296715"
-"CANDIDATE - NOT REVIEWED","J_CELL,J_GNSS","Hirose","U.FL-R-SMT-1(10)","C88373","https://jlcpcb.com/partdetail/C88373"
+"CANDIDATE - NOT REVIEWED","J_CELL,J_GNSS","Molex","73251-2200","","https://www.digikey.com/en/products/result?keywords=0732512200"
 "CANDIDATE - NOT REVIEWED","J_SWD_MCU,J_SWD_NRF","Samtec","FTSH-105-01-L-DV-007-K","C5296739","https://jlcpcb.com/partdetail/C5296739"
 "CANDIDATE - NOT REVIEWED","SW_USER","E-Switch","TL3342F160QG","C2886898","https://jlcpcb.com/partdetail/C2886898"
 "CANDIDATE - NOT REVIEWED","LED_1,LED_2","Hubei KENTO Elec","KT-0603R","C2286","https://jlcpcb.com/partdetail/C2286"

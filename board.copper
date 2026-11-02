@@ -18,7 +18,7 @@ board CopperAssetTracker {
     import translator "github.com/andenore/CopperLib/packages/parts/ti/sn74axc2t245";
     import onsemi "github.com/andenore/CopperLib/packages/parts/onsemi/bss138";
     import uart_header "github.com/andenore/CopperLib/packages/interfaces/uart/jst-xh4";
-    import hirose "github.com/andenore/CopperLib/packages/parts/hirose/u-fl";
+    import molex_sma "github.com/andenore/CopperLib/packages/parts/molex/73251-2200";
     import eswitch "github.com/andenore/CopperLib/packages/parts/e-switch/tl3342";
     import yxc "github.com/andenore/CopperLib/packages/parts/yxc/ysx321sl";
     import kento "github.com/andenore/CopperLib/packages/parts/kento/kt0603r";
@@ -40,8 +40,9 @@ board CopperAssetTracker {
     component U_GNSS: ublox.MAX_M10S_00B;
     component FL_USB: coilcraft.COILCRAFT_0603USB_601MLC;
 
-    component J_CELL: hirose.U_FL_R_SMT_1;
-    component J_GNSS: hirose.U_FL_R_SMT_1;
+    // Right-angle SMA jacks at the board edge for the LTE and GNSS antennas.
+    component J_CELL: molex_sma.MOLEX_73251_2200;
+    component J_GNSS: molex_sma.MOLEX_73251_2200;
     component J_SIM: gct_sim.SIM8060_6_0_14_00_A;
     component J_DEBUG: uart_header.DEBUG_HEADER;
     component J_SWD_MCU: swd.SWD_HEADER;
@@ -300,10 +301,13 @@ board CopperAssetTracker {
     net NRF_DEC4 { U_NRF.DEC4; C_DEC4.1; }
     net NRF_XC1 { U_NRF.XC1; Y_NRF.XTAL1; C_XC1.1; }
     net NRF_XC2 { U_NRF.XC2; Y_NRF.XTAL2; C_XC2.1; }
-    net USB_DP_MCU { U_MCU.PA12; FL_USB.DP_IN; }
-    net USB_DM_MCU { U_MCU.PA11; FL_USB.DM_IN; }
-    net USB_DP_MODEM { FL_USB.DP_OUT; U_MODEM.USB_DP; }
-    net USB_DM_MODEM { FL_USB.DM_OUT; U_MODEM.USB_DM; }
+    // The modem takes the choke's IN ends and the MCU its OUT ends. Both chips'
+    // USB pins face each other with DP on the same side, and this assignment
+    // keeps that order through the choke; the reverse one forces DP/DM to cross.
+    net USB_DP_MCU { U_MCU.PA12; FL_USB.DP_OUT; }
+    net USB_DM_MCU { U_MCU.PA11; FL_USB.DM_OUT; }
+    net USB_DP_MODEM { FL_USB.DP_IN; U_MODEM.USB_DP; }
+    net USB_DM_MODEM { FL_USB.DM_IN; U_MODEM.USB_DM; }
     net CELL_RF { U_MODEM.ANT_MAIN; J_CELL.SIGNAL; }
     net SIM_VCC { U_MODEM.USIM_VDD; J_SIM.VCC; }
     net SIM_RST { U_MODEM.USIM_RST; J_SIM.RST; }
@@ -399,14 +403,17 @@ board CopperAssetTracker {
     constraint fixed_placement(J_POWER) {
         x = 12mm; y = 74mm; rotation = 0; side = front;
     }
-    // ANT_MAIN (pad 60) is on the west edge at this rotation: (8 mm, 24 mm).
-    // Upper-left U.FL signal land faces right; the constrained surface feed
-    // stays within the assumed SIM7672X V1.01 p60 maximum of 20 mm.
+    // ANT_MAIN (pad 60) is on the west edge at this rotation: (10.1 mm, 24 mm).
+    // The modem sits 2.1 mm right of its earlier x = 20 mm so the SMA courtyard
+    // clears it. The left-edge SMA level with ANT_MAIN keeps the surface feed
+    // (about 5 mm) far inside the assumed SIM7672X V1.01 p60 maximum of 20 mm.
     constraint fixed_placement(U_MODEM) {
-        x = 20mm; y = 24mm; rotation = 90; side = front;
+        x = 22.1mm; y = 24mm; rotation = 90; side = front;
     }
+    // Right-angle SMA origins are the centre pin, 4.4 mm in from the edge at
+    // the body's front face; the jack nose overhangs (see mechanical below).
     constraint fixed_placement(J_CELL) {
-        x = 6mm; y = 8mm; rotation = 180; side = front;
+        x = 4.4mm; y = 23.5mm; rotation = 90; side = front;
     }
     // SIM insertion faces left; contact lands face right, toward the modem.
     constraint fixed_placement(J_SIM) {
@@ -425,15 +432,22 @@ board CopperAssetTracker {
     constraint fixed_placement(PWR/J_BAT) {
         x = 70mm; y = 71mm; rotation = 0; side = front;
     }
+    // The module sits 1 mm left of its earlier x = 86 mm so the right-edge
+    // SMA's courtyard clears it, level with RF_IN (88.3 mm, 62.25 mm).
     constraint fixed_placement(U_GNSS) {
-        x = 86mm; y = 67mm; rotation = 0; side = front;
+        x = 85mm; y = 67mm; rotation = 0; side = front;
     }
-    constraint max_distance(J_GNSS, U_GNSS.RF_IN) { distance = 5mm; }
+    constraint fixed_placement(J_GNSS) {
+        x = 95.6mm; y = 62.25mm; rotation = 270; side = front;
+    }
+    constraint max_distance(J_GNSS.SIGNAL, U_GNSS.RF_IN) { distance = 8mm; }
 
     constraint max_distance(C_MCU, U_MCU.VDD) { distance = 3mm; }
-    // Keep the four-line USB filter in a usable corridor between both chips.
-    constraint max_distance(FL_USB.DP_IN, U_MCU.PA12) { distance = 30mm; }
-    constraint max_distance(FL_USB.DP_OUT, U_MODEM.USB_DP) { distance = 30mm; }
+    // Keep the USB choke in the short corridor between the modem's USB pads
+    // and the MCU's PA11/PA12, turned so its IN ends face the modem (west).
+    constraint max_distance(FL_USB.DP_OUT, U_MCU.PA12) { distance = 5mm; }
+    constraint max_distance(FL_USB.DP_IN, U_MODEM.USB_DP) { distance = 5mm; }
+    constraint allowed_orientations(FL_USB) { values = "90"; }
     // Leave the MCU room to move while keeping its USB pins in the upper lane.
     constraint placement_region(U_MCU) {
         name = "mcu-usb-lane"; x = 38mm; y = 14mm; width = 20mm; height = 20mm;
@@ -494,6 +508,47 @@ board CopperAssetTracker {
     constraint max_distance(C_STATUS_A.1, U_MODEM_STATUS.VCCA) { distance = 3mm; }
     constraint max_distance(C_STATUS_B.1, U_MODEM_STATUS.VCCB) { distance = 3mm; }
     constraint max_distance(C_MODEM_BULK, U_MODEM.VBAT_1) { distance = 5mm; }
+
+    // The provisional 100 x 80 mm outline, previously the CLI fallback size.
+    mechanical {
+        outline rectangle { width = 100mm; height = 80mm; }
+        edge LEFT { start = (0mm, 0mm); end = (0mm, 80mm); }
+        edge RIGHT { start = (100mm, 0mm); end = (100mm, 80mm); }
+        // Right-angle SMA noses; their pins and posts remain on the board.
+        overhang CELL_SMA {
+            component = J_CELL; edge = LEFT; start = 16mm; end = 31mm; distance = 12.7mm;
+            reason = "Molex 73251-2200 SMA jack nose beyond the board edge";
+        }
+        overhang GNSS_SMA {
+            component = J_GNSS; edge = RIGHT; start = 54.75mm; end = 69.75mm; distance = 12.7mm;
+            reason = "Molex 73251-2200 SMA jack nose beyond the board edge";
+        }
+        // The whole upper-right BLE antenna corner stays free of copper and
+        // parts on every layer. The nordic-antenna macro already clears the
+        // antenna itself (89.5-96 x 6-12.5 mm) and its matching tee; this
+        // covers the rest of the corner out to both board edges.
+        copper_keepout BLE_ANTENNA_CORNER polygon {
+            vertices = [(89.5mm, 0mm), (100mm, 0mm), (100mm, 18.1mm), (96mm, 18.1mm), (96mm, 6mm), (89.5mm, 6mm)];
+            layers = "F.Cu,In1.Cu,In2.Cu,In3.Cu,In4.Cu,B.Cu";
+            block_pads = true;
+            block_footprints = true;
+        }
+    }
+
+    // Board identity in the open area right of the charger.
+    silkscreen {
+        text BOARD_ID {
+            text = "CopperAssetTracker\nRev A";
+            position = (86mm, 40mm);
+            size = 1.5mm;
+            thickness = 0.2mm;
+        }
+        branding {
+            position = (86mm, 48mm);
+            size = 6mm;
+            layout = stacked;
+        }
+    }
 
     // Explicit critical profiles; never inferred from net names. The choke
     // divides USB into two pairs. Width/gap/layer choices below are provisional
