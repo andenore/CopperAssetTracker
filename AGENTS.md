@@ -17,7 +17,8 @@ repositories. Keep board-specific composition and qualification evidence here.
 ## Rust layout migration
 
 Read docs/project-migration.md before using historical scripts or build evidence.
-Use the pinned Rust CLI and active paths in make/targets/. Old compiler-internal
-Python helpers are migration references; do not install them into the normal build
-or weaken their checks. `make test` and packaging stay blocked until their required
-coverage is migrated. Historical evidence is not refreshed by moving files.
+Build with the Makefile (README "Build"): it uses CopperScript's shared
+make/board.mk recipes and the Rust compiler. Old compiler-internal Python helpers
+are migration references; do not install them into the normal build or weaken
+their checks. Footprints come from the managed modules pinned in copper.mod,
+never from a local KiCad installation. Historical evidence is not refreshed by moving files.

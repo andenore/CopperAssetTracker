@@ -4,6 +4,7 @@ import os
 from pathlib import Path
 import shutil
 import subprocess
+import tempfile
 import unittest
 
 ROOT = Path(__file__).parents[1]
@@ -66,14 +67,14 @@ class EngineeringPlanTests(unittest.TestCase):
         make = shutil.which("make")
         self.assertIsNotNone(make, "GNU Make is required for the workflow gate test")
         shell = Path(os.environ.get("ProgramFiles", "C:/Program Files")) / "Git/bin/bash.exe"
-        for action in ("package", "manufacturing", "order"):
-            args = [make, action]
+        with tempfile.TemporaryDirectory() as runs:
+            args = [make, "order", "RUNS=" + Path(runs).as_posix(), "COPPER=copper"]
             if os.name == "nt" and shell.is_file():
                 args.append("SHELL=" + str(shell).replace("\\", "/"))
             result = subprocess.run(args, cwd=ROOT, capture_output=True, text=True, timeout=30)
-            self.assertNotEqual(result.returncode, 0, action)
-            self.assertIn("Unsupported migration operation:", result.stderr)
-            self.assertIn("No files exported", result.stderr)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("No passed route", result.stdout + result.stderr)
+            self.assertFalse((Path(runs) / "latest-route").exists())
         lock = json.loads((ROOT / "assembly.lock").read_text())
         self.assertEqual(len(lock["selections"]), 83)
         self.assertTrue(all(selection["reviewed"] for selection in lock["selections"]))

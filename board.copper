@@ -388,6 +388,13 @@ board CopperAssetTracker {
     // Mechanical intent for the provisional 100 x 80 mm outline. Coordinates
     // are footprint origins, x right / y down; all fixed parts are on front.
     // Connector/antenna courtyards retain the planner's 2 mm edge clearance.
+    // Single-sided assembly: no part may be placed on the back, including
+    // decouplers the planner would otherwise flip under their pins.
+    constraint keepout() {
+        name = "single-sided-assembly";
+        x = 0mm; y = 0mm; width = 100mm; height = 80mm;
+        side = back;
+    }
     // Bottom-left entry: USB-C opening faces the bottom edge.
     constraint fixed_placement(J_POWER) {
         x = 12mm; y = 74mm; rotation = 0; side = front;
@@ -480,6 +487,12 @@ board CopperAssetTracker {
     constraint fixed_placement(R_KEY_PD) { x = 9mm; y = 40.3mm; rotation = 90; side = front; }
     constraint fixed_placement(U_MODEM_STATUS) { x = 4.5mm; y = 30mm; rotation = 0; side = front; }
     constraint max_distance(C_GNSS, U_GNSS.VCC) { distance = 3mm; }
+    // Front-side translator decouplers stay at their supply pins; with no
+    // back-side placement the planner would otherwise park them anywhere.
+    constraint max_distance(C_LEVEL_A.1, U_MODEM_LEVEL.VCCA) { distance = 3mm; }
+    constraint max_distance(C_LEVEL_B.1, U_MODEM_LEVEL.VCCB) { distance = 3mm; }
+    constraint max_distance(C_STATUS_A.1, U_MODEM_STATUS.VCCA) { distance = 3mm; }
+    constraint max_distance(C_STATUS_B.1, U_MODEM_STATUS.VCCB) { distance = 3mm; }
     constraint max_distance(C_MODEM_BULK, U_MODEM.VBAT_1) { distance = 5mm; }
 
     // Explicit critical profiles; never inferred from net names. The choke

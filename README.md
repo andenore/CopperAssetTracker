@@ -1,18 +1,33 @@
 # CopperAssetTracker
 
-## Rust compiler and standard layout
+## Build
 
-The active compiler is pinned in [.copper-version](.copper-version) to the
-Rust-only CopperScript revision `c14c73ac040849dee9c96b4c22071b291b5f046b`.
-Run `make install-compiler`, `make fetch`, `make check` and `make compile`.
-The same commands support `TARGET=main`; `COPPER` selects an explicit binary.
-On Windows use `./build.ps1 -Action check` (GNU Make and Git Bash shortcut).
-Later README sections retain historical build/evidence descriptions; use this
-section and the migration guide for current commands.
-See [migration status and remaining gates](docs/project-migration.md).
-Normal source commands require no Python compiler package. The upstream board
-tests invoke Rust through its public CLI: install requirements-test.txt and run
-make test-board. Remaining historical checks have separate prerequisites.
+Requires GNU Make, cargo, jq and KiCad 10 (`kicad-cli`, for refill and native
+DRC). `make` builds the Rust `copper` compiler from a sibling `../CopperScript`
+checkout (`make copper`); `make COPPER=copper …` uses an installed binary
+instead. Every footprint is managed: `copper.mod` pins CopperLib and the KiCad
+footprint libraries (`github.com/KiCad/kicad-footprints`) to GitHub commits and
+`copper.lock` binds their content, so no local KiCad footprint directory is used.
+`make/board.mk` and `make/route-build.sh` are CopperScript's shared recipes,
+copied unchanged; the `Makefile` only adds this board's settings and targets.
+
+```sh
+make             # ERC and JSON compilation (build/board/board.json)
+make check       # ERC
+make test        # board tests through the copper CLI (pip install -r requirements-test.txt)
+make si-check    # impedance / reference-plane / matching screening
+make edit        # CopperScript mechanical/floorplan editor
+make plan        # legal placement, no board-level routing (build/board/placed.kicad_pcb)
+make route       # full placement + routing, native refill and DRC
+make render      # layer SVGs of the newest route
+make bom         # complete BOM (build/order/ordering.csv)
+make order       # JLCPCB package from the newest passed route
+```
+
+Each route gets its own `build/board/runs/<UTC time>-route/` folder, and
+`build/board/runs/latest-route` points at the newest one (`routing.log`,
+`route-report.json`, `board.kicad_pcb`, `kicad-drc.json`, `run.json`).
+On Windows, `./build.ps1 -Action route` runs the same targets through GNU Make.
 The source CI is a subset, not a routing, packaging or release approval.
 
 
@@ -102,13 +117,7 @@ Its source builder composes these inputs; it does not repair routed copper.
 
 ### Shared routing review
 
-Activate a current reviewed CopperScript environment, then run:
-
-```console
-make route-review REVIEW_DIR=build/review-new
-```
-
-Use a new directory. The wrapper uses the canonical 83-part source and locked
+Run `make route` (see [Build](#build)); every run gets a new directory. It uses the canonical 83-part source and locked
 library/macro inputs with the standard bounded shared pipeline. For the
 illustrated 97-part board, use [the fresh routing and figure guide](docs/promo-reroute-20261013.md).
 [Latest validation](docs/validation.md) records each scope and exact evidence;
@@ -370,31 +379,18 @@ to published Git commits; these are not the newer illustrated revision's tool in
 | CopperLib | `50655eff5613690a606c9dd1de456b2adae249df` in `copper.mod` and `copper.lock` |
 | KiCad footprints | `7ebfa6b23cc292a56f751b7b5f4a0e12eeef69dd` in `copper.mod` and `copper.lock` |
 
-No sibling source checkout is needed and no compiler code is copied into the
-project. `copper.lock` binds the complete supported-asset inventories; `uv.lock`
-pins the compiler dependency. Run from this directory:
+No compiler code is copied into the project; `make` builds the compiler from
+the sibling `../CopperScript` checkout. `copper.lock` binds the complete
+supported-asset inventories.
 
 The engineering plan refers to contracts/profile files in that exact library
-commit's verified `.copper-cache` directory, populated by `make fetch`.
+commit's verified `.copper-cache` directory, populated by `make check`.
 They remain library-owned; no sibling checkout or copied contract is required.
 
-```sh
-make fetch             # online bootstrap; preserves pinned versions
-make check test compile
-make pcb               # placed, unrouted PCB + readiness report
-make render            # front/back SVG
-make edit              # shared mechanical editor
-make route             # experimental full-board routing
-make verify            # native KiCad refill/DRC of routed board
-make assembly          # check approved exact selections and export BOM
-make manufacturing     # reviewed BOM + route + native DRC required
-```
-
-Windows: `.\build-windows.ps1 -Target fetch`, then
-`.\build-windows.ps1 -Target all`; optional `-Uv` and `-KiCadCli` paths.
-Default `make` checks/tests/compiles/places; it does not order anything.
+The build targets are listed under [Build](#build).
+Default `make` checks and compiles; it does not order anything.
 These default targets build the canonical 83-part design, not the pictured
-91-part revision. `make manufacturing` creates review exports and skips
+91-part revision. `make order` creates review exports and skips
 independent CAM; it is not a production-approval shortcut.
 Use pinned managed footprints, not a different system footprint revision;
 the RF and both regulator macros' geometry identities are checked before

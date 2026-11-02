@@ -1,49 +1,106 @@
-# Transitional public-CLI adapter. Proposed copper project/build/package commands are not implemented.
-SHELL := bash
-.DEFAULT_GOAL := check
-COPPER ?= copper
-PYTHON ?= python
-COPPER_RUST_REV := $(strip $(file <.copper-version))
-TARGET ?= main
-include make/targets/$(TARGET).mk
-RESOLVE_ARGS ?= --locked --offline
-OUT := build/$(TARGET)
+# CopperAssetTracker board settings. The recipes are CopperScript's shared ones
+# (make/board.mk and make/route-build.sh, copied unchanged from CopperScript
+# 85ca0e4); only settings and the project's own targets live here.
+SOURCE := board.copper
+LAYERS := 6
+FAB_PROFILE := jlcpcb-six-layer
+# Maze fanout and fine plane stitching tuned for this board (the shared
+# defaults already set one candidate and fanout). Dense fine regions give the
+# 0.4 mm-pitch packages a 0.05 mm grid: on the 0.25 mm base grid the nRF HFXO
+# nets (XC1/XC2, F.Cu, no vias) have no legal path past C_DEC3.
+EXTRA_ROUTE_ARGS ?= --unified-set fine_regions=dense --fanout-maze --package-initial-pair-states 0 --no-early-plane-stitch --plane-stitch-step-mm 0.1 --plane-maze-step-mm 0.025 --plane-maze-budget 50000 --plane-contact-radius-mm 3 --plane-stitch-detour-mm 1.5
+
+# The CopperScript compiler is the Rust `copper` binary. By default it is built
+# from the sibling CopperScript checkout (make copper); set COPPER=copper to use
+# an installed binary on PATH, or COPPERSCRIPT to another checkout.
+COPPERSCRIPT ?= ../CopperScript
+COPPER ?= $(COPPERSCRIPT)/target/release/copper
+CARGO ?= $(or $(shell command -v cargo),$(HOME)/.cargo/bin/cargo)
+
+include make/board.mk
+
+.NOTPARALLEL:
+SHELL := /bin/bash
 KICAD_CLI ?= kicad-cli
-RUN_DIR ?=
-EXTRA_ROUTE_ARGS ?=
-.PHONY: check compile power-check layout edit fetch install-compiler test-smoke test-board test route route-draft assembly package manufacturing order
-fetch:
-	"$(COPPER)" lock "$(SOURCE)" --locked
-	"$(COPPER)" audit-footprints "$(SOURCE)" --locked
-check:
-	"$(COPPER)" check "$(SOURCE)" $(RESOLVE_ARGS) $(CHECK_ARGS)
-compile:
-	"$(COPPER)" compile "$(SOURCE)" $(RESOLVE_ARGS) -o "$(OUT)/board.json"
-power-check:
-	"$(COPPER)" power-check "$(SOURCE)" $(RESOLVE_ARGS)
-layout:
-	"$(COPPER)" plan-layout "$(SOURCE)" $(RESOLVE_ARGS) --layers $(LAYERS) --fab-profile $(FAB_PROFILE) -o "$(OUT)/placed.kicad_pcb" --report "$(OUT)/placement.json"
-edit:
-	"$(COPPER)" edit-mechanical "$(SOURCE)" $(RESOLVE_ARGS) --layers $(LAYERS) --fab-profile $(FAB_PROFILE)
-test-smoke:
-	COPPER_TEST_BIN="$(COPPER)" node --test tests/rust-cli.test.cjs
-test-board:
-	COPPER="$(COPPER)" "$(PYTHON)" -m pytest tests -q
+# Every footprint is managed: copper.mod maps the KiCad libraries to the pinned
+# github.com/KiCad/kicad-footprints commit and copper.lock binds their content,
+# so no local KiCad footprint directory is used.
+
+# Each route gets a fresh build/board/runs/<UTC time>-route/;
+# build/board/runs/latest-route points at the newest one.
+RUNS := $(OUT)/runs
+RUN_ID := $(shell date -u +%Y%m%dT%H%M%SZ)-route
+ROUTED := $(RUNS)/latest-route/board.kicad_pcb
+route: RUN_DIR = $(RUNS)/$(RUN_ID)
+route: | latest-route
+.PHONY: latest-route
+latest-route:
+	@mkdir -p $(RUNS)/$(RUN_ID) && ln -sfn $(RUN_ID) $(RUNS)/latest-route
+	@echo "Route run: $(RUNS)/$(RUN_ID) (follow: tail -f $(RUNS)/latest-route/routing.log)"
+
+# One legal placement candidate with macro copper; no board-level routing.
+layout: PHYSICAL_ARGS += --candidates 1
+.PHONY: copper plan si-check render review order test
+plan: layout
+
+# Build the Rust compiler from the CopperScript checkout, with its pinned
+# toolchain (rust-toolchain.toml applies in that directory); incremental, so a
+# no-op when current. Skipped when COPPER names a binary outside that checkout.
+check compile layout edit route si-check bom order test: copper
+copper:
+	$(if $(filter $(COPPERSCRIPT)/target/release/copper,$(COPPER)),cd $(COPPERSCRIPT) && $(CARGO) build --release --locked -p copper,@true)
+
+# Board tests: source facts checked through the copper CLI (needs pytest,
+# see requirements-test.txt).
+PYTHON ?= python3
 test:
-	@echo "Full acceptance is not migrated; see docs/project-migration.md. Run test-smoke for the public-CLI subset." >&2; exit 3
-# Diagnostic route, not a freshness-checked package/release operation.
-route-draft: check
-	@test -n "$(RUN_DIR)" || { echo "Set RUN_DIR to a fresh directory under build/$(TARGET)/runs/" >&2; exit 2; }
-	@case "$(abspath $(RUN_DIR))" in "$(CURDIR)/build/$(TARGET)/runs/"*) ;; *) echo "RUN_DIR must be under build/$(TARGET)/runs/" >&2; exit 2;; esac
-	@mkdir -p "$(dir $(RUN_DIR))"; mkdir "$(RUN_DIR)"
-	"$(COPPER)" route-board "$(SOURCE)" $(RESOLVE_ARGS) --layers $(LAYERS) --fab-profile $(FAB_PROFILE) $(ROUTE_ARGS) $(EXTRA_ROUTE_ARGS) --checkpoint-dir "$(RUN_DIR)" --verify-plane-fill "$(KICAD_CLI)" --report "$(RUN_DIR)/route-report.json" -o "$(RUN_DIR)/board.kicad_pcb" --progress
-route: route-draft
-	@if test -n "$(ACCEPTANCE_BLOCKER)"; then echo "$(ACCEPTANCE_BLOCKER)" >&2; exit 3; fi
-assembly:
-	@test -n "$(ASSEMBLY_LOCK)" || { echo "No assembly lock selected for this target" >&2; exit 3; }
-	"$(COPPER)" assembly check "$(SOURCE)" $(RESOLVE_ARGS) --lock "$(ASSEMBLY_LOCK)" --report "$(OUT)/assembly.json"
-package manufacturing order:
-	@echo "Unsupported migration operation: shared Rust run freshness/packaging and mandatory client acceptance coverage are not complete. No files exported. See docs/project-migration.md." >&2; exit 3
-install-compiler:
-	rustup toolchain install 1.97.0 --profile minimal
-	cargo +1.97.0 install --git https://github.com/andenore/CopperScript.git --rev $(COPPER_RUST_REV) --locked --force copper
+	COPPER="$(abspath $(COPPER))" $(PYTHON) -m pytest tests -q
+
+# Pre-route signal-integrity screening: impedance from the declared stack-up,
+# reference planes, layer groups and length-match groups.
+si-check:
+	$(COPPER) si-check $(SOURCE) $(RESOLVE_ARGS) --offline --layers $(LAYERS) --fab-profile $(FAB_PROFILE)
+
+# Layer SVGs of the newest routed (and refilled) board.
+render:
+	"$(KICAD_CLI)" pcb export svg --layers F.Cu,In1.Cu,In2.Cu,In3.Cu,In4.Cu,B.Cu --common-layers Edge.Cuts --mode-multi --fit-page-to-board --exclude-drawing-sheet --check-zones -o $(RUNS)/latest-route/layers/ $(ROUTED)
+
+# Browse and annotate a board in CopperReview (local web viewer; Ctrl+C stops it).
+# Defaults to the newest routed board; its stage follows that route's run.json.
+# Point REVIEW_BOARD elsewhere (e.g. $(OUT)/placed.kicad_pcb) and set
+# REVIEW_STAGE=placed to review a placement. REVIEW_ARGS=--no-browser etc.
+UV ?= uv
+COPPERREVIEW ?= ../CopperReview
+REVIEW_BOARD ?= $(ROUTED)
+REVIEW_STAGE ?=
+REVIEW_ARGS ?=
+review_stage = $(or $(REVIEW_STAGE),$(if $(filter $(ROUTED),$(REVIEW_BOARD)),$$(jq -e '.status == "passed"' $(RUNS)/latest-route/run.json > /dev/null 2>&1 && echo fully_routed || echo partially_routed),unknown))
+review:
+	@test -f $(REVIEW_BOARD) || { echo "No board at $(REVIEW_BOARD): run 'make route' first."; exit 1; }
+	$(UV) run --project $(COPPERREVIEW) copper-review $(REVIEW_BOARD) --source $(SOURCE) --stage $(review_stage) $(REVIEW_ARGS)
+
+# Complete ordering list: every component on the board, grouped by part, with
+# quantity per board, manufacturer and MPN, the assembly route and the recorded
+# supplier code. No route needed.
+LOCK := assembly.lock
+ORDER := build/order
+.PHONY: bom
+bom:
+	@mkdir -p $(ORDER)
+	$(COPPER) assembly check $(SOURCE) $(RESOLVE_ARGS) --offline --lock $(LOCK) --report $(ORDER)/assembly-report.json
+	$(COPPER) assembly bom $(SOURCE) $(RESOLVE_ARGS) --offline --lock $(LOCK) -o $(ORDER)/bom.csv --hand-assembly $(ORDER)/hand-assembly.csv --ordering $(ORDER)/ordering.csv
+	@echo "Complete BOM -> $(ORDER)/ordering.csv"
+
+# Prototype order package for JLCPCB PCB + PCBA, built from the newest passed
+# route (build/board/runs/latest-route), so run `make route` first. JLCPCB places
+# every assembly.lock selection with populate = supplier; hand-assembly.csv lists
+# the rest to buy and fit by hand. The files are native-DRC-clean but NOT an
+# independently CAM-qualified release (--skip-independent-cam), and the CPL
+# keeps KiCad's rotations: check every part in JLCPCB's placement preview.
+order:
+	@jq -e '.status == "passed"' $(RUNS)/latest-route/run.json > /dev/null 2>&1 || { echo "No passed route at $(RUNS)/latest-route: run 'make route' first."; exit 1; }
+	@stale=$$(for f in $(SOURCE) copper.mod copper.lock; do [ $$f -nt $(ROUTED) ] && echo $$f; done); \
+	  if [ -n "$$stale" ]; then echo "Routed board predates: $$stale -- run 'make route' first."; exit 1; fi
+	@$(MAKE) --no-print-directory bom
+	$(COPPER) export-manufacturing $(ROUTED) --skip-independent-cam --bom $(ORDER)/bom.csv --replace -o $(ORDER)/jlcpcb
+	@echo "Order package -> $(ORDER): upload jlcpcb/ to JLCPCB; buy and fit hand-assembly.csv by hand."
