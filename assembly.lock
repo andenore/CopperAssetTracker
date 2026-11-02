@@ -1,13 +1,14 @@
 {
   "board": "CopperAssetTracker",
-  "electrical_sha256": "6312dfef48b1c019a77318476a034844e5fdb747d8e801188384fb2821abb800",
-  "schema": "copperscript-assembly-lock/v0.1",
+  "schema": "copperscript-assembly-lock/v0.4",
   "selections": [
     {
+      "electrical_sha256": "7b145e6693da834a6a888fed947eaaffe2afec04bc0e3eefaca8734d43a712e4",
       "footprint": "RF_Antenna:Johanson_2450AT18x100",
       "manufacturer": "Johanson Technology",
       "mpn": "2450AT18A0100001E",
       "part": "johanson.JOHANSON_2450AT18A0100001E",
+      "populate": "supplier",
       "reference": "ANT_BT",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C17430588",
@@ -15,10 +16,12 @@
       "supplier_part": "C17430588"
     },
     {
+      "electrical_sha256": "37a6f1ab3d8160cbbf420f2ef65ec1b1bbb286a28f2febc34abd0f683688d896",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
       "mpn": "CL05B104KO5NNNC",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "C_ACCEL",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C1525",
@@ -26,10 +29,12 @@
       "supplier_part": "C1525"
     },
     {
+      "electrical_sha256": "636c58f32dcf82f1519ba5622609505e103df2d6677c1dd59786318e2554a24e",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "FH (Guangdong Fenghua Advanced Tech)",
       "mpn": "0402CG1R0C500NT",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "C_ANT_SERIES",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C1550",
@@ -37,10 +42,12 @@
       "supplier_part": "C1550"
     },
     {
+      "electrical_sha256": "832ff4347877f54553d9bbd9b0de546632ce8fe0fa3e9cf1e65ec459cff61c99",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "FH (Guangdong Fenghua Advanced Tech)",
       "mpn": "0402CG0R8B500NT",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "C_BT_MATCH",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C285068",
@@ -48,10 +55,12 @@
       "supplier_part": "C285068"
     },
     {
+      "electrical_sha256": "ae437435264e8f10c4854aeb19301ee3ee1670f7eaeeeb9f2d160c197e82d0f2",
       "footprint": "Capacitor_SMD:C_0603_1608Metric",
       "manufacturer": "Samsung Electro-Mechanics",
       "mpn": "CL10A105KB8NNNC",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "C_CC",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C15849",
@@ -59,10 +68,12 @@
       "supplier_part": "C15849"
     },
     {
+      "electrical_sha256": "15e2b461d8c1bc1a068c26c8443653d6828fdae494e490646f7ffbde9aa0c70e",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
       "mpn": "CL05B104KO5NNNC",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "C_DEC1",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C1525",
@@ -70,10 +81,12 @@
       "supplier_part": "C1525"
     },
     {
+      "electrical_sha256": "8e472a7a29e4919c363d563624d675903b18e0f015024a4ff594098265db3406",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "FH (Guangdong Fenghua Advanced Tech)",
       "mpn": "0402CG101J500NT",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "C_DEC3",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C1546",
@@ -81,10 +94,12 @@
       "supplier_part": "C1546"
     },
     {
+      "electrical_sha256": "b864caf81248fc543323017eac47be0f899b9e09f544972bd2264cc9d71b0961",
       "footprint": "Capacitor_SMD:C_0603_1608Metric",
       "manufacturer": "Samsung Electro-Mechanics",
       "mpn": "CL10A105KB8NNNC",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "C_DEC4",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C15849",
@@ -92,10 +107,12 @@
       "supplier_part": "C15849"
     },
     {
+      "electrical_sha256": "9c8fe906b902d6f63829e9bd1fde49a796400db09a93e19bf67baa9f6bcde9cd",
       "footprint": "Capacitor_SMD:C_0603_1608Metric",
       "manufacturer": "Samsung Electro-Mechanics",
       "mpn": "CL10A105KB8NNNC",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "C_GNSS",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C15849",
@@ -103,10 +120,12 @@
       "supplier_part": "C15849"
     },
     {
+      "electrical_sha256": "ad532e0ea3f262f2c1fc521b74a807fd464ab35f4f260f1713b139ef90deab09",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
       "mpn": "CL05B104KO5NNNC",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "C_LEVEL_A",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C1525",
@@ -114,10 +133,12 @@
       "supplier_part": "C1525"
     },
     {
+      "electrical_sha256": "4b06a8f7f17b2292264f296df07a8309da27a3753a83051be49735391762efae",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
       "mpn": "CL05B104KO5NNNC",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "C_LEVEL_B",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C1525",
@@ -125,10 +146,12 @@
       "supplier_part": "C1525"
     },
     {
+      "electrical_sha256": "19bc8904604d09954ee2754b063563684e859d96790fe7a6e2077d5290fe692d",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
       "mpn": "CL05B104KO5NNNC",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "C_MCU",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C1525",
@@ -136,10 +159,12 @@
       "supplier_part": "C1525"
     },
     {
+      "electrical_sha256": "5f56293765b56c128391bd433552b2a40f534474557368056ce2eab8760f3920",
       "footprint": "Capacitor_SMD:C_1210_3225Metric",
       "manufacturer": "Samsung Electro-Mechanics",
       "mpn": "CL32A107MQVNNNE",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "C_MODEM_BULK",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C49066",
@@ -147,10 +172,12 @@
       "supplier_part": "C49066"
     },
     {
+      "electrical_sha256": "77d04e7f58e49e050caa977270b70d70b8c8dde6a3cf439fa737ffd213192e54",
       "footprint": "Capacitor_SMD:C_0603_1608Metric",
       "manufacturer": "Samsung Electro-Mechanics",
       "mpn": "CL10A475KO8NNNC",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "C_NRF",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C19666",
@@ -158,10 +185,12 @@
       "supplier_part": "C19666"
     },
     {
+      "electrical_sha256": "420245feacb39f6fb27dcc452ba5c9355f7e8a1acc1078949eb7a518c00d21da",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
       "mpn": "CL05B104KO5NNNC",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "C_NRF_VDD2",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C1525",
@@ -169,10 +198,12 @@
       "supplier_part": "C1525"
     },
     {
+      "electrical_sha256": "34990c512b4544852db8af2a80babac82aecf8c73b913ee573ce4502f76a206d",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
       "mpn": "CL05B104KO5NNNC",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "C_NRF_VDD3",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C1525",
@@ -180,10 +211,12 @@
       "supplier_part": "C1525"
     },
     {
+      "electrical_sha256": "01ba3aef3a3a7f22d0feaaa3afac7c9c8f985e5136d4acb9f5867abb603f0721",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
       "mpn": "CL05B104KO5NNNC",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "C_STATUS_A",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C1525",
@@ -191,10 +224,12 @@
       "supplier_part": "C1525"
     },
     {
+      "electrical_sha256": "fc318bd8d48e60f972139a5900aa97fc348651b50cbf578bef01854fa6181969",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
       "mpn": "CL05B104KO5NNNC",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "C_STATUS_B",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C1525",
@@ -202,10 +237,12 @@
       "supplier_part": "C1525"
     },
     {
+      "electrical_sha256": "1d864c09475c3b52dfc7288a9ea0fb0007dbf144849a7ac3681b93b754035344",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "FH (Guangdong Fenghua Advanced Tech)",
       "mpn": "0402CG180J500NT",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "C_XC1",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/1901-0402CG180J500NT/C1549",
@@ -213,10 +250,12 @@
       "supplier_part": "C1549"
     },
     {
+      "electrical_sha256": "a11c85aef26728a13e9d06dcd7e368f715cf02a686435b5f72a0d79157d2e11c",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "FH (Guangdong Fenghua Advanced Tech)",
       "mpn": "0402CG180J500NT",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "C_XC2",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/1901-0402CG180J500NT/C1549",
@@ -224,10 +263,12 @@
       "supplier_part": "C1549"
     },
     {
+      "electrical_sha256": "a92b3c5ab1cfd23bca31e598bb7e25139a5daf8271a3cc69d2bf2ed15efd8e89",
       "footprint": "Inductor_SMD:L_CommonModeChoke_Coilcraft_0603USB",
       "manufacturer": "Coilcraft",
       "mpn": "0603USB-601MLC",
       "part": "coilcraft.COILCRAFT_0603USB_601MLC",
+      "populate": "supplier",
       "reference": "FL_USB",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/Coilcraft-0603USB601MLC/C3211396",
@@ -235,10 +276,12 @@
       "supplier_part": "C3211396"
     },
     {
+      "electrical_sha256": "5410edb4657e9545c7f30553494a686f94df47bfda937f4b281b7163c9738fe9",
       "footprint": "Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical",
       "manufacturer": "Hirose",
       "mpn": "U.FL-R-SMT-1(10)",
       "part": "hirose.U_FL_R_SMT_1",
+      "populate": "supplier",
       "reference": "J_CELL",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C88373",
@@ -246,10 +289,12 @@
       "supplier_part": "C88373"
     },
     {
+      "electrical_sha256": "be8c43a0c0b3a564a3da7535f4b691d4bc9a41e59ec6123a51246de3df55ab77",
       "footprint": "github.com/andenore/CopperLib/packages/parts/jst/xh-sm4/footprints/JST_S4B_XH_SM4_TB.kicad_mod",
       "manufacturer": "JST",
       "mpn": "S4B-XH-SM4-TB(LF)(SN)",
       "part": "uart_header.DEBUG_HEADER",
+      "populate": "supplier",
       "reference": "J_DEBUG",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/JST-S4B_XH_SM4_TB_LF_SN/C161861",
@@ -257,10 +302,12 @@
       "supplier_part": "C161861"
     },
     {
+      "electrical_sha256": "ca067eefd089d60327f078def1578d095103352abd31cef3d769b982fd8daf77",
       "footprint": "Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical",
       "manufacturer": "Hirose",
       "mpn": "U.FL-R-SMT-1(10)",
       "part": "hirose.U_FL_R_SMT_1",
+      "populate": "supplier",
       "reference": "J_GNSS",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C88373",
@@ -268,10 +315,12 @@
       "supplier_part": "C88373"
     },
     {
+      "electrical_sha256": "eba99602d6bb795f16e9d1bd299ca2a6aa15ff42c4227c3e5e8f0e849e64dca3",
       "footprint": "github.com/andenore/CopperLib/packages/parts/gct/usb4135/footprints/Connector_USB.pretty/USB_C_Receptacle_GCT_USB4135-GF-A_6P_TopMnt_Horizontal.kicad_mod",
       "manufacturer": "GCT",
       "mpn": "USB4135-GF-A",
       "part": "gct_usb.GCT_USB4135_GF_A",
+      "populate": "supplier",
       "reference": "J_POWER",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/6314253-USB4135_GFA/C5438410",
@@ -279,10 +328,12 @@
       "supplier_part": "C5438410"
     },
     {
+      "electrical_sha256": "d641cbcb08f33b85cc18f8ab6e82ca6f3584733aced29d389549c9f16f9e74ca",
       "footprint": "github.com/andenore/CopperLib/packages/parts/gct/sim8060/footprints/Connector_Card.pretty/nanoSIM_GCT_SIM8060-6-0-14-00.kicad_mod",
       "manufacturer": "GCT",
       "mpn": "SIM8060-6-0-14-00-A",
       "part": "gct_sim.SIM8060_6_0_14_00_A",
+      "populate": "supplier",
       "reference": "J_SIM",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/7243741-SIM8060_6_0_14_00A/C6296715",
@@ -290,10 +341,12 @@
       "supplier_part": "C6296715"
     },
     {
+      "electrical_sha256": "f4248e24e740c0c4be7b47174e042d1972226604f0ef5c33f25f9e81f04527bc",
       "footprint": "Connector_Debug:FTSH-105-01-L-DV-007-K",
       "manufacturer": "Samtec",
       "mpn": "FTSH-105-01-L-DV-007-K",
       "part": "swd.SWD_HEADER",
+      "populate": "supplier",
       "reference": "J_SWD_MCU",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C5296739",
@@ -301,10 +354,12 @@
       "supplier_part": "C5296739"
     },
     {
+      "electrical_sha256": "4ae5deee2440eba8e6116002d84859375f7feba7c000c25d12885293e11b8184",
       "footprint": "Connector_Debug:FTSH-105-01-L-DV-007-K",
       "manufacturer": "Samtec",
       "mpn": "FTSH-105-01-L-DV-007-K",
       "part": "swd.SWD_HEADER",
+      "populate": "supplier",
       "reference": "J_SWD_NRF",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C5296739",
@@ -312,10 +367,12 @@
       "supplier_part": "C5296739"
     },
     {
+      "electrical_sha256": "e37d4cf8decdd4f29aa07486035520d98ef2f52cf5a42b130ddf94bb1e4bc291",
       "footprint": "KENTO:KENTO_KT0603R",
       "manufacturer": "Hubei KENTO Elec",
       "mpn": "KT-0603R",
       "part": "kento.KENTO_KT0603R",
+      "populate": "supplier",
       "reference": "LED_1",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C2286",
@@ -323,10 +380,12 @@
       "supplier_part": "C2286"
     },
     {
+      "electrical_sha256": "72aa467e4c34c94068a5f55e97a1b6ef1d38daef52084528a8fbee55f86302ec",
       "footprint": "KENTO:KENTO_KT0603R",
       "manufacturer": "Hubei KENTO Elec",
       "mpn": "KT-0603R",
       "part": "kento.KENTO_KT0603R",
+      "populate": "supplier",
       "reference": "LED_2",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C2286",
@@ -334,10 +393,12 @@
       "supplier_part": "C2286"
     },
     {
+      "electrical_sha256": "fe87ecfc31338d057c538a59a1b71d63db2112ffbdc6889e90988b36330eb4ac",
       "footprint": "Inductor_SMD:L_0402_1005Metric",
       "manufacturer": "Murata Electronics",
       "mpn": "LQG15HS3N9S02D",
       "part": "INDUCTOR",
+      "populate": "supplier",
       "reference": "L_ANT_SERIES",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C77109",
@@ -345,10 +406,12 @@
       "supplier_part": "C77109"
     },
     {
+      "electrical_sha256": "b983985b17031d03b42b22d08233c0dbe11545541f93cd7f11a95dbd58a4f5e1",
       "footprint": "Inductor_SMD:L_0402_1005Metric",
       "manufacturer": "Murata Electronics",
       "mpn": "LQG15HS2N7S02D",
       "part": "INDUCTOR",
+      "populate": "supplier",
       "reference": "L_ANT_SHUNT",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/MurataElectronics-LQG15HS2N7S02D/C77108",
@@ -356,10 +419,12 @@
       "supplier_part": "C77108"
     },
     {
+      "electrical_sha256": "a7922ace807da170a429de018829e6442879a94cca75ad654b59a08d7e5c184b",
       "footprint": "Inductor_SMD:L_0402_1005Metric",
       "manufacturer": "Murata Electronics",
       "mpn": "LQG15HS3N9S02D",
       "part": "INDUCTOR",
+      "populate": "supplier",
       "reference": "L_BT_MATCH",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C77109",
@@ -367,10 +432,12 @@
       "supplier_part": "C77109"
     },
     {
+      "electrical_sha256": "564efa878c0072ed8d1d96965ea9daf4b9beb0c2cde7fce3ab4eaebf00f3ca81",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "manufacturer": "Samsung Electro-Mechanics",
       "mpn": "CL21A106KAYNNNE",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "PWR/C_BAT",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C15850",
@@ -378,10 +445,12 @@
       "supplier_part": "C15850"
     },
     {
+      "electrical_sha256": "8ecac549ad442002e0b93e9f4103ee1a86b8e87615b09ea6e8a3e3438ab617f1",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "manufacturer": "Samsung Electro-Mechanics",
       "mpn": "CL21A106KAYNNNE",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "PWR/C_LOGIC_IN",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C15850",
@@ -389,10 +458,12 @@
       "supplier_part": "C15850"
     },
     {
+      "electrical_sha256": "8d8b0508ede040722d54c2f762e81198076a6a2a9a84238d84ffb7e66c03e2aa",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "manufacturer": "Samsung Electro-Mechanics",
       "mpn": "CL21A226MAQNNNE",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "PWR/C_LOGIC_OUT1",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C45783",
@@ -400,10 +471,12 @@
       "supplier_part": "C45783"
     },
     {
+      "electrical_sha256": "f9347d6ae78332e1bca305177e618b574e1017d50dbbb42974bbde8e0c5800f7",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "manufacturer": "Samsung Electro-Mechanics",
       "mpn": "CL21A226MAQNNNE",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "PWR/C_LOGIC_OUT2",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C45783",
@@ -411,10 +484,12 @@
       "supplier_part": "C45783"
     },
     {
+      "electrical_sha256": "e82fb19b53691f6be748b5a36a137be9430f0835c3ba6f8343a5dec54eb75959",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "manufacturer": "Samsung Electro-Mechanics",
       "mpn": "CL21A226MAQNNNE",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "PWR/C_LOGIC_OUT3",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C45783",
@@ -422,10 +497,12 @@
       "supplier_part": "C45783"
     },
     {
+      "electrical_sha256": "82ec292fbca92af1afefa4328b7628a14ff989fb1930d025c9b70e69a9501444",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
       "mpn": "CL05B104KO5NNNC",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "PWR/C_LOGIC_VINA",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C1525",
@@ -433,10 +510,12 @@
       "supplier_part": "C1525"
     },
     {
+      "electrical_sha256": "6d44eeeddb8d33bbbb7b7238c700fe3e338b2d370bdf083fe739146817e07545",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "manufacturer": "Samsung Electro-Mechanics",
       "mpn": "CL21A106KAYNNNE",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "PWR/C_MODEM_IN",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C15850",
@@ -444,10 +523,12 @@
       "supplier_part": "C15850"
     },
     {
+      "electrical_sha256": "c8503a5a059198c5f11079c2b69fe6998fb3a981dc9917c45b43f0c415a7e283",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "manufacturer": "Samsung Electro-Mechanics",
       "mpn": "CL21A226MAQNNNE",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "PWR/C_MODEM_OUT1",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C45783",
@@ -455,10 +536,12 @@
       "supplier_part": "C45783"
     },
     {
+      "electrical_sha256": "08710bfa82f32119633a294a43df2aa6202681007ee48f8955ca1fef607e71a4",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "manufacturer": "Samsung Electro-Mechanics",
       "mpn": "CL21A226MAQNNNE",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "PWR/C_MODEM_OUT2",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C45783",
@@ -466,10 +549,12 @@
       "supplier_part": "C45783"
     },
     {
+      "electrical_sha256": "c671a6a47c188244d37bb9de9e6a15304f3c20d8fadf6ebf0b94550f44d9c517",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "manufacturer": "Samsung Electro-Mechanics",
       "mpn": "CL21A226MAQNNNE",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "PWR/C_MODEM_OUT3",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C45783",
@@ -477,10 +562,12 @@
       "supplier_part": "C45783"
     },
     {
+      "electrical_sha256": "0a678070855c891d06c8fefd8883d85fc1b4de353c8257d6da79dae2a798b999",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
       "mpn": "CL05B104KO5NNNC",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "PWR/C_MODEM_VINA",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C1525",
@@ -488,10 +575,12 @@
       "supplier_part": "C1525"
     },
     {
+      "electrical_sha256": "2fa7c480d02049b0ddc0845dcd49af436ac695117fe4e882fb2d149666b78c49",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "manufacturer": "Samsung Electro-Mechanics",
       "mpn": "CL21A106KAYNNNE",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "PWR/C_SYS",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C15850",
@@ -499,10 +588,12 @@
       "supplier_part": "C15850"
     },
     {
+      "electrical_sha256": "8d5e2ed58392cf429fcc352d713340a3aeab745a7973ac83a96f0c423ad1a3d3",
       "footprint": "Capacitor_SMD:C_0603_1608Metric",
       "manufacturer": "Samsung Electro-Mechanics",
       "mpn": "CL10A475KO8NNNC",
       "part": "CAPACITOR",
+      "populate": "supplier",
       "reference": "PWR/C_USB",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C19666",
@@ -510,10 +601,12 @@
       "supplier_part": "C19666"
     },
     {
+      "electrical_sha256": "ffe248f33cf1c0e0a668e894b19e7777d61bfbdf39e3a82414689dd998787284",
       "footprint": "github.com/andenore/CopperLib/packages/parts/jst/xh-sm4/footprints/JST_S3B_XH_SM4_TB.kicad_mod",
       "manufacturer": "JST",
       "mpn": "S3B-XH-SM4-TB(LF)(SN)",
       "part": "tracker.battery_header.JST_S3B_XH_SM4_TB",
+      "populate": "supplier",
       "reference": "PWR/J_BAT",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/173241-S3B_XH_SM4_TB_LF_SN/C161860",
@@ -521,10 +614,12 @@
       "supplier_part": "C161860"
     },
     {
+      "electrical_sha256": "f63bda614c5412fa479854a8b9f389fd19d5b1c9cfce7766fbfb523117e37136",
       "footprint": "github.com/andenore/CopperLib/packages/parts/bourns/srp4020ta/footprints/Bourns_SRP4020TA.kicad_mod",
       "manufacturer": "Bourns",
       "mpn": "SRP4020TA-1R5M",
       "part": "tracker.bourns.SRP4020TA_1R5M",
+      "populate": "supplier",
       "reference": "PWR/L_LOGIC",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C3233727",
@@ -532,10 +627,12 @@
       "supplier_part": "C3233727"
     },
     {
+      "electrical_sha256": "4218658489b08d49f0951f5d282bc0785d56c696ad97ce9daa398bb7d13254e9",
       "footprint": "github.com/andenore/CopperLib/packages/parts/bourns/srp4020ta/footprints/Bourns_SRP4020TA.kicad_mod",
       "manufacturer": "Bourns",
       "mpn": "SRP4020TA-1R5M",
       "part": "tracker.bourns.SRP4020TA_1R5M",
+      "populate": "supplier",
       "reference": "PWR/L_MODEM",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C3233727",
@@ -543,10 +640,12 @@
       "supplier_part": "C3233727"
     },
     {
+      "electrical_sha256": "acabdae6ed0f6cb9ce08b221f0f01a66f9a2791bfeb15ce28960f9a289f4c7c3",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
       "manufacturer": "UNI-ROYAL",
       "mpn": "0402WGF3301TCE",
       "part": "RESISTOR",
+      "populate": "supplier",
       "reference": "PWR/R_ILIM",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C25890",
@@ -554,10 +653,12 @@
       "supplier_part": "C25890"
     },
     {
+      "electrical_sha256": "789c06025797566e48731aceccc2e0e8104a38e0c41573eaa265f8c9d1d9d16a",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
       "manufacturer": "UNI-ROYAL",
       "mpn": "0402WGF2201TCE",
       "part": "RESISTOR",
+      "populate": "supplier",
       "reference": "PWR/R_ISET",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C25879",
@@ -565,10 +666,12 @@
       "supplier_part": "C25879"
     },
     {
+      "electrical_sha256": "9f4b0cad3d3edb7f66ff919a842667dc0694f20682b2cef30b31ae58779b677f",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
       "manufacturer": "UNI-ROYAL",
       "mpn": "0402WGF1003TCE",
       "part": "RESISTOR",
+      "populate": "supplier",
       "reference": "PWR/R_LOGIC_FB_BOT",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C25741",
@@ -576,10 +679,12 @@
       "supplier_part": "C25741"
     },
     {
+      "electrical_sha256": "da994d14f0cfdbf75ef244a924b9b588f0a954873876f7e4f2da2766c39e300e",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
       "manufacturer": "UNI-ROYAL",
       "mpn": "0402WGF5603TCE",
       "part": "RESISTOR",
+      "populate": "supplier",
       "reference": "PWR/R_LOGIC_FB_TOP",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C132339",
@@ -587,10 +692,12 @@
       "supplier_part": "C132339"
     },
     {
+      "electrical_sha256": "410586c3042adf6b1df354d100cba0017507dceefebefee98b155f4052e3743f",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
       "manufacturer": "UNI-ROYAL",
       "mpn": "0402WGF1003TCE",
       "part": "RESISTOR",
+      "populate": "supplier",
       "reference": "PWR/R_MODEM_EN_PD",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C25741",
@@ -598,10 +705,12 @@
       "supplier_part": "C25741"
     },
     {
+      "electrical_sha256": "c56f2022a1804d38dfe9d6697607a1fef8312c0d4794371ba780a1004728c629",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
       "manufacturer": "UNI-ROYAL",
       "mpn": "0402WGF1003TCE",
       "part": "RESISTOR",
+      "populate": "supplier",
       "reference": "PWR/R_MODEM_FB_BOT",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C25741",
@@ -609,10 +718,12 @@
       "supplier_part": "C25741"
     },
     {
+      "electrical_sha256": "d1c331f4e88e73f386e0938ae02e35d7e2ade8a5b6668f9907b8c9592f4c7533",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
       "manufacturer": "UNI-ROYAL",
       "mpn": "0402WGF3303TCE",
       "part": "RESISTOR",
+      "populate": "supplier",
       "reference": "PWR/R_MODEM_FB_TOP",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C25778",
@@ -620,10 +731,12 @@
       "supplier_part": "C25778"
     },
     {
+      "electrical_sha256": "688675ee26633d99943178bd0c89fa96c7bdec1eccc1e08e2a37a0ec26d9416a",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
       "manufacturer": "UNI-ROYAL",
       "mpn": "0402WGF3303TCE",
       "part": "RESISTOR",
+      "populate": "supplier",
       "reference": "PWR/R_MODEM_FB_TOP2",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C25778",
@@ -631,10 +744,12 @@
       "supplier_part": "C25778"
     },
     {
+      "electrical_sha256": "7ab8af3716b35051c60ed0fb7c7d2017550f8821d36904b42eae1f689214c394",
       "footprint": "Package_DFN_QFN:VQFN-16-1EP_3x3mm_P0.5mm_EP1.68x1.68mm",
       "manufacturer": "Texas Instruments",
       "mpn": "BQ24072RGTR",
       "part": "tracker.charger.BQ24072RGTR",
+      "populate": "supplier",
       "reference": "PWR/U_CHARGE",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C140288",
@@ -642,10 +757,12 @@
       "supplier_part": "C140288"
     },
     {
+      "electrical_sha256": "b15b491d79412ed99f2e0057deae838ddc0be7d4e47c081f0add003ffb7a7f48",
       "footprint": "github.com/andenore/CopperLib/packages/parts/ti/tps63020/footprints/TI_DSJ0014_TPS63020.kicad_mod",
       "manufacturer": "Texas Instruments",
       "mpn": "TPS63020DSJR",
       "part": "tracker.buck_boost.TPS63020DSJR",
+      "populate": "supplier",
       "reference": "PWR/U_LOGIC",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C15483",
@@ -653,10 +770,12 @@
       "supplier_part": "C15483"
     },
     {
+      "electrical_sha256": "45c827c6172d480058bcef24b328a6b6b39d182047c48da66469c81b4314bee6",
       "footprint": "github.com/andenore/CopperLib/packages/parts/ti/tps63020/footprints/TI_DSJ0014_TPS63020.kicad_mod",
       "manufacturer": "Texas Instruments",
       "mpn": "TPS63020DSJR",
       "part": "tracker.buck_boost.TPS63020DSJR",
+      "populate": "supplier",
       "reference": "PWR/U_MODEM",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C15483",
@@ -664,10 +783,12 @@
       "supplier_part": "C15483"
     },
     {
+      "electrical_sha256": "a3aa27d9d9e24c74c6acfa0b0f8596e475b67563de9e39a3a1756c4b9052f84b",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
       "manufacturer": "UNI-ROYAL",
       "mpn": "0402WGF1002TCE",
       "part": "RESISTOR",
+      "populate": "supplier",
       "reference": "R_CC_OUT1",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C25744",
@@ -675,10 +796,12 @@
       "supplier_part": "C25744"
     },
     {
+      "electrical_sha256": "4a74551afd6d91a890ce05e4655c9a26005696ffd820fecb2c7fd370ad66e350",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
       "manufacturer": "UNI-ROYAL",
       "mpn": "0402WGF1002TCE",
       "part": "RESISTOR",
+      "populate": "supplier",
       "reference": "R_CC_OUT2",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C25744",
@@ -686,10 +809,12 @@
       "supplier_part": "C25744"
     },
     {
+      "electrical_sha256": "7b32f462bec57f80fd291bef3399f725e4c74f2aeaa845f6ba34430c32f93a1c",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
       "manufacturer": "UNI-ROYAL",
       "mpn": "0402WGF3003TCE",
       "part": "RESISTOR",
+      "populate": "supplier",
       "reference": "R_CC_VBUS",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C25774",
@@ -697,10 +822,12 @@
       "supplier_part": "C25774"
     },
     {
+      "electrical_sha256": "f009198634303398fb4d523f0d13579eafec24f17c54028fb93348e1fe32ca6b",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
       "manufacturer": "UNI-ROYAL",
       "mpn": "0402WGF3003TCE",
       "part": "RESISTOR",
+      "populate": "supplier",
       "reference": "R_CC_VBUS2",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C25774",
@@ -708,10 +835,12 @@
       "supplier_part": "C25774"
     },
     {
+      "electrical_sha256": "7750dae9a907d36f203f3f4cf5263fe02e707dbf1daefdbba6434f051e49888e",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
       "manufacturer": "UNI-ROYAL",
       "mpn": "0402WGF3003TCE",
       "part": "RESISTOR",
+      "populate": "supplier",
       "reference": "R_CC_VBUS3",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C25774",
@@ -719,10 +848,12 @@
       "supplier_part": "C25774"
     },
     {
+      "electrical_sha256": "d77b42c9da4a6d146da821e32bb0ad6d88cafc9bf3297fd8a21fc61bb9c61f97",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
       "manufacturer": "UNI-ROYAL",
       "mpn": "0402WGF4701TCE",
       "part": "RESISTOR",
+      "populate": "supplier",
       "reference": "R_I2C_SCL",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C25900",
@@ -730,10 +861,12 @@
       "supplier_part": "C25900"
     },
     {
+      "electrical_sha256": "47a9a5c559bb3582d7c2497cbd04d5f39ec67501327b6c5f9b1143674e59e21c",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
       "manufacturer": "UNI-ROYAL",
       "mpn": "0402WGF4701TCE",
       "part": "RESISTOR",
+      "populate": "supplier",
       "reference": "R_I2C_SDA",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C25900",
@@ -741,10 +874,12 @@
       "supplier_part": "C25900"
     },
     {
+      "electrical_sha256": "235499b60cbe5930546b28a04e61e1cdf44812cd11ab9ae9cb6e800ff974b23d",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
       "manufacturer": "UNI-ROYAL",
       "mpn": "0402WGF1003TCE",
       "part": "RESISTOR",
+      "populate": "supplier",
       "reference": "R_KEY_PD",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C25741",
@@ -752,10 +887,12 @@
       "supplier_part": "C25741"
     },
     {
+      "electrical_sha256": "5133d726de2aeed40b8393a0d0e9668e96b18cf9a4f5e91bf5bd554acd0fb0e6",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
       "manufacturer": "UNI-ROYAL",
       "mpn": "0402WGF1001TCE",
       "part": "RESISTOR",
+      "populate": "supplier",
       "reference": "R_LED_1",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C11702",
@@ -763,10 +900,12 @@
       "supplier_part": "C11702"
     },
     {
+      "electrical_sha256": "9a54883b1c4d7ef0613b54c64545101e9e040a39e180190a79b0aedb5b107b32",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
       "manufacturer": "UNI-ROYAL",
       "mpn": "0402WGF1001TCE",
       "part": "RESISTOR",
+      "populate": "supplier",
       "reference": "R_LED_2",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C11702",
@@ -774,10 +913,12 @@
       "supplier_part": "C11702"
     },
     {
+      "electrical_sha256": "82a51f9a3c69e0c129d1e8a15db637280e1cf5e8e280d3b1e63f52473a00179b",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
       "manufacturer": "UNI-ROYAL",
       "mpn": "0402WGF1002TCE",
       "part": "RESISTOR",
+      "populate": "supplier",
       "reference": "R_RESET_MCU",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C25744",
@@ -785,10 +926,12 @@
       "supplier_part": "C25744"
     },
     {
+      "electrical_sha256": "e34a333bcd002f30c831c9224c7e6316208da99c9d981345c7e5bb973615a97d",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
       "manufacturer": "UNI-ROYAL",
       "mpn": "0402WGF1002TCE",
       "part": "RESISTOR",
+      "populate": "supplier",
       "reference": "R_RESET_NRF",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C25744",
@@ -796,10 +939,12 @@
       "supplier_part": "C25744"
     },
     {
+      "electrical_sha256": "f0d0bbd087a8d388602884177d480a8b20c2f107b8aca1ad0ce3f133418ae17b",
       "footprint": "Button_Switch_SMD:SW_SPST_TL3342",
       "manufacturer": "E-Switch",
       "mpn": "TL3342F160QG",
       "part": "eswitch.TL3342F160QG",
+      "populate": "supplier",
       "reference": "SW_USER",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C2886898",
@@ -807,10 +952,12 @@
       "supplier_part": "C2886898"
     },
     {
+      "electrical_sha256": "8643274fb689977d907133bfa2315932519ff748cf6421d67d7d8e760d10df4b",
       "footprint": "Package_LGA:LGA-12_2x2mm_P0.5mm",
       "manufacturer": "STMicroelectronics",
       "mpn": "LIS2DW12TR",
       "part": "st_accel.LIS2DW12",
+      "populate": "supplier",
       "reference": "U_ACCEL",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C189624",
@@ -818,10 +965,12 @@
       "supplier_part": "C189624"
     },
     {
+      "electrical_sha256": "62573a41885ac380f015c297930f06a6d05ff98665d1d623beff5a266bcefc5e",
       "footprint": "Package_DFN_QFN:Texas_X2QFN-12_1.6x1.6mm_P0.4mm",
       "manufacturer": "Texas Instruments",
       "mpn": "TUSB320LAIRWBR",
       "part": "tusb.TUSB320LAI",
+      "populate": "supplier",
       "reference": "U_CC",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C132554",
@@ -829,32 +978,38 @@
       "supplier_part": "C132554"
     },
     {
+      "electrical_sha256": "bdd8b4c972452a7e7ffeac4648b403f58cc45d3bf20a73c5f2e7be6e3930e59d",
       "footprint": "MAX_M10S:u-blox_MAX-M10S",
       "manufacturer": "u-blox",
       "mpn": "MAX-M10S-00B",
       "part": "ublox.MAX_M10S_00B",
+      "populate": "supplier",
       "reference": "U_GNSS",
-      "reviewed": true,
+      "reviewed": false,
       "source_url": "https://jlcpcb.com/partdetail/UBLOX-MAX_M10S00B/C4153167",
       "supplier": "jlcpcb",
       "supplier_part": "C4153167"
     },
     {
+      "electrical_sha256": "7fd11de367ef1f88c4372a81d31fbb9d0f5505a40c9e309f2332534bc10d7fb5",
       "footprint": "Package_QFP:LQFP-64_10x10mm_P0.5mm",
       "manufacturer": "STMicroelectronics",
       "mpn": "STM32G0C1RET6",
       "part": "st_mcu.STM32G0C1RET6",
+      "populate": "supplier",
       "reference": "U_MCU",
-      "reviewed": true,
+      "reviewed": false,
       "source_url": "https://jlcpcb.com/partdetail/C3231062",
       "supplier": "jlcpcb",
       "supplier_part": "C3231062"
     },
     {
+      "electrical_sha256": "710f0b6421e4d25a2e4255e0e13c4369dc1adf63b6e46ab36ef4258810d4da76",
       "footprint": "github.com/andenore/CopperLib/packages/parts/simcom/sim7670g-lngv/footprints/SIM7670G_LNGV.kicad_mod",
       "manufacturer": "SIMCom Wireless Solutions",
       "mpn": "SIM7670G-LNGV",
       "part": "simcom.SIM7670G_LNGV",
+      "populate": "supplier",
       "reference": "U_MODEM",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/48042558-LTE_Cat_1bis/C45935408",
@@ -862,10 +1017,12 @@
       "supplier_part": "C45935408"
     },
     {
+      "electrical_sha256": "c961a0189eb4dcdbd48ac87b415c40178b76ed4c2960ba65e75842b35fe8c39c",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "manufacturer": "onsemi",
       "mpn": "BSS138",
       "part": "onsemi.BSS138",
+      "populate": "supplier",
       "reference": "U_MODEM_KEY",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/Onsemi-BSS138/C52895",
@@ -873,10 +1030,12 @@
       "supplier_part": "C52895"
     },
     {
+      "electrical_sha256": "6488c8ae8b7d93ac32969c9a2c7f608f93c48e1a2ef2cac82994a22b3780c6c8",
       "footprint": "Package_DFN_QFN:UQFN-10_1.4x1.8mm_P0.4mm",
       "manufacturer": "Texas Instruments",
       "mpn": "SN74AXC2T245RSWR",
       "part": "translator.MODEM_UART_TRANSLATOR",
+      "populate": "supplier",
       "reference": "U_MODEM_LEVEL",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C1882550",
@@ -884,10 +1043,12 @@
       "supplier_part": "C1882550"
     },
     {
+      "electrical_sha256": "45b1b64139cf3f508e88c6e336fabd6bb5b39eed543ff0ee926710d8b2911a69",
       "footprint": "Package_DFN_QFN:UQFN-10_1.4x1.8mm_P0.4mm",
       "manufacturer": "Texas Instruments",
       "mpn": "SN74AXC2T245RSWR",
       "part": "translator.MODEM_STATUS_TRANSLATOR",
+      "populate": "supplier",
       "reference": "U_MODEM_STATUS",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C1882550",
@@ -895,10 +1056,12 @@
       "supplier_part": "C1882550"
     },
     {
+      "electrical_sha256": "1c82c4153b5cb73480b8ccb182f051a90789cbf23b2a630a485565ca1230eb18",
       "footprint": "Package_DFN_QFN:QFN-48-1EP_6x6mm_P0.4mm_EP4.2x4.2mm",
       "manufacturer": "Nordic Semiconductor",
       "mpn": "NRF52832-QFAA-R",
       "part": "nordic.NRF52832_QFAA",
+      "populate": "supplier",
       "reference": "U_NRF",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C77540",
@@ -906,10 +1069,12 @@
       "supplier_part": "C77540"
     },
     {
+      "electrical_sha256": "5d6a3062ab84c34580b0bf9bd8ca7f4bd70ada36a817799b7f52ba82370c636a",
       "footprint": "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm",
       "manufacturer": "YXC (Yangxing Technology)",
       "mpn": "X322532MOB4SI",
       "part": "yxc.YXC_X322532MOB4SI",
+      "populate": "supplier",
       "reference": "Y_NRF",
       "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/YangxingTech-X322532MOB4SI/C9009",

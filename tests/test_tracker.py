@@ -79,11 +79,13 @@ class TrackerTests(unittest.TestCase):
     def test_manufacturing_review_gate(self):
         r = assembly_check()
         self.assertEqual(r["exact_selection_count"], len(self.lock["selections"]))
-        # New source/compiler inputs invalidate the retained assembly snapshot.
-        # Exact reviewed selections remain facts, but are not reapproved here.
+        # Each selection is bound to its own component; the CopperLib update
+        # changed the MCU and GNSS part definitions, so only those two need
+        # review again. Nothing is reapproved here.
         self.assertFalse(r["passed"])
-        self.assertEqual({issue["code"] for issue in r["issues"]}, {"STALE_LOCK"})
-        self.assertEqual(r["reviewed_count"], 83)
+        self.assertEqual({issue["code"] for issue in r["issues"]}, {"REVIEW_REQUIRED"})
+        self.assertEqual({issue["reference"] for issue in r["issues"]}, {"U_GNSS", "U_MCU"})
+        self.assertEqual(r["reviewed_count"], 81)
 
     def test_battery_and_power_path(self):
         self.assertIn(("PWR/J_BAT", "P1"), net("PWR/BAT"))

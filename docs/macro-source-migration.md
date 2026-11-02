@@ -16,9 +16,12 @@ match the former scene inputs. CopperLib and footprint dependency pins, macro
 geometry, electrical circuitry and fixed poses are preserved. Compiler and board
 source identities change, so old evidence must not be presented as current.
 
-The retained assembly lock reports `STALE_LOCK`: all 83 exact selections remain
-reviewed, but the new compiled source digest needs a fresh assembly review.
-The lock was not rewritten to approve the migration. Previously routed boards,
+The retained assembly lock reported `STALE_LOCK`: all 83 exact selections remained
+reviewed, but the new compiled source digest needed a fresh assembly review.
+The lock was not rewritten to approve the migration. It has since been moved to
+per-component bindings (`copperscript-assembly-lock/v0.4`), rebound at the
+revision it was reviewed against: only U_MCU and U_GNSS, whose CopperLib part
+definitions changed, need review again. Previously routed boards,
 native DRC reports and showcase renders retain their historical bindings; the
 showcase snapshot explicitly records its historical canonical source status.
 No new full-board route, manufacturing qualification or ordering approval is

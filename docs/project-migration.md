@@ -1,7 +1,7 @@
 # Rust project migration
 
 Layout migration: `codex/rust-client-layout`, integrated into `main`. Board qualification remains incomplete.
-Compiler: `c14c73ac040849dee9c96b4c22071b291b5f046b` (Rust only, from CopperScript main); exact dependency and assembly pins are preserved.
+Compiler: `f982915e96b05788da8a86ee45324ab4e4a8350e` (Rust only, from CopperScript main); exact dependency and assembly pins are preserved.
 
 ## Active layout
 
@@ -81,7 +81,7 @@ RF review tests retain their explicit environment prerequisites.
 
 ## Integration with main
 
-The compiler pin now selects CopperScript main revision
+The compiler pin then selected CopperScript main revision
 `c14c73ac040849dee9c96b4c22071b291b5f046b`. Compilation, locked/offline ERC,
 and the public-CLI regression subset passed again against that exact Rust build.
 Full routing, native DRC and manufacturing exports were not rerun.
