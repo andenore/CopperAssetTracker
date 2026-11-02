@@ -31,9 +31,9 @@ class PowerLayoutTests(unittest.TestCase):
 
     def test_quiet_support_parts_stay_in_compact_source_placements(self):
         poses = fixed_placements()
-        expected = {"U_MODEM_LEVEL": (20500000, 42000000),
+        expected = {"U_MODEM_LEVEL": (22600000, 42000000),
                     "U_MODEM_KEY": (12000000, 40000000),
-                    "U_MODEM_STATUS": (4500000, 30000000),
+                    "U_MODEM_STATUS": (4500000, 32700000),
                     "R_CC_OUT1": (37200000, 59900000),
                     "PWR/R_ILIM": (64600000, 38000000),
                     "PWR/R_ISET": (71200000, 38550000)}

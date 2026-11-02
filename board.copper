@@ -445,6 +445,11 @@ board CopperAssetTracker {
     constraint max_distance(J_GNSS.SIGNAL, U_GNSS.RF_IN) { distance = 8mm; }
 
     constraint max_distance(C_MCU, U_MCU.VDD) { distance = 3mm; }
+    // The MCU at the pose the planner settles on, with C_MCU turned beside
+    // VDD/VSS (pins 8/9): its GND pad faces VSS, so V3V3 copper cannot box the
+    // VSS land in away from the capacitor's ground.
+    constraint fixed_placement(U_MCU) { x = 48.6mm; y = 21mm; rotation = 180; side = front; }
+    constraint fixed_placement(C_MCU) { x = 56.3mm; y = 21mm; rotation = 90; side = front; }
     // Keep the USB choke in the short corridor between the modem's USB pads
     // and the MCU's PA11/PA12, turned so its IN ends face the modem (west).
     constraint max_distance(FL_USB.DP_OUT, U_MCU.PA12) { distance = 5mm; }
@@ -498,10 +503,14 @@ board CopperAssetTracker {
     constraint max_distance(R_CC_OUT2.2, U_CC.OUT2) { distance = 4mm; }
     // Leave room below the modem for both pin-associated bypasses. Their
     // poses/routes are selected by CopperScript's generic decoupling intent.
-    constraint fixed_placement(U_MODEM_LEVEL) { x = 20.5mm; y = 42mm; rotation = 180; side = front; }
+    // Moved 2.1 mm right with the modem so the UART lines keep their order.
+    constraint fixed_placement(U_MODEM_LEVEL) { x = 22.6mm; y = 42mm; rotation = 180; side = front; }
     constraint fixed_placement(U_MODEM_KEY) { x = 12mm; y = 40mm; rotation = 0; side = front; }
     constraint fixed_placement(R_KEY_PD) { x = 9mm; y = 40.3mm; rotation = 90; side = front; }
-    constraint fixed_placement(U_MODEM_STATUS) { x = 4.5mm; y = 30mm; rotation = 0; side = front; }
+    // 2.7 mm below its earlier y = 30 mm so C_STATUS_A fits north of it, clear
+    // of the cellular SMA; south of the chip its V3V3 trace cut V1V8_MODEM off
+    // from C_STATUS_B.
+    constraint fixed_placement(U_MODEM_STATUS) { x = 4.5mm; y = 32.7mm; rotation = 0; side = front; }
     // 3.5 mm: with the module turned, VCC faces J_BAT and 3 mm has no legal pose.
     constraint max_distance(C_GNSS, U_GNSS.VCC) { distance = 3.5mm; }
     // Front-side translator decouplers stay at their supply pins; with no
@@ -511,6 +520,9 @@ board CopperAssetTracker {
     constraint max_distance(C_STATUS_A.1, U_MODEM_STATUS.VCCA) { distance = 3mm; }
     constraint max_distance(C_STATUS_B.1, U_MODEM_STATUS.VCCB) { distance = 3mm; }
     constraint max_distance(C_MODEM_BULK, U_MODEM.VBAT_1) { distance = 5mm; }
+    // Modem GND pad 29 sits between USB_DM_MODEM and SIM_VCC with no room for
+    // an off-pad via; allow a filled/capped GND via in the land instead.
+    constraint via_in_pad(U_MODEM.GND_29) { process = "filled-capped"; }
 
     // The provisional 100 x 80 mm outline, previously the CLI fallback size.
     mechanical {
