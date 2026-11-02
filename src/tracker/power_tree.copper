@@ -27,8 +27,8 @@ module AssetTrackerPowerTree {
     component R_MODEM_FB_BOT: RESISTOR { value = 100kohm; footprint = "Resistor_SMD:R_0402_1005Metric"; }
     component R_MODEM_EN_PD: RESISTOR { value = 100kohm; footprint = "Resistor_SMD:R_0402_1005Metric"; }
     component C_USB: CAPACITOR { value = 4.7uF; footprint = "Capacitor_SMD:C_0603_1608Metric"; }
-    component C_BAT: CAPACITOR { value = 10uF; footprint = "Capacitor_SMD:C_0805_2012Metric"; }
-    component C_SYS: CAPACITOR { value = 10uF; footprint = "Capacitor_SMD:C_0805_2012Metric"; }
+    component C_BAT: CAPACITOR { value = 10uF; footprint = "Capacitor_SMD:C_0805_2012Metric"; role = decoupling; decouples = "U_CHARGE.BAT_3"; }
+    component C_SYS: CAPACITOR { value = 10uF; footprint = "Capacitor_SMD:C_0805_2012Metric"; role = decoupling; decouples = "U_CHARGE.OUT_10"; }
     component C_LOGIC_IN: CAPACITOR { value = 10uF; footprint = "Capacitor_SMD:C_0805_2012Metric"; }
     component C_MODEM_IN: CAPACITOR { value = 10uF; footprint = "Capacitor_SMD:C_0805_2012Metric"; }
     component C_LOGIC_VINA: CAPACITOR { value = 100nF; footprint = "Capacitor_SMD:C_0402_1005Metric"; }

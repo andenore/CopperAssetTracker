@@ -487,7 +487,7 @@
       "part": "molex_sma.MOLEX_73251_2200",
       "populate": "consigned",
       "reference": "J_CELL",
-      "reviewed": false,
+      "reviewed": true,
       "source_url": "https://www.digikey.com/en/products/result?keywords=0732512200",
       "supplier": "DigiKey",
       "supplier_part": "WM9352-ND"
@@ -537,7 +537,7 @@
       "part": "molex_sma.MOLEX_73251_2200",
       "populate": "consigned",
       "reference": "J_GNSS",
-      "reviewed": false,
+      "reviewed": true,
       "source_url": "https://www.digikey.com/en/products/result?keywords=0732512200",
       "supplier": "DigiKey",
       "supplier_part": "WM9352-ND"
@@ -761,7 +761,7 @@
           "supplier_part": "3013452"
         }
       ],
-      "electrical_sha256": "564efa878c0072ed8d1d96965ea9daf4b9beb0c2cde7fce3ab4eaebf00f3ca81",
+      "electrical_sha256": "1ee225d5922fa6bf702b64adcc18f0ee09e9c43049e1a0876dd4946a8af299da",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "manufacturer": "Samsung Electro-Mechanics",
       "mpn": "CL21A106KAYNNNE",
@@ -1051,7 +1051,7 @@
           "supplier_part": "3013452"
         }
       ],
-      "electrical_sha256": "2fa7c480d02049b0ddc0845dcd49af436ac695117fe4e882fb2d149666b78c49",
+      "electrical_sha256": "943c9ab0f07b481fe7278ba32ab446a6ce83a87616457030034a6bcc234f76fd",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "manufacturer": "Samsung Electro-Mechanics",
       "mpn": "CL21A106KAYNNNE",

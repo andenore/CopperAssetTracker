@@ -81,12 +81,10 @@ class TrackerTests(unittest.TestCase):
     def test_manufacturing_review_gate(self):
         r = assembly_check()
         self.assertEqual(r["exact_selection_count"], len(self.lock["selections"]))
-        # Each selection is bound to its own component; only the new edge SMA
-        # jacks still need review. Nothing is reapproved here.
-        self.assertFalse(r["passed"])
-        self.assertEqual({issue["code"] for issue in r["issues"]}, {"REVIEW_REQUIRED"})
-        self.assertEqual({issue["reference"] for issue in r["issues"]}, {"J_CELL", "J_GNSS"})
-        self.assertEqual(r["reviewed_count"], 81)
+        # Each selection is bound to its own component and every one is
+        # reviewed; a source change that alters one makes it fail again.
+        self.assertTrue(r["passed"], r["issues"])
+        self.assertEqual(r["reviewed_count"], len(self.lock["selections"]))
 
     def test_battery_and_power_path(self):
         self.assertIn(("PWR/J_BAT", "P1"), net("PWR/BAT"))

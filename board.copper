@@ -410,8 +410,10 @@ board CopperAssetTracker {
     constraint fixed_placement(U_MODEM) {
         x = 22.1mm; y = 24mm; rotation = 90; side = front;
     }
-    // Right-angle SMA origins are the centre pin, 4.4 mm in from the edge at
-    // the body's front face; the jack nose overhangs (see mechanical below).
+    // Right-angle SMA origins are the centre pin, 4.4 mm in from the edge.
+    // Per SD-73251-220 the body front face is 3.95 mm and the shoulder 5.07 mm
+    // ahead of the pin, so the shoulder stands 0.67 mm proud of the edge; the
+    // nose (16.5 mm) overhangs (see mechanical below).
     constraint fixed_placement(J_CELL) {
         x = 4.4mm; y = 23.5mm; rotation = 90; side = front;
     }
@@ -455,6 +457,11 @@ board CopperAssetTracker {
     constraint max_distance(FL_USB.DP_OUT, U_MCU.PA12) { distance = 5mm; }
     constraint max_distance(FL_USB.DP_IN, U_MODEM.USB_DP) { distance = 5mm; }
     constraint allowed_orientations(FL_USB) { values = "90"; }
+    // Centre the choke on y = 22.5 mm, the midpoint of PA11/PA12 (22.25/22.75)
+    // and of the modem's USB_DM/USB_DP pads (22.0/23.0); the planner's free
+    // pose (y = 23.225) left a 0.725 mm jog the pair lattice cannot take
+    // straight, so the pairs looped around the choke.
+    constraint fixed_placement(FL_USB) { x = 39mm; y = 22.5mm; rotation = 90; side = front; }
     // Leave the MCU room to move while keeping its USB pins in the upper lane.
     constraint placement_region(U_MCU) {
         name = "mcu-usb-lane"; x = 38mm; y = 14mm; width = 20mm; height = 20mm;
@@ -529,7 +536,8 @@ board CopperAssetTracker {
         outline rectangle { width = 100mm; height = 80mm; }
         edge LEFT { start = (0mm, 0mm); end = (0mm, 80mm); }
         edge RIGHT { start = (100mm, 0mm); end = (100mm, 80mm); }
-        // Right-angle SMA noses; their pins and posts remain on the board.
+        // Right-angle SMA noses; their pins and posts remain on the board. The
+        // nose tip is 12.1 mm past the edge; 12.7 mm covers the KiCad courtyard.
         overhang CELL_SMA {
             component = J_CELL; edge = LEFT; start = 16mm; end = 31mm; distance = 12.7mm;
             reason = "Molex 73251-2200 SMA jack nose beyond the board edge";
@@ -542,6 +550,20 @@ board CopperAssetTracker {
         // parts on every layer. The nordic-antenna macro already clears the
         // antenna itself (89.5-96 x 6-12.5 mm) and its matching tee; this
         // covers the rest of the corner out to both board edges.
+        // Via-free USB corridor between FL_USB's MCU-side (OUT) pads and
+        // U_MCU PA11/PA12. Ordinary escapes are reserved before critical
+        // routing; without this the PA13/SWDIO escape via lands at
+        // (41.4, 23.25) and forces the USB pair around the choke and MCU.
+        // Tracks (the USB pair) and the top GND pour may still use it.
+        copper_keepout USB_MCU_CORRIDOR polygon {
+            vertices = [(40.1mm, 21.6mm), (42.0mm, 21.6mm), (42.0mm, 24.0mm), (40.1mm, 24.0mm)];
+            layers = "F.Cu,In1.Cu,In2.Cu,In3.Cu,In4.Cu,B.Cu";
+            block_tracks = false;
+            block_vias = true;
+            block_pads = false;
+            block_zones = false;
+            block_footprints = false;
+        }
         copper_keepout BLE_ANTENNA_CORNER polygon {
             vertices = [(89.5mm, 0mm), (100mm, 0mm), (100mm, 18.1mm), (96mm, 18.1mm), (96mm, 6mm), (89.5mm, 6mm)];
             layers = "F.Cu,In1.Cu,In2.Cu,In3.Cu,In4.Cu,B.Cu";
