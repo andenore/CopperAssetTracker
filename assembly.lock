@@ -104,6 +104,45 @@
       "supplier_part": "C15849"
     },
     {
+      "electrical_sha256": "cb10ebbf7c1b282481720d3e74beef9c8b543a5c41630b43ec98b8a45fc8ac14",
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "manufacturer": "FH (Guangdong Fenghua Advanced Tech)",
+      "mpn": "0402CG101J500NT",
+      "part": "CAPACITOR",
+      "populate": "supplier",
+      "reference": "C_CELL_SERIES",
+      "reviewed": true,
+      "source_url": "https://jlcpcb.com/partdetail/C1546",
+      "supplier": "jlcpcb",
+      "supplier_part": "C1546"
+    },
+    {
+      "electrical_sha256": "bc45292f4fe963cb5c7528ead3c6b1287ac3f9e96c301c8e15895358dae08e19",
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "manufacturer": null,
+      "mpn": null,
+      "part": "CAPACITOR",
+      "populate": "none",
+      "reference": "C_CELL_SHUNT1",
+      "reviewed": true,
+      "source_url": null,
+      "supplier": null,
+      "supplier_part": null
+    },
+    {
+      "electrical_sha256": "365bf60abec7091e34fc35c1432c5e47b672f1ab2cc85f31b8efb34e8d3be7e6",
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "manufacturer": null,
+      "mpn": null,
+      "part": "CAPACITOR",
+      "populate": "none",
+      "reference": "C_CELL_SHUNT2",
+      "reviewed": true,
+      "source_url": null,
+      "supplier": null,
+      "supplier_part": null
+    },
+    {
       "alternates": [
         {
           "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL05B104KO5NNNC/3886659",
@@ -480,7 +519,7 @@
           "supplier_part": "2293854"
         }
       ],
-      "electrical_sha256": "6e964d3c93ab69705eda1c427b8f85b42c1b5ba71025357eb0e6bcb47dc2cb84",
+      "electrical_sha256": "329c66e71e277eb1fb9e4212900e8c4d0c6203e3ee92294757ba879187b69d45",
       "footprint": "Connector_Coaxial:SMA_Molex_73251-2200_Horizontal",
       "manufacturer": "Molex",
       "mpn": "73251-2200",
@@ -1434,6 +1473,19 @@
       "source_url": "https://jlcpcb.com/partdetail/C25774",
       "supplier": "jlcpcb",
       "supplier_part": "C25774"
+    },
+    {
+      "electrical_sha256": "b65d34ec0b532ede2beed7ec939a3de520e27b087074cbc9dc4cac9f5239decf",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "manufacturer": "UNI-ROYAL",
+      "mpn": "0402WGF0000TCE",
+      "part": "RESISTOR",
+      "populate": "supplier",
+      "reference": "R_CELL_SERIES",
+      "reviewed": true,
+      "source_url": "https://jlcpcb.com/partdetail/17853-0402WGF0000TCE/C17168",
+      "supplier": "jlcpcb",
+      "supplier_part": "C17168"
     },
     {
       "electrical_sha256": "d77b42c9da4a6d146da821e32bb0ad6d88cafc9bf3297fd8a21fc61bb9c61f97",

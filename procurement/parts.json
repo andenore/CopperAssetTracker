@@ -513,7 +513,8 @@
     },
     {
       "references": [
-        "C_DEC3"
+        "C_DEC3",
+        "C_CELL_SERIES"
       ],
       "manufacturer": "FH (Guangdong Fenghua Advanced Tech)",
       "mpn": "0402CG101J500NT",
@@ -560,6 +561,31 @@
       "source_url": "https://jlcpcb.com/partdetail/MurataElectronics-LQG15HS2N7S02D/C77108",
       "checked_on": "2026-10-09",
       "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+    },
+    {
+      "references": [
+        "R_CELL_SERIES"
+      ],
+      "manufacturer": "UNI-ROYAL",
+      "mpn": "0402WGF0000TCE",
+      "supplier": "jlcpcb",
+      "supplier_part": "C17168",
+      "source_url": "https://jlcpcb.com/partdetail/17853-0402WGF0000TCE/C17168",
+      "checked_on": "2026-11-02",
+      "availability": "JLCPCB basic part listing seen in search results; recheck live stock"
+    },
+    {
+      "references": [
+        "C_CELL_SHUNT1",
+        "C_CELL_SHUNT2"
+      ],
+      "manufacturer": null,
+      "mpn": null,
+      "supplier": null,
+      "supplier_part": null,
+      "source_url": null,
+      "checked_on": "2026-11-02",
+      "availability": "Not fitted: SIM7672X V1.01 Figure 30 shunt pads reserved for antenna tuning"
     }
   ]
 }

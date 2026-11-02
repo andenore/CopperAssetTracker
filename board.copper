@@ -76,6 +76,13 @@ board CopperAssetTracker {
     component R_KEY_PD: RESISTOR { value = 100kohm; footprint = "Resistor_SMD:R_0402_1005Metric"; }
     component C_LEVEL_A: CAPACITOR { value = 100nF; footprint = "Capacitor_SMD:C_0402_1005Metric"; role = decoupling; decouples = "U_MODEM_LEVEL.VCCA"; }
     component C_LEVEL_B: CAPACITOR { value = 100nF; footprint = "Capacitor_SMD:C_0402_1005Metric"; role = decoupling; decouples = "U_MODEM_LEVEL.VCCB"; }
+    // SIM7672X Hardware Design V1.01 Figure 30 / p59 antenna matching network,
+    // module side first: shunt C1, series R1 (0 ohm), shunt C2, series R2
+    // (100 pF). Both shunts are reserved and not fitted until antenna tuning.
+    component C_CELL_SHUNT1: CAPACITOR { footprint = "Capacitor_SMD:C_0402_1005Metric"; }
+    component R_CELL_SERIES: RESISTOR { value = 0ohm; footprint = "Resistor_SMD:R_0402_1005Metric"; }
+    component C_CELL_SHUNT2: CAPACITOR { footprint = "Capacitor_SMD:C_0402_1005Metric"; }
+    component C_CELL_SERIES: CAPACITOR { value = 100pF; footprint = "Capacitor_SMD:C_0402_1005Metric"; }
     component C_MODEM_BULK: CAPACITOR { value = 100uF; footprint = "Capacitor_SMD:C_1210_3225Metric"; }
     component U_MODEM_STATUS: translator.MODEM_STATUS_TRANSLATOR;
     component C_STATUS_A: CAPACITOR { value = 100nF; footprint = "Capacitor_SMD:C_0402_1005Metric"; role = decoupling; decouples = "U_MODEM_STATUS.VCCA"; }
@@ -265,6 +272,8 @@ board CopperAssetTracker {
         U_GNSS.GND_2;
         U_GNSS.GND_3;
         J_CELL.GND;
+        C_CELL_SHUNT1.1;
+        C_CELL_SHUNT2.1;
         J_GNSS.GND;
         J_SIM.GND;
         J_SIM.SHIELD;
@@ -308,7 +317,9 @@ board CopperAssetTracker {
     net USB_DM_MCU { U_MCU.PA11; FL_USB.DM_OUT; }
     net USB_DP_MODEM { FL_USB.DP_IN; U_MODEM.USB_DP; }
     net USB_DM_MODEM { FL_USB.DM_IN; U_MODEM.USB_DM; }
-    net CELL_RF { U_MODEM.ANT_MAIN; J_CELL.SIGNAL; }
+    net CELL_RF { U_MODEM.ANT_MAIN; C_CELL_SHUNT1.2; R_CELL_SERIES.1; }
+    net CELL_RF_MATCH { R_CELL_SERIES.2; C_CELL_SHUNT2.2; C_CELL_SERIES.1; }
+    net CELL_RF_ANT { C_CELL_SERIES.2; J_CELL.SIGNAL; }
     net SIM_VCC { U_MODEM.USIM_VDD; J_SIM.VCC; }
     net SIM_RST { U_MODEM.USIM_RST; J_SIM.RST; }
     net SIM_CLK { U_MODEM.USIM_CLK; J_SIM.CLK; }
@@ -405,8 +416,7 @@ board CopperAssetTracker {
     }
     // ANT_MAIN (pad 60) is on the west edge at this rotation: (10.1 mm, 24 mm).
     // The modem sits 2.1 mm right of its earlier x = 20 mm so the SMA courtyard
-    // clears it. The left-edge SMA level with ANT_MAIN keeps the surface feed
-    // (about 5 mm) far inside the assumed SIM7672X V1.01 p60 maximum of 20 mm.
+    // clears it.
     constraint fixed_placement(U_MODEM) {
         x = 22.1mm; y = 24mm; rotation = 90; side = front;
     }
@@ -415,8 +425,17 @@ board CopperAssetTracker {
     // ahead of the pin, so the shoulder stands 0.67 mm proud of the edge; the
     // nose (16.5 mm) overhangs (see mechanical below).
     constraint fixed_placement(J_CELL) {
-        x = 4.4mm; y = 23.5mm; rotation = 90; side = front;
+        x = 4.4mm; y = 13mm; rotation = 90; side = front;
     }
+    // The matching network runs south from J_CELL's centre pin along x = 4.4 mm
+    // (between its rear posts), then east to ANT_MAIN at y = 24 mm: about
+    // 15.5 mm of feed in all, inside the SIM7672X V1.01 p60 maximum of 20 mm.
+    // Series parts sit on the line; each shunt's RF pad is on the line with
+    // its GND pad to the west. Antenna side first: R2, C2, R1, C1.
+    constraint fixed_placement(C_CELL_SERIES) { x = 4.4mm; y = 18.9mm; rotation = 90; side = front; }
+    constraint fixed_placement(C_CELL_SHUNT2) { x = 3.92mm; y = 20.9mm; rotation = 0; side = front; }
+    constraint fixed_placement(R_CELL_SERIES) { x = 4.4mm; y = 22.9mm; rotation = 90; side = front; }
+    constraint fixed_placement(C_CELL_SHUNT1) { x = 3.92mm; y = 24.9mm; rotation = 0; side = front; }
     // SIM insertion faces left; contact lands face right, toward the modem.
     constraint fixed_placement(J_SIM) {
         x = 10mm; y = 51mm; rotation = 270; side = front;
@@ -527,6 +546,8 @@ board CopperAssetTracker {
     constraint max_distance(C_STATUS_A.1, U_MODEM_STATUS.VCCA) { distance = 3mm; }
     constraint max_distance(C_STATUS_B.1, U_MODEM_STATUS.VCCB) { distance = 3mm; }
     constraint max_distance(C_MODEM_BULK, U_MODEM.VBAT_1) { distance = 5mm; }
+    // Between the cellular matching network and the modem's VBAT pads (55-57).
+    constraint fixed_placement(C_MODEM_BULK) { x = 7mm; y = 20.6mm; rotation = 90; side = front; }
     // Modem GND pad 29 sits between USB_DM_MODEM and SIM_VCC with no room for
     // an off-pad via; allow a filled/capped GND via in the land instead.
     constraint via_in_pad(U_MODEM.GND_29) { process = "filled-capped"; }
@@ -539,7 +560,7 @@ board CopperAssetTracker {
         // Right-angle SMA noses; their pins and posts remain on the board. The
         // nose tip is 12.1 mm past the edge; 12.7 mm covers the KiCad courtyard.
         overhang CELL_SMA {
-            component = J_CELL; edge = LEFT; start = 16mm; end = 31mm; distance = 12.7mm;
+            component = J_CELL; edge = LEFT; start = 5.5mm; end = 20.5mm; distance = 12.7mm;
             reason = "Molex 73251-2200 SMA jack nose beyond the board edge";
         }
         overhang GNSS_SMA {
@@ -634,10 +655,22 @@ board CopperAssetTracker {
     // Nominal 50-ohm grounded coplanar feeds over In1.Cu GND: 0.142 mm width
     // and 0.201 mm gap from the JLCPCB calculator for JLC06161H-3313
     // (revisions/rf-layout-v1/cellular-impedance-calculator.json). Not measured.
+    // The cellular feed is three nets split by the matching network; their
+    // length budgets sum to the 20 mm module-to-connector maximum.
     constraint routing(CELL_RF) {
+        kind = critical; topology = tree; priority = 120; target_impedance_ohms = 50;
+        width = 0.142mm; clearance = 0.201mm;
+        allowed_layers = "F.Cu"; max_vias = 0; max_length = 8mm;
+    }
+    constraint routing(CELL_RF_MATCH) {
+        kind = critical; topology = tree; priority = 120; target_impedance_ohms = 50;
+        width = 0.142mm; clearance = 0.201mm;
+        allowed_layers = "F.Cu"; max_vias = 0; max_length = 4mm;
+    }
+    constraint routing(CELL_RF_ANT) {
         kind = rf_feed; priority = 120; target_impedance_ohms = 50;
         width = 0.142mm; clearance = 0.201mm;
-        allowed_layers = "F.Cu"; max_vias = 0; max_length = 20mm;
+        allowed_layers = "F.Cu"; max_vias = 0; max_length = 8mm;
     }
     constraint routing(GNSS_RF) {
         kind = rf_feed; priority = 120; target_impedance_ohms = 50;

@@ -60,10 +60,14 @@ class TrackerTests(unittest.TestCase):
         expected = {s["reference"] for s in assembly_snapshot()["selections"]}
         self.assertEqual(expected, set(self.selections))
         self.assertEqual(len(expected), len(self.lock["selections"]))
-        # JLCPCB places everything but the hand-fitted SMA jacks.
-        self.assertTrue(all(s["mpn"] and s["supplier_part"] for s in self.lock["selections"]))
-        self.assertEqual({s["reference"] for s in self.lock["selections"] if s["supplier"] != "jlcpcb"},
-                         {s["reference"] for s in self.lock["selections"] if s["populate"] == "consigned"})
+        # JLCPCB places everything fitted but the hand-fitted SMA jacks; the
+        # cellular matching shunts are reserved pads, not fitted.
+        fitted = [s for s in self.lock["selections"] if s["populate"] != "none"]
+        self.assertTrue(all(s["mpn"] and s["supplier_part"] for s in fitted))
+        self.assertEqual({s["reference"] for s in fitted if s["supplier"] != "jlcpcb"},
+                         {s["reference"] for s in fitted if s["populate"] == "consigned"})
+        self.assertEqual({s["reference"] for s in self.lock["selections"] if s["populate"] == "none"},
+                         {"C_CELL_SHUNT1", "C_CELL_SHUNT2"})
         groups = json.loads((ROOT / "procurement/parts.json").read_text())["groups"]
         refs = [r for g in groups for r in g["references"]]
         self.assertEqual(expected, set(refs))
@@ -131,13 +135,17 @@ class TrackerTests(unittest.TestCase):
             self.assertEqual({p["number"] for p in regulator["pins"].values()}, {str(i) for i in range(1, 16)})
 
     def test_cellular_feed_has_source_backed_surface_length_limit(self):
-        rule = routing_rules()["CELL_RF"]
-        self.assertEqual(rule["kind"], "rf_feed")
-        self.assertEqual(nanometres(rule["max_length"]), 20000000)
-        self.assertEqual(rule["max_vias"], 0)
-        self.assertEqual(rule["allowed_layers"], "F.Cu")
+        # The matching network splits the feed; the three nets' budgets sum to
+        # the SIM7672X V1.01 p60 20 mm module-to-connector maximum.
+        rules = routing_rules()
+        feed = [rules[n] for n in ("CELL_RF", "CELL_RF_MATCH", "CELL_RF_ANT")]
+        self.assertEqual(sum(nanometres(r["max_length"]) for r in feed), 20000000)
+        self.assertEqual(rules["CELL_RF_ANT"]["kind"], "rf_feed")
+        for rule in feed:
+            self.assertEqual(rule["max_vias"], 0)
+            self.assertEqual(rule["allowed_layers"], "F.Cu")
         fixed = fixed_placements()["J_CELL"]
-        self.assertEqual((nanometres(fixed["x"]), nanometres(fixed["y"])), (4400000, 23500000))
+        self.assertEqual((nanometres(fixed["x"]), nanometres(fixed["y"])), (4400000, 13000000))
         self.assertEqual(fixed["rotation"], 90)
 
     def test_rf_macro_identity(self):

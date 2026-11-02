@@ -76,7 +76,7 @@ class EngineeringPlanTests(unittest.TestCase):
             self.assertIn("No passed route", result.stdout + result.stderr)
             self.assertFalse((Path(runs) / "latest-route").exists())
         lock = json.loads((ROOT / "assembly.lock").read_text())
-        self.assertEqual(len(lock["selections"]), 83)
+        self.assertEqual(len(lock["selections"]), 87)
         unreviewed = {selection["reference"] for selection in lock["selections"] if not selection["reviewed"]}
         self.assertEqual(unreviewed, set())
 

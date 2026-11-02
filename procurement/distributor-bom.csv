@@ -1,9 +1,10 @@
 Manufacturer,MPN,Qty per board,Designators,Footprint,Assembly,JLCPCB,DigiKey,Mouser,Farnell
+,(not fitted),2,C_CELL_SHUNT1 C_CELL_SHUNT2,Capacitor_SMD:C_0402_1005Metric,do not fit,,,,
 Bourns,SRP4020TA-1R5M,2,PWR/L_LOGIC PWR/L_MODEM,github.com/andenore/CopperLib/packages/parts/bourns/srp4020ta/footprints/Bourns_SRP4020TA.kicad_mod,supplier-assembled,C3233727,SRP4020TA-1R5MCT-ND,,2434801
 Coilcraft,0603USB-601MLC,1,FL_USB,Inductor_SMD:L_CommonModeChoke_Coilcraft_0603USB,supplier-assembled,C3211396,,,2458096
 E-Switch,TL3342F160QG,1,SW_USER,Button_Switch_SMD:SW_SPST_TL3342,supplier-assembled,C2886898,EG2531CT-ND,,2830674
 FH (Guangdong Fenghua Advanced Tech),0402CG0R8B500NT,1,C_BT_MATCH,Capacitor_SMD:C_0402_1005Metric,supplier-assembled,C285068,,,
-FH (Guangdong Fenghua Advanced Tech),0402CG101J500NT,1,C_DEC3,Capacitor_SMD:C_0402_1005Metric,supplier-assembled,C1546,,,
+FH (Guangdong Fenghua Advanced Tech),0402CG101J500NT,2,C_CELL_SERIES C_DEC3,Capacitor_SMD:C_0402_1005Metric,supplier-assembled,C1546,,,
 FH (Guangdong Fenghua Advanced Tech),0402CG180J500NT,2,C_XC1 C_XC2,Capacitor_SMD:C_0402_1005Metric,supplier-assembled,C1549,,,
 FH (Guangdong Fenghua Advanced Tech),0402CG1R0C500NT,1,C_ANT_SERIES,Capacitor_SMD:C_0402_1005Metric,supplier-assembled,C1550,,,
 GCT,SIM8060-6-0-14-00-A,1,J_SIM,github.com/andenore/CopperLib/packages/parts/gct/sim8060/footprints/Connector_Card.pretty/nanoSIM_GCT_SIM8060-6-0-14-00.kicad_mod,supplier-assembled,C6296715,2073-SIM8060-6-0-14-00-ACT-ND,640-SIM8060601400A,3873351
@@ -32,6 +33,7 @@ Texas Instruments,SN74AXC2T245RSWR,2,U_MODEM_LEVEL U_MODEM_STATUS,Package_DFN_QF
 Texas Instruments,TPS63020DSJR,2,PWR/U_LOGIC PWR/U_MODEM,github.com/andenore/CopperLib/packages/parts/ti/tps63020/footprints/TI_DSJ0014_TPS63020.kicad_mod,supplier-assembled,C15483,296-36491-1-ND,595-TPS63020DSJR,3007457
 Texas Instruments,TUSB320LAIRWBR,1,U_CC,Package_DFN_QFN:Texas_X2QFN-12_1.6x1.6mm_P0.4mm,supplier-assembled,C132554,296-TUSB320LAIRWBRCT-ND,595-TUSB320LAIRWBR,
 u-blox,MAX-M10S-00B,1,U_GNSS,MAX_M10S:u-blox_MAX-M10S,supplier-assembled,C4153167,672-MAX-M10S-00BCT-ND,377-MAX-M10S-00B,
+UNI-ROYAL,0402WGF0000TCE,1,R_CELL_SERIES,Resistor_SMD:R_0402_1005Metric,supplier-assembled,C17168,,,
 UNI-ROYAL,0402WGF1001TCE,2,R_LED_1 R_LED_2,Resistor_SMD:R_0402_1005Metric,supplier-assembled,C11702,,,
 UNI-ROYAL,0402WGF1002TCE,4,R_CC_OUT1 R_CC_OUT2 R_RESET_MCU R_RESET_NRF,Resistor_SMD:R_0402_1005Metric,supplier-assembled,C25744,,303-0402WGF1002TCE,
 UNI-ROYAL,0402WGF1003TCE,4,PWR/R_LOGIC_FB_BOT PWR/R_MODEM_EN_PD PWR/R_MODEM_FB_BOT R_KEY_PD,Resistor_SMD:R_0402_1005Metric,supplier-assembled,C25741,,,
