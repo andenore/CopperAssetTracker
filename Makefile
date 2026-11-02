@@ -108,5 +108,5 @@ order:
 	@stale=$$(for f in $(SOURCE) copper.mod copper.lock; do [ $$f -nt $(ROUTED) ] && echo $$f; done); \
 	  if [ -n "$$stale" ]; then echo "Routed board predates: $$stale -- run 'make route' first."; exit 1; fi
 	@$(MAKE) --no-print-directory bom
-	$(COPPER) export-manufacturing $(ROUTED) --skip-independent-cam --bom $(ORDER)/bom.csv --replace -o $(ORDER)/jlcpcb
+	$(COPPER) export-manufacturing $(ROUTED) --kicad-cli "$(KICAD_CLI)" --skip-independent-cam --bom $(ORDER)/bom.csv --replace -o $(ORDER)/jlcpcb
 	@echo "Order package -> $(ORDER): upload jlcpcb/ to JLCPCB; buy and fit hand-assembly.csv by hand."

@@ -27,8 +27,31 @@ make order       # JLCPCB package from the newest passed route
 Each route gets its own `build/board/runs/<UTC time>-route/` folder, and
 `build/board/runs/latest-route` points at the newest one (`routing.log`,
 `route-report.json`, `board.kicad_pcb`, `kicad-drc.json`, `run.json`).
-On Windows, `./build.ps1 -Action route` runs the same targets through GNU Make.
 The source CI is a subset, not a routing, packaging or release approval.
+
+### Windows (PowerShell)
+
+`build.ps1` runs the same Makefile targets. It needs GNU Make and jq (for
+example `scoop install make jq`), Git for Windows and KiCad 10. It puts Git's
+`usr\bin` on PATH for the build, because native Windows make runs simple
+recipe lines without a shell. After a route it points `latest-route` at the
+run with a directory junction, since Git Bash cannot create symlinks without
+Windows Developer Mode.
+
+```powershell
+$copper = "<path to copper.exe built at .copper-version>"
+$kicad  = "C:/Program Files/KiCad/10.0/bin/kicad-cli.exe"
+./build.ps1 -Action check -Copper $copper
+./build.ps1 -Action bom   -Copper $copper
+./build.ps1 -Action route -Copper $copper -KiCadCli $kicad
+./build.ps1 -Action order -Copper $copper -KiCadCli $kicad
+./build.ps1 -Action test  -Copper $copper
+```
+
+Without `-Copper`, make builds the compiler from whatever `../CopperScript`
+has checked out; build the pinned revision instead, for example in a worktree:
+`git -C ../CopperScript worktree add ../CopperScript-pin (Get-Content .copper-version)`
+then `cargo build --release --locked -p copper` in `../CopperScript-pin`.
 
 
 LLM agents: start with `copper agent-guide` in the selected CopperScript
