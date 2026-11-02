@@ -432,13 +432,15 @@ board CopperAssetTracker {
     constraint fixed_placement(PWR/J_BAT) {
         x = 70mm; y = 71mm; rotation = 0; side = front;
     }
-    // The module sits 1 mm left of its earlier x = 86 mm so the right-edge
-    // SMA's courtyard clears it, level with RF_IN (88.3 mm, 62.25 mm).
+    // Turned so RF_IN (89.15 mm, 63.3 mm) faces east: the feed runs straight
+    // to the right-edge SMA between the flanking GND pads, with no bends.
+    // At this height VCC (79.65 mm, 63.3 mm) sits above J_BAT's courtyard,
+    // leaving room for C_GNSS beside it.
     constraint fixed_placement(U_GNSS) {
-        x = 85mm; y = 67mm; rotation = 0; side = front;
+        x = 84.4mm; y = 60mm; rotation = 270; side = front;
     }
     constraint fixed_placement(J_GNSS) {
-        x = 95.6mm; y = 62.25mm; rotation = 270; side = front;
+        x = 95.6mm; y = 63.3mm; rotation = 270; side = front;
     }
     constraint max_distance(J_GNSS.SIGNAL, U_GNSS.RF_IN) { distance = 8mm; }
 
@@ -500,7 +502,8 @@ board CopperAssetTracker {
     constraint fixed_placement(U_MODEM_KEY) { x = 12mm; y = 40mm; rotation = 0; side = front; }
     constraint fixed_placement(R_KEY_PD) { x = 9mm; y = 40.3mm; rotation = 90; side = front; }
     constraint fixed_placement(U_MODEM_STATUS) { x = 4.5mm; y = 30mm; rotation = 0; side = front; }
-    constraint max_distance(C_GNSS, U_GNSS.VCC) { distance = 3mm; }
+    // 3.5 mm: with the module turned, VCC faces J_BAT and 3 mm has no legal pose.
+    constraint max_distance(C_GNSS, U_GNSS.VCC) { distance = 3.5mm; }
     // Front-side translator decouplers stay at their supply pins; with no
     // back-side placement the planner would otherwise park them anywhere.
     constraint max_distance(C_LEVEL_A.1, U_MODEM_LEVEL.VCCA) { distance = 3mm; }
@@ -520,7 +523,7 @@ board CopperAssetTracker {
             reason = "Molex 73251-2200 SMA jack nose beyond the board edge";
         }
         overhang GNSS_SMA {
-            component = J_GNSS; edge = RIGHT; start = 54.75mm; end = 69.75mm; distance = 12.7mm;
+            component = J_GNSS; edge = RIGHT; start = 55.8mm; end = 70.8mm; distance = 12.7mm;
             reason = "Molex 73251-2200 SMA jack nose beyond the board edge";
         }
         // The whole upper-right BLE antenna corner stays free of copper and
@@ -539,13 +542,15 @@ board CopperAssetTracker {
     silkscreen {
         text BOARD_ID {
             text = "CopperAssetTracker\nRev A";
-            position = (86mm, 40mm);
+            position = (86mm, 36mm);
             size = 1.5mm;
             thickness = 0.2mm;
         }
+        // Stacked labels are a tenth of the logo: 8 mm keeps them at the
+        // 0.8 mm minimum silkscreen text height.
         branding {
-            position = (86mm, 48mm);
-            size = 6mm;
+            position = (86mm, 44mm);
+            size = 8mm;
             layout = stacked;
         }
     }
@@ -592,12 +597,17 @@ board CopperAssetTracker {
         return_via_policy = "reference_change"; shared_reference_layer = "In1.Cu";
         maximum_return_via_distance = 2mm;
     }
+    // Nominal 50-ohm grounded coplanar feeds over In1.Cu GND: 0.142 mm width
+    // and 0.201 mm gap from the JLCPCB calculator for JLC06161H-3313
+    // (revisions/rf-layout-v1/cellular-impedance-calculator.json). Not measured.
     constraint routing(CELL_RF) {
         kind = rf_feed; priority = 120; target_impedance_ohms = 50;
+        width = 0.142mm; clearance = 0.201mm;
         allowed_layers = "F.Cu"; max_vias = 0; max_length = 20mm;
     }
     constraint routing(GNSS_RF) {
         kind = rf_feed; priority = 120; target_impedance_ohms = 50;
+        width = 0.142mm; clearance = 0.201mm;
         allowed_layers = "F.Cu"; max_vias = 0;
     }
     // Nordic's chip-side matching geometry is not a generic 50-ohm feed.
