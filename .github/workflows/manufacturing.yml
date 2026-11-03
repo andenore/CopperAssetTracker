@@ -57,6 +57,10 @@ jobs:
           KICAD_PINS: .copperscript/.github/board-toolchain.json
           KICAD_DEB_CACHE: /home/runner/kicad-debs
         run: bash .copperscript/scripts/ci_install_kicad10.sh
+      # The route runs offline (make/route-build.sh), so fetch the locked
+      # packages and footprint libraries into .copper-cache first.
+      - name: Fetch the locked packages
+        run: copper lock board.copper --locked
       - name: Route, refill and run native DRC
         run: make route COPPER=copper KICAD_CLI=kicad-cli
       - name: Build the JLCPCB order package
