@@ -21,7 +21,10 @@ include make/board.mk
 
 .NOTPARALLEL:
 SHELL := /bin/bash
-KICAD_CLI ?= kicad-cli
+# make/board.mk already defines KICAD_CLI (empty: the shared route recipes then
+# skip KiCad), so a `?=` default here never applies. Recipes that must run KiCad
+# use KICAD_CLI_BIN, which falls back to kicad-cli on PATH.
+KICAD_CLI_BIN = $(or $(strip $(KICAD_CLI)),kicad-cli)
 # Every footprint is managed: copper.mod maps the KiCad libraries to the pinned
 # github.com/KiCad/kicad-footprints commit and copper.lock binds their content,
 # so no local KiCad footprint directory is used.
@@ -63,7 +66,7 @@ si-check:
 
 # Layer SVGs of the newest routed (and refilled) board.
 render:
-	"$(KICAD_CLI)" pcb export svg --layers F.Cu,In1.Cu,In2.Cu,In3.Cu,In4.Cu,B.Cu --common-layers Edge.Cuts --mode-multi --fit-page-to-board --exclude-drawing-sheet --check-zones -o $(RUNS)/latest-route/layers/ $(ROUTED)
+	"$(KICAD_CLI_BIN)" pcb export svg --layers F.Cu,In1.Cu,In2.Cu,In3.Cu,In4.Cu,B.Cu --common-layers Edge.Cuts --mode-multi --fit-page-to-board --exclude-drawing-sheet --check-zones -o $(RUNS)/latest-route/layers/ $(ROUTED)
 
 # Browse and annotate a board in CopperReview (local web viewer; Ctrl+C stops it).
 # Defaults to the newest routed board; its stage follows that route's run.json.
@@ -108,5 +111,5 @@ order:
 	@stale=$$(for f in $(SOURCE) copper.mod copper.lock; do [ $$f -nt $(ROUTED) ] && echo $$f; done); \
 	  if [ -n "$$stale" ]; then echo "Routed board predates: $$stale -- run 'make route' first."; exit 1; fi
 	@$(MAKE) --no-print-directory bom
-	$(COPPER) export-manufacturing $(ROUTED) --kicad-cli "$(KICAD_CLI)" --skip-independent-cam --bom $(ORDER)/bom.csv --replace -o $(ORDER)/jlcpcb
+	$(COPPER) export-manufacturing $(ROUTED) --kicad-cli "$(KICAD_CLI_BIN)" --skip-independent-cam --bom $(ORDER)/bom.csv --replace -o $(ORDER)/jlcpcb
 	@echo "Order package -> $(ORDER): upload jlcpcb/ to JLCPCB; buy and fit hand-assembly.csv by hand."
