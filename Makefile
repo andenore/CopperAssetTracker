@@ -1,6 +1,7 @@
 # CopperAssetTracker board settings. The recipes are CopperScript's shared ones
-# (make/board.mk and make/route-build.sh, copied unchanged from CopperScript
-# 85ca0e4); only settings and the project's own targets live here.
+# (make/board.mk, make/route-build.sh and make/release-build.sh, copied
+# unchanged from CopperScript 7df887c); only settings and the project's own
+# targets live here.
 SOURCE := board.copper
 LAYERS := 6
 FAB_PROFILE := jlcpcb-six-layer

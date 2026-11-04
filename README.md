@@ -22,6 +22,7 @@ make route       # full placement + routing, native refill and DRC
 make render      # layer SVGs of the newest route
 make bom         # complete BOM (build/order/ordering.csv)
 make order       # JLCPCB package from the newest passed route
+make release RELEASE=<part>-<rev>  # checksummed bundle of the order, its route run and BOM in build/release/ for archiving by hand
 ```
 
 Each route gets its own `build/board/runs/<UTC time>-route/` folder, and
