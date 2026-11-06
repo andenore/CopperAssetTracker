@@ -71,12 +71,13 @@ Bluetooth and motion sensing on a six-layer board. Readable circuit intent becom
 inspectable intermediate representations, placed components, routed copper and
 manufacturing review files.
 
-![Native KiCad export of the retained CopperAssetTracker routing review](docs/showcase/routing-top.svg)
+![Top copper of the CopperAssetTracker showcase route, rendered from its native Gerber plot](docs/showcase/routing-top.svg)
 
-*Native KiCad export with package pads highlighted gold, of the 100 × 80 mm `promo-reroute-20261013`
-source-matched routing review: 97 footprints, 968 routed track segments and
-six copper layers. This is an unapproved prototype candidate, **not a released
-production package**.*
+*Top copper and silkscreen of the 100 × 80 mm `native-showcase-20261106` route,
+rendered by `copper render` from the native Gerber plot; gold is exposed copper.
+87 footprints, 1173 routed track segments, 262 vias and six copper layers, with
+native fill, DRC and CAM read-back passing and no KiCad in the loop. This is an
+unapproved routing review, **not a released production package**.*
 
 These figures retain the source-matched routing review from before the Copper
 macro-definition migration. Its native DRC report records zero included violations and zero
@@ -143,7 +144,9 @@ Its source builder composes these inputs; it does not repair routed copper.
 
 Run `make route` (see [Build](#build)); every run gets a new directory. It uses the canonical 83-part source and locked
 library/macro inputs with the standard bounded shared pipeline. For the
-illustrated 97-part board, use [the fresh routing and figure guide](docs/promo-reroute-20261013.md).
+pictures, `make showcase` routes the current source and renders them natively
+([showcase guide](docs/showcase.md)); the earlier 97-part figures are recorded in
+[the 13 October guide](docs/promo-reroute-20261013.md).
 [Latest validation](docs/validation.md) records each scope and exact evidence;
 neither routing result approves production or advances the release pins.
 
@@ -281,8 +284,8 @@ millimetres); it is not a substitute for the complete CopperScript physical IR:
 
 ```json
 {
-  "footprint": "CopperScript:C_0402_1005Metric__86575c98c1bd84414ad1",
-  "position_mm": { "x": "53.599976", "y": "21.190002" },
+  "footprint": "CopperScript:C_0402_1005Metric__c194d71d44bfbdf13a07",
+  "position_mm": { "x": "56.3", "y": "21" },
   "reference": "C_MCU",
   "rotation_degrees": "90"
 }
@@ -297,11 +300,11 @@ its own `electrical.ir.json` in the selected review directory.
 
 ### Place components and preserve reference geometry
 
-![Component placement, pads and courtyards](docs/showcase/placement.svg)
+![Component placement: front silkscreen and solder-mask openings](docs/showcase/placement.svg)
 
-*Native front pads (gold), fabrication outlines and courtyards from the same 97-footprint
-route, with tracks, vias, fills and reference labels hidden for readability. These are the router's actual final
-poses, not a photograph of assembled hardware.*
+*Front silkscreen and solder-mask openings (gold) of the same 87-footprint route,
+rendered from the native plot. These are the router's actual final poses, not a
+photograph of assembled hardware.*
 
 The flow combines board-specific fixed anchors, generic placement decisions,
 pin-associated decoupling and rigid RF/power hard macros. Macro ownership keeps
@@ -309,23 +312,22 @@ critical relative placement and current-loop geometry intact during routing.
 
 ### Route, check and iterate
 
-![All six copper layers with native pads, tracks and vias, without copper fills](docs/showcase/routing-all.svg)
+![All six copper layers with pads, tracks and vias, without zone fills](docs/showcase/routing-all.svg)
 
-*All six copper layers viewed together from above. Native package pads are gold;
-zone fills and solid copper fill graphics are hidden in a temporary plotting copy.
-Package outlines are shown; reference labels are hidden for clarity. The recorded
-PCB and its routing evidence are unchanged.*
+*All six copper layers viewed together from above, rendered from a plot of the
+routed board before its zones were filled; exposed copper is gold. The filled
+board and its evidence are unchanged.*
 
 ![In2.Cu regional modem supply and signal routing](docs/showcase/routing-inner.svg)
 
-*In2.Cu regional 3.8 V distribution and signal routing, viewed from above without
-mirroring. In1.Cu and In4.Cu carry ground planes; In3.Cu carries the 3.3 V zone
-and a low-current modem USB-detection spur. Connectivity is checked; return-path
-performance and current capacity are separate qualification gates.*
+*In2.Cu supply and signal routing, viewed from above without mirroring. In1.Cu
+and In4.Cu carry ground planes; In3.Cu carries the logic-power zone.
+Connectivity is checked; return-path performance and current capacity are
+separate qualification gates.*
 
 ![Bottom copper routing](docs/showcase/routing-bottom.svg)
 
-*B.Cu, also viewed from above. A single-layer image does not show every connection.*
+*B.Cu, also viewed from above; exposed copper is gold. A single-layer image does not show every connection.*
 
 The router is experimental. This checkpoint was reached from source through the
 standard CLI's bounded placement, routing and native-feedback repair flow.
@@ -427,8 +429,8 @@ The pictured 91-part revision was composed by `scripts/build_battery_revision.py
 and its README figures by `scripts/generate_readme_assets.py`. Both read private
 CopperScript internals and are retired; recover them from Git history (before
 this change) with the compiler commit they record if that revision must be
-rebuilt. `docs/showcase/snapshot.json` keeps the recorded source, candidate,
-composition and evidence hashes. Bulky build attempts, manufacturing archives,
+rebuilt. `docs/showcase/snapshot.json` now binds the native showcase
+(`make showcase`); the earlier candidate's hashes are in its Git history. Bulky build attempts, manufacturing archives,
 dependency caches and downloaded vendor PDFs remain excluded from Git.
 
 ## Battery and firmware
