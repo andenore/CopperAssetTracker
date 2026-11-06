@@ -69,6 +69,13 @@ si-check:
 render:
 	"$(KICAD_CLI_BIN)" pcb export svg --layers F.Cu,In1.Cu,In2.Cu,In3.Cu,In4.Cu,B.Cu --common-layers Edge.Cuts --mode-multi --fit-page-to-board --exclude-drawing-sheet --check-zones -o $(RUNS)/latest-route/layers/ $(ROUTED)
 
+# The website showcase without KiCad: a fresh native-verified route, native
+# fill, DRC and plot, and the promo views rendered from the plotted Gerbers
+# into docs/showcase (see docs/showcase.md).
+.PHONY: showcase
+showcase: copper
+	bash scripts/showcase.sh --copper "$(COPPER)"
+
 # Browse and annotate a board in CopperReview (local web viewer; Ctrl+C stops it).
 # Defaults to the newest routed board; its stage follows that route's run.json.
 # Point REVIEW_BOARD elsewhere (e.g. $(OUT)/placed.kicad_pcb) and set

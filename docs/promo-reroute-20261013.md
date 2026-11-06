@@ -1,5 +1,9 @@
 # Fresh route and promo figures — 13 October 2026
 
+> Superseded on the website by the native showcase ([showcase.md](showcase.md)):
+> `docs/showcase/` now holds that showcase's assets and snapshot. This record and
+> `docs/showcase/source-inputs/` describe the earlier candidate.
+
 Scope: `promo-reroute-20261013`, a source-matched routing review, not a
 manufacturing export, production approval or approval to order. The earlier
 manufacturing candidate and its evidence are retained unchanged.
