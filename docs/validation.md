@@ -9,7 +9,10 @@ claimed by this format migration.
 
 ## Prior full-board routing review
 
-The latest source-matched full route and promo figures are recorded in
+The website figures now come from the native showcase ([showcase.md](showcase.md),
+`showcase/snapshot.json`): current source routed with native plane verification,
+native fill, DRC (0 violations, 0 unconnected) and CAM read-back, 12 requirements
+blocked, no KiCad run. The earlier source-matched full route is recorded in
 [the 13 October reroute review](promo-reroute-20261013.md). Native filled-board
 DRC passes with zero included violations, zero opens and all 21 surface
 decoupling connections. This is a routing review, not a new manufacturing
@@ -174,7 +177,7 @@ Evidence under `build/latest-power-review-20261011/`:
   and exact input/output hashes.
 
 The [showcase snapshot](showcase/snapshot.json) binds the published illustrations
-and IR excerpts. Reproduction and revision-specific physical intent are in the
+and IR excerpts of the native showcase; the snapshot for this review is in Git history. Reproduction and revision-specific physical intent are in the
 [revision guide](../revisions/modem-power-v1/README.md).
 
 This is an unlocked working-copy review. Changed/new BOM selections remain
