@@ -341,12 +341,12 @@ Selected output from the illustrated KiCad 10.0.6 source-matched routing review:
 
 ```json
 {
-  "component_count": 97,
-  "track_count": 968,
-  "via_count": 340,
+  "component_count": 87,
+  "track_count": 1173,
+  "via_count": 262,
   "native_drc_violation_count": 0,
   "native_unconnected_item_count": 0,
-  "blocked_requirement_count": 13,
+  "blocked_requirement_count": 12,
   "qualified_release": false
 }
 ```
