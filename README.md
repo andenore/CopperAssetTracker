@@ -73,9 +73,9 @@ manufacturing review files.
 
 ![Top copper of the CopperAssetTracker showcase route, rendered from its native Gerber plot](docs/showcase/routing-top.svg)
 
-*Top copper and silkscreen of the 100 × 80 mm `native-showcase-20261106` route,
+*Top copper and silkscreen of the 100 × 80 mm `native-showcase-20261107` route,
 rendered by `copper render` from the native Gerber plot; gold is exposed copper.
-87 footprints, 1173 routed track segments, 262 vias and six copper layers, with
+87 footprints, 1191 routed track segments, 259 vias and six copper layers, with
 native fill, DRC and CAM read-back passing and no KiCad in the loop. This is an
 unapproved routing review, **not a released production package**.*
 
@@ -284,7 +284,7 @@ millimetres); it is not a substitute for the complete CopperScript physical IR:
 
 ```json
 {
-  "footprint": "CopperScript:C_0402_1005Metric__c194d71d44bfbdf13a07",
+  "footprint": "CopperScript:C_0402_1005Metric__143a421d485a988c3cd2",
   "position_mm": { "x": "56.3", "y": "21" },
   "reference": "C_MCU",
   "rotation_degrees": "90"
@@ -342,8 +342,8 @@ Selected output from the illustrated KiCad 10.0.6 source-matched routing review:
 ```json
 {
   "component_count": 87,
-  "track_count": 1173,
-  "via_count": 262,
+  "track_count": 1191,
+  "via_count": 259,
   "native_drc_violation_count": 0,
   "native_unconnected_item_count": 0,
   "blocked_requirement_count": 12,

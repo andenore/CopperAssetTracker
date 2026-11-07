@@ -19,3 +19,5 @@ footprint-library Package_TO_SOT_SMD github.com/KiCad/kicad-footprints/Package_T
 footprint-library RF_Antenna github.com/KiCad/kicad-footprints/RF_Antenna.pretty
 footprint-library Inductor_SMD github.com/KiCad/kicad-footprints/Inductor_SMD.pretty
 footprint-library Resistor_SMD github.com/KiCad/kicad-footprints/Resistor_SMD.pretty
+require github.com/KiCad/kicad-packages3D 10.0.8
+replace github.com/KiCad/kicad-packages3D => gitlab.com/kicad/libraries/kicad-packages3D 10.0.8
