@@ -280,13 +280,12 @@
         "R_I2C_SDA",
         "R_I2C_SCL"
       ],
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF4701TCE",
+      "manufacturer": "YAGEO",
+      "mpn": "AC0402FR-074K7L",
       "supplier": "jlcpcb",
-      "supplier_part": "C25900",
-      "source_url": "https://jlcpcb.com/partdetail/C25900",
-      "checked_on": "2026-10-09",
-      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+      "supplier_part": "C174364",
+      "source_url": "https://jlcpcb.com/partdetail/C174364",
+      "availability": "Reviewed selection in assembly.lock; JLC stock not rechecked here; recheck before order"
     },
     {
       "references": [
@@ -295,26 +294,24 @@
         "R_RESET_MCU",
         "R_RESET_NRF"
       ],
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF1002TCE",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-0710KL",
       "supplier": "jlcpcb",
-      "supplier_part": "C25744",
-      "source_url": "https://jlcpcb.com/partdetail/C25744",
-      "checked_on": "2026-10-09",
-      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+      "supplier_part": "C60490",
+      "source_url": "https://jlcpcb.com/partdetail/C60490",
+      "availability": "Reviewed selection in assembly.lock; JLC stock not rechecked here; recheck before order"
     },
     {
       "references": [
         "R_LED_1",
         "R_LED_2"
       ],
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF1001TCE",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-071KL",
       "supplier": "jlcpcb",
-      "supplier_part": "C11702",
-      "source_url": "https://jlcpcb.com/partdetail/C11702",
-      "checked_on": "2026-10-09",
-      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+      "supplier_part": "C106235",
+      "source_url": "https://jlcpcb.com/partdetail/C106235",
+      "availability": "Reviewed selection in assembly.lock; JLC stock not rechecked here; recheck before order"
     },
     {
       "references": [
@@ -323,13 +320,12 @@
         "PWR/R_MODEM_FB_BOT",
         "PWR/R_MODEM_EN_PD"
       ],
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF1003TCE",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-07100KL",
       "supplier": "jlcpcb",
-      "supplier_part": "C25741",
-      "source_url": "https://jlcpcb.com/partdetail/C25741",
-      "checked_on": "2026-10-09",
-      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+      "supplier_part": "C60491",
+      "source_url": "https://jlcpcb.com/partdetail/C60491",
+      "availability": "Reviewed selection in assembly.lock; JLC stock not rechecked here; recheck before order"
     },
     {
       "references": [
@@ -337,62 +333,57 @@
         "R_CC_VBUS2",
         "R_CC_VBUS3"
       ],
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF3003TCE",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-07300KL",
       "supplier": "jlcpcb",
-      "supplier_part": "C25774",
-      "source_url": "https://jlcpcb.com/partdetail/C25774",
-      "checked_on": "2026-10-09",
-      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+      "supplier_part": "C138011",
+      "source_url": "https://jlcpcb.com/partdetail/C138011",
+      "availability": "Reviewed selection in assembly.lock; JLC stock not rechecked here; recheck before order"
     },
     {
       "references": [
         "PWR/R_ISET"
       ],
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF2201TCE",
+      "manufacturer": "YAGEO",
+      "mpn": "AC0402FR-072K2L",
       "supplier": "jlcpcb",
-      "supplier_part": "C25879",
-      "source_url": "https://jlcpcb.com/partdetail/C25879",
-      "checked_on": "2026-10-09",
-      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+      "supplier_part": "C144773",
+      "source_url": "https://jlcpcb.com/partdetail/C144773",
+      "availability": "Reviewed selection in assembly.lock; JLC stock not rechecked here; recheck before order"
     },
     {
       "references": [
         "PWR/R_ILIM"
       ],
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF3301TCE",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-073K3L",
       "supplier": "jlcpcb",
-      "supplier_part": "C25890",
-      "source_url": "https://jlcpcb.com/partdetail/C25890",
-      "checked_on": "2026-10-09",
-      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+      "supplier_part": "C137992",
+      "source_url": "https://jlcpcb.com/partdetail/C137992",
+      "availability": "Reviewed selection in assembly.lock; JLC stock not rechecked here; recheck before order"
     },
     {
       "references": [
         "PWR/R_LOGIC_FB_TOP"
       ],
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF5603TCE",
+      "manufacturer": "YAGEO",
+      "mpn": "AC0402FR-07560KL",
       "supplier": "jlcpcb",
-      "supplier_part": "C132339",
-      "source_url": "https://jlcpcb.com/partdetail/C132339",
-      "checked_on": "2026-10-09",
-      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+      "supplier_part": "C227139",
+      "source_url": "https://jlcpcb.com/partdetail/C227139",
+      "availability": "Reviewed selection in assembly.lock; JLC stock not rechecked here; recheck before order"
     },
     {
       "references": [
         "PWR/R_MODEM_FB_TOP",
         "PWR/R_MODEM_FB_TOP2"
       ],
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF3303TCE",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-07330KL",
       "supplier": "jlcpcb",
-      "supplier_part": "C25778",
-      "source_url": "https://jlcpcb.com/partdetail/C25778",
-      "checked_on": "2026-10-09",
-      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+      "supplier_part": "C138006",
+      "source_url": "https://jlcpcb.com/partdetail/C138006",
+      "availability": "Reviewed selection in assembly.lock; JLC stock not rechecked here; recheck before order"
     },
     {
       "references": [
@@ -409,12 +400,11 @@
         "PWR/C_MODEM_VINA"
       ],
       "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL05B104KO5NNNC",
+      "mpn": "CL05B104KB54PNC",
       "supplier": "jlcpcb",
-      "supplier_part": "C1525",
-      "source_url": "https://jlcpcb.com/partdetail/C1525",
-      "checked_on": "2026-10-09",
-      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+      "supplier_part": "C307331",
+      "source_url": "https://jlcpcb.com/partdetail/C307331",
+      "availability": "Reviewed selection in assembly.lock; JLC stock not rechecked here; recheck before order"
     },
     {
       "references": [
@@ -422,26 +412,24 @@
         "C_GNSS",
         "C_DEC4"
       ],
-      "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL10A105KB8NNNC",
+      "manufacturer": "YAGEO",
+      "mpn": "CC0603KRX7R9BB105",
       "supplier": "jlcpcb",
-      "supplier_part": "C15849",
-      "source_url": "https://jlcpcb.com/partdetail/C15849",
-      "checked_on": "2026-10-09",
-      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+      "supplier_part": "C559769",
+      "source_url": "https://jlcpcb.com/partdetail/C559769",
+      "availability": "Reviewed selection in assembly.lock; JLC stock not rechecked here; recheck before order"
     },
     {
       "references": [
         "C_NRF",
         "PWR/C_USB"
       ],
-      "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL10A475KO8NNNC",
+      "manufacturer": "YAGEO",
+      "mpn": "CC0603KRX5R7BB475",
       "supplier": "jlcpcb",
-      "supplier_part": "C19666",
-      "source_url": "https://jlcpcb.com/partdetail/C19666",
-      "checked_on": "2026-10-09",
-      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+      "supplier_part": "C277476",
+      "source_url": "https://jlcpcb.com/partdetail/C277476",
+      "availability": "Reviewed selection in assembly.lock; JLC stock not rechecked here; recheck before order"
     },
     {
       "references": [
@@ -450,13 +438,12 @@
         "PWR/C_LOGIC_IN",
         "PWR/C_MODEM_IN"
       ],
-      "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL21A106KAYNNNE",
+      "manufacturer": "Murata Electronics",
+      "mpn": "GRM21BR61H106KE43L",
       "supplier": "jlcpcb",
-      "supplier_part": "C15850",
-      "source_url": "https://jlcpcb.com/partdetail/C15850",
-      "checked_on": "2026-10-09",
-      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+      "supplier_part": "C440198",
+      "source_url": "https://jlcpcb.com/partdetail/C440198",
+      "availability": "Reviewed selection in assembly.lock; JLC stock not rechecked here; recheck before order"
     },
     {
       "references": [
@@ -468,12 +455,11 @@
         "PWR/C_MODEM_OUT3"
       ],
       "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL21A226MAQNNNE",
+      "mpn": "CL21A226MPCLRNC",
       "supplier": "jlcpcb",
-      "supplier_part": "C45783",
-      "source_url": "https://jlcpcb.com/partdetail/C45783",
-      "checked_on": "2026-10-09",
-      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+      "supplier_part": "C307529",
+      "source_url": "https://jlcpcb.com/partdetail/C307529",
+      "availability": "Reviewed selection in assembly.lock; JLC stock not rechecked here; recheck before order"
     },
     {
       "references": [
@@ -491,51 +477,47 @@
       "references": [
         "C_BT_MATCH"
       ],
-      "manufacturer": "FH (Guangdong Fenghua Advanced Tech)",
-      "mpn": "0402CG0R8B500NT",
+      "manufacturer": "Murata Electronics",
+      "mpn": "GJM1555C1HR80WB01D",
       "supplier": "jlcpcb",
-      "supplier_part": "C285068",
-      "source_url": "https://jlcpcb.com/partdetail/C285068",
-      "checked_on": "2026-10-09",
-      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+      "supplier_part": "C88902",
+      "source_url": "https://jlcpcb.com/partdetail/C88902",
+      "availability": "Reviewed selection in assembly.lock; JLC stock not rechecked here; recheck before order"
     },
     {
       "references": [
         "C_ANT_SERIES"
       ],
-      "manufacturer": "FH (Guangdong Fenghua Advanced Tech)",
-      "mpn": "0402CG1R0C500NT",
+      "manufacturer": "YAGEO",
+      "mpn": "CC0402BRNPO9BN1R0",
       "supplier": "jlcpcb",
-      "supplier_part": "C1550",
-      "source_url": "https://jlcpcb.com/partdetail/C1550",
-      "checked_on": "2026-10-09",
-      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+      "supplier_part": "C309455",
+      "source_url": "https://jlcpcb.com/partdetail/C309455",
+      "availability": "Reviewed selection in assembly.lock; JLC stock not rechecked here; recheck before order"
     },
     {
       "references": [
         "C_DEC3",
         "C_CELL_SERIES"
       ],
-      "manufacturer": "FH (Guangdong Fenghua Advanced Tech)",
-      "mpn": "0402CG101J500NT",
+      "manufacturer": "YAGEO",
+      "mpn": "CC0402JRNPO9BN101",
       "supplier": "jlcpcb",
-      "supplier_part": "C1546",
-      "source_url": "https://jlcpcb.com/partdetail/C1546",
-      "checked_on": "2026-10-09",
-      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+      "supplier_part": "C106200",
+      "source_url": "https://jlcpcb.com/partdetail/C106200",
+      "availability": "Reviewed selection in assembly.lock; JLC stock not rechecked here; recheck before order"
     },
     {
       "references": [
         "C_XC1",
         "C_XC2"
       ],
-      "manufacturer": "FH (Guangdong Fenghua Advanced Tech)",
-      "mpn": "0402CG180J500NT",
+      "manufacturer": "Murata Electronics",
+      "mpn": "GRM1555C1H180JA01D",
       "supplier": "jlcpcb",
-      "supplier_part": "C1549",
-      "source_url": "https://jlcpcb.com/partdetail/1901-0402CG180J500NT/C1549",
-      "checked_on": "2026-10-09",
-      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+      "supplier_part": "C33149",
+      "source_url": "https://jlcpcb.com/partdetail/C33149",
+      "availability": "Reviewed selection in assembly.lock; JLC stock not rechecked here; recheck before order"
     },
     {
       "references": [
@@ -566,13 +548,12 @@
       "references": [
         "R_CELL_SERIES"
       ],
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF0000TCE",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-070RL",
       "supplier": "jlcpcb",
-      "supplier_part": "C17168",
-      "source_url": "https://jlcpcb.com/partdetail/17853-0402WGF0000TCE/C17168",
-      "checked_on": "2026-11-02",
-      "availability": "JLCPCB basic part listing seen in search results; recheck live stock"
+      "supplier_part": "C106231",
+      "source_url": "https://jlcpcb.com/partdetail/C106231",
+      "availability": "Reviewed selection in assembly.lock; JLC stock not rechecked here; recheck before order"
     },
     {
       "references": [
