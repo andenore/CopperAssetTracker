@@ -73,10 +73,12 @@ manufacturing review files.
 
 ![Top copper of the CopperAssetTracker showcase route, rendered from its native Gerber plot](docs/showcase/routing-top.svg)
 
-*Top copper and silkscreen of the 100 × 80 mm `native-showcase-20261107` route,
+*Top copper and silkscreen of the 100 × 80 mm `native-showcase-20261108` route,
 rendered by `copper render` from the native Gerber plot; gold is exposed copper.
-87 footprints, 1191 routed track segments, 259 vias and six copper layers, with
-native fill, DRC and CAM read-back passing and no KiCad in the loop. This is an
+88 footprints, 1180 routed track segments, 270 vias and six copper layers, with
+the three printed antennas (LTE along the top edge, BLE and GNSS on the right),
+native fill, DRC (the antennas' radiator ends excused as open by design) and CAM
+read-back passing and no KiCad in the loop. This is an
 unapproved routing review, **not a released production package**.*
 
 These figures retain the source-matched routing review from before the Copper
@@ -105,6 +107,14 @@ For the separate u-blox GNSS receiver, the
 is Taoglas **FXP611.07.0092C** with a 92 mm U.FL-compatible cable. It requires
 plastic mounting and at least 10 mm clearance from metal/main PCB ground.
 It is a prototype candidate; enclosure fit and LTE coexistence remain unverified.
+
+The active source now uses **printed antennas** instead of both cabled antennas
+and the Johanson BLE chip: CopperScript's `constraint antenna` generates a
+locked monopole for LTE B20 (top edge), GNSS L1 and Bluetooth LE (right edge),
+each tuned in a full-wave model of this board with `make antennas`. Their
+geometry, simulated return loss and matching values are in
+[the printed-antenna revision](revisions/pcb-antennas-v1/README.md); that is
+simulation evidence only, and bench tuning in the enclosure remains mandatory.
 
 ## Why CopperScript?
 
@@ -233,11 +243,18 @@ pair intent. The canonical source has no mechanical outline block; the
 illustrated build uses the provisional 100 × 80 mm board. These declarations
 do not imply a qualified enclosure design.
 
-For example, the canonical source keeps the GNSS antenna connection close to its
-receiver:
+For example, the source reserves the GNSS antenna's board-edge region and
+pins the radiator its synthesis tuned:
 
 ```copper
-constraint max_distance(J_GNSS, U_GNSS.RF_IN) { distance = 5mm; }
+constraint antenna(ANT_GNSS.FEED) {
+    name = "gnss";
+    x = 90mm; y = 44mm; width = 10mm; height = 36mm;
+    ground = GND;
+    bands = "1559 MHz-1606 MHz";
+    geometry = "monopole height=8.31mm length=40.46mm";
+    tuned_for = "sha256:04f1...";
+}
 ```
 
 `make edit` opens the shared mechanical/floorplan editor with this board's pinned
@@ -302,7 +319,7 @@ its own `electrical.ir.json` in the selected review directory.
 
 ![Component placement: front silkscreen and solder-mask openings](docs/showcase/placement.svg)
 
-*Front silkscreen and solder-mask openings (gold) of the same 87-footprint route,
+*Front silkscreen and solder-mask openings (gold) of the same 88-footprint route,
 rendered from the native plot. These are the router's actual final poses, not a
 photograph of assembled hardware.*
 
@@ -341,12 +358,12 @@ Selected output from the illustrated KiCad 10.0.6 source-matched routing review:
 
 ```json
 {
-  "component_count": 87,
-  "track_count": 1191,
-  "via_count": 259,
+  "component_count": 88,
+  "track_count": 1180,
+  "via_count": 270,
   "native_drc_violation_count": 0,
   "native_unconnected_item_count": 0,
-  "blocked_requirement_count": 12,
+  "blocked_requirement_count": 14,
   "qualified_release": false
 }
 ```
@@ -381,8 +398,10 @@ No production order has been created.
   illustrated revision, with a reusable thermistor-bias circuit and timer.
 - Three-pin SMT **JST XH battery connector**: 1 BAT+, 2 GND, 3 pack NTC.
 - Two TPS63020DSJR buck-boost supplies: 3.3 V logic and switchable 3.8 V modem.
-- Nano-SIM, two U.FL RF connectors, two SWD headers, debug UART, button/LEDs.
-- Provisional 100 x 80 mm six-layer board; preserved Nordic/Johanson RF hard macro.
+- Nano-SIM, two SWD headers, debug UART, button/LEDs.
+- Three synthesized printed antennas (LTE B20, GNSS L1, BLE) with their
+  matching networks; Nordic's chip-side RF match kept as a hard macro.
+- Provisional 100 x 80 mm six-layer board.
 
 All 83 canonical populated references have exact candidate manufacturer part
 numbers and
@@ -438,7 +457,7 @@ dependency caches and downloaded vendor PDFs remain excluded from Git.
 Use a **protected 1S, 4.2 V maximum Li-ion/LiPo pack**, a compatible pack-mounted
 10 kohm NTC and wiring rated for measured modem peaks. Verify harness pin
 numbering/polarity physically: this is not a generic two-wire battery pinout.
-No battery, harness, SIM, external LTE/GNSS antennas or firmware is supplied.
+No battery, harness, SIM or firmware is supplied.
 Do not use LiFePO4, 2S or an unprotected cell.
 
 The charger uses USB500 mode and about 405 mA nominal charge current. Modem

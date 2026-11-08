@@ -76,9 +76,10 @@ class EngineeringPlanTests(unittest.TestCase):
             self.assertIn("No passed route", result.stdout + result.stderr)
             self.assertFalse((Path(runs) / "latest-route").exists())
         lock = json.loads((ROOT / "assembly.lock").read_text())
-        self.assertEqual(len(lock["selections"]), 87)
+        self.assertEqual(len(lock["selections"]), 85)
+        # The printed antennas' matching parts await a human selection review.
         unreviewed = {selection["reference"] for selection in lock["selections"] if not selection["reviewed"]}
-        self.assertEqual(unreviewed, set())
+        self.assertEqual(unreviewed, {"L_BT_SHUNT", "C_BT_SERIES", "C_GNSS_SERIES", "C_GNSS_SHUNT", "C_CELL_SHUNT1", "L_CELL_SERIES", "L_CELL_SHUNT"})
 
     def test_actual_usb_pair_bindings_are_board_specific_screens(self):
         plan = json.loads((ROOT / "docs/engineering-plan.json").read_text())

@@ -11,19 +11,17 @@ board CopperAssetTracker {
     import ublox "github.com/andenore/CopperLib/packages/parts/u-blox/max-m10s";
     import coilcraft "github.com/andenore/CopperLib/packages/parts/coilcraft/0603usb";
     import gct_sim "github.com/andenore/CopperLib/packages/parts/gct/sim8060";
-    import johanson "github.com/andenore/CopperLib/packages/parts/johanson/2450at18a0100001e";
     import swd "github.com/andenore/CopperLib/packages/interfaces/arm/swd-10pin";
     import tracker "./src/tracker";
     import simcom "github.com/andenore/CopperLib/packages/parts/simcom/sim7670g-lngv";
     import translator "github.com/andenore/CopperLib/packages/parts/ti/sn74axc2t245";
     import onsemi "github.com/andenore/CopperLib/packages/parts/onsemi/bss138";
     import uart_header "github.com/andenore/CopperLib/packages/interfaces/uart/jst-xh4";
-    import molex_sma "github.com/andenore/CopperLib/packages/parts/molex/73251-2200";
     import eswitch "github.com/andenore/CopperLib/packages/parts/e-switch/tl3342";
     import yxc "github.com/andenore/CopperLib/packages/parts/yxc/ysx321sl";
     import kento "github.com/andenore/CopperLib/packages/parts/kento/kt0603r";
+    import rf "./src/rf";
 
-    import nordic_layout "github.com/andenore/CopperLib/packages/circuits/nordic/nrf52832-johanson-reference";
     import logic_layout "github.com/andenore/CopperLib/packages/circuits/ti/tps63020-buck-boost";
     import modem_layout "github.com/andenore/CopperLib/packages/circuits/ti/tps63020-buck-boost";
 
@@ -40,14 +38,15 @@ board CopperAssetTracker {
     component U_GNSS: ublox.MAX_M10S_00B;
     component FL_USB: coilcraft.COILCRAFT_0603USB_601MLC;
 
-    // Right-angle SMA jacks at the board edge for the LTE and GNSS antennas.
-    component J_CELL: molex_sma.MOLEX_73251_2200;
-    component J_GNSS: molex_sma.MOLEX_73251_2200;
+    // Synthesized printed antennas (constraint antenna below): each feed is a
+    // bare one-land pad where the generated radiator starts.
+    component ANT_CELL: rf.AntennaFeed;
+    component ANT_GNSS: rf.AntennaFeed;
+    component ANT_BT: rf.AntennaFeed;
     component J_SIM: gct_sim.SIM8060_6_0_14_00_A;
     component J_DEBUG: uart_header.DEBUG_HEADER;
     component J_SWD_MCU: swd.SWD_HEADER;
     component J_SWD_NRF: swd.SWD_HEADER;
-    component ANT_BT: johanson.JOHANSON_2450AT18A0100001E;
     component SW_USER: eswitch.TL3342F160QG;
     component LED_1: kento.KENTO_KT0603R;
     component LED_2: kento.KENTO_KT0603R;
@@ -65,9 +64,19 @@ board CopperAssetTracker {
     component R_RESET_NRF: RESISTOR { value = 10kohm; footprint = "Resistor_SMD:R_0402_1005Metric"; }
     component L_BT_MATCH: INDUCTOR { value = 3.9nH; footprint = "Inductor_SMD:L_0402_1005Metric"; }
     component C_BT_MATCH: CAPACITOR { value = 0.8pF; footprint = "Capacitor_SMD:C_0402_1005Metric"; }
-    component C_ANT_SERIES: CAPACITOR { value = 1pF; footprint = "Capacitor_SMD:C_0402_1005Metric"; }
-    component L_ANT_SHUNT: INDUCTOR { value = 2.7nH; footprint = "Inductor_SMD:L_0402_1005Metric"; }
-    component L_ANT_SERIES: INDUCTOR { value = 3.9nH; footprint = "Inductor_SMD:L_0402_1005Metric"; }
+    // BLE trace-antenna L-section after Nordic's C3/L1, radio side first:
+    // shunt 4.3 nH, series 2.0 pF. The ble synthesis report's ideal values are
+    // 4.39 nH / 2.03 pF; these E-series values keep -18.7 dB worst in band on
+    // its simulated impedance. Simulation only: retune on the bench.
+    component L_BT_SHUNT: INDUCTOR { value = 4.3nH; footprint = "Inductor_SMD:L_0402_1005Metric"; }
+    component C_BT_SERIES: CAPACITOR { value = 2pF; footprint = "Capacitor_SMD:C_0402_1005Metric"; }
+    // MAX-M10S RF_IN is matched and DC-blocked inside the module; this
+    // L-section matches the printed GNSS antenna, radio side first: series
+    // 3.9 pF, shunt 1.2 pF. The gnss synthesis report's ideal values are
+    // 4.04 pF / 1.18 pF; these E-series values keep -13.0 dB worst in band on
+    // its simulated impedance. Simulation only: retune on the bench.
+    component C_GNSS_SERIES: CAPACITOR { value = 3.9pF; footprint = "Capacitor_SMD:C_0402_1005Metric"; }
+    component C_GNSS_SHUNT: CAPACITOR { value = 1.2pF; footprint = "Capacitor_SMD:C_0402_1005Metric"; }
     component C_MCU: CAPACITOR { value = 100nF; footprint = "Capacitor_SMD:C_0402_1005Metric"; role = decoupling; decouples = "U_MCU.VDD"; }
     component C_CC: CAPACITOR { value = 1uF; footprint = "Capacitor_SMD:C_0603_1608Metric"; role = decoupling; decouples = "U_CC.VDD"; }
     component C_NRF: CAPACITOR { value = 4.7uF; footprint = "Capacitor_SMD:C_0603_1608Metric"; role = decoupling; decouples = "U_NRF.VDD_1"; }
@@ -77,11 +86,17 @@ board CopperAssetTracker {
     component C_LEVEL_A: CAPACITOR { value = 100nF; footprint = "Capacitor_SMD:C_0402_1005Metric"; role = decoupling; decouples = "U_MODEM_LEVEL.VCCA"; }
     component C_LEVEL_B: CAPACITOR { value = 100nF; footprint = "Capacitor_SMD:C_0402_1005Metric"; role = decoupling; decouples = "U_MODEM_LEVEL.VCCB"; }
     // SIM7672X Hardware Design V1.01 Figure 30 / p59 antenna matching network,
-    // module side first: shunt C1, series R1 (0 ohm), shunt C2, series R2
-    // (100 pF). Both shunts are reserved and not fitted until antenna tuning.
-    component C_CELL_SHUNT1: CAPACITOR { footprint = "Capacitor_SMD:C_0402_1005Metric"; }
-    component R_CELL_SERIES: RESISTOR { value = 0ohm; footprint = "Resistor_SMD:R_0402_1005Metric"; }
-    component C_CELL_SHUNT2: CAPACITOR { footprint = "Capacitor_SMD:C_0402_1005Metric"; }
+    // module side first: shunt C1, series R1, shunt C2, series R2 (100 pF DC
+    // block). Fitted as a pi match for the printed LTE antenna: 9.1 pF shunt,
+    // 1.5 nH series, 2.7 nH shunt. The lte synthesis report's two-element
+    // L-section reached only -5.3 dB over B20; this pi, searched on the
+    // report's fine-mesh feed impedance with the DC block and assumed part Q
+    // (revisions/pcb-antennas-v1/lte_pi_match.py), gives -8.0 dB worst in
+    // band and -6.1 dB at tolerance corners. Simulation only: retune on the
+    // bench.
+    component C_CELL_SHUNT1: CAPACITOR { value = 9.1pF; footprint = "Capacitor_SMD:C_0402_1005Metric"; }
+    component L_CELL_SERIES: INDUCTOR { value = 1.5nH; footprint = "Inductor_SMD:L_0402_1005Metric"; }
+    component L_CELL_SHUNT: INDUCTOR { value = 2.7nH; footprint = "Inductor_SMD:L_0402_1005Metric"; }
     component C_CELL_SERIES: CAPACITOR { value = 100pF; footprint = "Capacitor_SMD:C_0402_1005Metric"; }
     component C_MODEM_BULK: CAPACITOR { value = 100uF; footprint = "Capacitor_SMD:C_1210_3225Metric"; }
     component U_MODEM_STATUS: translator.MODEM_STATUS_TRANSLATOR;
@@ -271,10 +286,8 @@ board CopperAssetTracker {
         U_GNSS.GND_1;
         U_GNSS.GND_2;
         U_GNSS.GND_3;
-        J_CELL.GND;
         C_CELL_SHUNT1.1;
-        C_CELL_SHUNT2.1;
-        J_GNSS.GND;
+        L_CELL_SHUNT.1;
         J_SIM.GND;
         J_SIM.SHIELD;
         J_DEBUG.GND;
@@ -289,7 +302,8 @@ board CopperAssetTracker {
         LED_1.K;
         LED_2.K;
         C_BT_MATCH.1;
-        L_ANT_SHUNT.1;
+        L_BT_SHUNT.1;
+        C_GNSS_SHUNT.1;
         C_MCU.2;
         C_NRF.2;
         C_ACCEL.2;
@@ -317,9 +331,9 @@ board CopperAssetTracker {
     net USB_DM_MCU { U_MCU.PA11; FL_USB.DM_OUT; }
     net USB_DP_MODEM { FL_USB.DP_IN; U_MODEM.USB_DP; }
     net USB_DM_MODEM { FL_USB.DM_IN; U_MODEM.USB_DM; }
-    net CELL_RF { U_MODEM.ANT_MAIN; C_CELL_SHUNT1.2; R_CELL_SERIES.1; }
-    net CELL_RF_MATCH { R_CELL_SERIES.2; C_CELL_SHUNT2.2; C_CELL_SERIES.1; }
-    net CELL_RF_ANT { C_CELL_SERIES.2; J_CELL.SIGNAL; }
+    net CELL_RF { U_MODEM.ANT_MAIN; C_CELL_SHUNT1.2; L_CELL_SERIES.1; }
+    net CELL_RF_MATCH { L_CELL_SERIES.2; L_CELL_SHUNT.2; C_CELL_SERIES.1; }
+    net CELL_RF_ANT { C_CELL_SERIES.2; ANT_CELL.FEED; }
     net SIM_VCC { U_MODEM.USIM_VDD; J_SIM.VCC; }
     net SIM_RST { U_MODEM.USIM_RST; J_SIM.RST; }
     net SIM_CLK { U_MODEM.USIM_CLK; J_SIM.CLK; }
@@ -333,15 +347,14 @@ board CopperAssetTracker {
     // Nordic QFAA reference v1.1: C3 is shunt on the chip side of L1.
     // Follow vendor physical C3 numbering: upper pad 1 GND, lower pad 2 ANT.
     net NRF_RF_RAW { U_NRF.ANT; C_BT_MATCH.2; L_BT_MATCH.1; }
-    // Johanson evaluation-style tee is provisional; tune on this stackup.
-    net NRF_RF_ANT { L_BT_MATCH.2; C_ANT_SERIES.1; }
-    net ANT_TEE { C_ANT_SERIES.2; L_ANT_SHUNT.2; L_ANT_SERIES.1; }
-    net ANT_FEED { L_ANT_SERIES.2; ANT_BT.FEED; }
+    net NRF_RF_ANT { L_BT_MATCH.2; L_BT_SHUNT.2; C_BT_SERIES.1; }
+    net ANT_FEED { C_BT_SERIES.2; ANT_BT.FEED; }
 
     net GNSS_TX { U_GNSS.TXD; U_MCU.PA3; }
     net GNSS_RX { U_GNSS.RXD; U_MCU.PA2; }
     net GNSS_TIMEPULSE { U_GNSS.TIMEPULSE; U_MCU.PC3; }
-    net GNSS_RF { U_GNSS.RF_IN; J_GNSS.SIGNAL; }
+    net GNSS_RF { U_GNSS.RF_IN; C_GNSS_SERIES.1; }
+    net GNSS_RF_ANT { C_GNSS_SERIES.2; C_GNSS_SHUNT.2; ANT_GNSS.FEED; }
 
     net I2C_SDA { U_MCU.PA6; U_ACCEL.SDA; R_I2C_SDA.2; }
     net I2C_SCL { U_MCU.PA7; U_ACCEL.SCL; R_I2C_SCL.2; }
@@ -415,36 +428,31 @@ board CopperAssetTracker {
         x = 12mm; y = 74mm; rotation = 0; side = front;
     }
     // ANT_MAIN (pad 60) is on the west edge at this rotation: (10.1 mm, 24 mm).
-    // The modem sits 2.1 mm right of its earlier x = 20 mm so the SMA courtyard
-    // clears it.
     constraint fixed_placement(U_MODEM) {
         x = 22.1mm; y = 24mm; rotation = 90; side = front;
     }
-    // Right-angle SMA origins are the centre pin, 4.4 mm in from the edge.
-    // Per SD-73251-220 the body front face is 3.95 mm and the shoulder 5.07 mm
-    // ahead of the pin, so the shoulder stands 0.67 mm proud of the edge; the
-    // nose (16.5 mm) overhangs (see mechanical below).
-    constraint fixed_placement(J_CELL) {
-        x = 4.4mm; y = 13mm; rotation = 90; side = front;
-    }
-    // The matching network runs south from J_CELL's centre pin along x = 4.4 mm
-    // (between its rear posts), then east to ANT_MAIN at y = 24 mm: about
-    // 15.5 mm of feed in all, inside the SIM7672X V1.01 p60 maximum of 20 mm.
+    // The matching network runs south from the LTE antenna feed (ANT_CELL,
+    // fixed by its antenna constraint) along x = 4.4 mm, then east to ANT_MAIN
+    // at y = 24 mm, inside the SIM7672X V1.01 p60 maximum of 20 mm.
     // Series parts sit on the line; each shunt's RF pad is on the line with
-    // its GND pad to the west. Antenna side first: R2, C2, R1, C1.
+    // its GND pad to the west. Antenna side first: R2, C2, R1, C1
+    // (C_CELL_SERIES, L_CELL_SHUNT, L_CELL_SERIES, C_CELL_SHUNT1).
     constraint fixed_placement(C_CELL_SERIES) { x = 4.4mm; y = 18.9mm; rotation = 90; side = front; }
-    constraint fixed_placement(C_CELL_SHUNT2) { x = 3.92mm; y = 20.9mm; rotation = 0; side = front; }
-    constraint fixed_placement(R_CELL_SERIES) { x = 4.4mm; y = 22.9mm; rotation = 90; side = front; }
+    constraint fixed_placement(L_CELL_SHUNT) { x = 3.92mm; y = 20.9mm; rotation = 0; side = front; }
+    constraint fixed_placement(L_CELL_SERIES) { x = 4.4mm; y = 22.9mm; rotation = 90; side = front; }
     constraint fixed_placement(C_CELL_SHUNT1) { x = 3.92mm; y = 24.9mm; rotation = 0; side = front; }
     // SIM insertion faces left; contact lands face right, toward the modem.
     constraint fixed_placement(J_SIM) {
         x = 10mm; y = 51mm; rotation = 270; side = front;
     }
-    // The full RF macro places all five matching parts and ANT_BT with U_NRF.
-    // Its antenna clearance reaches the upper-right board corner.
+    // The nordic-rf macro places C3 and L1 with U_NRF; L1's output (86.1 mm,
+    // 18.5 mm) runs to the BLE L-section on y = 16.7 mm, level with the BLE
+    // antenna feed (92.66 mm, 16.7 mm). The shunt's GND pad faces south.
     constraint fixed_placement(U_NRF) {
         x = 80mm; y = 18mm; rotation = 0; side = front;
     }
+    constraint fixed_placement(L_BT_SHUNT) { x = 88mm; y = 17.18mm; rotation = 90; side = front; }
+    constraint fixed_placement(C_BT_SERIES) { x = 90mm; y = 16.7mm; rotation = 0; side = front; }
     // Rigid TPS63020 macros own both converters' support placement and copper.
     constraint fixed_placement(PWR/U_MODEM) {
         x = 54mm; y = 48mm; rotation = 0; side = front;
@@ -453,17 +461,16 @@ board CopperAssetTracker {
     constraint fixed_placement(PWR/J_BAT) {
         x = 70mm; y = 71mm; rotation = 0; side = front;
     }
-    // Turned so RF_IN (89.15 mm, 63.3 mm) faces east: the feed runs straight
-    // to the right-edge SMA between the flanking GND pads, with no bends.
-    // At this height VCC (79.65 mm, 63.3 mm) sits above J_BAT's courtyard,
-    // leaving room for C_GNSS beside it.
+    // Turned so RF_IN (84.25 mm, 50.3 mm) faces east, low enough that the
+    // module's courtyard clears the charger's C_BAT and R_ISET. The feed runs
+    // east, then north through the series part to the shunt node level with
+    // the GNSS antenna feed (88.66 mm, 44.7 mm), which the shunt's RF pad
+    // faces from 1.4 mm south; its GND pad points south.
     constraint fixed_placement(U_GNSS) {
-        x = 84.4mm; y = 60mm; rotation = 270; side = front;
+        x = 79.5mm; y = 47mm; rotation = 270; side = front;
     }
-    constraint fixed_placement(J_GNSS) {
-        x = 95.6mm; y = 63.3mm; rotation = 270; side = front;
-    }
-    constraint max_distance(J_GNSS.SIGNAL, U_GNSS.RF_IN) { distance = 8mm; }
+    constraint fixed_placement(C_GNSS_SERIES) { x = 87mm; y = 48mm; rotation = 90; side = front; }
+    constraint fixed_placement(C_GNSS_SHUNT) { x = 88.66mm; y = 46.6mm; rotation = 90; side = front; }
 
     constraint max_distance(C_MCU, U_MCU.VDD) { distance = 3mm; }
     // The MCU at the pose the planner settles on, with C_MCU turned beside
@@ -557,20 +564,23 @@ board CopperAssetTracker {
         outline rectangle { width = 100mm; height = 80mm; }
         edge LEFT { start = (0mm, 0mm); end = (0mm, 80mm); }
         edge RIGHT { start = (100mm, 0mm); end = (100mm, 80mm); }
-        // Right-angle SMA noses; their pins and posts remain on the board. The
-        // nose tip is 12.1 mm past the edge; 12.7 mm covers the KiCad courtyard.
-        overhang CELL_SMA {
-            component = J_CELL; edge = LEFT; start = 5.5mm; end = 20.5mm; distance = 12.7mm;
-            reason = "Molex 73251-2200 SMA jack nose beyond the board edge";
+        // JLCPCB JLC06161H-3313 (NP-155F) construction, the selected
+        // fabrication stack (docs/stackup-selection.md). The antenna solver
+        // reads it; the loss tangent is unpublished, so it is left out and the
+        // simulated radiation efficiencies exclude dielectric loss.
+        stackup {
+            copper F.Cu { thickness = 0.035mm; }
+            dielectric PP1 { thickness = 0.0994mm; er = 4.1; material = "3313"; type = prepreg; }
+            copper In1.Cu { thickness = 0.0152mm; }
+            dielectric Core1 { thickness = 0.55mm; er = 4.6; material = "NP-155F"; type = core; }
+            copper In2.Cu { thickness = 0.0152mm; }
+            dielectric PP2 { thickness = 0.1088mm; er = 4.16; material = "2116"; type = prepreg; }
+            copper In3.Cu { thickness = 0.0152mm; }
+            dielectric Core2 { thickness = 0.55mm; er = 4.6; material = "NP-155F"; type = core; }
+            copper In4.Cu { thickness = 0.0152mm; }
+            dielectric PP3 { thickness = 0.0994mm; er = 4.1; material = "3313"; type = prepreg; }
+            copper B.Cu { thickness = 0.035mm; }
         }
-        overhang GNSS_SMA {
-            component = J_GNSS; edge = RIGHT; start = 55.8mm; end = 70.8mm; distance = 12.7mm;
-            reason = "Molex 73251-2200 SMA jack nose beyond the board edge";
-        }
-        // The whole upper-right BLE antenna corner stays free of copper and
-        // parts on every layer. The nordic-antenna macro already clears the
-        // antenna itself (89.5-96 x 6-12.5 mm) and its matching tee; this
-        // covers the rest of the corner out to both board edges.
         // Via-free USB corridor between FL_USB's MCU-side (OUT) pads and
         // U_MCU PA11/PA12. Ordinary escapes are reserved before critical
         // routing; without this the PA13/SWDIO escape via lands at
@@ -585,26 +595,20 @@ board CopperAssetTracker {
             block_zones = false;
             block_footprints = false;
         }
-        copper_keepout BLE_ANTENNA_CORNER polygon {
-            vertices = [(89.5mm, 0mm), (100mm, 0mm), (100mm, 18.1mm), (96mm, 18.1mm), (96mm, 6mm), (89.5mm, 6mm)];
-            layers = "F.Cu,In1.Cu,In2.Cu,In3.Cu,In4.Cu,B.Cu";
-            block_pads = true;
-            block_footprints = true;
-        }
     }
 
-    // Board identity in the open area right of the charger.
+    // Board identity in the open area between the GNSS module and J_BAT.
     silkscreen {
         text BOARD_ID {
             text = "CopperAssetTracker\nRev A";
-            position = (86mm, 36mm);
-            size = 1.5mm;
-            thickness = 0.2mm;
+            position = (79mm, 57mm);
+            size = 1.2mm;
+            thickness = 0.18mm;
         }
         // Stacked labels are a tenth of the logo: 8 mm keeps them at the
         // 0.8 mm minimum silkscreen text height.
         branding {
-            position = (86mm, 44mm);
+            position = (80mm, 66mm);
             size = 8mm;
             layout = stacked;
         }
@@ -655,8 +659,11 @@ board CopperAssetTracker {
     // Nominal 50-ohm grounded coplanar feeds over In1.Cu GND: 0.142 mm width
     // and 0.201 mm gap from the JLCPCB calculator for JLC06161H-3313
     // (revisions/rf-layout-v1/cellular-impedance-calculator.json). Not measured.
-    // The cellular feed is three nets split by the matching network; their
-    // length budgets sum to the 20 mm module-to-connector maximum.
+    // The cellular feed is three nets split by the matching network, within
+    // the 20 mm module-to-antenna maximum: 8 + 4 mm routed budgets, and the
+    // antenna-side segment fixed by its two pads (C_CELL_SERIES and the LTE
+    // feed, 7.1 mm apart). That net also carries the radiator's copper, which
+    // a max_length would count, so it has none.
     constraint routing(CELL_RF) {
         kind = critical; topology = tree; priority = 120; target_impedance_ohms = 50;
         width = 0.142mm; clearance = 0.201mm;
@@ -670,22 +677,34 @@ board CopperAssetTracker {
     constraint routing(CELL_RF_ANT) {
         kind = rf_feed; priority = 120; target_impedance_ohms = 50;
         width = 0.142mm; clearance = 0.201mm;
-        allowed_layers = "F.Cu"; max_vias = 0; max_length = 8mm;
+        allowed_layers = "F.Cu"; max_vias = 0;
     }
+    // The GNSS feed is split by its matching parts: RF_IN to the series part,
+    // then a tree through the antenna-side shunt to the antenna feed.
     constraint routing(GNSS_RF) {
         kind = rf_feed; priority = 120; target_impedance_ohms = 50;
         width = 0.142mm; clearance = 0.201mm;
         allowed_layers = "F.Cu"; max_vias = 0;
     }
+    constraint routing(GNSS_RF_ANT) {
+        kind = critical; topology = tree; priority = 120; target_impedance_ohms = 50;
+        width = 0.142mm; clearance = 0.201mm;
+        allowed_layers = "F.Cu"; max_vias = 0;
+    }
     // Nordic's chip-side matching geometry is not a generic 50-ohm feed.
-    // Its three-terminal chip-side net includes the shunt capacitor. The
-    // series inductor's output is the point-to-point antenna feed. Neither
-    // these profiles nor the provisional placement qualify the matching layout.
+    // Its three-terminal chip-side net includes the shunt capacitor. L1's
+    // output runs to the trace antenna's pi lands, and the last segment is the
+    // point-to-point antenna feed. Neither these profiles nor the provisional
+    // placement qualify the matching layout.
     constraint routing(NRF_RF_RAW) {
         kind = critical; topology = tree;
         priority = 130; allowed_layers = "F.Cu"; max_vias = 0;
     }
     constraint routing(NRF_RF_ANT) {
+        kind = critical; topology = tree; priority = 130;
+        target_impedance_ohms = 50; allowed_layers = "F.Cu"; max_vias = 0;
+    }
+    constraint routing(ANT_FEED) {
         kind = rf_feed; priority = 130;
         target_impedance_ohms = 50; allowed_layers = "F.Cu"; max_vias = 0;
     }
@@ -737,19 +756,76 @@ board CopperAssetTracker {
     }
 
     // Source-selected realizations; asset versions and hashes come from dependencies.
-    physical_macro nordic-antenna: nordic_layout.NRF52832_JOHANSON_MANAGED_SIX_LAYER {
-        member ANT = ANT_BT;
+    physical_macro nordic-rf: rf.NRF52832_NORDIC_MATCH_SIX_LAYER {
         member C3 = C_BT_MATCH;
-        member CA = C_ANT_SERIES;
         member L1 = L_BT_MATCH;
-        member LA = L_ANT_SHUNT;
-        member LB = L_ANT_SERIES;
         member U1 = U_NRF;
-        net antenna = ANT_FEED;
         net feed = NRF_RF_ANT;
         net ground = GND;
         net raw = NRF_RF_RAW;
-        net tee = ANT_TEE;
+    }
+
+    // Synthesized printed antennas (see the CopperScript language reference,
+    // "Trace antenna synthesis"). Each region sits on the board edge with its
+    // inner edge facing the ground planes; lowering generates a locked radiator,
+    // an all-layer protected region and the feed pad's pose. `geometry` and
+    // `tuned_for` come from `copper synthesize-antenna` (full-wave FDTD of this
+    // outline, stack-up and GND zones): simulation evidence only, never bench,
+    // enclosure or regulatory qualification.
+    //
+    // LTE B20 (791-862 MHz, the EU/Nordic coverage band) along the top edge,
+    // fed from the modem's pi network at the left end. VSWR 3:1 is the target.
+    // Synthesized (fine mesh, model revision 5): resonance 0.826 GHz, -3.2 dB
+    // bare; the reported L-section (series 4.30 nH then shunt 6.16 pF from the
+    // antenna side) MISSES at -5.3 dB, so the Figure 30 pi carries the match
+    // (above); 59 % radiation efficiency without dielectric loss.
+    // revisions/pcb-antennas-v1/lte-synthesis.json.
+    // A 10 mm edge clearance reached only about -3 dB matched across B20 and
+    // B8 together (one resonance over 19 %); B8, B28 and the high bands are
+    // not covered by this radiator.
+    constraint antenna(ANT_CELL.FEED) {
+        name = "lte";
+        x = 3.4mm; y = 0mm; width = 72.6mm; height = 10mm;
+        ground = GND;
+        bands = "791 MHz-862 MHz";
+        max_return_loss_db = -6;
+        track_width = 1.5mm;
+        keepout_margin = 0.5mm;
+        geometry = "monopole height=9.16mm length=68.2mm";
+        tuned_for = "sha256:44da69392ba7fcc6a9a5517fd8116452a890f67b3ba362e2a2d31874d35cfab9";
+    }
+    // Bluetooth LE on the right edge beside the nRF52832. Synthesized (fine
+    // mesh, model revision 5): resonance 2.315 GHz, -9.4 dB bare and -18.2 dB
+    // worst over the band with series 2.03 pF then shunt 4.39 nH from the
+    // antenna side (C_BT_SERIES, L_BT_SHUNT); 99 % radiation efficiency
+    // without dielectric loss. revisions/pcb-antennas-v1/ble-synthesis.json.
+    constraint antenna(ANT_BT.FEED) {
+        name = "ble";
+        x = 94mm; y = 16mm; width = 6mm; height = 24mm;
+        ground = GND;
+        bands = "2400 MHz-2483.5 MHz";
+        track_width = 1mm;
+        keepout_margin = 0.5mm;
+        geometry = "monopole height=5.41mm length=24mm";
+        tuned_for = "sha256:10c846dffb8fbfb8aa29eaecc98b70c683fb90aaf864e4259c15049f5889c6b1";
+    }
+    // GNSS L1/E1/B1/G1 (MAX-M10S) on the right edge below the BLE antenna.
+    // Linear polarization: about 3 dB below a circularly polarized patch.
+    // Synthesized (fine mesh, model revision 5): resonance 1.471 GHz, -5.6 dB
+    // bare and -12.7 dB worst over the band with shunt 1.18 pF then series
+    // 4.04 pF from the antenna side (C_GNSS_SHUNT, C_GNSS_SERIES); 98 %
+    // radiation efficiency without dielectric loss. A 7 mm deep region reached
+    // only -9.5 dB, and an inverted-F's short left its arm too short for L1.
+    // revisions/pcb-antennas-v1/gnss-synthesis.json.
+    constraint antenna(ANT_GNSS.FEED) {
+        name = "gnss";
+        x = 90mm; y = 44mm; width = 10mm; height = 36mm;
+        ground = GND;
+        bands = "1559 MHz-1606 MHz";
+        track_width = 1mm;
+        keepout_margin = 0.5mm;
+        geometry = "monopole height=8.31mm length=40.46mm";
+        tuned_for = "sha256:04f1b468ffb55400ff51d3479a4dc288dba9e2c2653160983855c7bf2d78260d";
     }
 
     physical_macro logic-buck-boost: logic_layout.TPS63020_SIX_LAYER_ALWAYS_ON on PWR {

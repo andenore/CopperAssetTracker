@@ -190,19 +190,6 @@
     },
     {
       "references": [
-        "J_CELL",
-        "J_GNSS"
-      ],
-      "manufacturer": "Molex",
-      "mpn": "73251-2200",
-      "supplier": "DigiKey",
-      "supplier_part": "WM9352-ND",
-      "source_url": "https://www.digikey.com/en/products/result?keywords=0732512200",
-      "checked_on": "2026-11-02",
-      "availability": "Not stocked by JLCPCB: consigned, hand-fitted through-hole; DigiKey search page; recheck live stock"
-    },
-    {
-      "references": [
         "J_SWD_MCU",
         "J_SWD_NRF"
       ],
@@ -236,18 +223,6 @@
       "supplier": "jlcpcb",
       "supplier_part": "C2286",
       "source_url": "https://jlcpcb.com/partdetail/C2286",
-      "checked_on": "2026-10-09",
-      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
-    },
-    {
-      "references": [
-        "ANT_BT"
-      ],
-      "manufacturer": "Johanson Technology",
-      "mpn": "2450AT18A0100001E",
-      "supplier": "jlcpcb",
-      "supplier_part": "C17430588",
-      "source_url": "https://jlcpcb.com/partdetail/C17430588",
       "checked_on": "2026-10-09",
       "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
     },
@@ -486,17 +461,6 @@
     },
     {
       "references": [
-        "C_ANT_SERIES"
-      ],
-      "manufacturer": "YAGEO",
-      "mpn": "CC0402BRNPO9BN1R0",
-      "supplier": "jlcpcb",
-      "supplier_part": "C309455",
-      "source_url": "https://jlcpcb.com/partdetail/C309455",
-      "availability": "Reviewed selection in assembly.lock; JLC stock not rechecked here; recheck before order"
-    },
-    {
-      "references": [
         "C_DEC3",
         "C_CELL_SERIES"
       ],
@@ -521,8 +485,7 @@
     },
     {
       "references": [
-        "L_BT_MATCH",
-        "L_ANT_SERIES"
+        "L_BT_MATCH"
       ],
       "manufacturer": "Murata Electronics",
       "mpn": "LQG15HS3N9S02D",
@@ -534,39 +497,87 @@
     },
     {
       "references": [
-        "L_ANT_SHUNT"
+        "L_BT_SHUNT"
+      ],
+      "manufacturer": "Murata Electronics",
+      "mpn": "LQG15HS4N3S02D",
+      "supplier": "jlcpcb",
+      "supplier_part": "C97999",
+      "source_url": "https://www.lcsc.com/product-detail/C97999.html",
+      "checked_on": "2026-11-08",
+      "availability": "LCSC listing C97999 (shared JLC/LCSC catalogue); JLC stock not confirmed, the LQG15HS4N3B02D variant is C668382; recheck before order"
+    },
+    {
+      "references": [
+        "C_BT_SERIES"
+      ],
+      "manufacturer": "YAGEO",
+      "mpn": "CC0402BRNPO9BN2R0",
+      "supplier": "jlcpcb",
+      "supplier_part": "C281756",
+      "source_url": "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_YAGEO-CC0402BRNPO9BN2R0_C281756.html",
+      "checked_on": "2026-11-08",
+      "availability": "LCSC listing C281756 (shared JLC/LCSC catalogue); JLC stock not confirmed; recheck before order"
+    },
+    {
+      "references": [
+        "C_GNSS_SERIES"
+      ],
+      "manufacturer": "YAGEO",
+      "mpn": "AC0402BRNPO9BN3R9",
+      "supplier": "jlcpcb",
+      "supplier_part": "C326821",
+      "source_url": "https://jlcpcb.com/partdetail/YAGEO-AC0402BRNPO9BN3R9/C326821",
+      "checked_on": "2026-11-08",
+      "availability": "JLC catalogue listing found by search; stock not confirmed; recheck before order"
+    },
+    {
+      "references": [
+        "C_GNSS_SHUNT"
+      ],
+      "manufacturer": "Murata Electronics",
+      "mpn": "GJM1555C1H1R2BB01D",
+      "supplier": "jlcpcb",
+      "supplier_part": "C72135",
+      "source_url": "https://www.lcsc.com/product-image/C72135.html",
+      "checked_on": "2026-11-08",
+      "availability": "LCSC listing C72135 (shared JLC/LCSC catalogue); JLC stock not confirmed; recheck before order"
+    },
+    {
+      "references": [
+        "L_CELL_SERIES"
+      ],
+      "manufacturer": "Murata Electronics",
+      "mpn": "LQG15HS1N5S02D",
+      "supplier": "jlcpcb",
+      "supplier_part": "C77106",
+      "source_url": "https://www.lcsc.com/product-detail/C77106.html",
+      "checked_on": "2026-11-08",
+      "availability": "LCSC listing C77106 (shared JLC/LCSC catalogue); JLC stock not confirmed; recheck before order"
+    },
+    {
+      "references": [
+        "L_CELL_SHUNT"
       ],
       "manufacturer": "Murata Electronics",
       "mpn": "LQG15HS2N7S02D",
       "supplier": "jlcpcb",
       "supplier_part": "C77108",
       "source_url": "https://jlcpcb.com/partdetail/MurataElectronics-LQG15HS2N7S02D/C77108",
-      "checked_on": "2026-10-09",
-      "availability": "JLC catalogue / EasyEDA jlcOnSale=1; recheck live stock"
+      "checked_on": "2026-11-08",
+      "availability": "JLC catalogue part previously selected for the Johanson tee shunt; recheck live stock"
     },
     {
       "references": [
-        "R_CELL_SERIES"
+        "C_CELL_SHUNT1"
       ],
-      "manufacturer": "YAGEO",
-      "mpn": "RC0402FR-070RL",
+      "manufacturer": "Murata Electronics",
+      "mpn": "GJM1555C1H9R1WB01D",
       "supplier": "jlcpcb",
-      "supplier_part": "C106231",
-      "source_url": "https://jlcpcb.com/partdetail/C106231",
-      "availability": "Reviewed selection in assembly.lock; JLC stock not rechecked here; recheck before order"
-    },
-    {
-      "references": [
-        "C_CELL_SHUNT1",
-        "C_CELL_SHUNT2"
-      ],
-      "manufacturer": null,
-      "mpn": null,
-      "supplier": null,
-      "supplier_part": null,
-      "source_url": null,
-      "checked_on": "2026-11-02",
-      "availability": "Not fitted: SIM7672X V1.01 Figure 30 shunt pads reserved for antenna tuning"
+      "supplier_part": "C2169697",
+      "source_url": "https://www.lcsc.com/product-detail/C2169697.html",
+      "checked_on": "2026-11-08",
+      "availability": "LCSC listing C2169697 (shared JLC/LCSC catalogue); JLC stock not confirmed; recheck before order"
     }
   ]
 }

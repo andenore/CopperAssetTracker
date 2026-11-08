@@ -1,0 +1,25 @@
+SYNTHESIZE: antenna 'gnss' on PadReference(component='ANT_GNSS', pad='1') (GNSS_RF_ANT), target -10.0 dB over 1559 MHz-1606 MHz, centre 1.5825 GHz
+  site digest sha256:04f1b468ffb55400ff51d3479a4dc288dba9e2c2653160983855c7bf2d78260d
+  resonance coarse monopole height=9.41mm length=24.97mm                          resonance 1.8990 GHz  bare   -0.1 dB  matched   -1.8 dB  0.94 Mcells 27151 steps 0.21 ps  50.5 s
+  resonance coarse monopole height=9.41mm length=29.96mm                          resonance 1.8990 GHz  bare   -0.3 dB  matched   -5.5 dB  0.94 Mcells 27151 steps 0.21 ps  54.9 s
+  resonance coarse monopole height=9.41mm length=35.96mm                          resonance 1.6993 GHz  bare   -1.0 dB  matched   -9.3 dB  0.94 Mcells 29651 steps 0.21 ps  59.3 s
+  resonance coarse monopole height=9.41mm length=38.61mm                          resonance 1.5986 GHz  bare   -2.1 dB  matched  -10.6 dB  0.94 Mcells 30901 steps 0.21 ps  62.7 s
+  resonance coarse monopole height=9.41mm length=39mm                             resonance 1.5850 GHz  bare   -2.4 dB  matched  -11.0 dB  0.94 Mcells 31001 steps 0.21 ps  71.0 s
+  polish    coarse monopole height=9.41mm length=40.17mm                          resonance 1.5464 GHz  bare   -3.6 dB  matched  -12.2 dB  0.94 Mcells 31201 steps 0.21 ps  66.9 s
+  polish    coarse monopole height=7.21mm length=40.17mm                          resonance 1.4503 GHz  bare   -6.2 dB  matched  -13.1 dB  0.93 Mcells 23101 steps 0.28 ps  45.9 s
+  polish    coarse meander height=5mm depth=4.41mm pitch=2mm turns=1 tail=20.94mm resonance 1.6222 GHz  bare   -0.6 dB  matched   -4.7 dB  0.93 Mcells 27201 steps 0.21 ps  55.5 s
+  polish    coarse monopole height=7.21mm length=41.34mm                          resonance 1.4238 GHz  bare   -6.1 dB  matched  -13.1 dB  0.93 Mcells 23101 steps 0.28 ps  45.5 s
+  polish    coarse meander height=6.1mm depth=5.51mm pitch=2mm turns=1 tail=19.39mm resonance 1.6405 GHz  bare   -0.6 dB  matched   -5.4 dB  0.94 Mcells 27151 steps 0.21 ps  54.4 s
+  polish    coarse meander height=5mm depth=4.41mm pitch=2mm turns=1 tail=21.52mm resonance 1.5996 GHz  bare   -0.7 dB  matched   -4.9 dB  0.94 Mcells 27501 steps 0.21 ps  57.8 s
+  polish    coarse monopole height=8.31mm length=40.46mm                          resonance 1.4802 GHz  bare   -6.1 dB  matched  -13.5 dB  0.93 Mcells 23251 steps 0.28 ps  52.6 s
+  verify    fine   monopole height=8.31mm length=40.46mm                          resonance 1.4712 GHz  bare   -5.6 dB  matched  -12.7 dB  2.11 Mcells 35401 steps 0.20 ps 172.6 s
+  correct   fine   monopole height=8.31mm length=37.62mm                          resonance 1.5607 GHz  bare   -2.7 dB  matched  -10.9 dB  2.11 Mcells 35201 steps 0.20 ps 180.5 s
+RESULT (fine fidelity): resonance 1.4712 GHz; worst return loss -5.6 dB bare, -12.7 dB matched (target -10.0 dB)
+  1559 MHz-1606 MHz: -5.6 dB bare, -12.7 dB matched (meets target)
+  matching network: shunt 1.18 pF, then series 4.04 pF (antenna side first)
+  radiation efficiency at 1.5825 GHz: 98 %
+Report -> /home/user/copperassettracker/build/antennas/gnss-synthesis.json
+Put these lines in the constraint antenna declaration:
+    geometry = "monopole height=8.31mm length=40.46mm";
+    tuned_for = "sha256:04f1b468ffb55400ff51d3479a4dc288dba9e2c2653160983855c7bf2d78260d";
+Simulation evidence only: bench tuning in the final enclosure remains mandatory.

@@ -1,0 +1,180 @@
+// Nordic nRF52832-QFAA chip-side matching (C3 shunt, L1 series) for a board
+// whose antenna is a CopperScript-synthesized trace antenna. Derived from
+// CopperLib circuits/nordic/nrf52832-johanson-reference managed-layout.copper
+// (CopperLib 5a0df7588b5e09de16f8b7afefc94442c8438aa8): the Johanson chip
+// antenna, its evaluation tee (CA, LA, LB), their tracks, via and private
+// region are removed, and L1's output leaves through a feed port to the
+// board's antenna matching network. The Nordic strokes are unchanged.
+macro NRF52832_NORDIC_MATCH_SIX_LAYER {
+    source = {
+        antenna_revision = "36S0021A Revision 4.0 (2024), page 3";
+        antenna_sha256 = "c11a1866c9fd04bad6dcbbd40cfdfbec067c731e47ba83f4e58b56c0e4c9dfa0";
+        antenna_url = "https://www.johansontechnology.com/docs/3827/Antenna-2450AT18A0100001E-Rev4.0.pdf";
+        archive_sha256 = "21e37dcdd8e63d80825bb9e06462efdebe55b642f4e19c5f25c2d9a131e6e334";
+        base_asset_sha256 = "3e435afba3184b175533782e9354d0c228615c44a153d081bf90103926aa0348";
+        footprint_adaptation = "CopperScript full-vertical pinned KiCad footprints 7ebfa6b23cc292a56f751b7b5f4a0e12eeef69dd; copper pads match installed KiCad 10.0.6; courtyard/body and EP thermal metadata rebound";
+        geometry_status = "Nordic matching strokes extracted; ground exits adapted, not vendor CAD";
+        adaptation = "CopperAssetTracker: Johanson chip antenna and tee removed; feed port added at L1 output for a synthesized trace antenna";
+        gerber_entry = "nRF52832-QFAx Reference Layout 1_1/Production files/nRF52832-QFAA/nrf52832_qfaa.GTL";
+        gerber_sha256 = "5b553fba85d64dc9c0a6e74597e7ac99526ae5ff6dd7373d40feb4d58ec3e4ae";
+        nordic_url = "https://nsscprodmedia.blob.core.windows.net/prod/software-and-other-downloads/reference-layouts/nrf52832qfaxreflayoutv11.zip";
+    };
+    unresolved = ["complete powered MCU/crystal/decoupling circuit", "antenna matching values come from trace-antenna simulation, not bench tuning", "actual six-layer laminate and RF feed impedance", "reference ground/corner copper and via-fence qualification", "whole-board macro boundary port allocation and placement feedback", "enclosure/antenna radiation verification"];
+    anchor = U1;
+    allowed_rotations = [0 deg, 45 deg, 90 deg, 135 deg, 180 deg, 225 deg, 270 deg, 315 deg];
+    required_layers = ["F.Cu", "In1.Cu", "In2.Cu", "In3.Cu", "In4.Cu", "B.Cu"];
+    internal_clearance = 0 mm;
+
+    net feed;
+    net ground;
+    net raw;
+
+    member C3 {
+        footprint = "github.com/KiCad/kicad-footprints/Capacitor_SMD.pretty/C_0402_1005Metric.kicad_mod";
+        at = (4.191 mm, 0 mm);
+        rotation = 270.00 deg;
+        edge_clearance = 0.25 mm;
+    }
+
+    member L1 {
+        footprint = "github.com/KiCad/kicad-footprints/Inductor_SMD.pretty/L_0402_1005Metric.kicad_mod";
+        at = (5.6134 mm, 0.508 mm);
+        rotation = 0.00 deg;
+        edge_clearance = 0.25 mm;
+    }
+
+    member U1 {
+        footprint = "github.com/KiCad/kicad-footprints/Package_DFN_QFN.pretty/QFN-48-1EP_6x6mm_P0.4mm_EP4.2x4.2mm.kicad_mod";
+        at = (0 mm, 0 mm);
+        rotation = 0.00 deg;
+        edge_clearance = 0.25 mm;
+    }
+
+    pad U1."30" = raw;
+    pad U1."31" = ground;
+    pad U1."45" = ground;
+    pad U1."49" = ground;
+    pad C3."1" = ground;
+    pad C3."2" = raw;
+    pad L1."1" = raw;
+    pad L1."2" = feed;
+
+    track track_0 {
+        net = raw;
+        layer = "F.Cu";
+        width = 0.2286 mm;
+        points = [(3.02514 mm, 0.20066 mm), (3.50012 mm, 0.20066 mm)];
+    }
+
+    track track_1 {
+        net = raw;
+        layer = "F.Cu";
+        width = 0.2286 mm;
+        points = [(3.50012 mm, 0.20066 mm), (3.81 mm, 0.51054 mm)];
+    }
+
+    track track_2 {
+        net = raw;
+        layer = "F.Cu";
+        width = 0.2286 mm;
+        points = [(3.81 mm, 0.51054 mm), (4.19862 mm, 0.51054 mm)];
+    }
+
+    track track_3 {
+        net = ground;
+        layer = "F.Cu";
+        width = 0.2286 mm;
+        points = [(0.61722 mm, -0.2032 mm), (3.50012 mm, -0.2032 mm)];
+    }
+
+    track track_4 {
+        net = ground;
+        layer = "F.Cu";
+        width = 0.2286 mm;
+        points = [(3.50012 mm, -0.2032 mm), (3.78714 mm, -0.49022 mm)];
+    }
+
+    track track_5 {
+        net = ground;
+        layer = "F.Cu";
+        width = 0.2286 mm;
+        points = [(3.78714 mm, -0.49022 mm), (4.19862 mm, -0.49022 mm)];
+    }
+
+    track track_6 {
+        net = raw;
+        layer = "F.Cu";
+        width = 0.508 mm;
+        points = [(4.191 mm, 0.50546 mm), (5.08762 mm, 0.50546 mm)];
+    }
+
+    track track_7 {
+        net = ground;
+        layer = "F.Cu";
+        width = 0.2286 mm;
+        points = [U1."49", (0.61722 mm, -0.2032 mm)];
+    }
+
+    track track_8 {
+        net = ground;
+        layer = "F.Cu";
+        width = 0.2286 mm;
+        points = [U1."49", (-1 mm, -1 mm), U1."45", (-1 mm, -4.3 mm)];
+    }
+
+    via via_0 {
+        net = ground;
+        at = (-1 mm, -4.3 mm);
+        size = 0.6 mm;
+        drill = 0.3 mm;
+        from_layer = "F.Cu";
+        to_layer = "B.Cu";
+        technology = none;
+        finish = "standard";
+    }
+
+    track feed_lead {
+        net = feed;
+        layer = "F.Cu";
+        width = 0.25 mm;
+        points = [L1."2", (6.8 mm, 0.508 mm)];
+    }
+
+    port feed {
+        net = feed;
+        layer = "F.Cu";
+        point = (6.8 mm, 0.508 mm);
+        pads = [L1."2"];
+    }
+
+    port ground {
+        net = ground;
+        layer = "B.Cu";
+        point = (-1 mm, -4.3 mm);
+        pads = [U1."49", U1."31", U1."45", C3."1"];
+    }
+
+    protected_region nordic-private {
+        layers = ["F.Cu"];
+        vertices = [(3.3 mm, -0.6 mm), (6.2 mm, -0.6 mm), (6.2 mm, 1.2 mm), (3.3 mm, 1.2 mm)];
+        block_tracks = true;
+        block_vias = true;
+        block_zones = false;
+    }
+
+    keepout nordic-no-pour {
+        layers = ["F.Cu"];
+        vertices = [(3.3 mm, -1 mm), (6.2 mm, -1 mm), (6.2 mm, 1.2 mm), (3.3 mm, 1.2 mm)];
+        block_tracks = false;
+        block_vias = true;
+        block_zones = true;
+    }
+
+    keepout nordic-inner-clear {
+        layers = ["In1.Cu", "In2.Cu", "In3.Cu", "In4.Cu", "B.Cu"];
+        vertices = [(3.3 mm, -1 mm), (6.2 mm, -1 mm), (6.2 mm, 1.2 mm), (3.3 mm, 1.2 mm)];
+        block_tracks = true;
+        block_vias = true;
+        block_zones = true;
+    }
+}

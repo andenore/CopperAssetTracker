@@ -5,26 +5,6 @@
     {
       "alternates": [
         {
-          "source_url": "https://www.digikey.com/en/products/detail/johanson-technology-inc/2450AT18A0100001E/1560676",
-          "supplier": "DigiKey",
-          "supplier_part": "712-2450AT18A0100001ECT-ND"
-        }
-      ],
-      "electrical_sha256": "7b145e6693da834a6a888fed947eaaffe2afec04bc0e3eefaca8734d43a712e4",
-      "footprint": "RF_Antenna:Johanson_2450AT18x100",
-      "manufacturer": "Johanson Technology",
-      "mpn": "2450AT18A0100001E",
-      "part": "johanson.JOHANSON_2450AT18A0100001E",
-      "populate": "supplier",
-      "reference": "ANT_BT",
-      "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C17430588",
-      "supplier": "jlcpcb",
-      "supplier_part": "C17430588"
-    },
-    {
-      "alternates": [
-        {
           "source_url": "https://www.mouser.com/ProductDetail/187-CL05B104KB54PNC",
           "supplier": "Mouser",
           "supplier_part": "187-CL05B104KB54PNC"
@@ -50,31 +30,6 @@
     {
       "alternates": [
         {
-          "source_url": "https://www.mouser.com/ProductDetail/603-CC402BRNPO9BN1R0",
-          "supplier": "Mouser",
-          "supplier_part": "603-CC402BRNPO9BN1R0"
-        },
-        {
-          "source_url": "https://uk.farnell.com/dp/3366358",
-          "supplier": "Farnell",
-          "supplier_part": "3366358"
-        }
-      ],
-      "electrical_sha256": "636c58f32dcf82f1519ba5622609505e103df2d6677c1dd59786318e2554a24e",
-      "footprint": "Capacitor_SMD:C_0402_1005Metric",
-      "manufacturer": "YAGEO",
-      "mpn": "CC0402BRNPO9BN1R0",
-      "part": "CAPACITOR",
-      "populate": "supplier",
-      "reference": "C_ANT_SERIES",
-      "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C309455",
-      "supplier": "jlcpcb",
-      "supplier_part": "C309455"
-    },
-    {
-      "alternates": [
-        {
           "source_url": "https://www.mouser.com/ProductDetail/81-GJM1555C1HR80WB1D",
           "supplier": "Mouser",
           "supplier_part": "81-GJM1555C1HR80WB1D"
@@ -96,6 +51,19 @@
       "source_url": "https://jlcpcb.com/partdetail/C88902",
       "supplier": "jlcpcb",
       "supplier_part": "C88902"
+    },
+    {
+      "electrical_sha256": "d2ef96d0702eb843e7800834999173f8724b95cb545a6a16600ed1428ac4df1e",
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "manufacturer": "YAGEO",
+      "mpn": "CC0402BRNPO9BN2R0",
+      "part": "CAPACITOR",
+      "populate": "supplier",
+      "reference": "C_BT_SERIES",
+      "reviewed": false,
+      "source_url": "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_YAGEO-CC0402BRNPO9BN2R0_C281756.html",
+      "supplier": "jlcpcb",
+      "supplier_part": "C281756"
     },
     {
       "alternates": [
@@ -148,30 +116,17 @@
       "supplier_part": "C106200"
     },
     {
-      "electrical_sha256": "bc45292f4fe963cb5c7528ead3c6b1287ac3f9e96c301c8e15895358dae08e19",
+      "electrical_sha256": "492a0e4d06159f4680ff70413432097ace86c697f97841e9a643615d3273ebbb",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
-      "manufacturer": null,
-      "mpn": null,
+      "manufacturer": "Murata Electronics",
+      "mpn": "GJM1555C1H9R1WB01D",
       "part": "CAPACITOR",
-      "populate": "none",
+      "populate": "supplier",
       "reference": "C_CELL_SHUNT1",
-      "reviewed": true,
-      "source_url": null,
-      "supplier": null,
-      "supplier_part": null
-    },
-    {
-      "electrical_sha256": "365bf60abec7091e34fc35c1432c5e47b672f1ab2cc85f31b8efb34e8d3be7e6",
-      "footprint": "Capacitor_SMD:C_0402_1005Metric",
-      "manufacturer": null,
-      "mpn": null,
-      "part": "CAPACITOR",
-      "populate": "none",
-      "reference": "C_CELL_SHUNT2",
-      "reviewed": true,
-      "source_url": null,
-      "supplier": null,
-      "supplier_part": null
+      "reviewed": false,
+      "source_url": "https://www.lcsc.com/product-detail/C2169697.html",
+      "supplier": "jlcpcb",
+      "supplier_part": "C2169697"
     },
     {
       "alternates": [
@@ -272,6 +227,32 @@
       "source_url": "https://jlcpcb.com/partdetail/C559769",
       "supplier": "jlcpcb",
       "supplier_part": "C559769"
+    },
+    {
+      "electrical_sha256": "3725ee2c516083c94d86362ea8b02931608ebcb838535c3645e01fbc4e4d56ac",
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "manufacturer": "YAGEO",
+      "mpn": "AC0402BRNPO9BN3R9",
+      "part": "CAPACITOR",
+      "populate": "supplier",
+      "reference": "C_GNSS_SERIES",
+      "reviewed": false,
+      "source_url": "https://jlcpcb.com/partdetail/YAGEO-AC0402BRNPO9BN3R9/C326821",
+      "supplier": "jlcpcb",
+      "supplier_part": "C326821"
+    },
+    {
+      "electrical_sha256": "86b53ee5da07893923243bb8315b02ca025ad5714f21dd10f518f36816129ac7",
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "manufacturer": "Murata Electronics",
+      "mpn": "GJM1555C1H1R2BB01D",
+      "part": "CAPACITOR",
+      "populate": "supplier",
+      "reference": "C_GNSS_SHUNT",
+      "reviewed": false,
+      "source_url": "https://www.lcsc.com/product-image/C72135.html",
+      "supplier": "jlcpcb",
+      "supplier_part": "C72135"
     },
     {
       "alternates": [
@@ -566,26 +547,6 @@
     {
       "alternates": [
         {
-          "source_url": "https://uk.farnell.com/molex/73251-2200/rf-coax-conn-sma-jack-50-ohm-panel/dp/2293854",
-          "supplier": "Farnell",
-          "supplier_part": "2293854"
-        }
-      ],
-      "electrical_sha256": "329c66e71e277eb1fb9e4212900e8c4d0c6203e3ee92294757ba879187b69d45",
-      "footprint": "Connector_Coaxial:SMA_Molex_73251-2200_Horizontal",
-      "manufacturer": "Molex",
-      "mpn": "73251-2200",
-      "part": "molex_sma.MOLEX_73251_2200",
-      "populate": "consigned",
-      "reference": "J_CELL",
-      "reviewed": true,
-      "source_url": "https://www.digikey.com/en/products/result?keywords=0732512200",
-      "supplier": "DigiKey",
-      "supplier_part": "WM9352-ND"
-    },
-    {
-      "alternates": [
-        {
           "source_url": "https://www.digikey.com/en/products/detail/jst-sales-america-inc/S4B-XH-SM4-TB/1651064",
           "supplier": "DigiKey",
           "supplier_part": "455-2262-1-ND"
@@ -612,26 +573,6 @@
       "source_url": "https://jlcpcb.com/partdetail/JST-S4B_XH_SM4_TB_LF_SN/C161861",
       "supplier": "jlcpcb",
       "supplier_part": "C161861"
-    },
-    {
-      "alternates": [
-        {
-          "source_url": "https://uk.farnell.com/molex/73251-2200/rf-coax-conn-sma-jack-50-ohm-panel/dp/2293854",
-          "supplier": "Farnell",
-          "supplier_part": "2293854"
-        }
-      ],
-      "electrical_sha256": "46c1d8daac3d483dbd2e2c9bd02aba72bed2bb88531b9a3b30d7234563e02ccd",
-      "footprint": "Connector_Coaxial:SMA_Molex_73251-2200_Horizontal",
-      "manufacturer": "Molex",
-      "mpn": "73251-2200",
-      "part": "molex_sma.MOLEX_73251_2200",
-      "populate": "consigned",
-      "reference": "J_GNSS",
-      "reviewed": true,
-      "source_url": "https://www.digikey.com/en/products/result?keywords=0732512200",
-      "supplier": "DigiKey",
-      "supplier_part": "WM9352-ND"
     },
     {
       "alternates": [
@@ -777,51 +718,6 @@
           "supplier_part": "490-2617-1-ND"
         }
       ],
-      "electrical_sha256": "fe87ecfc31338d057c538a59a1b71d63db2112ffbdc6889e90988b36330eb4ac",
-      "footprint": "Inductor_SMD:L_0402_1005Metric",
-      "manufacturer": "Murata Electronics",
-      "mpn": "LQG15HS3N9S02D",
-      "part": "INDUCTOR",
-      "populate": "supplier",
-      "reference": "L_ANT_SERIES",
-      "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C77109",
-      "supplier": "jlcpcb",
-      "supplier_part": "C77109"
-    },
-    {
-      "alternates": [
-        {
-          "source_url": "https://www.digikey.com/en/products/detail/murata-electronics/LQG15HS2N7S02D/662864",
-          "supplier": "DigiKey",
-          "supplier_part": "490-2615-1-ND"
-        },
-        {
-          "source_url": "https://uk.farnell.com/murata/lqg15hs2n7s02d/inductor-2-7nh-0-8a-0402-multilayer/dp/2840116",
-          "supplier": "Farnell",
-          "supplier_part": "2840116"
-        }
-      ],
-      "electrical_sha256": "b983985b17031d03b42b22d08233c0dbe11545541f93cd7f11a95dbd58a4f5e1",
-      "footprint": "Inductor_SMD:L_0402_1005Metric",
-      "manufacturer": "Murata Electronics",
-      "mpn": "LQG15HS2N7S02D",
-      "part": "INDUCTOR",
-      "populate": "supplier",
-      "reference": "L_ANT_SHUNT",
-      "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/MurataElectronics-LQG15HS2N7S02D/C77108",
-      "supplier": "jlcpcb",
-      "supplier_part": "C77108"
-    },
-    {
-      "alternates": [
-        {
-          "source_url": "https://www.digikey.com/en/products/detail/murata-electronics/LQG15HS3N9S02D/662866",
-          "supplier": "DigiKey",
-          "supplier_part": "490-2617-1-ND"
-        }
-      ],
       "electrical_sha256": "a7922ace807da170a429de018829e6442879a94cca75ad654b59a08d7e5c184b",
       "footprint": "Inductor_SMD:L_0402_1005Metric",
       "manufacturer": "Murata Electronics",
@@ -833,6 +729,45 @@
       "source_url": "https://jlcpcb.com/partdetail/C77109",
       "supplier": "jlcpcb",
       "supplier_part": "C77109"
+    },
+    {
+      "electrical_sha256": "42e60793689464e4b8b7a469c8e1041bca28f8c03ca362888fcf889c31c7deac",
+      "footprint": "Inductor_SMD:L_0402_1005Metric",
+      "manufacturer": "Murata Electronics",
+      "mpn": "LQG15HS4N3S02D",
+      "part": "INDUCTOR",
+      "populate": "supplier",
+      "reference": "L_BT_SHUNT",
+      "reviewed": false,
+      "source_url": "https://www.lcsc.com/product-detail/C97999.html",
+      "supplier": "jlcpcb",
+      "supplier_part": "C97999"
+    },
+    {
+      "electrical_sha256": "3e2cfcdf7e48889736610911dfcd0dbc4ce41dfd8d9504490e4822e7b45ee526",
+      "footprint": "Inductor_SMD:L_0402_1005Metric",
+      "manufacturer": "Murata Electronics",
+      "mpn": "LQG15HS1N5S02D",
+      "part": "INDUCTOR",
+      "populate": "supplier",
+      "reference": "L_CELL_SERIES",
+      "reviewed": false,
+      "source_url": "https://www.lcsc.com/product-detail/C77106.html",
+      "supplier": "jlcpcb",
+      "supplier_part": "C77106"
+    },
+    {
+      "electrical_sha256": "93a8f127c9e4e23ab6cef22a6173a3d4f6f9df92859b6f32aca2232fca99e0a1",
+      "footprint": "Inductor_SMD:L_0402_1005Metric",
+      "manufacturer": "Murata Electronics",
+      "mpn": "LQG15HS2N7S02D",
+      "part": "INDUCTOR",
+      "populate": "supplier",
+      "reference": "L_CELL_SHUNT",
+      "reviewed": false,
+      "source_url": "https://jlcpcb.com/partdetail/MurataElectronics-LQG15HS2N7S02D/C77108",
+      "supplier": "jlcpcb",
+      "supplier_part": "C77108"
     },
     {
       "alternates": [
@@ -1585,31 +1520,6 @@
       "source_url": "https://jlcpcb.com/partdetail/C138011",
       "supplier": "jlcpcb",
       "supplier_part": "C138011"
-    },
-    {
-      "alternates": [
-        {
-          "source_url": "https://www.mouser.com/ProductDetail/603-RC0402FR-070RL",
-          "supplier": "Mouser",
-          "supplier_part": "603-RC0402FR-070RL"
-        },
-        {
-          "source_url": "https://uk.farnell.com/dp/4312009",
-          "supplier": "Farnell",
-          "supplier_part": "4312009"
-        }
-      ],
-      "electrical_sha256": "b65d34ec0b532ede2beed7ec939a3de520e27b087074cbc9dc4cac9f5239decf",
-      "footprint": "Resistor_SMD:R_0402_1005Metric",
-      "manufacturer": "YAGEO",
-      "mpn": "RC0402FR-070RL",
-      "part": "RESISTOR",
-      "populate": "supplier",
-      "reference": "R_CELL_SERIES",
-      "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C106231",
-      "supplier": "jlcpcb",
-      "supplier_part": "C106231"
     },
     {
       "alternates": [

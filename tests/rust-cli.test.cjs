@@ -16,5 +16,5 @@ test('modem and logic supplies stay distinct with all source-selected macros',()
  const b=compile('board.copper'),n=nets(b);
  for(const pin of ['U_MODEM.VBAT_1','U_MODEM.VBAT_2','U_MODEM.VBAT_3']){assert.ok(n.V3V8.has(pin));assert.ok(!n.V3V3.has(pin));}
  assert.ok(n.V3V3.has('U_MCU.VDD'));assert.ok(n.V3V3.has('U_NRF.VDD_1'));
- assert.deepEqual(new Set(b.physical_macros.map(m=>m.name)),new Set(['nordic-antenna','logic-buck-boost','modem-buck-boost']));
+ assert.deepEqual(new Set(b.physical_macros.map(m=>m.name)),new Set(['nordic-rf','logic-buck-boost','modem-buck-boost']));
 });

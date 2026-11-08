@@ -55,7 +55,10 @@ cp "$run/board.kicad_pro" "$run/filled.kicad_pro"
 cp "$run/board.kicad_dru" "$run/filled.kicad_dru"
 "$copper" plot "$run/filled.kicad_pcb" -o "$run/plot" > /dev/null
 "$copper" plot "$run/board.kicad_pcb" -o "$run/plot-unfilled" > /dev/null
-"$copper" drc "$run/filled.kicad_pcb" --report "$run/drc.json" --cam "$run/plot" > "$run/drc.log" ||
+# The antennas' radiator ends are open by design; the route's native
+# verification lists exactly those, and only those are excused.
+"$copper" drc "$run/filled.kicad_pcb" --report "$run/drc.json" --cam "$run/plot" \
+  --expected-open-ends "$run/route-report.json" > "$run/drc.log" ||
   die "native DRC or CAM read-back failed; see $run/drc.log"
 grep -q '^CAM read-back PASSED' "$run/drc.log" || die "CAM read-back did not pass"
 
