@@ -1,29 +1,29 @@
 {
   "schema": "copperassettracker-showcase/v3",
   "candidate": "native-showcase-20261108",
-  "created_utc": "20261108T091442Z",
+  "created_utc": "20261108T122750Z",
   "source": {
-    "git_commit": "5f230080e005b4ab6996a81702a7cf1a57f21f26",
+    "git_commit": "e035cb542d8fb899743b8118dbf4962d25fb1c95",
     "tracked_changes": "",
     "input_sha256": {
       "board.copper": "9a4c6f94ff83fcd44103eb11e0c3f5c1df1ab469936e47a0f331e657250623cb",
-      "copper.mod": "e5cb0ba5a461755f45ccb1eecc22f1e1aed6959264dc754c22fc8b64d7cdfbda",
-      "copper.lock": "3bb3c27c003f73be6c32a5b272862596feb5aa5674bb6c63fe95456a94126399",
+      "copper.mod": "27667a8ee66cfbb440657387336621cb25d846388c6c2c5ad661a48700abfcc0",
+      "copper.lock": "932d6673d17553fc114007bb172e3bb364a28d6b4cf61868db57e6881a93c873",
       "assembly.lock": "011f2c304b975925c8f5d5cc458eb04215d05991c51026fdc780889239424e22",
       "Makefile": "50a6ec8e02fc504deeecbfecefb0cbb82617e49a61de77a77acd805d031caeea",
       "src/tracker/power_tree.copper": "952cbe99f737065ce3c960f3241c6117b25ce19fd50e54f7f2cdb01fa73f5282"
     }
   },
   "compiler": {
-    "copperscript_commit": "2ec61dda4912dcba78493e24ed16e10d32cc90cf",
+    "copperscript_commit": "1fb830b4cdf61f87f3cc653e534cf9b6fd3864ca",
     "tracked_changes": "",
-    "executable_sha256": "a3b358eee2e1b558ca058019c760d9da3236597b531f0f048421bedb3e507ab1"
+    "executable_sha256": "ef8093b7a3dba7b364b32a1916d83fdd1b878a54a9d0c121dd15d17b01260b9a"
   },
   "route": {
     "options": "--layers 6 --fab-profile jlcpcb-six-layer --candidates 1 --feedback-iterations 1 --router-iterations 5 --progress --fanout --plane-contact-radius-mm 5 --unified-set fine_regions=dense --fanout-maze --package-initial-pair-states 0 --no-early-plane-stitch --plane-stitch-step-mm 0.1 --plane-maze-step-mm 0.025 --plane-maze-budget 50000 --plane-contact-radius-mm 3 --plane-stitch-detour-mm 1.5",
     "status": "pass",
-    "report_sha256": "440848fcd6dfc066ac41f1eadd9577609ae5a0351ed6ec41982f7b9c14698a19",
-    "unfilled_pcb_sha256": "a1177a6688b4a7fd96cf2aed122ba685fb8431bfdf97fa55427dcfab93a5f1f0",
+    "report_sha256": "72f7facc7a16179d59c79366464d1b6804122f18ced6e3274fede7c931befdbe",
+    "unfilled_pcb_sha256": "9b3175d0f35a823be18a31e4e48ea43fdc4abdab13625db1aba4d25804421993",
     "ordinary_nets_routed": 60,
     "unrouted_ordinary_nets": [],
     "tracks": 1191,
@@ -35,7 +35,7 @@
       "pass": 90
     }
   },
-  "pcb_sha256": "907535b91d31a361a56fbf24ee5cab468f5234eacb284f52bdbb337d19628b73",
+  "pcb_sha256": "80228bcbfa8bd2aab289aaf29c88c5c97ce658aa4970bc624b14e40d9bee2113",
   "component_count": 87,
   "track_count": 1191,
   "via_count": 259,
@@ -51,7 +51,7 @@
     "B.Cu"
   ],
   "native_drc": {
-    "report_sha256": "ae2a1ce8966987f35004f6eb9e5c4e11fb83d8c7c083e889246cfbe2d722bfd8",
+    "report_sha256": "fea92d65970ae8fd8b732b6d7623a15a7a836dd2c2e23cb4666b2cf2d4ed7030",
     "passed": true,
     "violations": 0,
     "unconnected": 0,
@@ -81,6 +81,6 @@
     "placement.svg": "2891b43fe1f8fd40f6d42477fa3522acf8af80312d5a24a7922d4d0a41c58463",
     "rendering.json": "9d797399222779309581375fe4639f5a306d8e2788c65393e303aeaeade0607b",
     "electrical-ir.excerpt.json": "129b7753cd21db3ea73e5ec85324cf0762093950bc293c0b3602bb8bc17ca1b8",
-    "physical-ir.excerpt.json": "ec58dbf4559df8c495396b4e33b74b9204c90cc6008cc6ae2a4604e88f7a7d5b"
+    "physical-ir.excerpt.json": "be5afe9ad06a28943d5c8d679fa3109c9e9d51bb666c2e02224653afcb4720ab"
   }
 }
