@@ -60162,7 +60162,7 @@
       "version": "10.0.8"
     },
     {
-      "checksum": "sha256:fe7d2ff503a5c74e67fa69e2acf75a2c7a0f35e739dacbeaf75149f4d0c637cf",
+      "checksum": "sha256:75e5bffe3a6d0cd9596b1bb41f5001fab58770e2684e1d8c7f98d279d76c84c5",
       "files": [
         {
           "path": "copper.mod",
@@ -60446,8 +60446,8 @@
         },
         {
           "path": "packages/interfaces/uart/jst-xh4/part.copper",
-          "sha256": "cfea64a73ba878b1cd5055ed69098bae4840f148b8f1440a2964db71fbc77d3f",
-          "size": 609
+          "sha256": "60e8cd25dbc9936042272f5ff164c36d678edcd84ff314607f740ad993f41c6f",
+          "size": 743
         },
         {
           "path": "packages/interfaces/usb/usb2-channel/qualification.json",
@@ -60546,8 +60546,8 @@
         },
         {
           "path": "packages/parts/bourns/srp4020ta/part-1r5m.copper",
-          "sha256": "e671a7e0a1a95c8ef0e9dc7d8f468551d2fcf633e77f8f9002aa981b7a1ca883",
-          "size": 679
+          "sha256": "e58da0f68559f1543520a69aee0135da1679589cb0d1caf5803a36f8ce834679",
+          "size": 832
         },
         {
           "path": "packages/parts/coilcraft/0603usb/evidence/usb-choke-audit.json",
@@ -60556,8 +60556,8 @@
         },
         {
           "path": "packages/parts/coilcraft/0603usb/part.copper",
-          "sha256": "ef8d06c779045d4f727f550930f1eba1472592463cd4b8b6582035b3a0d66775",
-          "size": 1253
+          "sha256": "29ea78bf4e4d6123d29dd92da0b2ad70e9e2aba6e4c7302b25c304fd49572e3e",
+          "size": 1357
         },
         {
           "path": "packages/parts/coilcraft/xal4020/footprints/Inductor_SMD.pretty/L_Coilcraft_XAL4020-XXX.kicad_mod",
@@ -60681,8 +60681,8 @@
         },
         {
           "path": "packages/parts/gct/sim8060/part.copper",
-          "sha256": "0d9adab35a5d60ece464f3f6a1fe7f3c5a2385f42dfc5df5a7ac5626bb82daab",
-          "size": 947
+          "sha256": "34cd490516c08015aabd40566f7a0556c099e6fd0504b84a663a00b92cae547d",
+          "size": 1059
         },
         {
           "path": "packages/parts/gct/usb4105/evidence/usb4105-audit.json",
@@ -60891,8 +60891,8 @@
         },
         {
           "path": "packages/parts/jst/xh-sm4/part-3pin.copper",
-          "sha256": "2311a815e9f98f64feab52dd6aa189da3c422adce33bdb8a7f0186a6ffdf0087",
-          "size": 789
+          "sha256": "fbf83157a94c99f604f0ad76ee48dd317b375b750d0bb1f4922d9457d18ec29a",
+          "size": 923
         },
         {
           "path": "packages/parts/kefa/kf128/evidence/source.json",
@@ -61276,8 +61276,8 @@
         },
         {
           "path": "packages/parts/simcom/sim7670g-lngv/part.copper",
-          "sha256": "2b89efecc8dcd512fd5c73d5a19629a5614825137a7c47010aa7054887d6b530",
-          "size": 10387
+          "sha256": "3196574e5d6ba26dec2f25fc71fd4e9a353e4c295e11f1c610b78517ded45155",
+          "size": 10487
         },
         {
           "path": "packages/parts/simcom/sim7670g-lngv/qualification.json",
@@ -61836,8 +61836,8 @@
         },
         {
           "path": "packages/parts/u-blox/max-m10s/part.copper",
-          "sha256": "4333623bdfea50cea9fd0d43cfb2ea6495da0f3eab975d7e3076486533ea870d",
-          "size": 2489
+          "sha256": "ec13629dccda37ded50bd437554d1f367e1e132ff7418d850e8db01f2154cca6",
+          "size": 2636
         },
         {
           "path": "packages/parts/u-blox/max-m10s/passive-coexistence-options.json",
@@ -62087,7 +62087,7 @@
       ],
       "module": "github.com/andenore/CopperLib",
       "source": "git:https://github.com/andenore/CopperLib.git",
-      "version": "208a5a4f961cb4c4530bef049e59b6b20a1cb098"
+      "version": "5a0df7588b5e09de16f8b7afefc94442c8438aa8"
     }
   ],
   "schema": "copperscript.package-lock/v1"
