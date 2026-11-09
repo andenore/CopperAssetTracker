@@ -70,8 +70,9 @@ mesh faults this six-layer stack-up exposed (thin-prepreg z lines merging,
 and ground edges merging onto radiator copper and shorting the feed) while
 modelling the feed slot at the board clearance, as it is built; see
 CopperScript `docs/antenna-synthesis-performance.md`. `.copper-version`
-pins that CopperScript revision (9a6a134, merged into CopperScript main as
-ea09934); an older compiler rejects these digests as stale.
+pins CopperScript 646117e, which also leaves the antennas' own copper out of
+routed-length budgets; compilers before revision 5 (9a6a134) reject these
+digests as stale.
 
 ## Layout
 
@@ -92,9 +93,10 @@ ea09934); an older compiler rejects these digests as stale.
   topology decided which shunt land is kept.
 - **LTE.** The SIM7672X Figure 30 network keeps its lands along x = 4.4 mm,
   now ending at the LTE feed instead of J_CELL: R1 (0 ohm) becomes
-  L_CELL_SERIES, C1 is fitted and C2 stays a reserved, unfitted tuning land. The antenna-side segment `CELL_RF_ANT`
-  also carries the radiator copper, so it has no `max_length` (its span is
-  two fixed pads, 7.1 mm apart); the other two segments keep 8 + 4 mm.
+  L_CELL_SERIES, C1 is fitted and C2 stays a reserved, unfitted tuning land.
+  The three segments keep their 8 + 4 + 8 mm routed-length budgets; the
+  antenna-side budget leaves out the radiator copper on the same net
+  (CopperScript 646117e).
 - The old BLE corner copper keepout and both SMA overhangs are removed; the
   silkscreen identity moved off the GNSS region.
 

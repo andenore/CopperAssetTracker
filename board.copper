@@ -659,11 +659,10 @@ board CopperAssetTracker {
     // Nominal 50-ohm grounded coplanar feeds over In1.Cu GND: 0.142 mm width
     // and 0.201 mm gap from the JLCPCB calculator for JLC06161H-3313
     // (revisions/rf-layout-v1/cellular-impedance-calculator.json). Not measured.
-    // The cellular feed is three nets split by the matching network, within
-    // the 20 mm module-to-antenna maximum: 8 + 4 mm routed budgets, and the
-    // antenna-side segment fixed by its two pads (C_CELL_SERIES and the LTE
-    // feed, 7.1 mm apart). That net also carries the radiator's copper, which
-    // a max_length would count, so it has none.
+    // The cellular feed is three nets split by the matching network; their
+    // length budgets sum to the 20 mm module-to-antenna maximum. The
+    // antenna-side budget measures the routed feed only, not the LTE
+    // radiator on the same net.
     constraint routing(CELL_RF) {
         kind = critical; topology = tree; priority = 120; target_impedance_ohms = 50;
         width = 0.142mm; clearance = 0.201mm;
@@ -677,7 +676,7 @@ board CopperAssetTracker {
     constraint routing(CELL_RF_ANT) {
         kind = rf_feed; priority = 120; target_impedance_ohms = 50;
         width = 0.142mm; clearance = 0.201mm;
-        allowed_layers = "F.Cu"; max_vias = 0;
+        allowed_layers = "F.Cu"; max_vias = 0; max_length = 8mm;
     }
     // The GNSS feed is split by its matching parts: RF_IN to the series part,
     // then a tree through the antenna-side shunt to the antenna feed.

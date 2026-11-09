@@ -147,14 +147,12 @@ class TrackerTests(unittest.TestCase):
             self.assertEqual({p["number"] for p in regulator["pins"].values()}, {str(i) for i in range(1, 16)})
 
     def test_cellular_feed_has_source_backed_surface_length_limit(self):
-        # The matching network splits the feed. The two module-side budgets and
-        # the antenna-side span between two fixed pads stay inside the
-        # SIM7672X V1.01 p60 20 mm module-to-antenna maximum; the antenna-side
-        # net also carries the radiator, so it has no routed-length budget.
+        # The matching network splits the feed; the three nets' budgets sum to
+        # the SIM7672X V1.01 p60 20 mm module-to-antenna maximum (the
+        # antenna-side budget leaves out the radiator on the same net).
         rules = routing_rules()
         feed = [rules[n] for n in ("CELL_RF", "CELL_RF_MATCH", "CELL_RF_ANT")]
-        self.assertEqual(sum(nanometres(r["max_length"]) for r in feed[:2]), 12000000)
-        self.assertNotIn("max_length", rules["CELL_RF_ANT"])
+        self.assertEqual(sum(nanometres(r["max_length"]) for r in feed), 20000000)
         self.assertEqual(rules["CELL_RF_ANT"]["kind"], "rf_feed")
         for rule in feed:
             self.assertEqual(rule["max_vias"], 0)
