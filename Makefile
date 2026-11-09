@@ -91,6 +91,9 @@ showcase: copper
 	bash scripts/showcase.sh --copper "$(COPPER)"
 
 # Browse and annotate a board in CopperReview (local web viewer; Ctrl+C stops it).
+# The page also compiles this folder in the browser for the electrical review
+# (schematic, power, buses), linked to the board; reload it to recompile.
+# 3D bodies are KiCad's STEP models once CopperReview has run `npm run build:occt`.
 # Defaults to the newest routed board; its stage follows that route's run.json.
 # Point REVIEW_BOARD elsewhere (e.g. $(OUT)/placed.kicad_pcb) and set
 # REVIEW_STAGE=placed to review a placement. REVIEW_ARGS=--no-browser etc.
@@ -102,7 +105,7 @@ REVIEW_ARGS ?=
 review_stage = $(or $(REVIEW_STAGE),$(if $(filter $(ROUTED),$(REVIEW_BOARD)),$$(jq -e '.status == "passed"' $(RUNS)/latest-route/run.json > /dev/null 2>&1 && echo fully_routed || echo partially_routed),unknown))
 review:
 	@test -f $(REVIEW_BOARD) || { echo "No board at $(REVIEW_BOARD): run 'make route' first."; exit 1; }
-	$(UV) run --project $(COPPERREVIEW) copper-review $(REVIEW_BOARD) --source $(SOURCE) --stage $(review_stage) $(REVIEW_ARGS)
+	$(UV) run --project $(COPPERREVIEW) copper-review $(REVIEW_BOARD) --project . --entry $(SOURCE) --source $(SOURCE) --stage $(review_stage) $(REVIEW_ARGS)
 
 # Complete ordering list: every component on the board, grouped by part, with
 # quantity per board, manufacturer and MPN, the assembly route and the recorded
