@@ -1,0 +1,9 @@
+SYNTHESIZE: antenna 'lte' on PadReference(component='ANT_CELL', pad='1') (CELL_RF_ANT), target -6.0 dB over 791 MHz-862 MHz, centre 826.500 MHz
+  site digest sha256:44da69392ba7fcc6a9a5517fd8116452a890f67b3ba362e2a2d31874d35cfab9
+  verifying monopole height=9.16mm length=68.2mm
+RESULT (fine fidelity): resonance 0.8261 GHz; worst return loss -3.6 dB bare, -5.8 dB matched (target -6.0 dB)
+  791 MHz-862 MHz: -3.6 dB bare, -5.8 dB matched (MISSES target)
+  matching network: series 4.43 nH, then shunt 5.74 pF (antenna side first)
+  radiation efficiency at 0.8265 GHz: 54 %
+Report -> revisions/pcb-antennas-v1/lte-synthesis.json
+Simulation evidence only: bench tuning in the final enclosure remains mandatory.

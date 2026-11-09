@@ -44,7 +44,7 @@ latest-route:
 
 # One legal placement candidate with macro copper; no board-level routing.
 layout: PHYSICAL_ARGS += --candidates 1
-.PHONY: copper plan si-check render review order test
+.PHONY: copper plan si-check render review order test antennas
 plan: layout
 
 # Build the Rust compiler from the CopperScript checkout, with its pinned
@@ -64,6 +64,20 @@ test:
 # reference planes, layer groups and length-match groups.
 si-check:
 	$(COPPER) si-check $(SOURCE) $(RESOLVE_ARGS) --offline --layers $(LAYERS) --fab-profile $(FAB_PROFILE)
+
+# Full-wave synthesis of the three printed antennas (constraint antenna in
+# board.copper): one report per antenna in revisions/pcb-antennas-v1/. Paste
+# the printed geometry and tuned_for lines into the declaration. ANTENNAS
+# selects a subset; SYNTH_ARGS adds e.g. --verify or --budget N. Expect tens
+# of minutes per antenna. Simulation evidence only.
+ANTENNAS ?= ble gnss lte
+ANTENNA_REPORTS := revisions/pcb-antennas-v1
+SYNTH_ARGS ?=
+antennas: copper
+	@for a in $(ANTENNAS); do \
+	  $(COPPER) synthesize-antenna $(SOURCE) $(RESOLVE_ARGS) --offline --layers $(LAYERS) --fab-profile $(FAB_PROFILE) \
+	    --antenna $$a --report $(ANTENNA_REPORTS)/$$a-synthesis.json $(SYNTH_ARGS) || exit 1; \
+	done
 
 # Layer SVGs of the newest routed (and refilled) board.
 render:

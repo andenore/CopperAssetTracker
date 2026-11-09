@@ -1,0 +1,9 @@
+// One-land feed of a synthesized trace antenna: `constraint antenna` starts
+// the printed radiator at this pad and fixes the pad just outside the antenna
+// region. It is bare copper (no paste), excluded from BOM and CPL.
+part AntennaFeed {
+    category = "antenna-feed";
+    assembled = false;
+    footprint = "antenna-feed.kicad_mod";
+    pin FEED { number = "1"; domains = "rf"; directions = "passive"; }
+}

@@ -1,47 +1,49 @@
 {
   "schema": "copperassettracker-showcase/v3",
-  "candidate": "native-showcase-20261108",
-  "created_utc": "20261108T122750Z",
+  "candidate": "native-showcase-20261109",
+  "created_utc": "20261109T090716Z",
   "source": {
-    "git_commit": "e035cb542d8fb899743b8118dbf4962d25fb1c95",
-    "tracked_changes": "",
+    "git_commit": "ab243bdab350725f12cc9ae754b80c169dd9f85e",
+    "tracked_changes": " M .copper-version\n M Makefile\n M README.md\n M assembly.lock\n M board.copper\n M procurement/candidate-bom.csv\n M procurement/distributor-bom.csv\n M procurement/parts.json\n M revisions/pcb-antennas-v1/README.md\n M revisions/pcb-antennas-v1/ble-synthesis.json\n M revisions/pcb-antennas-v1/ble-synthesis.log\n M revisions/pcb-antennas-v1/gnss-synthesis.json\n M revisions/pcb-antennas-v1/gnss-synthesis.log\n M revisions/pcb-antennas-v1/lte-synthesis.json\n M revisions/pcb-antennas-v1/lte-synthesis.log\nD  revisions/pcb-antennas-v1/lte_pi_match.py\n M src/rf/nrf-layout.copper\n M tests/test_engineering_plan.py\n M tests/test_tracker.py",
     "input_sha256": {
-      "board.copper": "9a4c6f94ff83fcd44103eb11e0c3f5c1df1ab469936e47a0f331e657250623cb",
+      "board.copper": "da08647ad8153bf55f15f07daed52eb6cbd1366ec709f87e1d6fb5f2146301fd",
       "copper.mod": "27667a8ee66cfbb440657387336621cb25d846388c6c2c5ad661a48700abfcc0",
       "copper.lock": "932d6673d17553fc114007bb172e3bb364a28d6b4cf61868db57e6881a93c873",
-      "assembly.lock": "011f2c304b975925c8f5d5cc458eb04215d05991c51026fdc780889239424e22",
-      "Makefile": "50a6ec8e02fc504deeecbfecefb0cbb82617e49a61de77a77acd805d031caeea",
+      "assembly.lock": "99e7c4318644b0bb736d5574e424b44aeca06dd6340e75e8920eab40c9fcd067",
+      "Makefile": "0040fc7b0ac29846333419b4f1dc0cc1f042dc64c96a87d7cbb715316ce9450a",
+      "src/rf/feed.copper": "e5698940f28c2ede8fd28ba93447128b83957c91431a30c73ff0b158d2efb130",
+      "src/rf/nrf-layout.copper": "b40abff62171e95bd74f00a3c04cb5d8cbbdc303ad59ec8d105c9370622fa2a2",
       "src/tracker/power_tree.copper": "952cbe99f737065ce3c960f3241c6117b25ce19fd50e54f7f2cdb01fa73f5282"
     }
   },
   "compiler": {
-    "copperscript_commit": "1fb830b4cdf61f87f3cc653e534cf9b6fd3864ca",
+    "copperscript_commit": "9a6a134482a262834ac1aad821b353793abe6651",
     "tracked_changes": "",
-    "executable_sha256": "ef8093b7a3dba7b364b32a1916d83fdd1b878a54a9d0c121dd15d17b01260b9a"
+    "executable_sha256": "1e9b17e8b75d5883ebda907f9144471caf2bde009425bb73ed601ea597079b37"
   },
   "route": {
     "options": "--layers 6 --fab-profile jlcpcb-six-layer --candidates 1 --feedback-iterations 1 --router-iterations 5 --progress --fanout --plane-contact-radius-mm 5 --unified-set fine_regions=dense --fanout-maze --package-initial-pair-states 0 --no-early-plane-stitch --plane-stitch-step-mm 0.1 --plane-maze-step-mm 0.025 --plane-maze-budget 50000 --plane-contact-radius-mm 3 --plane-stitch-detour-mm 1.5",
     "status": "pass",
-    "report_sha256": "72f7facc7a16179d59c79366464d1b6804122f18ced6e3274fede7c931befdbe",
-    "unfilled_pcb_sha256": "9b3175d0f35a823be18a31e4e48ea43fdc4abdab13625db1aba4d25804421993",
-    "ordinary_nets_routed": 60,
+    "report_sha256": "e1ec30a86527917abb78a59f71899ea27b95d8a778a20ff8c0d527bd47028a0c",
+    "unfilled_pcb_sha256": "077b9b26155bcddbb4c1c82c87845953a896443f6217a2837953ef1fc9ae9f0b",
+    "ordinary_nets_routed": 58,
     "unrouted_ordinary_nets": [],
-    "tracks": 1191,
-    "vias": 259,
-    "track_length_mm": 1827.1,
+    "tracks": 1180,
+    "vias": 270,
+    "track_length_mm": 1928.908,
     "plane_fill": "native",
     "requirements": {
-      "blocked": 12,
-      "pass": 90
+      "blocked": 14,
+      "pass": 94
     }
   },
-  "pcb_sha256": "80228bcbfa8bd2aab289aaf29c88c5c97ce658aa4970bc624b14e40d9bee2113",
-  "component_count": 87,
-  "track_count": 1191,
-  "via_count": 259,
+  "pcb_sha256": "9159a15f9de5775551994025f6e53bc08e4ba0d26a79d154973cd7cf3aeb9b3f",
+  "component_count": 88,
+  "track_count": 1180,
+  "via_count": 270,
   "native_drc_violation_count": 0,
   "native_unconnected_item_count": 0,
-  "blocked_requirement_count": 12,
+  "blocked_requirement_count": 14,
   "copper_layers": [
     "F.Cu",
     "In1.Cu",
@@ -51,7 +53,7 @@
     "B.Cu"
   ],
   "native_drc": {
-    "report_sha256": "fea92d65970ae8fd8b732b6d7623a15a7a836dd2c2e23cb4666b2cf2d4ed7030",
+    "report_sha256": "d5fcefcc1d099b0b7da6880c1a142c716d1ccac562ed10191bc020f65af862e7",
     "passed": true,
     "violations": 0,
     "unconnected": 0,
@@ -67,18 +69,18 @@
       "custom rule \"Source additional courtyard gap 2\": courtyard_clearance",
       "custom rule \"Source additional courtyard gap 3\": courtyard_clearance"
     ],
-    "cam_readback": "CAM read-back PASSED: 0 short(s), 0 open(s), 0 test point(s) without copper; 6 copper layer(s), 1220 region(s), 664 test point(s), 269 plated hole(s)"
+    "cam_readback": "CAM read-back PASSED: 0 short(s), 0 open(s), 0 test point(s) without copper; 6 copper layer(s), 1242 region(s), 669 test point(s), 270 plated hole(s)"
   },
   "kicad": "not run: fill, DRC, plot and rendering are native",
   "independent_cam": "not run",
   "manufacturing_export": "not generated",
   "qualified_release": false,
   "rendered_assets": {
-    "routing-top.svg": "ded734b507c7c408e2f2affb8bfd883409e2c6331296da245a1e91ab6f3c20d5",
-    "routing-inner.svg": "e4875d30133abf106018b3f6bdfd4d059be00792d45adaf2eb8a43613d582e36",
-    "routing-bottom.svg": "d3f22c8015891f3f95076145607ed45d372e8619580e6050756d2369f7f7d705",
-    "routing-all.svg": "38d413cd0dc46401b988744db7f49f0947b94b279322699313e4f8f7a7e34260",
-    "placement.svg": "2891b43fe1f8fd40f6d42477fa3522acf8af80312d5a24a7922d4d0a41c58463",
+    "routing-top.svg": "fc8ba4115339e18d2056f1798bfafe6b766ab5ccaeeef97e46cdc3c13f0401bd",
+    "routing-inner.svg": "a5c01e85042b636f9d254cf268d1bef79861a70ef90e56cb771a6337d4caa306",
+    "routing-bottom.svg": "addafebfbec403ae680b077a4cb390bfb0948214ea941c2833b7dce990bd62bf",
+    "routing-all.svg": "e75a310f47dee9daa9c3060e6a1faf774a71697b78dc9991fa3a16e5897643bd",
+    "placement.svg": "17add52fabc97d06d69bc6f54b3ef4123cfd9f1c16ee56ef12f0bf01d8f6b023",
     "rendering.json": "9d797399222779309581375fe4639f5a306d8e2788c65393e303aeaeade0607b",
     "electrical-ir.excerpt.json": "129b7753cd21db3ea73e5ec85324cf0762093950bc293c0b3602bb8bc17ca1b8",
     "physical-ir.excerpt.json": "be5afe9ad06a28943d5c8d679fa3109c9e9d51bb666c2e02224653afcb4720ab"

@@ -8,7 +8,10 @@ without KiCad (`scripts/showcase.sh`):
    `build/board/runs/<UTC time>-showcase/`.
 2. `copper fill` of the routed board, `copper plot` of the filled board and of
    the unfilled one, and `copper drc --cam` of the filled board, which also
-   reads the plotted copper and drills back against the netlist.
+   reads the plotted copper and drills back against the netlist. The printed
+   antennas' radiator ends are excused with `--expected-open-ends` from the
+   route report, which lists exactly the open ends its native verification
+   attributed to the synthesized antennas.
 3. `copper render` of five views from the plotted Gerbers into
    `docs/showcase/`: top copper with silkscreen, In2.Cu, bottom copper, all six
    copper layers without zone fills (from the unfilled plot), and placement
