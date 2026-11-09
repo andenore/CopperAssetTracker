@@ -1,12 +1,12 @@
 {
   "schema": "copperassettracker-showcase/v3",
   "candidate": "native-showcase-20261109",
-  "created_utc": "20261109T090716Z",
+  "created_utc": "20261109T112630Z",
   "source": {
-    "git_commit": "ab243bdab350725f12cc9ae754b80c169dd9f85e",
-    "tracked_changes": " M .copper-version\n M Makefile\n M README.md\n M assembly.lock\n M board.copper\n M procurement/candidate-bom.csv\n M procurement/distributor-bom.csv\n M procurement/parts.json\n M revisions/pcb-antennas-v1/README.md\n M revisions/pcb-antennas-v1/ble-synthesis.json\n M revisions/pcb-antennas-v1/ble-synthesis.log\n M revisions/pcb-antennas-v1/gnss-synthesis.json\n M revisions/pcb-antennas-v1/gnss-synthesis.log\n M revisions/pcb-antennas-v1/lte-synthesis.json\n M revisions/pcb-antennas-v1/lte-synthesis.log\nD  revisions/pcb-antennas-v1/lte_pi_match.py\n M src/rf/nrf-layout.copper\n M tests/test_engineering_plan.py\n M tests/test_tracker.py",
+    "git_commit": "8dc1dc0fcb3dd53e3a9ebac88732f7f5bf6da83e",
+    "tracked_changes": " M .copper-version\n M board.copper\n M revisions/pcb-antennas-v1/README.md\n M tests/test_tracker.py",
     "input_sha256": {
-      "board.copper": "da08647ad8153bf55f15f07daed52eb6cbd1366ec709f87e1d6fb5f2146301fd",
+      "board.copper": "cf528f3d6f8037f6dbc57c67220e93da6c691dd965d37b624986d5de059ca436",
       "copper.mod": "27667a8ee66cfbb440657387336621cb25d846388c6c2c5ad661a48700abfcc0",
       "copper.lock": "932d6673d17553fc114007bb172e3bb364a28d6b4cf61868db57e6881a93c873",
       "assembly.lock": "99e7c4318644b0bb736d5574e424b44aeca06dd6340e75e8920eab40c9fcd067",
@@ -17,14 +17,14 @@
     }
   },
   "compiler": {
-    "copperscript_commit": "9a6a134482a262834ac1aad821b353793abe6651",
+    "copperscript_commit": "646117e81043e3d002754c862c5a00733c92d665",
     "tracked_changes": "",
-    "executable_sha256": "1e9b17e8b75d5883ebda907f9144471caf2bde009425bb73ed601ea597079b37"
+    "executable_sha256": "1c1024009d7c901dbc0de1d6233a15529258a3b3b83af5ec4b91011c5293436d"
   },
   "route": {
     "options": "--layers 6 --fab-profile jlcpcb-six-layer --candidates 1 --feedback-iterations 1 --router-iterations 5 --progress --fanout --plane-contact-radius-mm 5 --unified-set fine_regions=dense --fanout-maze --package-initial-pair-states 0 --no-early-plane-stitch --plane-stitch-step-mm 0.1 --plane-maze-step-mm 0.025 --plane-maze-budget 50000 --plane-contact-radius-mm 3 --plane-stitch-detour-mm 1.5",
     "status": "pass",
-    "report_sha256": "e1ec30a86527917abb78a59f71899ea27b95d8a778a20ff8c0d527bd47028a0c",
+    "report_sha256": "2668149e75672c79d11f17ff7e12b65f5518d64b2ced5df1f508feea6df9bf94",
     "unfilled_pcb_sha256": "077b9b26155bcddbb4c1c82c87845953a896443f6217a2837953ef1fc9ae9f0b",
     "ordinary_nets_routed": 58,
     "unrouted_ordinary_nets": [],
@@ -53,7 +53,7 @@
     "B.Cu"
   ],
   "native_drc": {
-    "report_sha256": "d5fcefcc1d099b0b7da6880c1a142c716d1ccac562ed10191bc020f65af862e7",
+    "report_sha256": "4c2ac3713bc7d5d0e1044db991e7506701bf4d458c8d250c7691e3f4d5e720b9",
     "passed": true,
     "violations": 0,
     "unconnected": 0,
