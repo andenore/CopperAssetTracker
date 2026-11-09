@@ -20,21 +20,39 @@ installed radiated tests, remain mandatory.
 
 | Antenna | Region (board mm) | Band | Geometry | Fine-mesh result | Matching (radio side first) |
 | --- | --- | --- | --- | --- | --- |
-| `ble` (ANT_BT) | x 94-100, y 16-40, right edge | 2400-2483.5 MHz | monopole, height 5.41 mm, length 24 mm | -9.4 dB bare, -18.2 dB matched worst in band; 99 % efficiency | L_BT_SHUNT 4.3 nH shunt, C_BT_SERIES 2.0 pF series (ideal 4.39 nH / 2.03 pF; -18.7 dB with the E-series values) |
-| `gnss` (ANT_GNSS) | x 90-100, y 44-80, right edge | 1559-1606 MHz | monopole, height 8.31 mm, length 40.46 mm | -5.6 dB bare, -12.7 dB matched worst in band; 98 % efficiency | C_GNSS_SERIES 3.9 pF series, C_GNSS_SHUNT 1.2 pF shunt (ideal 4.04 pF / 1.18 pF; -13.0 dB with the E-series values) |
-| `lte` (ANT_CELL) | x 3.4-76, y 0-10, top edge | 791-862 MHz (B20) | monopole, height 9.16 mm, length 68.2 mm, 1.5 mm track | -3.2 dB bare; the reported L-section (series 4.30 nH, shunt 6.16 pF) **misses** the -6 dB target at -5.3 dB; 59 % efficiency | SIM7672X Figure 30 pi: C_CELL_SHUNT1 9.1 pF shunt, L_CELL_SERIES 1.5 nH series, L_CELL_SHUNT 2.7 nH shunt, C_CELL_SERIES 100 pF DC block: -8.0 dB worst in band, -6.1 dB at tolerance corners, -1.2 dB worst delivered power (see below) |
+| `ble` (ANT_BT) | x 94-100, y 16-40, right edge | 2400-2483.5 MHz | monopole, height 5.41 mm, length 23.96 mm | -9.2 dB bare, -18.2 dB with the report's ideal L-section; 99 % efficiency | C_BT_SHUNT 1.0 pF shunt, L_BT_SERIES 1.0 nH series: -17.7 dB worst in band, -15.4 dB at tolerance corners |
+| `gnss` (ANT_GNSS) | x 90-100, y 44-80, right edge | 1559-1606 MHz | monopole, height 8.31 mm, length 40.54 mm | -5.8 dB bare, -12.7 dB matched worst in band; 98 % efficiency | C_GNSS_SERIES 3.9 pF series, C_GNSS_SHUNT 1.1 pF shunt (ideal 3.96 pF / 1.09 pF; -13.2 dB with the E-series values) |
+| `lte` (ANT_CELL) | x 3.4-76, y 0-10, top edge | 791-862 MHz (B20) | monopole, height 9.16 mm, length 68.2 mm, 1.5 mm track | -3.6 dB bare; the ideal L-section **misses** the -6 dB target at -5.8 dB; 54 % efficiency | SIM7672X Figure 30: C_CELL_SHUNT1 4.7 pF shunt, L_CELL_SERIES 5.6 nH series, C_CELL_SHUNT2 not fitted, C_CELL_SERIES 100 pF DC block: -6.5 dB worst in band, **-5.7 dB at tolerance corners**, -1.36 dB worst delivered power |
 
-The LTE pi values are not a CopperScript output: `lte_pi_match.py` searches
-E24 values for the board's existing pi lands on the LTE report's fine-mesh
-feed impedance, with the DC block in the chain and assumed part Q (inductors
-30, capacitors 200), ranking by the worst power delivered to the antenna:
+**No radio pin has a DC path to ground.** The reported L-sections for BLE
+and LTE put a shunt inductor on the radio side (BLE: 4.24 nH, through
+Nordic's L1 to the nRF52832 ANT pin; LTE: on the module side of the DC
+block). Whether the ANT pin and ANT_MAIN tolerate a DC short is not
+established, so `match_search.py` searches E24 parts for the board's
+matching lands on each report's fine-mesh feed impedance, rejects any shunt
+inductor without a series capacitor between it and the radio, uses assumed
+part Q (inductors 30, capacitors 200), and ranks networks by the worst power
+delivered to the antenna:
 
 ```sh
-python3 revisions/pcb-antennas-v1/lte_pi_match.py revisions/pcb-antennas-v1/lte-synthesis.json
+python3 revisions/pcb-antennas-v1/match_search.py ble revisions/pcb-antennas-v1/ble-synthesis.json
+python3 revisions/pcb-antennas-v1/match_search.py lte revisions/pcb-antennas-v1/lte-synthesis.json
 ```
 
-The coarse search mesh read the LTE antenna about 2.4 dB more optimistic than
-the fine verification (-7.7 against -5.3 dB matched); the fine result decides.
+For BLE this costs nothing measurable; for LTE it costs about 1.5 dB of
+return loss against a match with a shunt inductor (-8.0 dB). GNSS needs no
+inductor (MAX-M10S RF_IN is DC-blocked internally anyway).
+
+**LTE geometry.** The synthesis search (`lte-search.json`/`.log`) settled on
+a 49.75 mm radiator resonating above the band, which its ideal-part score
+rates well (-6.7 dB) but which radiates 29 % and needs 16-24 nH matching
+inductors: with lossy DC-safe parts it delivers 0.65 dB less and radiates
+about 3 dB less than the 68.2 mm geometry. `board.copper` therefore pins the
+68.2 mm geometry from the previous synthesis, re-verified on the current
+model (`make antennas ANTENNAS=lte SYNTH_ARGS=--verify`, `lte-synthesis.json`).
+Both reports carry the same site digest. CopperScript's search scores
+matched return loss with ideal parts and ignores efficiency; that is a
+limitation of the synthesizer, recorded here rather than worked around.
 
 Each `geometry` and `tuned_for` digest in `board.copper` comes from the report
 beside this file (`*-synthesis.json`, schema
@@ -47,11 +65,12 @@ make antennas                    # all three; ANTENNAS="ble gnss" for a subset
 make antennas SYNTH_ARGS=--verify  # re-evaluate the declared geometry only
 ```
 
-Synthesis ran with CopperScript at antenna model revision 5, which fixes three
-mesh faults this six-layer stack-up exposed (thin-prepreg z lines, the feed
-slot's sides, and ground boundaries merging onto radiator copper; see
-CopperScript `docs/antenna-synthesis-performance.md`). `.copper-version`
-pins that CopperScript revision (37ede27, branch
+Synthesis ran with CopperScript at antenna model revision 5, which fixes the
+mesh faults this six-layer stack-up exposed (thin-prepreg z lines merging,
+and ground edges merging onto radiator copper and shorting the feed) while
+modelling the feed slot at the board clearance, as it is built; see
+CopperScript `docs/antenna-synthesis-performance.md`. `.copper-version`
+pins that CopperScript revision (9a6a134, branch
 `claude/copperassettracker-pcb-antennas-7qatxy`); an older compiler rejects
 these digests as stale.
 
@@ -63,18 +82,18 @@ these digests as stale.
   GNSS (88.66, 44.7).
 - **BLE.** The CopperLib Nordic chip-side match (C3 shunt, L1 series) is kept
   as a board-local macro (`src/rf/nrf-layout.copper`, derived from
-  `nrf52832-johanson-reference` managed-layout with the chip antenna, tee and
-  their private region and keepouts removed, and a feed port added at L1's
-  output). L1 feeds the L-section on y = 16.7 mm.
+  `nrf52832-johanson-reference` managed-layout with the chip antenna, tee,
+  their private region, keepouts and provenance removed, and a feed port added
+  at L1's output). L1 feeds the shunt-capacitor / series-inductor L-section on
+  y = 16.7 mm.
 - **GNSS.** The MAX-M10S moves to (79.5, 47) so its courtyard clears the
   charger's C_BAT and R_ISET; RF_IN runs east, then north through the series
   capacitor to the shunt node under the feed. A full pi network did not fit
   between the module's courtyard and the feed; the synthesized L-section
   topology decided which shunt land is kept.
 - **LTE.** The SIM7672X Figure 30 network keeps its lands along x = 4.4 mm,
-  now ending at the LTE feed instead of J_CELL, and is fitted as the pi
-  match: R1 (0 ohm) becomes L_CELL_SERIES and C2 becomes L_CELL_SHUNT; both
-  formerly unfitted shunts are fitted. The antenna-side segment `CELL_RF_ANT`
+  now ending at the LTE feed instead of J_CELL: R1 (0 ohm) becomes
+  L_CELL_SERIES, C1 is fitted and C2 stays a reserved, unfitted tuning land. The antenna-side segment `CELL_RF_ANT`
   also carries the radiator copper, so it has no `max_length` (its span is
   two fixed pads, 7.1 mm apart); the other two segments keep 8 + 4 mm.
 - The old BLE corner copper keepout and both SMA overhangs are removed; the
@@ -94,8 +113,13 @@ these digests as stale.
   coexistence screen.
 - Ground stitching comparable to the model's (vias at about 5 mm pitch
   joining F.Cu, In1.Cu and In4.Cu) must be present on the routed board.
-- Seven matching parts are new or changed and unreviewed in `assembly.lock`
-  (L_BT_SHUNT, C_BT_SERIES, C_GNSS_SERIES, C_GNSS_SHUNT, C_CELL_SHUNT1,
-  L_CELL_SERIES, L_CELL_SHUNT); their LCSC/JLCPCB codes come from catalogue
-  searches and stock is not confirmed.
+- LTE meets its -6 dB target only at nominal part values (-6.5 dB); at
+  tolerance corners it reaches -5.7 dB. Confirm on the bench whether
+  ANT_MAIN tolerates a DC path; if it does, a shunt-inductor match (-8.0 dB)
+  is available on the same lands.
+- Seven matching selections are new or changed and unreviewed in
+  `assembly.lock` (C_BT_SHUNT, L_BT_SERIES, C_GNSS_SERIES, C_GNSS_SHUNT,
+  C_CELL_SHUNT1, L_CELL_SERIES, and the unfitted C_CELL_SHUNT2); their
+  LCSC/JLCPCB codes come from catalogue searches, stock is not confirmed, and
+  C_GNSS_SHUNT's listing (C161308) showed out of stock on 2026-11-09.
 - Radiated performance, SAR/exposure and regulatory certification.

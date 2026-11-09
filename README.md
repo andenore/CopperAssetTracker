@@ -73,7 +73,7 @@ manufacturing review files.
 
 ![Top copper of the CopperAssetTracker showcase route, rendered from its native Gerber plot](docs/showcase/routing-top.svg)
 
-*Top copper and silkscreen of the 100 × 80 mm `native-showcase-20261108` route,
+*Top copper and silkscreen of the 100 × 80 mm `native-showcase-20261109` route,
 rendered by `copper render` from the native Gerber plot; gold is exposed copper.
 88 footprints, 1180 routed track segments, 270 vias and six copper layers, with
 the three printed antennas (LTE along the top edge, BLE and GNSS on the right),
@@ -252,7 +252,7 @@ constraint antenna(ANT_GNSS.FEED) {
     x = 90mm; y = 44mm; width = 10mm; height = 36mm;
     ground = GND;
     bands = "1559 MHz-1606 MHz";
-    geometry = "monopole height=8.31mm length=40.46mm";
+    geometry = "monopole height=8.31mm length=40.54mm";
     tuned_for = "sha256:04f1...";
 }
 ```

@@ -3,23 +3,23 @@
   "generator": "copper antenna/v0.2",
   "solver": "ems 0.0.5 (pure-Rust FDTD, openEMS-compatible)",
   "antenna": "ble",
-  "declaration": "/home/user/copperassettracker/board.copper:782:16",
+  "declaration": "board.copper:802:16",
   "feed": "PadReference(component='ANT_BT', pad='1')",
   "site_digest": "sha256:10c846dffb8fbfb8aa29eaecc98b70c683fb90aaf864e4259c15049f5889c6b1",
   "method": "parametric",
-  "geometry": "monopole height=5.41mm length=24mm",
+  "geometry": "monopole height=5.41mm length=23.96mm",
   "source_lines": [
-    "geometry = \"monopole height=5.41mm length=24mm\";",
+    "geometry = \"monopole height=5.41mm length=23.96mm\";",
     "tuned_for = \"sha256:10c846dffb8fbfb8aa29eaecc98b70c683fb90aaf864e4259c15049f5889c6b1\";"
   ],
   "final_fidelity": "fine",
   "converged": true,
-  "resonance_hz": "2314881144",
+  "resonance_hz": "2328042595",
   "bands": [
     {
       "band": "2400 MHz-2483.5 MHz",
-      "bare_worst_db": "-9.44",
-      "matched_worst_db": "-18.19",
+      "bare_worst_db": "-9.23",
+      "matched_worst_db": "-18.20",
       "target_db": "-10.0",
       "meets_target": true
     }
@@ -28,13 +28,13 @@
     {
       "position": "series",
       "kind": "capacitor",
-      "value": "2.031",
+      "value": "2.100",
       "unit": "pF"
     },
     {
       "position": "shunt",
       "kind": "inductor",
-      "value": "4.393",
+      "value": "4.245",
       "unit": "nH"
     }
   ],
@@ -64,9 +64,9 @@
       "geometry": "monopole height=5.41mm length=16.18mm",
       "resonance_hz": "2930100000",
       "bare_worst_db": "-0.30",
-      "matched_worst_db": "-6.27",
-      "cells": 672256,
-      "seconds": "33.3",
+      "matched_worst_db": "-6.29",
+      "cells": 677508,
+      "seconds": "34.6",
       "converged": true
     },
     {
@@ -74,1961 +74,1961 @@
       "fidelity": "coarse",
       "geometry": "monopole height=5.41mm length=19.42mm",
       "resonance_hz": "2930100000",
-      "bare_worst_db": "-0.90",
-      "matched_worst_db": "-12.91",
-      "cells": 672256,
-      "seconds": "37.2",
+      "bare_worst_db": "-0.89",
+      "matched_worst_db": "-12.92",
+      "cells": 677508,
+      "seconds": "43.9",
       "converged": true
     },
     {
       "stage": "resonance",
       "fidelity": "coarse",
       "geometry": "monopole height=5.41mm length=23.3mm",
-      "resonance_hz": "2428861198",
+      "resonance_hz": "2446142817",
       "bare_worst_db": "-5.76",
-      "matched_worst_db": "-18.54",
-      "cells": 672256,
-      "seconds": "35.7",
-      "converged": true
-    },
-    {
-      "stage": "resonance",
-      "fidelity": "coarse",
-      "geometry": "monopole height=5.41mm length=23.18mm",
-      "resonance_hz": "2445914950",
-      "bare_worst_db": "-5.32",
-      "matched_worst_db": "-18.33",
-      "cells": 672256,
-      "seconds": "33.5",
+      "matched_worst_db": "-18.58",
+      "cells": 677508,
+      "seconds": "38.8",
       "converged": true
     },
     {
       "stage": "polish",
       "fidelity": "coarse",
       "geometry": "monopole height=5.41mm length=24mm",
-      "resonance_hz": "2343255622",
-      "bare_worst_db": "-9.22",
-      "matched_worst_db": "-19.34",
-      "cells": 672256,
-      "seconds": "31.0",
+      "resonance_hz": "2356126685",
+      "bare_worst_db": "-9.23",
+      "matched_worst_db": "-19.32",
+      "cells": 677508,
+      "seconds": "35.6",
       "converged": true
     },
     {
       "stage": "polish",
       "fidelity": "coarse",
       "geometry": "monopole height=4.21mm length=24mm",
-      "resonance_hz": "2138522146",
-      "bare_worst_db": "-10.20",
-      "matched_worst_db": "-10.20",
-      "cells": 665600,
-      "seconds": "24.1",
+      "resonance_hz": "2145082578",
+      "bare_worst_db": "-10.16",
+      "matched_worst_db": "-10.16",
+      "cells": 670800,
+      "seconds": "36.4",
       "converged": true
     },
     {
       "stage": "polish",
       "fidelity": "coarse",
       "geometry": "monopole height=5.41mm length=23.65mm",
-      "resonance_hz": "2385620254",
-      "bare_worst_db": "-7.20",
-      "matched_worst_db": "-19.03",
-      "cells": 672256,
-      "seconds": "31.5",
+      "resonance_hz": "2400189299",
+      "bare_worst_db": "-7.21",
+      "matched_worst_db": "-19.04",
+      "cells": 677508,
+      "seconds": "36.4",
       "converged": true
     },
     {
       "stage": "polish",
       "fidelity": "coarse",
       "geometry": "monopole height=4.81mm length=24mm",
-      "resonance_hz": "2220554394",
-      "bare_worst_db": "-17.14",
-      "matched_worst_db": "-17.14",
-      "cells": 665600,
-      "seconds": "24.5",
+      "resonance_hz": "2228984187",
+      "bare_worst_db": "-17.44",
+      "matched_worst_db": "-17.44",
+      "cells": 670800,
+      "seconds": "34.6",
       "converged": true
     },
     {
       "stage": "polish",
       "fidelity": "coarse",
       "geometry": "monopole height=5.41mm length=23.82mm",
-      "resonance_hz": "2363981939",
-      "bare_worst_db": "-8.13",
-      "matched_worst_db": "-19.22",
-      "cells": 672256,
-      "seconds": "28.7",
+      "resonance_hz": "2377589745",
+      "bare_worst_db": "-8.15",
+      "matched_worst_db": "-19.23",
+      "cells": 677508,
+      "seconds": "36.3",
       "converged": true
     },
     {
       "stage": "polish",
       "fidelity": "coarse",
       "geometry": "monopole height=5.11mm length=24mm",
-      "resonance_hz": "2268213644",
-      "bare_worst_db": "-13.17",
-      "matched_worst_db": "-13.17",
-      "cells": 665600,
-      "seconds": "25.3",
+      "resonance_hz": "2277565218",
+      "bare_worst_db": "-13.28",
+      "matched_worst_db": "-13.28",
+      "cells": 670800,
+      "seconds": "35.5",
       "converged": true
     },
     {
       "stage": "polish",
       "fidelity": "coarse",
       "geometry": "monopole height=5.41mm length=23.91mm",
-      "resonance_hz": "2353675298",
-      "bare_worst_db": "-8.64",
-      "matched_worst_db": "-19.27",
-      "cells": 672256,
-      "seconds": "33.8",
+      "resonance_hz": "2366781679",
+      "bare_worst_db": "-8.67",
+      "matched_worst_db": "-19.28",
+      "cells": 677508,
+      "seconds": "37.5",
       "converged": true
     },
     {
       "stage": "polish",
       "fidelity": "coarse",
       "geometry": "monopole height=5.26mm length=24mm",
-      "resonance_hz": "2304982691",
-      "bare_worst_db": "-11.00",
-      "matched_worst_db": "-11.00",
-      "cells": 672256,
-      "seconds": "22.9",
+      "resonance_hz": "2315894481",
+      "bare_worst_db": "-11.04",
+      "matched_worst_db": "-11.04",
+      "cells": 677508,
+      "seconds": "33.9",
+      "converged": true
+    },
+    {
+      "stage": "polish",
+      "fidelity": "coarse",
+      "geometry": "monopole height=5.41mm length=23.96mm",
+      "resonance_hz": "2360809563",
+      "bare_worst_db": "-8.98",
+      "matched_worst_db": "-19.32",
+      "cells": 677508,
+      "seconds": "40.1",
       "converged": true
     },
     {
       "stage": "verify",
       "fidelity": "fine",
-      "geometry": "monopole height=5.41mm length=24mm",
-      "resonance_hz": "2314881144",
-      "bare_worst_db": "-9.44",
-      "matched_worst_db": "-18.19",
-      "cells": 1347584,
-      "seconds": "64.6",
+      "geometry": "monopole height=5.41mm length=23.96mm",
+      "resonance_hz": "2328042595",
+      "bare_worst_db": "-9.23",
+      "matched_worst_db": "-18.20",
+      "cells": 1333248,
+      "seconds": "90.6",
       "converged": true
     },
     {
       "stage": "correct",
       "fidelity": "fine",
-      "geometry": "monopole height=5.41mm length=22.75mm",
-      "resonance_hz": "2453647843",
-      "bare_worst_db": "-4.39",
-      "matched_worst_db": "-16.83",
-      "cells": 1347584,
-      "seconds": "61.0",
+      "geometry": "monopole height=5.41mm length=22.84mm",
+      "resonance_hz": "2455076560",
+      "bare_worst_db": "-4.56",
+      "matched_worst_db": "-17.00",
+      "cells": 1340416,
+      "seconds": "86.1",
       "converged": true
     }
   ],
   "curve": [
     {
       "frequency_hz": "1953400000",
-      "s11_db": "-1.58",
-      "matched_s11_db": "-1.22",
+      "s11_db": "-1.52",
+      "matched_s11_db": "-1.21",
       "z_ohm": [
-        "5.34",
-        "-20.96"
+        "5.15",
+        "-21.25"
       ]
     },
     {
       "frequency_hz": "1958283500",
-      "s11_db": "-1.60",
-      "matched_s11_db": "-1.25",
+      "s11_db": "-1.54",
+      "matched_s11_db": "-1.24",
       "z_ohm": [
-        "5.39",
-        "-20.77"
+        "5.21",
+        "-21.07"
       ]
     },
     {
       "frequency_hz": "1963167000",
-      "s11_db": "-1.62",
+      "s11_db": "-1.56",
       "matched_s11_db": "-1.27",
       "z_ohm": [
-        "5.45",
-        "-20.58"
+        "5.26",
+        "-20.88"
       ]
     },
     {
       "frequency_hz": "1968050500",
-      "s11_db": "-1.64",
-      "matched_s11_db": "-1.30",
+      "s11_db": "-1.58",
+      "matched_s11_db": "-1.29",
       "z_ohm": [
-        "5.50",
-        "-20.39"
+        "5.32",
+        "-20.69"
       ]
     },
     {
       "frequency_hz": "1972934000",
-      "s11_db": "-1.66",
+      "s11_db": "-1.60",
       "matched_s11_db": "-1.32",
       "z_ohm": [
-        "5.55",
-        "-20.19"
+        "5.37",
+        "-20.50"
       ]
     },
     {
       "frequency_hz": "1977817500",
-      "s11_db": "-1.68",
+      "s11_db": "-1.62",
       "matched_s11_db": "-1.35",
       "z_ohm": [
-        "5.60",
-        "-20.00"
+        "5.43",
+        "-20.32"
       ]
     },
     {
       "frequency_hz": "1982701000",
-      "s11_db": "-1.70",
+      "s11_db": "-1.64",
       "matched_s11_db": "-1.38",
       "z_ohm": [
-        "5.65",
-        "-19.80"
+        "5.48",
+        "-20.12"
       ]
     },
     {
       "frequency_hz": "1987584500",
-      "s11_db": "-1.72",
+      "s11_db": "-1.66",
       "matched_s11_db": "-1.40",
       "z_ohm": [
-        "5.70",
-        "-19.60"
+        "5.53",
+        "-19.93"
       ]
     },
     {
       "frequency_hz": "1992468000",
-      "s11_db": "-1.74",
+      "s11_db": "-1.68",
       "matched_s11_db": "-1.43",
       "z_ohm": [
-        "5.75",
-        "-19.40"
+        "5.59",
+        "-19.74"
       ]
     },
     {
       "frequency_hz": "1997351500",
-      "s11_db": "-1.76",
+      "s11_db": "-1.70",
       "matched_s11_db": "-1.46",
       "z_ohm": [
-        "5.80",
-        "-19.20"
+        "5.64",
+        "-19.55"
       ]
     },
     {
       "frequency_hz": "2002235000",
-      "s11_db": "-1.78",
+      "s11_db": "-1.72",
       "matched_s11_db": "-1.49",
       "z_ohm": [
-        "5.85",
-        "-19.00"
+        "5.69",
+        "-19.35"
       ]
     },
     {
       "frequency_hz": "2007118500",
-      "s11_db": "-1.80",
+      "s11_db": "-1.74",
       "matched_s11_db": "-1.52",
       "z_ohm": [
-        "5.90",
-        "-18.79"
+        "5.74",
+        "-19.15"
       ]
     },
     {
       "frequency_hz": "2012002000",
-      "s11_db": "-1.82",
+      "s11_db": "-1.76",
       "matched_s11_db": "-1.55",
       "z_ohm": [
-        "5.95",
-        "-18.59"
+        "5.80",
+        "-18.95"
       ]
     },
     {
       "frequency_hz": "2016885500",
-      "s11_db": "-1.84",
+      "s11_db": "-1.78",
       "matched_s11_db": "-1.58",
       "z_ohm": [
-        "6.00",
-        "-18.38"
+        "5.85",
+        "-18.75"
       ]
     },
     {
       "frequency_hz": "2021769000",
-      "s11_db": "-1.86",
-      "matched_s11_db": "-1.61",
+      "s11_db": "-1.81",
+      "matched_s11_db": "-1.62",
       "z_ohm": [
-        "6.06",
-        "-18.17"
+        "5.90",
+        "-18.55"
       ]
     },
     {
       "frequency_hz": "2026652500",
-      "s11_db": "-1.88",
-      "matched_s11_db": "-1.64",
+      "s11_db": "-1.83",
+      "matched_s11_db": "-1.65",
       "z_ohm": [
-        "6.11",
-        "-17.95"
+        "5.95",
+        "-18.34"
       ]
     },
     {
       "frequency_hz": "2031536000",
-      "s11_db": "-1.91",
-      "matched_s11_db": "-1.67",
+      "s11_db": "-1.85",
+      "matched_s11_db": "-1.68",
       "z_ohm": [
-        "6.16",
-        "-17.73"
+        "6.00",
+        "-18.13"
       ]
     },
     {
       "frequency_hz": "2036419500",
-      "s11_db": "-1.93",
-      "matched_s11_db": "-1.70",
+      "s11_db": "-1.87",
+      "matched_s11_db": "-1.71",
       "z_ohm": [
-        "6.21",
-        "-17.51"
+        "6.06",
+        "-17.92"
       ]
     },
     {
       "frequency_hz": "2041303000",
-      "s11_db": "-1.95",
-      "matched_s11_db": "-1.74",
+      "s11_db": "-1.89",
+      "matched_s11_db": "-1.75",
       "z_ohm": [
-        "6.26",
-        "-17.29"
+        "6.11",
+        "-17.71"
       ]
     },
     {
       "frequency_hz": "2046186500",
-      "s11_db": "-1.97",
-      "matched_s11_db": "-1.77",
+      "s11_db": "-1.91",
+      "matched_s11_db": "-1.78",
       "z_ohm": [
-        "6.32",
-        "-17.07"
+        "6.17",
+        "-17.49"
       ]
     },
     {
       "frequency_hz": "2051070000",
-      "s11_db": "-1.99",
-      "matched_s11_db": "-1.81",
+      "s11_db": "-1.94",
+      "matched_s11_db": "-1.82",
       "z_ohm": [
-        "6.37",
-        "-16.84"
+        "6.22",
+        "-17.28"
       ]
     },
     {
       "frequency_hz": "2055953500",
-      "s11_db": "-2.02",
-      "matched_s11_db": "-1.85",
+      "s11_db": "-1.96",
+      "matched_s11_db": "-1.86",
       "z_ohm": [
-        "6.43",
-        "-16.61"
+        "6.28",
+        "-17.06"
       ]
     },
     {
       "frequency_hz": "2060837000",
-      "s11_db": "-2.04",
-      "matched_s11_db": "-1.88",
+      "s11_db": "-1.98",
+      "matched_s11_db": "-1.90",
       "z_ohm": [
-        "6.49",
-        "-16.37"
+        "6.33",
+        "-16.83"
       ]
     },
     {
       "frequency_hz": "2065720500",
-      "s11_db": "-2.07",
-      "matched_s11_db": "-1.92",
+      "s11_db": "-2.01",
+      "matched_s11_db": "-1.93",
       "z_ohm": [
-        "6.55",
-        "-16.14"
+        "6.39",
+        "-16.61"
       ]
     },
     {
       "frequency_hz": "2070604000",
-      "s11_db": "-2.09",
-      "matched_s11_db": "-1.96",
+      "s11_db": "-2.03",
+      "matched_s11_db": "-1.98",
       "z_ohm": [
-        "6.61",
-        "-15.90"
+        "6.45",
+        "-16.38"
       ]
     },
     {
       "frequency_hz": "2075487500",
-      "s11_db": "-2.12",
-      "matched_s11_db": "-2.00",
+      "s11_db": "-2.06",
+      "matched_s11_db": "-2.02",
       "z_ohm": [
-        "6.67",
-        "-15.65"
+        "6.51",
+        "-16.14"
       ]
     },
     {
       "frequency_hz": "2080371000",
-      "s11_db": "-2.14",
-      "matched_s11_db": "-2.05",
+      "s11_db": "-2.08",
+      "matched_s11_db": "-2.06",
       "z_ohm": [
-        "6.73",
-        "-15.41"
+        "6.58",
+        "-15.91"
       ]
     },
     {
       "frequency_hz": "2085254500",
-      "s11_db": "-2.17",
-      "matched_s11_db": "-2.09",
+      "s11_db": "-2.11",
+      "matched_s11_db": "-2.10",
       "z_ohm": [
-        "6.80",
-        "-15.16"
+        "6.64",
+        "-15.67"
       ]
     },
     {
       "frequency_hz": "2090138000",
-      "s11_db": "-2.20",
-      "matched_s11_db": "-2.14",
+      "s11_db": "-2.14",
+      "matched_s11_db": "-2.15",
       "z_ohm": [
-        "6.87",
-        "-14.91"
+        "6.71",
+        "-15.43"
       ]
     },
     {
       "frequency_hz": "2095021500",
-      "s11_db": "-2.23",
-      "matched_s11_db": "-2.18",
+      "s11_db": "-2.16",
+      "matched_s11_db": "-2.20",
       "z_ohm": [
-        "6.94",
-        "-14.65"
+        "6.78",
+        "-15.18"
       ]
     },
     {
       "frequency_hz": "2099905000",
-      "s11_db": "-2.26",
-      "matched_s11_db": "-2.23",
+      "s11_db": "-2.19",
+      "matched_s11_db": "-2.25",
       "z_ohm": [
-        "7.02",
-        "-14.39"
+        "6.85",
+        "-14.93"
       ]
     },
     {
       "frequency_hz": "2104788500",
-      "s11_db": "-2.29",
-      "matched_s11_db": "-2.28",
+      "s11_db": "-2.22",
+      "matched_s11_db": "-2.30",
       "z_ohm": [
-        "7.09",
-        "-14.13"
+        "6.92",
+        "-14.68"
       ]
     },
     {
       "frequency_hz": "2109672000",
-      "s11_db": "-2.32",
-      "matched_s11_db": "-2.34",
+      "s11_db": "-2.25",
+      "matched_s11_db": "-2.35",
       "z_ohm": [
-        "7.17",
-        "-13.86"
+        "7.00",
+        "-14.42"
       ]
     },
     {
       "frequency_hz": "2114555500",
-      "s11_db": "-2.36",
-      "matched_s11_db": "-2.39",
+      "s11_db": "-2.29",
+      "matched_s11_db": "-2.41",
       "z_ohm": [
-        "7.26",
-        "-13.59"
+        "7.08",
+        "-14.16"
       ]
     },
     {
       "frequency_hz": "2119439000",
-      "s11_db": "-2.39",
-      "matched_s11_db": "-2.45",
+      "s11_db": "-2.32",
+      "matched_s11_db": "-2.46",
       "z_ohm": [
-        "7.34",
-        "-13.32"
+        "7.16",
+        "-13.90"
       ]
     },
     {
       "frequency_hz": "2124322500",
-      "s11_db": "-2.43",
-      "matched_s11_db": "-2.51",
+      "s11_db": "-2.35",
+      "matched_s11_db": "-2.52",
       "z_ohm": [
-        "7.43",
-        "-13.04"
+        "7.25",
+        "-13.64"
       ]
     },
     {
       "frequency_hz": "2129206000",
-      "s11_db": "-2.47",
-      "matched_s11_db": "-2.57",
+      "s11_db": "-2.39",
+      "matched_s11_db": "-2.58",
       "z_ohm": [
-        "7.53",
-        "-12.76"
+        "7.34",
+        "-13.37"
       ]
     },
     {
       "frequency_hz": "2134089500",
-      "s11_db": "-2.51",
-      "matched_s11_db": "-2.64",
+      "s11_db": "-2.43",
+      "matched_s11_db": "-2.65",
       "z_ohm": [
-        "7.62",
-        "-12.48"
+        "7.43",
+        "-13.09"
       ]
     },
     {
       "frequency_hz": "2138973000",
-      "s11_db": "-2.55",
-      "matched_s11_db": "-2.70",
+      "s11_db": "-2.47",
+      "matched_s11_db": "-2.71",
       "z_ohm": [
-        "7.73",
-        "-12.19"
+        "7.53",
+        "-12.82"
       ]
     },
     {
       "frequency_hz": "2143856500",
-      "s11_db": "-2.59",
-      "matched_s11_db": "-2.77",
+      "s11_db": "-2.51",
+      "matched_s11_db": "-2.78",
       "z_ohm": [
-        "7.83",
-        "-11.90"
+        "7.63",
+        "-12.54"
       ]
     },
     {
       "frequency_hz": "2148740000",
-      "s11_db": "-2.63",
-      "matched_s11_db": "-2.85",
+      "s11_db": "-2.55",
+      "matched_s11_db": "-2.86",
       "z_ohm": [
-        "7.94",
-        "-11.61"
+        "7.73",
+        "-12.26"
       ]
     },
     {
       "frequency_hz": "2153623500",
-      "s11_db": "-2.68",
-      "matched_s11_db": "-2.92",
+      "s11_db": "-2.59",
+      "matched_s11_db": "-2.93",
       "z_ohm": [
-        "8.06",
-        "-11.31"
+        "7.84",
+        "-11.97"
       ]
     },
     {
       "frequency_hz": "2158507000",
-      "s11_db": "-2.73",
-      "matched_s11_db": "-3.00",
+      "s11_db": "-2.64",
+      "matched_s11_db": "-3.01",
       "z_ohm": [
-        "8.18",
-        "-11.01"
+        "7.96",
+        "-11.68"
       ]
     },
     {
       "frequency_hz": "2163390500",
-      "s11_db": "-2.78",
+      "s11_db": "-2.69",
       "matched_s11_db": "-3.09",
       "z_ohm": [
-        "8.30",
-        "-10.71"
+        "8.08",
+        "-11.39"
       ]
     },
     {
       "frequency_hz": "2168274000",
-      "s11_db": "-2.83",
-      "matched_s11_db": "-3.17",
+      "s11_db": "-2.73",
+      "matched_s11_db": "-3.18",
       "z_ohm": [
-        "8.43",
-        "-10.40"
+        "8.20",
+        "-11.09"
       ]
     },
     {
       "frequency_hz": "2173157500",
-      "s11_db": "-2.88",
-      "matched_s11_db": "-3.26",
+      "s11_db": "-2.79",
+      "matched_s11_db": "-3.27",
       "z_ohm": [
-        "8.57",
-        "-10.09"
+        "8.33",
+        "-10.79"
       ]
     },
     {
       "frequency_hz": "2178041000",
-      "s11_db": "-2.94",
+      "s11_db": "-2.84",
       "matched_s11_db": "-3.36",
       "z_ohm": [
-        "8.71",
-        "-9.78"
+        "8.46",
+        "-10.49"
       ]
     },
     {
       "frequency_hz": "2182924500",
-      "s11_db": "-3.00",
-      "matched_s11_db": "-3.45",
+      "s11_db": "-2.89",
+      "matched_s11_db": "-3.46",
       "z_ohm": [
-        "8.85",
-        "-9.47"
+        "8.60",
+        "-10.18"
       ]
     },
     {
       "frequency_hz": "2187808000",
-      "s11_db": "-3.06",
+      "s11_db": "-2.95",
       "matched_s11_db": "-3.56",
       "z_ohm": [
-        "9.01",
-        "-9.15"
+        "8.75",
+        "-9.87"
       ]
     },
     {
       "frequency_hz": "2192691500",
-      "s11_db": "-3.12",
+      "s11_db": "-3.01",
       "matched_s11_db": "-3.66",
       "z_ohm": [
-        "9.16",
-        "-8.82"
+        "8.90",
+        "-9.56"
       ]
     },
     {
       "frequency_hz": "2197575000",
-      "s11_db": "-3.18",
+      "s11_db": "-3.07",
       "matched_s11_db": "-3.77",
       "z_ohm": [
-        "9.33",
-        "-8.50"
+        "9.06",
+        "-9.24"
       ]
     },
     {
       "frequency_hz": "2202458500",
-      "s11_db": "-3.25",
+      "s11_db": "-3.14",
       "matched_s11_db": "-3.89",
       "z_ohm": [
-        "9.50",
-        "-8.17"
+        "9.22",
+        "-8.93"
       ]
     },
     {
       "frequency_hz": "2207342000",
-      "s11_db": "-3.32",
+      "s11_db": "-3.20",
       "matched_s11_db": "-4.01",
       "z_ohm": [
-        "9.68",
-        "-7.84"
+        "9.39",
+        "-8.61"
       ]
     },
     {
       "frequency_hz": "2212225500",
-      "s11_db": "-3.39",
+      "s11_db": "-3.27",
       "matched_s11_db": "-4.13",
       "z_ohm": [
-        "9.86",
-        "-7.51"
+        "9.57",
+        "-8.28"
       ]
     },
     {
       "frequency_hz": "2217109000",
-      "s11_db": "-3.47",
-      "matched_s11_db": "-4.27",
+      "s11_db": "-3.34",
+      "matched_s11_db": "-4.26",
       "z_ohm": [
-        "10.06",
-        "-7.17"
+        "9.76",
+        "-7.95"
       ]
     },
     {
       "frequency_hz": "2221992500",
-      "s11_db": "-3.54",
+      "s11_db": "-3.42",
       "matched_s11_db": "-4.40",
       "z_ohm": [
-        "10.25",
-        "-6.83"
+        "9.95",
+        "-7.62"
       ]
     },
     {
       "frequency_hz": "2226876000",
-      "s11_db": "-3.62",
-      "matched_s11_db": "-4.55",
+      "s11_db": "-3.50",
+      "matched_s11_db": "-4.54",
       "z_ohm": [
-        "10.46",
-        "-6.49"
+        "10.15",
+        "-7.29"
       ]
     },
     {
       "frequency_hz": "2231759500",
-      "s11_db": "-3.71",
+      "s11_db": "-3.58",
       "matched_s11_db": "-4.69",
       "z_ohm": [
-        "10.68",
-        "-6.15"
+        "10.36",
+        "-6.96"
       ]
     },
     {
       "frequency_hz": "2236643000",
-      "s11_db": "-3.79",
+      "s11_db": "-3.66",
       "matched_s11_db": "-4.85",
       "z_ohm": [
-        "10.90",
-        "-5.80"
+        "10.57",
+        "-6.62"
       ]
     },
     {
       "frequency_hz": "2241526500",
-      "s11_db": "-3.88",
+      "s11_db": "-3.75",
       "matched_s11_db": "-5.01",
       "z_ohm": [
-        "11.13",
-        "-5.45"
+        "10.80",
+        "-6.28"
       ]
     },
     {
       "frequency_hz": "2246410000",
-      "s11_db": "-3.98",
-      "matched_s11_db": "-5.18",
+      "s11_db": "-3.84",
+      "matched_s11_db": "-5.17",
       "z_ohm": [
-        "11.37",
-        "-5.10"
+        "11.03",
+        "-5.94"
       ]
     },
     {
       "frequency_hz": "2251293500",
-      "s11_db": "-4.07",
-      "matched_s11_db": "-5.36",
+      "s11_db": "-3.93",
+      "matched_s11_db": "-5.35",
       "z_ohm": [
-        "11.62",
-        "-4.75"
+        "11.27",
+        "-5.59"
       ]
     },
     {
       "frequency_hz": "2256177000",
-      "s11_db": "-4.17",
-      "matched_s11_db": "-5.54",
+      "s11_db": "-4.03",
+      "matched_s11_db": "-5.53",
       "z_ohm": [
-        "11.88",
-        "-4.39"
+        "11.52",
+        "-5.25"
       ]
     },
     {
       "frequency_hz": "2261060500",
-      "s11_db": "-4.28",
+      "s11_db": "-4.13",
       "matched_s11_db": "-5.73",
       "z_ohm": [
-        "12.15",
-        "-4.03"
+        "11.78",
+        "-4.90"
       ]
     },
     {
       "frequency_hz": "2265944000",
-      "s11_db": "-4.38",
+      "s11_db": "-4.23",
       "matched_s11_db": "-5.93",
       "z_ohm": [
-        "12.43",
-        "-3.67"
+        "12.05",
+        "-4.55"
       ]
     },
     {
       "frequency_hz": "2270827500",
-      "s11_db": "-4.49",
-      "matched_s11_db": "-6.14",
+      "s11_db": "-4.34",
+      "matched_s11_db": "-6.13",
       "z_ohm": [
-        "12.71",
-        "-3.31"
+        "12.33",
+        "-4.20"
       ]
     },
     {
       "frequency_hz": "2275711000",
-      "s11_db": "-4.61",
-      "matched_s11_db": "-6.36",
+      "s11_db": "-4.45",
+      "matched_s11_db": "-6.35",
       "z_ohm": [
-        "13.01",
-        "-2.95"
+        "12.62",
+        "-3.84"
       ]
     },
     {
       "frequency_hz": "2280594500",
-      "s11_db": "-4.73",
-      "matched_s11_db": "-6.59",
+      "s11_db": "-4.57",
+      "matched_s11_db": "-6.58",
       "z_ohm": [
-        "13.32",
-        "-2.59"
+        "12.92",
+        "-3.49"
       ]
     },
     {
       "frequency_hz": "2285478000",
-      "s11_db": "-4.85",
+      "s11_db": "-4.69",
       "matched_s11_db": "-6.82",
       "z_ohm": [
-        "13.64",
-        "-2.22"
+        "13.23",
+        "-3.13"
       ]
     },
     {
       "frequency_hz": "2290361500",
-      "s11_db": "-4.98",
-      "matched_s11_db": "-7.07",
+      "s11_db": "-4.81",
+      "matched_s11_db": "-7.06",
       "z_ohm": [
-        "13.97",
-        "-1.85"
+        "13.56",
+        "-2.77"
       ]
     },
     {
       "frequency_hz": "2295245000",
-      "s11_db": "-5.11",
-      "matched_s11_db": "-7.33",
+      "s11_db": "-4.94",
+      "matched_s11_db": "-7.32",
       "z_ohm": [
-        "14.31",
-        "-1.49"
+        "13.89",
+        "-2.42"
       ]
     },
     {
       "frequency_hz": "2300128500",
-      "s11_db": "-5.25",
-      "matched_s11_db": "-7.60",
+      "s11_db": "-5.08",
+      "matched_s11_db": "-7.59",
       "z_ohm": [
-        "14.67",
-        "-1.12"
+        "14.23",
+        "-2.06"
       ]
     },
     {
       "frequency_hz": "2305012000",
-      "s11_db": "-5.39",
-      "matched_s11_db": "-7.89",
+      "s11_db": "-5.22",
+      "matched_s11_db": "-7.88",
       "z_ohm": [
-        "15.03",
-        "-0.75"
+        "14.59",
+        "-1.70"
       ]
     },
     {
       "frequency_hz": "2309895500",
-      "s11_db": "-5.54",
-      "matched_s11_db": "-8.18",
+      "s11_db": "-5.36",
+      "matched_s11_db": "-8.17",
       "z_ohm": [
-        "15.41",
-        "-0.38"
+        "14.96",
+        "-1.34"
       ]
     },
     {
       "frequency_hz": "2314779000",
-      "s11_db": "-5.69",
+      "s11_db": "-5.51",
       "matched_s11_db": "-8.49",
       "z_ohm": [
-        "15.81",
-        "-0.01"
+        "15.35",
+        "-0.98"
       ]
     },
     {
       "frequency_hz": "2319662500",
-      "s11_db": "-5.84",
-      "matched_s11_db": "-8.82",
+      "s11_db": "-5.66",
+      "matched_s11_db": "-8.81",
       "z_ohm": [
-        "16.21",
-        "0.36"
+        "15.75",
+        "-0.62"
       ]
     },
     {
       "frequency_hz": "2324546000",
-      "s11_db": "-6.01",
-      "matched_s11_db": "-9.16",
+      "s11_db": "-5.82",
+      "matched_s11_db": "-9.15",
       "z_ohm": [
-        "16.63",
-        "0.73"
+        "16.16",
+        "-0.26"
       ]
     },
     {
       "frequency_hz": "2329429500",
-      "s11_db": "-6.17",
-      "matched_s11_db": "-9.52",
+      "s11_db": "-5.99",
+      "matched_s11_db": "-9.51",
       "z_ohm": [
-        "17.07",
-        "1.10"
+        "16.58",
+        "0.10"
       ]
     },
     {
       "frequency_hz": "2334313000",
-      "s11_db": "-6.35",
-      "matched_s11_db": "-9.90",
+      "s11_db": "-6.16",
+      "matched_s11_db": "-9.89",
       "z_ohm": [
-        "17.52",
-        "1.47"
+        "17.02",
+        "0.46"
       ]
     },
     {
       "frequency_hz": "2339196500",
-      "s11_db": "-6.53",
+      "s11_db": "-6.34",
       "matched_s11_db": "-10.29",
       "z_ohm": [
-        "17.98",
-        "1.83"
+        "17.48",
+        "0.82"
       ]
     },
     {
       "frequency_hz": "2344080000",
-      "s11_db": "-6.72",
+      "s11_db": "-6.52",
       "matched_s11_db": "-10.71",
       "z_ohm": [
-        "18.47",
-        "2.20"
+        "17.95",
+        "1.17"
       ]
     },
     {
       "frequency_hz": "2348963500",
-      "s11_db": "-6.91",
-      "matched_s11_db": "-11.16",
+      "s11_db": "-6.71",
+      "matched_s11_db": "-11.15",
       "z_ohm": [
-        "18.96",
-        "2.56"
+        "18.44",
+        "1.52"
       ]
     },
     {
       "frequency_hz": "2353847000",
-      "s11_db": "-7.11",
+      "s11_db": "-6.91",
       "matched_s11_db": "-11.63",
       "z_ohm": [
-        "19.48",
-        "2.92"
+        "18.94",
+        "1.87"
       ]
     },
     {
       "frequency_hz": "2358730500",
-      "s11_db": "-7.32",
+      "s11_db": "-7.12",
       "matched_s11_db": "-12.12",
       "z_ohm": [
-        "20.01",
-        "3.28"
+        "19.46",
+        "2.22"
       ]
     },
     {
       "frequency_hz": "2363614000",
-      "s11_db": "-7.54",
+      "s11_db": "-7.33",
       "matched_s11_db": "-12.66",
       "z_ohm": [
-        "20.56",
-        "3.63"
+        "20.00",
+        "2.56"
       ]
     },
     {
       "frequency_hz": "2368497500",
-      "s11_db": "-7.76",
+      "s11_db": "-7.56",
       "matched_s11_db": "-13.22",
       "z_ohm": [
-        "21.13",
-        "3.98"
+        "20.56",
+        "2.90"
       ]
     },
     {
       "frequency_hz": "2373381000",
-      "s11_db": "-8.00",
+      "s11_db": "-7.79",
       "matched_s11_db": "-13.83",
       "z_ohm": [
-        "21.72",
-        "4.33"
+        "21.13",
+        "3.23"
       ]
     },
     {
       "frequency_hz": "2378264500",
-      "s11_db": "-8.24",
-      "matched_s11_db": "-14.48",
+      "s11_db": "-8.03",
+      "matched_s11_db": "-14.49",
       "z_ohm": [
-        "22.32",
-        "4.66"
+        "21.73",
+        "3.56"
       ]
     },
     {
       "frequency_hz": "2383148000",
-      "s11_db": "-8.49",
+      "s11_db": "-8.28",
       "matched_s11_db": "-15.19",
       "z_ohm": [
-        "22.95",
-        "5.00"
+        "22.34",
+        "3.88"
       ]
     },
     {
       "frequency_hz": "2388031500",
-      "s11_db": "-8.75",
+      "s11_db": "-8.54",
       "matched_s11_db": "-15.96",
       "z_ohm": [
-        "23.60",
-        "5.32"
+        "22.98",
+        "4.19"
       ]
     },
     {
       "frequency_hz": "2392915000",
-      "s11_db": "-9.03",
-      "matched_s11_db": "-16.80",
+      "s11_db": "-8.81",
+      "matched_s11_db": "-16.81",
       "z_ohm": [
-        "24.27",
-        "5.64"
+        "23.64",
+        "4.50"
       ]
     },
     {
       "frequency_hz": "2397798500",
-      "s11_db": "-9.31",
+      "s11_db": "-9.10",
       "matched_s11_db": "-17.74",
       "z_ohm": [
-        "24.96",
-        "5.95"
+        "24.31",
+        "4.79"
       ]
     },
     {
       "frequency_hz": "2402682000",
-      "s11_db": "-9.61",
-      "matched_s11_db": "-18.78",
+      "s11_db": "-9.39",
+      "matched_s11_db": "-18.79",
       "z_ohm": [
-        "25.67",
-        "6.25"
+        "25.01",
+        "5.08"
       ]
     },
     {
       "frequency_hz": "2407565500",
-      "s11_db": "-9.92",
-      "matched_s11_db": "-19.96",
+      "s11_db": "-9.70",
+      "matched_s11_db": "-19.97",
       "z_ohm": [
-        "26.41",
-        "6.54"
+        "25.73",
+        "5.36"
       ]
     },
     {
       "frequency_hz": "2412449000",
-      "s11_db": "-10.24",
-      "matched_s11_db": "-21.32",
+      "s11_db": "-10.02",
+      "matched_s11_db": "-21.33",
       "z_ohm": [
-        "27.17",
-        "6.82"
+        "26.48",
+        "5.62"
       ]
     },
     {
       "frequency_hz": "2417332500",
-      "s11_db": "-10.58",
-      "matched_s11_db": "-22.93",
+      "s11_db": "-10.36",
+      "matched_s11_db": "-22.94",
       "z_ohm": [
-        "27.95",
-        "7.09"
+        "27.25",
+        "5.87"
       ]
     },
     {
       "frequency_hz": "2422216000",
-      "s11_db": "-10.93",
-      "matched_s11_db": "-24.89",
+      "s11_db": "-10.72",
+      "matched_s11_db": "-24.90",
       "z_ohm": [
-        "28.76",
-        "7.34"
+        "28.04",
+        "6.11"
       ]
     },
     {
       "frequency_hz": "2427099500",
-      "s11_db": "-11.30",
-      "matched_s11_db": "-27.42",
+      "s11_db": "-11.09",
+      "matched_s11_db": "-27.43",
       "z_ohm": [
-        "29.59",
-        "7.57"
+        "28.86",
+        "6.33"
       ]
     },
     {
       "frequency_hz": "2431983000",
-      "s11_db": "-11.69",
-      "matched_s11_db": "-30.97",
+      "s11_db": "-11.48",
+      "matched_s11_db": "-30.98",
       "z_ohm": [
-        "30.45",
-        "7.79"
+        "29.70",
+        "6.53"
       ]
     },
     {
       "frequency_hz": "2436866500",
-      "s11_db": "-12.10",
-      "matched_s11_db": "-37.02",
+      "s11_db": "-11.89",
+      "matched_s11_db": "-37.03",
       "z_ohm": [
-        "31.34",
-        "7.99"
+        "30.56",
+        "6.72"
       ]
     },
     {
       "frequency_hz": "2441750000",
-      "s11_db": "-12.53",
+      "s11_db": "-12.33",
       "matched_s11_db": "-240.00",
       "z_ohm": [
-        "32.25",
-        "8.17"
+        "31.46",
+        "6.88"
       ]
     },
     {
       "frequency_hz": "2446633500",
-      "s11_db": "-12.98",
-      "matched_s11_db": "-37.08",
+      "s11_db": "-12.78",
+      "matched_s11_db": "-37.10",
       "z_ohm": [
-        "33.19",
-        "8.33"
+        "32.37",
+        "7.02"
       ]
     },
     {
       "frequency_hz": "2451517000",
-      "s11_db": "-13.46",
-      "matched_s11_db": "-31.10",
+      "s11_db": "-13.27",
+      "matched_s11_db": "-31.12",
       "z_ohm": [
-        "34.15",
-        "8.46"
+        "33.32",
+        "7.14"
       ]
     },
     {
       "frequency_hz": "2456400500",
-      "s11_db": "-13.96",
-      "matched_s11_db": "-27.61",
+      "s11_db": "-13.79",
+      "matched_s11_db": "-27.63",
       "z_ohm": [
-        "35.15",
-        "8.56"
+        "34.29",
+        "7.23"
       ]
     },
     {
       "frequency_hz": "2461284000",
-      "s11_db": "-14.50",
-      "matched_s11_db": "-25.15",
+      "s11_db": "-14.34",
+      "matched_s11_db": "-25.17",
       "z_ohm": [
-        "36.16",
-        "8.64"
+        "35.28",
+        "7.29"
       ]
     },
     {
       "frequency_hz": "2466167500",
-      "s11_db": "-15.07",
-      "matched_s11_db": "-23.25",
+      "s11_db": "-14.93",
+      "matched_s11_db": "-23.27",
       "z_ohm": [
-        "37.21",
-        "8.69"
-      ]
-    },
-    {
-      "frequency_hz": "2471051000",
-      "s11_db": "-15.67",
-      "matched_s11_db": "-21.71",
-      "z_ohm": [
-        "38.28",
-        "8.71"
-      ]
-    },
-    {
-      "frequency_hz": "2475934500",
-      "s11_db": "-16.32",
-      "matched_s11_db": "-20.41",
-      "z_ohm": [
-        "39.38",
-        "8.69"
-      ]
-    },
-    {
-      "frequency_hz": "2480818000",
-      "s11_db": "-17.01",
-      "matched_s11_db": "-19.29",
-      "z_ohm": [
-        "40.50",
-        "8.63"
-      ]
-    },
-    {
-      "frequency_hz": "2485701500",
-      "s11_db": "-17.74",
-      "matched_s11_db": "-18.31",
-      "z_ohm": [
-        "41.65",
-        "8.53"
-      ]
-    },
-    {
-      "frequency_hz": "2490585000",
-      "s11_db": "-18.53",
-      "matched_s11_db": "-17.44",
-      "z_ohm": [
-        "42.82",
-        "8.39"
-      ]
-    },
-    {
-      "frequency_hz": "2495468500",
-      "s11_db": "-19.37",
-      "matched_s11_db": "-16.65",
-      "z_ohm": [
-        "44.01",
-        "8.20"
-      ]
-    },
-    {
-      "frequency_hz": "2500352000",
-      "s11_db": "-20.26",
-      "matched_s11_db": "-15.94",
-      "z_ohm": [
-        "45.23",
-        "7.96"
-      ]
-    },
-    {
-      "frequency_hz": "2505235500",
-      "s11_db": "-21.19",
-      "matched_s11_db": "-15.30",
-      "z_ohm": [
-        "46.46",
-        "7.67"
-      ]
-    },
-    {
-      "frequency_hz": "2510119000",
-      "s11_db": "-22.13",
-      "matched_s11_db": "-14.70",
-      "z_ohm": [
-        "47.71",
+        "36.30",
         "7.32"
       ]
     },
     {
-      "frequency_hz": "2515002500",
-      "s11_db": "-23.05",
-      "matched_s11_db": "-14.15",
+      "frequency_hz": "2471051000",
+      "s11_db": "-15.56",
+      "matched_s11_db": "-21.73",
       "z_ohm": [
-        "48.98",
-        "6.91"
+        "37.35",
+        "7.32"
+      ]
+    },
+    {
+      "frequency_hz": "2475934500",
+      "s11_db": "-16.24",
+      "matched_s11_db": "-20.43",
+      "z_ohm": [
+        "38.42",
+        "7.29"
+      ]
+    },
+    {
+      "frequency_hz": "2480818000",
+      "s11_db": "-16.97",
+      "matched_s11_db": "-19.31",
+      "z_ohm": [
+        "39.51",
+        "7.21"
+      ]
+    },
+    {
+      "frequency_hz": "2485701500",
+      "s11_db": "-17.77",
+      "matched_s11_db": "-18.33",
+      "z_ohm": [
+        "40.63",
+        "7.10"
+      ]
+    },
+    {
+      "frequency_hz": "2490585000",
+      "s11_db": "-18.64",
+      "matched_s11_db": "-17.46",
+      "z_ohm": [
+        "41.77",
+        "6.94"
+      ]
+    },
+    {
+      "frequency_hz": "2495468500",
+      "s11_db": "-19.59",
+      "matched_s11_db": "-16.68",
+      "z_ohm": [
+        "42.93",
+        "6.73"
+      ]
+    },
+    {
+      "frequency_hz": "2500352000",
+      "s11_db": "-20.65",
+      "matched_s11_db": "-15.97",
+      "z_ohm": [
+        "44.11",
+        "6.48"
+      ]
+    },
+    {
+      "frequency_hz": "2505235500",
+      "s11_db": "-21.81",
+      "matched_s11_db": "-15.32",
+      "z_ohm": [
+        "45.30",
+        "6.17"
+      ]
+    },
+    {
+      "frequency_hz": "2510119000",
+      "s11_db": "-23.09",
+      "matched_s11_db": "-14.73",
+      "z_ohm": [
+        "46.52",
+        "5.81"
+      ]
+    },
+    {
+      "frequency_hz": "2515002500",
+      "s11_db": "-24.47",
+      "matched_s11_db": "-14.18",
+      "z_ohm": [
+        "47.74",
+        "5.39"
       ]
     },
     {
       "frequency_hz": "2519886000",
-      "s11_db": "-23.85",
-      "matched_s11_db": "-13.64",
+      "s11_db": "-25.90",
+      "matched_s11_db": "-13.67",
       "z_ohm": [
-        "50.25",
-        "6.44"
+        "48.97",
+        "4.92"
       ]
     },
     {
       "frequency_hz": "2524769500",
-      "s11_db": "-24.43",
-      "matched_s11_db": "-13.16",
+      "s11_db": "-27.20",
+      "matched_s11_db": "-13.19",
       "z_ohm": [
-        "51.54",
-        "5.91"
+        "50.21",
+        "4.37"
       ]
     },
     {
       "frequency_hz": "2529653000",
-      "s11_db": "-24.67",
-      "matched_s11_db": "-12.71",
+      "s11_db": "-28.02",
+      "matched_s11_db": "-12.74",
       "z_ohm": [
-        "52.82",
-        "5.31"
+        "51.45",
+        "3.76"
       ]
     },
     {
       "frequency_hz": "2534536500",
-      "s11_db": "-24.51",
-      "matched_s11_db": "-12.30",
+      "s11_db": "-27.99",
+      "matched_s11_db": "-12.33",
       "z_ohm": [
-        "54.11",
-        "4.64"
+        "52.69",
+        "3.09"
       ]
     },
     {
       "frequency_hz": "2539420000",
-      "s11_db": "-23.99",
-      "matched_s11_db": "-11.90",
+      "s11_db": "-27.15",
+      "matched_s11_db": "-11.93",
       "z_ohm": [
-        "55.40",
-        "3.90"
+        "53.92",
+        "2.34"
       ]
     },
     {
       "frequency_hz": "2544303500",
-      "s11_db": "-23.24",
-      "matched_s11_db": "-11.53",
+      "s11_db": "-25.85",
+      "matched_s11_db": "-11.56",
       "z_ohm": [
-        "56.67",
-        "3.08"
+        "55.14",
+        "1.52"
       ]
     },
     {
       "frequency_hz": "2549187000",
-      "s11_db": "-22.36",
-      "matched_s11_db": "-11.18",
+      "s11_db": "-24.44",
+      "matched_s11_db": "-11.21",
       "z_ohm": [
-        "57.93",
-        "2.19"
+        "56.35",
+        "0.63"
       ]
     },
     {
       "frequency_hz": "2554070500",
-      "s11_db": "-21.44",
-      "matched_s11_db": "-10.85",
+      "s11_db": "-23.09",
+      "matched_s11_db": "-10.88",
       "z_ohm": [
-        "59.17",
-        "1.22"
+        "57.53",
+        "-0.34"
       ]
     },
     {
       "frequency_hz": "2558954000",
-      "s11_db": "-20.53",
-      "matched_s11_db": "-10.53",
+      "s11_db": "-21.84",
+      "matched_s11_db": "-10.57",
       "z_ohm": [
-        "60.39",
-        "0.17"
+        "58.68",
+        "-1.38"
       ]
     },
     {
       "frequency_hz": "2563837500",
-      "s11_db": "-19.66",
-      "matched_s11_db": "-10.23",
+      "s11_db": "-20.71",
+      "matched_s11_db": "-10.27",
       "z_ohm": [
-        "61.57",
-        "-0.95"
+        "59.80",
+        "-2.50"
       ]
     },
     {
       "frequency_hz": "2568721000",
-      "s11_db": "-18.83",
-      "matched_s11_db": "-9.95",
+      "s11_db": "-19.69",
+      "matched_s11_db": "-9.98",
       "z_ohm": [
-        "62.71",
-        "-2.16"
+        "60.88",
+        "-3.70"
       ]
     },
     {
       "frequency_hz": "2573604500",
-      "s11_db": "-18.06",
-      "matched_s11_db": "-9.68",
+      "s11_db": "-18.77",
+      "matched_s11_db": "-9.71",
       "z_ohm": [
-        "63.81",
-        "-3.44"
+        "61.92",
+        "-4.96"
       ]
     },
     {
       "frequency_hz": "2578488000",
-      "s11_db": "-17.34",
-      "matched_s11_db": "-9.42",
+      "s11_db": "-17.93",
+      "matched_s11_db": "-9.45",
       "z_ohm": [
-        "64.85",
-        "-4.80"
+        "62.89",
+        "-6.30"
       ]
     },
     {
       "frequency_hz": "2583371500",
-      "s11_db": "-16.67",
-      "matched_s11_db": "-9.17",
+      "s11_db": "-17.16",
+      "matched_s11_db": "-9.21",
       "z_ohm": [
-        "65.83",
-        "-6.24"
+        "63.81",
+        "-7.71"
       ]
     },
     {
       "frequency_hz": "2588255000",
-      "s11_db": "-16.04",
-      "matched_s11_db": "-8.94",
+      "s11_db": "-16.46",
+      "matched_s11_db": "-8.97",
       "z_ohm": [
-        "66.75",
-        "-7.74"
+        "64.66",
+        "-9.18"
       ]
     },
     {
       "frequency_hz": "2593138500",
-      "s11_db": "-15.46",
-      "matched_s11_db": "-8.71",
+      "s11_db": "-15.80",
+      "matched_s11_db": "-8.74",
       "z_ohm": [
-        "67.59",
-        "-9.31"
+        "65.44",
+        "-10.72"
       ]
     },
     {
       "frequency_hz": "2598022000",
-      "s11_db": "-14.91",
-      "matched_s11_db": "-8.49",
+      "s11_db": "-15.20",
+      "matched_s11_db": "-8.53",
       "z_ohm": [
-        "68.36",
-        "-10.94"
+        "66.14",
+        "-12.31"
       ]
     },
     {
       "frequency_hz": "2602905500",
-      "s11_db": "-14.39",
-      "matched_s11_db": "-8.28",
+      "s11_db": "-14.64",
+      "matched_s11_db": "-8.32",
       "z_ohm": [
-        "69.03",
-        "-12.62"
+        "66.75",
+        "-13.95"
       ]
     },
     {
       "frequency_hz": "2607789000",
-      "s11_db": "-13.90",
-      "matched_s11_db": "-8.09",
+      "s11_db": "-14.11",
+      "matched_s11_db": "-8.12",
       "z_ohm": [
-        "69.62",
-        "-14.35"
+        "67.27",
+        "-15.63"
       ]
     },
     {
       "frequency_hz": "2612672500",
-      "s11_db": "-13.45",
-      "matched_s11_db": "-7.89",
+      "s11_db": "-13.62",
+      "matched_s11_db": "-7.93",
       "z_ohm": [
-        "70.11",
-        "-16.13"
+        "67.70",
+        "-17.35"
       ]
     },
     {
       "frequency_hz": "2617556000",
-      "s11_db": "-13.01",
-      "matched_s11_db": "-7.71",
+      "s11_db": "-13.16",
+      "matched_s11_db": "-7.74",
       "z_ohm": [
-        "70.49",
-        "-17.94"
+        "68.03",
+        "-19.10"
       ]
     },
     {
       "frequency_hz": "2622439500",
-      "s11_db": "-12.60",
-      "matched_s11_db": "-7.53",
+      "s11_db": "-12.73",
+      "matched_s11_db": "-7.57",
       "z_ohm": [
-        "70.78",
-        "-19.77"
+        "68.26",
+        "-20.87"
       ]
     },
     {
       "frequency_hz": "2627323000",
-      "s11_db": "-12.22",
-      "matched_s11_db": "-7.36",
+      "s11_db": "-12.32",
+      "matched_s11_db": "-7.39",
       "z_ohm": [
-        "70.95",
-        "-21.62"
+        "68.39",
+        "-22.66"
       ]
     },
     {
       "frequency_hz": "2632206500",
-      "s11_db": "-11.85",
-      "matched_s11_db": "-7.20",
+      "s11_db": "-11.93",
+      "matched_s11_db": "-7.23",
       "z_ohm": [
-        "71.02",
-        "-23.48"
+        "68.41",
+        "-24.44"
       ]
     },
     {
       "frequency_hz": "2637090000",
-      "s11_db": "-11.50",
-      "matched_s11_db": "-7.04",
+      "s11_db": "-11.57",
+      "matched_s11_db": "-7.07",
       "z_ohm": [
-        "70.98",
-        "-25.34"
+        "68.33",
+        "-26.23"
       ]
     },
     {
       "frequency_hz": "2641973500",
-      "s11_db": "-11.17",
-      "matched_s11_db": "-6.89",
+      "s11_db": "-11.22",
+      "matched_s11_db": "-6.92",
       "z_ohm": [
-        "70.84",
-        "-27.18"
+        "68.15",
+        "-27.99"
       ]
     },
     {
       "frequency_hz": "2646857000",
-      "s11_db": "-10.85",
-      "matched_s11_db": "-6.74",
+      "s11_db": "-10.89",
+      "matched_s11_db": "-6.77",
       "z_ohm": [
-        "70.59",
-        "-29.01"
+        "67.86",
+        "-29.74"
       ]
     },
     {
       "frequency_hz": "2651740500",
-      "s11_db": "-10.55",
-      "matched_s11_db": "-6.60",
+      "s11_db": "-10.58",
+      "matched_s11_db": "-6.63",
       "z_ohm": [
-        "70.23",
-        "-30.81"
+        "67.48",
+        "-31.46"
       ]
     },
     {
       "frequency_hz": "2656624000",
-      "s11_db": "-10.26",
-      "matched_s11_db": "-6.47",
+      "s11_db": "-10.28",
+      "matched_s11_db": "-6.50",
       "z_ohm": [
-        "69.78",
-        "-32.57"
+        "67.01",
+        "-33.13"
       ]
     },
     {
       "frequency_hz": "2661507500",
-      "s11_db": "-9.98",
-      "matched_s11_db": "-6.33",
+      "s11_db": "-9.99",
+      "matched_s11_db": "-6.37",
       "z_ohm": [
-        "69.23",
-        "-34.29"
+        "66.45",
+        "-34.77"
       ]
     },
     {
       "frequency_hz": "2666391000",
       "s11_db": "-9.72",
-      "matched_s11_db": "-6.21",
+      "matched_s11_db": "-6.24",
       "z_ohm": [
-        "68.59",
-        "-35.96"
+        "65.80",
+        "-36.35"
       ]
     },
     {
       "frequency_hz": "2671274500",
-      "s11_db": "-9.47",
-      "matched_s11_db": "-6.09",
+      "s11_db": "-9.46",
+      "matched_s11_db": "-6.12",
       "z_ohm": [
-        "67.86",
-        "-37.56"
+        "65.08",
+        "-37.87"
       ]
     },
     {
       "frequency_hz": "2676158000",
-      "s11_db": "-9.23",
-      "matched_s11_db": "-5.97",
+      "s11_db": "-9.21",
+      "matched_s11_db": "-6.00",
       "z_ohm": [
-        "67.06",
-        "-39.11"
+        "64.28",
+        "-39.34"
       ]
     },
     {
       "frequency_hz": "2681041500",
-      "s11_db": "-8.99",
-      "matched_s11_db": "-5.85",
+      "s11_db": "-8.97",
+      "matched_s11_db": "-5.88",
       "z_ohm": [
-        "66.19",
-        "-40.59"
+        "63.42",
+        "-40.73"
       ]
     },
     {
       "frequency_hz": "2685925000",
-      "s11_db": "-8.77",
-      "matched_s11_db": "-5.74",
+      "s11_db": "-8.75",
+      "matched_s11_db": "-5.77",
       "z_ohm": [
-        "65.26",
-        "-42.00"
+        "62.49",
+        "-42.06"
       ]
     },
     {
       "frequency_hz": "2690808500",
-      "s11_db": "-8.56",
-      "matched_s11_db": "-5.64",
+      "s11_db": "-8.53",
+      "matched_s11_db": "-5.67",
       "z_ohm": [
-        "64.26",
-        "-43.33"
+        "61.52",
+        "-43.31"
       ]
     },
     {
       "frequency_hz": "2695692000",
-      "s11_db": "-8.35",
-      "matched_s11_db": "-5.54",
+      "s11_db": "-8.32",
+      "matched_s11_db": "-5.56",
       "z_ohm": [
-        "63.22",
-        "-44.58"
+        "60.50",
+        "-44.49"
       ]
     },
     {
       "frequency_hz": "2700575500",
-      "s11_db": "-8.16",
-      "matched_s11_db": "-5.44",
+      "s11_db": "-8.12",
+      "matched_s11_db": "-5.47",
       "z_ohm": [
-        "62.14",
-        "-45.76"
+        "59.45",
+        "-45.59"
       ]
     },
     {
       "frequency_hz": "2705459000",
-      "s11_db": "-7.97",
-      "matched_s11_db": "-5.34",
+      "s11_db": "-7.93",
+      "matched_s11_db": "-5.37",
       "z_ohm": [
-        "61.02",
-        "-46.86"
+        "58.36",
+        "-46.62"
       ]
     },
     {
       "frequency_hz": "2710342500",
-      "s11_db": "-7.79",
-      "matched_s11_db": "-5.25",
+      "s11_db": "-7.74",
+      "matched_s11_db": "-5.28",
       "z_ohm": [
-        "59.87",
-        "-47.88"
+        "57.25",
+        "-47.57"
       ]
     },
     {
       "frequency_hz": "2715226000",
-      "s11_db": "-7.62",
-      "matched_s11_db": "-5.16",
+      "s11_db": "-7.56",
+      "matched_s11_db": "-5.19",
       "z_ohm": [
-        "58.70",
-        "-48.82"
+        "56.12",
+        "-48.45"
       ]
     },
     {
       "frequency_hz": "2720109500",
-      "s11_db": "-7.45",
-      "matched_s11_db": "-5.07",
+      "s11_db": "-7.39",
+      "matched_s11_db": "-5.10",
       "z_ohm": [
-        "57.52",
-        "-49.68"
+        "54.98",
+        "-49.25"
       ]
     },
     {
       "frequency_hz": "2724993000",
-      "s11_db": "-7.29",
-      "matched_s11_db": "-4.99",
+      "s11_db": "-7.23",
+      "matched_s11_db": "-5.02",
       "z_ohm": [
-        "56.33",
-        "-50.47"
+        "53.83",
+        "-49.99"
       ]
     },
     {
       "frequency_hz": "2729876500",
-      "s11_db": "-7.13",
-      "matched_s11_db": "-4.91",
+      "s11_db": "-7.07",
+      "matched_s11_db": "-4.94",
       "z_ohm": [
-        "55.13",
-        "-51.19"
+        "52.67",
+        "-50.65"
       ]
     },
     {
       "frequency_hz": "2734760000",
-      "s11_db": "-6.98",
-      "matched_s11_db": "-4.83",
+      "s11_db": "-6.92",
+      "matched_s11_db": "-4.86",
       "z_ohm": [
-        "53.93",
-        "-51.83"
+        "51.52",
+        "-51.25"
       ]
     },
     {
       "frequency_hz": "2739643500",
-      "s11_db": "-6.84",
-      "matched_s11_db": "-4.76",
+      "s11_db": "-6.77",
+      "matched_s11_db": "-4.78",
       "z_ohm": [
-        "52.74",
-        "-52.41"
+        "50.38",
+        "-51.78"
       ]
     },
     {
       "frequency_hz": "2744527000",
-      "s11_db": "-6.70",
-      "matched_s11_db": "-4.68",
+      "s11_db": "-6.63",
+      "matched_s11_db": "-4.71",
       "z_ohm": [
-        "51.55",
-        "-52.92"
+        "49.24",
+        "-52.25"
       ]
     },
     {
       "frequency_hz": "2749410500",
-      "s11_db": "-6.57",
-      "matched_s11_db": "-4.61",
+      "s11_db": "-6.50",
+      "matched_s11_db": "-4.64",
       "z_ohm": [
-        "50.38",
-        "-53.37"
+        "48.12",
+        "-52.67"
       ]
     },
     {
       "frequency_hz": "2754294000",
-      "s11_db": "-6.44",
-      "matched_s11_db": "-4.55",
+      "s11_db": "-6.37",
+      "matched_s11_db": "-4.57",
       "z_ohm": [
-        "49.22",
-        "-53.77"
+        "47.01",
+        "-53.03"
       ]
     },
     {
       "frequency_hz": "2759177500",
-      "s11_db": "-6.32",
-      "matched_s11_db": "-4.48",
+      "s11_db": "-6.24",
+      "matched_s11_db": "-4.50",
       "z_ohm": [
-        "48.09",
-        "-54.11"
+        "45.92",
+        "-53.33"
       ]
     },
     {
       "frequency_hz": "2764061000",
-      "s11_db": "-6.20",
-      "matched_s11_db": "-4.42",
+      "s11_db": "-6.12",
+      "matched_s11_db": "-4.44",
       "z_ohm": [
-        "46.97",
-        "-54.39"
+        "44.86",
+        "-53.59"
       ]
     },
     {
       "frequency_hz": "2768944500",
-      "s11_db": "-6.08",
-      "matched_s11_db": "-4.36",
+      "s11_db": "-6.01",
+      "matched_s11_db": "-4.38",
       "z_ohm": [
-        "45.87",
-        "-54.63"
-      ]
-    },
-    {
-      "frequency_hz": "2773828000",
-      "s11_db": "-5.97",
-      "matched_s11_db": "-4.30",
-      "z_ohm": [
-        "44.80",
-        "-54.83"
-      ]
-    },
-    {
-      "frequency_hz": "2778711500",
-      "s11_db": "-5.86",
-      "matched_s11_db": "-4.24",
-      "z_ohm": [
-        "43.76",
-        "-54.98"
-      ]
-    },
-    {
-      "frequency_hz": "2783595000",
-      "s11_db": "-5.76",
-      "matched_s11_db": "-4.18",
-      "z_ohm": [
-        "42.74",
-        "-55.09"
-      ]
-    },
-    {
-      "frequency_hz": "2788478500",
-      "s11_db": "-5.66",
-      "matched_s11_db": "-4.13",
-      "z_ohm": [
-        "41.75",
-        "-55.17"
-      ]
-    },
-    {
-      "frequency_hz": "2793362000",
-      "s11_db": "-5.57",
-      "matched_s11_db": "-4.08",
-      "z_ohm": [
-        "40.78",
-        "-55.22"
-      ]
-    },
-    {
-      "frequency_hz": "2798245500",
-      "s11_db": "-5.47",
-      "matched_s11_db": "-4.03",
-      "z_ohm": [
-        "39.85",
-        "-55.24"
-      ]
-    },
-    {
-      "frequency_hz": "2803129000",
-      "s11_db": "-5.38",
-      "matched_s11_db": "-3.98",
-      "z_ohm": [
-        "38.94",
-        "-55.23"
-      ]
-    },
-    {
-      "frequency_hz": "2808012500",
-      "s11_db": "-5.30",
-      "matched_s11_db": "-3.93",
-      "z_ohm": [
-        "38.06",
-        "-55.20"
-      ]
-    },
-    {
-      "frequency_hz": "2812896000",
-      "s11_db": "-5.21",
-      "matched_s11_db": "-3.89",
-      "z_ohm": [
-        "37.20",
-        "-55.14"
-      ]
-    },
-    {
-      "frequency_hz": "2817779500",
-      "s11_db": "-5.13",
-      "matched_s11_db": "-3.84",
-      "z_ohm": [
-        "36.38",
-        "-55.07"
-      ]
-    },
-    {
-      "frequency_hz": "2822663000",
-      "s11_db": "-5.06",
-      "matched_s11_db": "-3.80",
-      "z_ohm": [
-        "35.58",
-        "-54.97"
-      ]
-    },
-    {
-      "frequency_hz": "2827546500",
-      "s11_db": "-4.98",
-      "matched_s11_db": "-3.76",
-      "z_ohm": [
-        "34.80",
-        "-54.87"
-      ]
-    },
-    {
-      "frequency_hz": "2832430000",
-      "s11_db": "-4.91",
-      "matched_s11_db": "-3.72",
-      "z_ohm": [
-        "34.05",
-        "-54.74"
-      ]
-    },
-    {
-      "frequency_hz": "2837313500",
-      "s11_db": "-4.84",
-      "matched_s11_db": "-3.68",
-      "z_ohm": [
-        "33.33",
-        "-54.61"
-      ]
-    },
-    {
-      "frequency_hz": "2842197000",
-      "s11_db": "-4.77",
-      "matched_s11_db": "-3.64",
-      "z_ohm": [
-        "32.63",
-        "-54.47"
-      ]
-    },
-    {
-      "frequency_hz": "2847080500",
-      "s11_db": "-4.70",
-      "matched_s11_db": "-3.61",
-      "z_ohm": [
-        "31.96",
-        "-54.31"
-      ]
-    },
-    {
-      "frequency_hz": "2851964000",
-      "s11_db": "-4.64",
-      "matched_s11_db": "-3.57",
-      "z_ohm": [
-        "31.30",
-        "-54.15"
-      ]
-    },
-    {
-      "frequency_hz": "2856847500",
-      "s11_db": "-4.57",
-      "matched_s11_db": "-3.53",
-      "z_ohm": [
-        "30.67",
-        "-53.98"
-      ]
-    },
-    {
-      "frequency_hz": "2861731000",
-      "s11_db": "-4.51",
-      "matched_s11_db": "-3.50",
-      "z_ohm": [
-        "30.06",
+        "43.81",
         "-53.81"
       ]
     },
     {
-      "frequency_hz": "2866614500",
-      "s11_db": "-4.45",
-      "matched_s11_db": "-3.47",
+      "frequency_hz": "2773828000",
+      "s11_db": "-5.89",
+      "matched_s11_db": "-4.32",
       "z_ohm": [
-        "29.47",
-        "-53.63"
+        "42.79",
+        "-53.98"
+      ]
+    },
+    {
+      "frequency_hz": "2778711500",
+      "s11_db": "-5.79",
+      "matched_s11_db": "-4.26",
+      "z_ohm": [
+        "41.79",
+        "-54.12"
+      ]
+    },
+    {
+      "frequency_hz": "2783595000",
+      "s11_db": "-5.68",
+      "matched_s11_db": "-4.21",
+      "z_ohm": [
+        "40.82",
+        "-54.22"
+      ]
+    },
+    {
+      "frequency_hz": "2788478500",
+      "s11_db": "-5.58",
+      "matched_s11_db": "-4.15",
+      "z_ohm": [
+        "39.87",
+        "-54.28"
+      ]
+    },
+    {
+      "frequency_hz": "2793362000",
+      "s11_db": "-5.48",
+      "matched_s11_db": "-4.10",
+      "z_ohm": [
+        "38.95",
+        "-54.32"
+      ]
+    },
+    {
+      "frequency_hz": "2798245500",
+      "s11_db": "-5.39",
+      "matched_s11_db": "-4.05",
+      "z_ohm": [
+        "38.06",
+        "-54.33"
+      ]
+    },
+    {
+      "frequency_hz": "2803129000",
+      "s11_db": "-5.30",
+      "matched_s11_db": "-4.00",
+      "z_ohm": [
+        "37.19",
+        "-54.31"
+      ]
+    },
+    {
+      "frequency_hz": "2808012500",
+      "s11_db": "-5.21",
+      "matched_s11_db": "-3.95",
+      "z_ohm": [
+        "36.35",
+        "-54.27"
+      ]
+    },
+    {
+      "frequency_hz": "2812896000",
+      "s11_db": "-5.13",
+      "matched_s11_db": "-3.91",
+      "z_ohm": [
+        "35.54",
+        "-54.21"
+      ]
+    },
+    {
+      "frequency_hz": "2817779500",
+      "s11_db": "-5.05",
+      "matched_s11_db": "-3.86",
+      "z_ohm": [
+        "34.75",
+        "-54.13"
+      ]
+    },
+    {
+      "frequency_hz": "2822663000",
+      "s11_db": "-4.97",
+      "matched_s11_db": "-3.82",
+      "z_ohm": [
+        "33.99",
+        "-54.04"
+      ]
+    },
+    {
+      "frequency_hz": "2827546500",
+      "s11_db": "-4.89",
+      "matched_s11_db": "-3.78",
+      "z_ohm": [
+        "33.25",
+        "-53.93"
+      ]
+    },
+    {
+      "frequency_hz": "2832430000",
+      "s11_db": "-4.82",
+      "matched_s11_db": "-3.74",
+      "z_ohm": [
+        "32.54",
+        "-53.81"
+      ]
+    },
+    {
+      "frequency_hz": "2837313500",
+      "s11_db": "-4.75",
+      "matched_s11_db": "-3.70",
+      "z_ohm": [
+        "31.85",
+        "-53.68"
+      ]
+    },
+    {
+      "frequency_hz": "2842197000",
+      "s11_db": "-4.68",
+      "matched_s11_db": "-3.66",
+      "z_ohm": [
+        "31.19",
+        "-53.54"
+      ]
+    },
+    {
+      "frequency_hz": "2847080500",
+      "s11_db": "-4.61",
+      "matched_s11_db": "-3.62",
+      "z_ohm": [
+        "30.54",
+        "-53.39"
+      ]
+    },
+    {
+      "frequency_hz": "2851964000",
+      "s11_db": "-4.55",
+      "matched_s11_db": "-3.59",
+      "z_ohm": [
+        "29.92",
+        "-53.23"
+      ]
+    },
+    {
+      "frequency_hz": "2856847500",
+      "s11_db": "-4.48",
+      "matched_s11_db": "-3.55",
+      "z_ohm": [
+        "29.32",
+        "-53.07"
+      ]
+    },
+    {
+      "frequency_hz": "2861731000",
+      "s11_db": "-4.42",
+      "matched_s11_db": "-3.51",
+      "z_ohm": [
+        "28.73",
+        "-52.90"
+      ]
+    },
+    {
+      "frequency_hz": "2866614500",
+      "s11_db": "-4.36",
+      "matched_s11_db": "-3.48",
+      "z_ohm": [
+        "28.17",
+        "-52.73"
       ]
     },
     {
       "frequency_hz": "2871498000",
-      "s11_db": "-4.39",
-      "matched_s11_db": "-3.43",
+      "s11_db": "-4.30",
+      "matched_s11_db": "-3.45",
       "z_ohm": [
-        "28.90",
-        "-53.45"
+        "27.62",
+        "-52.55"
       ]
     },
     {
       "frequency_hz": "2876381500",
-      "s11_db": "-4.34",
-      "matched_s11_db": "-3.40",
+      "s11_db": "-4.25",
+      "matched_s11_db": "-3.41",
       "z_ohm": [
-        "28.35",
-        "-53.26"
+        "27.09",
+        "-52.37"
       ]
     },
     {
       "frequency_hz": "2881265000",
-      "s11_db": "-4.28",
-      "matched_s11_db": "-3.37",
+      "s11_db": "-4.19",
+      "matched_s11_db": "-3.38",
       "z_ohm": [
-        "27.81",
-        "-53.08"
+        "26.58",
+        "-52.19"
       ]
     },
     {
       "frequency_hz": "2886148500",
-      "s11_db": "-4.23",
-      "matched_s11_db": "-3.34",
+      "s11_db": "-4.14",
+      "matched_s11_db": "-3.35",
       "z_ohm": [
-        "27.29",
-        "-52.89"
+        "26.08",
+        "-52.01"
       ]
     },
     {
       "frequency_hz": "2891032000",
-      "s11_db": "-4.18",
-      "matched_s11_db": "-3.31",
+      "s11_db": "-4.08",
+      "matched_s11_db": "-3.32",
       "z_ohm": [
-        "26.79",
-        "-52.70"
+        "25.60",
+        "-51.83"
       ]
     },
     {
       "frequency_hz": "2895915500",
-      "s11_db": "-4.12",
-      "matched_s11_db": "-3.28",
+      "s11_db": "-4.03",
+      "matched_s11_db": "-3.29",
       "z_ohm": [
-        "26.30",
-        "-52.51"
+        "25.13",
+        "-51.65"
       ]
     },
     {
       "frequency_hz": "2900799000",
-      "s11_db": "-4.07",
-      "matched_s11_db": "-3.25",
+      "s11_db": "-3.98",
+      "matched_s11_db": "-3.26",
       "z_ohm": [
-        "25.82",
-        "-52.32"
+        "24.68",
+        "-51.46"
       ]
     },
     {
       "frequency_hz": "2905682500",
-      "s11_db": "-4.02",
-      "matched_s11_db": "-3.22",
+      "s11_db": "-3.93",
+      "matched_s11_db": "-3.23",
       "z_ohm": [
-        "25.36",
-        "-52.13"
+        "24.23",
+        "-51.28"
       ]
     },
     {
       "frequency_hz": "2910566000",
-      "s11_db": "-3.97",
-      "matched_s11_db": "-3.19",
+      "s11_db": "-3.88",
+      "matched_s11_db": "-3.20",
       "z_ohm": [
-        "24.91",
-        "-51.94"
+        "23.80",
+        "-51.10"
       ]
     },
     {
       "frequency_hz": "2915449500",
-      "s11_db": "-3.93",
-      "matched_s11_db": "-3.16",
+      "s11_db": "-3.83",
+      "matched_s11_db": "-3.17",
       "z_ohm": [
-        "24.47",
-        "-51.75"
+        "23.38",
+        "-50.92"
       ]
     },
     {
       "frequency_hz": "2920333000",
-      "s11_db": "-3.88",
-      "matched_s11_db": "-3.13",
+      "s11_db": "-3.78",
+      "matched_s11_db": "-3.14",
       "z_ohm": [
-        "24.05",
-        "-51.57"
+        "22.97",
+        "-50.74"
       ]
     },
     {
       "frequency_hz": "2925216500",
-      "s11_db": "-3.83",
+      "s11_db": "-3.74",
       "matched_s11_db": "-3.11",
       "z_ohm": [
-        "23.63",
-        "-51.38"
+        "22.57",
+        "-50.56"
       ]
     },
     {
       "frequency_hz": "2930100000",
-      "s11_db": "-3.79",
+      "s11_db": "-3.69",
       "matched_s11_db": "-3.08",
       "z_ohm": [
-        "23.22",
-        "-51.20"
+        "22.18",
+        "-50.38"
       ]
     }
   ],
   "solver_warnings": [
     "mesh warning: 27 x cell(s) coarser than lambda/20 at f_max = 3.4184e9 Hz (0 below lambda/10); worst: 2.9419 (drawing units) = lambda/13.9 with n = 2.145, needs <= 2.0445 [x cell 47 (x = 76.0613495028309 .. 79.00321688010973)]",
-    "mesh warning: 10 y cell(s) coarser than lambda/20 at f_max = 3.4184e9 Hz (0 below lambda/10); worst: 2.9590 (drawing units) = lambda/13.8 with n = 2.145, needs <= 2.0445 [y cell 158 (y = 53.74477393064949 .. 56.70377647294996)]",
+    "mesh warning: 10 y cell(s) coarser than lambda/20 at f_max = 3.4184e9 Hz (0 below lambda/10); worst: 2.9590 (drawing units) = lambda/13.8 with n = 2.145, needs <= 2.0445 [y cell 156 (y = 53.74477393064949 .. 56.70377647294996)]",
     "mesh warning: 2 x neighbour cell size ratio(s) above 1.5; worst 2.78 [x cell 106 (x = 100 .. 100.25)]",
-    "mesh warning: 2 y neighbour cell size ratio(s) above 1.5; worst 1.67 [y cell 51 (y = 17.2 .. 17.366666666666667)]",
+    "mesh warning: 3 y neighbour cell size ratio(s) above 1.5; worst 1.97 [y cell 51 (y = 17.29 .. 17.4675)]",
     "mesh warning: 5 z neighbour cell size ratio(s) above 1.5; worst 2.52 [z cell 32 (z = 0 .. 0.25)]"
   ]
 }

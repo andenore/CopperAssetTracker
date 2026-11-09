@@ -7,14 +7,11 @@
 // board's antenna matching network. The Nordic strokes are unchanged.
 macro NRF52832_NORDIC_MATCH_SIX_LAYER {
     source = {
-        antenna_revision = "36S0021A Revision 4.0 (2024), page 3";
-        antenna_sha256 = "c11a1866c9fd04bad6dcbbd40cfdfbec067c731e47ba83f4e58b56c0e4c9dfa0";
-        antenna_url = "https://www.johansontechnology.com/docs/3827/Antenna-2450AT18A0100001E-Rev4.0.pdf";
         archive_sha256 = "21e37dcdd8e63d80825bb9e06462efdebe55b642f4e19c5f25c2d9a131e6e334";
-        base_asset_sha256 = "3e435afba3184b175533782e9354d0c228615c44a153d081bf90103926aa0348";
+        derived_from_asset_sha256 = "3e435afba3184b175533782e9354d0c228615c44a153d081bf90103926aa0348";
         footprint_adaptation = "CopperScript full-vertical pinned KiCad footprints 7ebfa6b23cc292a56f751b7b5f4a0e12eeef69dd; copper pads match installed KiCad 10.0.6; courtyard/body and EP thermal metadata rebound";
         geometry_status = "Nordic matching strokes extracted; ground exits adapted, not vendor CAD";
-        adaptation = "CopperAssetTracker: Johanson chip antenna and tee removed; feed port added at L1 output for a synthesized trace antenna";
+        adaptation = "CopperAssetTracker: derived from the CopperLib Johanson managed layout asset above; the Johanson chip antenna, its tee and their provenance removed; feed port added at L1 output for a synthesized trace antenna";
         gerber_entry = "nRF52832-QFAx Reference Layout 1_1/Production files/nRF52832-QFAA/nrf52832_qfaa.GTL";
         gerber_sha256 = "5b553fba85d64dc9c0a6e74597e7ac99526ae5ff6dd7373d40feb4d58ec3e4ae";
         nordic_url = "https://nsscprodmedia.blob.core.windows.net/prod/software-and-other-downloads/reference-layouts/nrf52832qfaxreflayoutv11.zip";

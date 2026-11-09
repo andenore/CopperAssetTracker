@@ -497,30 +497,6 @@
     },
     {
       "references": [
-        "L_BT_SHUNT"
-      ],
-      "manufacturer": "Murata Electronics",
-      "mpn": "LQG15HS4N3S02D",
-      "supplier": "jlcpcb",
-      "supplier_part": "C97999",
-      "source_url": "https://www.lcsc.com/product-detail/C97999.html",
-      "checked_on": "2026-11-08",
-      "availability": "LCSC listing C97999 (shared JLC/LCSC catalogue); JLC stock not confirmed, the LQG15HS4N3B02D variant is C668382; recheck before order"
-    },
-    {
-      "references": [
-        "C_BT_SERIES"
-      ],
-      "manufacturer": "YAGEO",
-      "mpn": "CC0402BRNPO9BN2R0",
-      "supplier": "jlcpcb",
-      "supplier_part": "C281756",
-      "source_url": "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_YAGEO-CC0402BRNPO9BN2R0_C281756.html",
-      "checked_on": "2026-11-08",
-      "availability": "LCSC listing C281756 (shared JLC/LCSC catalogue); JLC stock not confirmed; recheck before order"
-    },
-    {
-      "references": [
         "C_GNSS_SERIES"
       ],
       "manufacturer": "YAGEO",
@@ -536,48 +512,72 @@
         "C_GNSS_SHUNT"
       ],
       "manufacturer": "Murata Electronics",
-      "mpn": "GJM1555C1H1R2BB01D",
+      "mpn": "GJM1555C1H1R1BB01D",
       "supplier": "jlcpcb",
-      "supplier_part": "C72135",
-      "source_url": "https://www.lcsc.com/product-image/C72135.html",
-      "checked_on": "2026-11-08",
-      "availability": "LCSC listing C72135 (shared JLC/LCSC catalogue); JLC stock not confirmed; recheck before order"
+      "supplier_part": "C161308",
+      "source_url": "https://www.lcsc.com/product-detail/C161308.html",
+      "checked_on": "2026-11-09",
+      "availability": "LCSC listing C161308 showed out of stock on 2026-11-09; choose an in-stock 1.1 pF C0G 0402 before order"
     },
     {
       "references": [
-        "L_CELL_SERIES"
+        "C_BT_SHUNT"
       ],
-      "manufacturer": "Murata Electronics",
-      "mpn": "LQG15HS1N5S02D",
+      "manufacturer": "YAGEO",
+      "mpn": "CC0402BRNPO9BN1R0",
       "supplier": "jlcpcb",
-      "supplier_part": "C77106",
-      "source_url": "https://www.lcsc.com/product-detail/C77106.html",
-      "checked_on": "2026-11-08",
-      "availability": "LCSC listing C77106 (shared JLC/LCSC catalogue); JLC stock not confirmed; recheck before order"
+      "supplier_part": "C309455",
+      "source_url": "https://jlcpcb.com/partdetail/C309455",
+      "checked_on": "2026-11-09",
+      "availability": "JLC catalogue part previously selected for the Johanson tee's series capacitor; recheck live stock"
     },
     {
       "references": [
-        "L_CELL_SHUNT"
+        "L_BT_SERIES"
       ],
       "manufacturer": "Murata Electronics",
-      "mpn": "LQG15HS2N7S02D",
+      "mpn": "LQG15HS1N0S02D",
       "supplier": "jlcpcb",
-      "supplier_part": "C77108",
-      "source_url": "https://jlcpcb.com/partdetail/MurataElectronics-LQG15HS2N7S02D/C77108",
-      "checked_on": "2026-11-08",
-      "availability": "JLC catalogue part previously selected for the Johanson tee shunt; recheck live stock"
+      "supplier_part": "C18222",
+      "source_url": "https://www.lcsc.com/product-detail/C18222.html",
+      "checked_on": "2026-11-09",
+      "availability": "LCSC listing C18222 (shared JLC/LCSC catalogue); JLC stock not confirmed; recheck before order"
     },
     {
       "references": [
         "C_CELL_SHUNT1"
       ],
       "manufacturer": "Murata Electronics",
-      "mpn": "GJM1555C1H9R1WB01D",
+      "mpn": "GJM1555C1H4R7CB01D",
       "supplier": "jlcpcb",
-      "supplier_part": "C2169697",
-      "source_url": "https://www.lcsc.com/product-detail/C2169697.html",
-      "checked_on": "2026-11-08",
-      "availability": "LCSC listing C2169697 (shared JLC/LCSC catalogue); JLC stock not confirmed; recheck before order"
+      "supplier_part": "C85883",
+      "source_url": "https://www.lcsc.com/product-detail/C85883.html",
+      "checked_on": "2026-11-09",
+      "availability": "LCSC listing C85883 (shared JLC/LCSC catalogue, +-0.25 pF); JLC stock not confirmed; recheck before order"
+    },
+    {
+      "references": [
+        "L_CELL_SERIES"
+      ],
+      "manufacturer": "Murata Electronics",
+      "mpn": "LQG15HS5N6S02D",
+      "supplier": "jlcpcb",
+      "supplier_part": "C85670",
+      "source_url": "https://jlcpcb.com/partdetail/MurataElectronics-LQG15HS5N6S02D/C85670",
+      "checked_on": "2026-11-09",
+      "availability": "JLC catalogue listing C85670; stock not confirmed; recheck before order"
+    },
+    {
+      "references": [
+        "C_CELL_SHUNT2"
+      ],
+      "manufacturer": null,
+      "mpn": null,
+      "supplier": null,
+      "supplier_part": null,
+      "source_url": null,
+      "checked_on": "2026-11-09",
+      "availability": "Not fitted: SIM7672X Figure 30 C2 shunt land reserved for bench tuning (a shunt inductor here would DC-short ANT_MAIN)"
     }
   ]
 }

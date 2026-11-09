@@ -1,4 +1,5 @@
 Manufacturer,MPN,Qty per board,Designators,Footprint,Assembly,JLCPCB,DigiKey,Mouser,Farnell
+,(not fitted),1,C_CELL_SHUNT2,Capacitor_SMD:C_0402_1005Metric,do not fit,,,,
 Bourns,SRP4020TA-1R5M,2,PWR/L_LOGIC PWR/L_MODEM,github.com/andenore/CopperLib/packages/parts/bourns/srp4020ta/footprints/Bourns_SRP4020TA.kicad_mod,supplier-assembled,C3233727,SRP4020TA-1R5MCT-ND,,2434801
 Coilcraft,0603USB-601MLC,1,FL_USB,Inductor_SMD:L_CommonModeChoke_Coilcraft_0603USB,supplier-assembled,C3211396,,,2458096
 E-Switch,TL3342F160QG,1,SW_USER,Button_Switch_SMD:SW_SPST_TL3342,supplier-assembled,C2886898,EG2531CT-ND,,2830674
@@ -38,10 +39,9 @@ YAGEO,RC0402FR-07300KL,3,R_CC_VBUS R_CC_VBUS2 R_CC_VBUS3,Resistor_SMD:R_0402_100
 YAGEO,RC0402FR-07330KL,2,PWR/R_MODEM_FB_TOP PWR/R_MODEM_FB_TOP2,Resistor_SMD:R_0402_1005Metric,supplier-assembled,C138006,,603-RC0402FR-07330KL,9239537
 YAGEO,RC0402FR-073K3L,1,PWR/R_ILIM,Resistor_SMD:R_0402_1005Metric,supplier-assembled,C137992,,603-RC0402FR-073K3L,9239294
 YXC (Yangxing Technology),X322532MOB4SI,1,Y_NRF,Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm,supplier-assembled,C9009,,,
-Murata Electronics,LQG15HS4N3S02D,1,L_BT_SHUNT,Inductor_SMD:L_0402_1005Metric,supplier-assembled,C97999,,,
-YAGEO,CC0402BRNPO9BN2R0,1,C_BT_SERIES,Capacitor_SMD:C_0402_1005Metric,supplier-assembled,C281756,,,
 YAGEO,AC0402BRNPO9BN3R9,1,C_GNSS_SERIES,Capacitor_SMD:C_0402_1005Metric,supplier-assembled,C326821,,,
-Murata Electronics,GJM1555C1H1R2BB01D,1,C_GNSS_SHUNT,Capacitor_SMD:C_0402_1005Metric,supplier-assembled,C72135,,,
-Murata Electronics,LQG15HS1N5S02D,1,L_CELL_SERIES,Inductor_SMD:L_0402_1005Metric,supplier-assembled,C77106,,,
-Murata Electronics,LQG15HS2N7S02D,1,L_CELL_SHUNT,Inductor_SMD:L_0402_1005Metric,supplier-assembled,C77108,,,
-Murata Electronics,GJM1555C1H9R1WB01D,1,C_CELL_SHUNT1,Capacitor_SMD:C_0402_1005Metric,supplier-assembled,C2169697,,,
+Murata Electronics,GJM1555C1H1R1BB01D,1,C_GNSS_SHUNT,Capacitor_SMD:C_0402_1005Metric,supplier-assembled,C161308,,,
+YAGEO,CC0402BRNPO9BN1R0,1,C_BT_SHUNT,Capacitor_SMD:C_0402_1005Metric,supplier-assembled,C309455,,,
+Murata Electronics,LQG15HS1N0S02D,1,L_BT_SERIES,Inductor_SMD:L_0402_1005Metric,supplier-assembled,C18222,,,
+Murata Electronics,GJM1555C1H4R7CB01D,1,C_CELL_SHUNT1,Capacitor_SMD:C_0402_1005Metric,supplier-assembled,C85883,,,
+Murata Electronics,LQG15HS5N6S02D,1,L_CELL_SERIES,Inductor_SMD:L_0402_1005Metric,supplier-assembled,C85670,,,

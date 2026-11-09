@@ -73,7 +73,6 @@ si-check:
 ANTENNAS ?= ble gnss lte
 ANTENNA_REPORTS := revisions/pcb-antennas-v1
 SYNTH_ARGS ?=
-.PHONY: antennas
 antennas: copper
 	@for a in $(ANTENNAS); do \
 	  $(COPPER) synthesize-antenna $(SOURCE) $(RESOLVE_ARGS) --offline --layers $(LAYERS) --fab-profile $(FAB_PROFILE) \

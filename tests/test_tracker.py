@@ -61,12 +61,12 @@ class TrackerTests(unittest.TestCase):
         self.assertEqual(expected, set(self.selections))
         self.assertEqual(len(expected), len(self.lock["selections"]))
         # JLCPCB places everything fitted; consigned parts are hand-fitted.
-        # Every RF matching land is fitted for the printed antennas.
+        # The LTE network's C2 shunt is a reserved tuning land, not fitted.
         fitted = [s for s in self.lock["selections"] if s["populate"] != "none"]
         self.assertTrue(all(s["mpn"] and s["supplier_part"] for s in fitted))
         self.assertEqual({s["reference"] for s in fitted if s["supplier"] != "jlcpcb"},
                          {s["reference"] for s in fitted if s["populate"] == "consigned"})
-        self.assertEqual({s["reference"] for s in self.lock["selections"] if s["populate"] == "none"}, set())
+        self.assertEqual({s["reference"] for s in self.lock["selections"] if s["populate"] == "none"}, {"C_CELL_SHUNT2"})
         groups = json.loads((ROOT / "procurement/parts.json").read_text())["groups"]
         refs = [r for g in groups for r in g["references"]]
         self.assertEqual(expected, set(refs))
@@ -87,10 +87,20 @@ class TrackerTests(unittest.TestCase):
         # Each selection is bound to its own component and every one is
         # reviewed but the printed antennas' new matching parts, which await
         # a human review; a source change that alters another fails again.
-        pending = {"L_BT_SHUNT", "C_BT_SERIES", "C_GNSS_SERIES", "C_GNSS_SHUNT", "C_CELL_SHUNT1", "L_CELL_SERIES", "L_CELL_SHUNT"}
+        pending = {"C_BT_SHUNT", "L_BT_SERIES", "C_GNSS_SERIES", "C_GNSS_SHUNT", "C_CELL_SHUNT1", "L_CELL_SERIES", "C_CELL_SHUNT2"}
         self.assertEqual(r["reviewed_count"], len(self.lock["selections"]) - len(pending))
         self.assertEqual({s["reference"] for s in self.lock["selections"] if not s["reviewed"]}, pending)
         self.assertTrue(all(i["code"] == "REVIEW_REQUIRED" for i in r["issues"]), r["issues"])
+
+    def test_rf_matching_leaves_no_dc_path_from_radio_pins_to_ground(self):
+        # A shunt inductor straight on the nRF52832 ANT pin or the SIM7672X
+        # ANT_MAIN would DC-short it; whether either tolerates that is not
+        # established, so radio-side shunts are capacitors.
+        for ref in ("C_BT_SHUNT", "C_CELL_SHUNT1", "C_CELL_SHUNT2", "C_GNSS_SHUNT"):
+            self.assertEqual(self.components[ref], "CAPACITOR")
+        for name in ("NRF_RF_RAW", "NRF_RF_ANT", "CELL_RF", "CELL_RF_MATCH"):
+            self.assertFalse(any(ref.startswith("L_") and ref not in ("L_BT_MATCH", "L_BT_SERIES", "L_CELL_SERIES")
+                                 for ref, _ in net(name)), net(name))
 
     def test_battery_and_power_path(self):
         self.assertIn(("PWR/J_BAT", "P1"), net("PWR/BAT"))

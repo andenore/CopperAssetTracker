@@ -53,17 +53,17 @@
       "supplier_part": "C88902"
     },
     {
-      "electrical_sha256": "d2ef96d0702eb843e7800834999173f8724b95cb545a6a16600ed1428ac4df1e",
+      "electrical_sha256": "3e81d18317656b9e033cab83bf81a4861663cc04c9a88d7e1d450ac2865336ba",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "YAGEO",
-      "mpn": "CC0402BRNPO9BN2R0",
+      "mpn": "CC0402BRNPO9BN1R0",
       "part": "CAPACITOR",
       "populate": "supplier",
-      "reference": "C_BT_SERIES",
+      "reference": "C_BT_SHUNT",
       "reviewed": false,
-      "source_url": "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_YAGEO-CC0402BRNPO9BN2R0_C281756.html",
+      "source_url": "https://jlcpcb.com/partdetail/C309455",
       "supplier": "jlcpcb",
-      "supplier_part": "C281756"
+      "supplier_part": "C309455"
     },
     {
       "alternates": [
@@ -116,17 +116,30 @@
       "supplier_part": "C106200"
     },
     {
-      "electrical_sha256": "492a0e4d06159f4680ff70413432097ace86c697f97841e9a643615d3273ebbb",
+      "electrical_sha256": "503fd86fdea48c9602056664dea496657c2b81c91e8acc6b5bbaa7e71e6bc48a",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Murata Electronics",
-      "mpn": "GJM1555C1H9R1WB01D",
+      "mpn": "GJM1555C1H4R7CB01D",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "C_CELL_SHUNT1",
       "reviewed": false,
-      "source_url": "https://www.lcsc.com/product-detail/C2169697.html",
+      "source_url": "https://www.lcsc.com/product-detail/C85883.html",
       "supplier": "jlcpcb",
-      "supplier_part": "C2169697"
+      "supplier_part": "C85883"
+    },
+    {
+      "electrical_sha256": "365bf60abec7091e34fc35c1432c5e47b672f1ab2cc85f31b8efb34e8d3be7e6",
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "manufacturer": null,
+      "mpn": null,
+      "part": "CAPACITOR",
+      "populate": "none",
+      "reference": "C_CELL_SHUNT2",
+      "reviewed": false,
+      "source_url": null,
+      "supplier": null,
+      "supplier_part": null
     },
     {
       "alternates": [
@@ -242,17 +255,17 @@
       "supplier_part": "C326821"
     },
     {
-      "electrical_sha256": "86b53ee5da07893923243bb8315b02ca025ad5714f21dd10f518f36816129ac7",
+      "electrical_sha256": "804eb26a67668182b32c38dcf16c6f4be95f1ad771c4613fc24b813ecf3ac1f1",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Murata Electronics",
-      "mpn": "GJM1555C1H1R2BB01D",
+      "mpn": "GJM1555C1H1R1BB01D",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "C_GNSS_SHUNT",
       "reviewed": false,
-      "source_url": "https://www.lcsc.com/product-image/C72135.html",
+      "source_url": "https://www.lcsc.com/product-detail/C161308.html",
       "supplier": "jlcpcb",
-      "supplier_part": "C72135"
+      "supplier_part": "C161308"
     },
     {
       "alternates": [
@@ -731,43 +744,30 @@
       "supplier_part": "C77109"
     },
     {
-      "electrical_sha256": "42e60793689464e4b8b7a469c8e1041bca28f8c03ca362888fcf889c31c7deac",
+      "electrical_sha256": "d4d7b0956a8b1879e0af0dc42748f17b4ac90f12af0be98d8548b982e9e8e9e1",
       "footprint": "Inductor_SMD:L_0402_1005Metric",
       "manufacturer": "Murata Electronics",
-      "mpn": "LQG15HS4N3S02D",
+      "mpn": "LQG15HS1N0S02D",
       "part": "INDUCTOR",
       "populate": "supplier",
-      "reference": "L_BT_SHUNT",
+      "reference": "L_BT_SERIES",
       "reviewed": false,
-      "source_url": "https://www.lcsc.com/product-detail/C97999.html",
+      "source_url": "https://www.lcsc.com/product-detail/C18222.html",
       "supplier": "jlcpcb",
-      "supplier_part": "C97999"
+      "supplier_part": "C18222"
     },
     {
-      "electrical_sha256": "3e2cfcdf7e48889736610911dfcd0dbc4ce41dfd8d9504490e4822e7b45ee526",
+      "electrical_sha256": "8a2e2b56b24cf4def1f86aea3fb8ad5ca143ef03844a54a75a6a2ffd43eaf4c7",
       "footprint": "Inductor_SMD:L_0402_1005Metric",
       "manufacturer": "Murata Electronics",
-      "mpn": "LQG15HS1N5S02D",
+      "mpn": "LQG15HS5N6S02D",
       "part": "INDUCTOR",
       "populate": "supplier",
       "reference": "L_CELL_SERIES",
       "reviewed": false,
-      "source_url": "https://www.lcsc.com/product-detail/C77106.html",
+      "source_url": "https://jlcpcb.com/partdetail/MurataElectronics-LQG15HS5N6S02D/C85670",
       "supplier": "jlcpcb",
-      "supplier_part": "C77106"
-    },
-    {
-      "electrical_sha256": "93a8f127c9e4e23ab6cef22a6173a3d4f6f9df92859b6f32aca2232fca99e0a1",
-      "footprint": "Inductor_SMD:L_0402_1005Metric",
-      "manufacturer": "Murata Electronics",
-      "mpn": "LQG15HS2N7S02D",
-      "part": "INDUCTOR",
-      "populate": "supplier",
-      "reference": "L_CELL_SHUNT",
-      "reviewed": false,
-      "source_url": "https://jlcpcb.com/partdetail/MurataElectronics-LQG15HS2N7S02D/C77108",
-      "supplier": "jlcpcb",
-      "supplier_part": "C77108"
+      "supplier_part": "C85670"
     },
     {
       "alternates": [
