@@ -70,9 +70,8 @@ mesh faults this six-layer stack-up exposed (thin-prepreg z lines merging,
 and ground edges merging onto radiator copper and shorting the feed) while
 modelling the feed slot at the board clearance, as it is built; see
 CopperScript `docs/antenna-synthesis-performance.md`. `.copper-version`
-pins that CopperScript revision (9a6a134, branch
-`claude/copperassettracker-pcb-antennas-7qatxy`); an older compiler rejects
-these digests as stale.
+pins that CopperScript revision (9a6a134, merged into CopperScript main as
+ea09934); an older compiler rejects these digests as stale.
 
 ## Layout
 
