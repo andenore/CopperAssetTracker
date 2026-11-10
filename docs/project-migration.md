@@ -1,7 +1,9 @@
 # Rust project migration
 
 Layout migration: `codex/rust-client-layout`, integrated into `main`. Board qualification remains incomplete.
-Compiler: `ab446d76ded521b663a5f077aea28d2261102633` (Rust only, from CopperScript main); exact dependency and assembly pins are preserved.
+Compiler at layout migration: `ab446d76ded521b663a5f077aea28d2261102633` (Rust only, from CopperScript main); exact dependency and assembly pins are preserved.
+
+Current compiler: `.copper-version`. See [source-driven board configuration](board-configuration.md) for the current layer-selection policy.
 
 ## Active layout
 
