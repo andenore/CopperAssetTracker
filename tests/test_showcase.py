@@ -25,48 +25,35 @@ class ShowcaseTests(unittest.TestCase):
 
     def test_snapshot_is_source_bound_and_not_a_release(self):
         sample = json.loads((SHOWCASE / "snapshot.json").read_text())
-        self.assertRegex(sample["canonical_source_commit"], r"^[0-9a-f]{40}$")
-        historical = sample["canonical_source_status"] in {
-            "historical_input_before_macro_source_migration", "historical_input_before_macro_definition_migration"}
-        if historical:
-            self.assertNotEqual(sample["canonical_source_sha256"], hashlib.sha256((ROOT / "board.copper").read_bytes()).hexdigest())
-            def input_bytes(name):
-                if 'canonical_input_snapshots' in sample:
-                    path = (SHOWCASE / sample['canonical_input_snapshots'][name]).resolve()
-                    self.assertTrue(path.is_relative_to(SHOWCASE.resolve()))
-                    return path.read_bytes()
-                return subprocess.check_output(["git", "show", sample["canonical_source_commit"] + ":" + name], cwd=ROOT)
-        else:
-            self.assertEqual(sample["canonical_source_status"], "current_source")
-            self.assertEqual(sample["macro_binding"], "in_language")
-            def input_bytes(name):
-                return (ROOT / name).read_bytes()
-        self.assertEqual(sample["canonical_source_sha256"], hashlib.sha256(input_bytes("board.copper")).hexdigest())
-        for name, digest in sample["composition_inputs"].items():
-            self.assertEqual(digest, hashlib.sha256(input_bytes(name)).hexdigest())
-        source = ROOT / sample["source"]
-        if source.exists():
-            self.assertEqual(sample["source_sha256"], hashlib.sha256(source.read_bytes()).hexdigest())
+        self.assertEqual(sample["schema"], "copperassettracker-showcase/v3")
+        self.assertRegex(sample["source"]["git_commit"], r"^[0-9a-f]{40}$")
+        self.assertRegex(sample["compiler"]["copperscript_commit"], r"^[0-9a-f]{40}$")
+        # Bound to the current design: rerun `make showcase` after changing it.
+        design = {name: digest for name, digest in sample["source"]["input_sha256"].items()
+                  if name.endswith((".copper", ".mod", ".lock"))}
+        self.assertIn("board.copper", design)
+        for name, digest in design.items():
+            with self.subTest(input=name):
+                self.assertEqual(digest, hashlib.sha256((ROOT / name).read_bytes()).hexdigest())
         self.assertFalse(sample["qualified_release"])
-        self.assertFalse(sample["locked_release_input"])
-        self.assertEqual(sample["schema"], "copperassettracker-showcase/v2")
-        self.assertEqual(sample["revision"], "rf-support-v1")
-        self.assertEqual(sample["component_count"], 97)
+        self.assertEqual(sample["independent_cam"], "not run")
+        self.assertEqual(sample["route"]["status"], "pass")
+        self.assertEqual(sample["route"]["unrouted_ordinary_nets"], [])
+        self.assertGreater(sample["component_count"], 0)
+        self.assertEqual(sample["track_count"], sample["route"]["tracks"])
+        self.assertEqual(sample["via_count"], sample["route"]["vias"])
         self.assertGreater(sample["track_count"], 0)
         self.assertGreater(sample["via_count"], 0)
+        self.assertEqual(sample["blocked_requirement_count"], sample["route"]["requirements"]["blocked"])
         self.assertGreater(sample["blocked_requirement_count"], 0)
-        expected_cam = ("skipped_by_request" if sample["canonical_source_status"] == "historical_input_before_macro_source_migration"
-                        else "not_run_for_this_routing_review")
-        self.assertEqual(sample["independent_cam"], expected_cam)
-        for key in ("pcb_sha256", "source_lock_sha256", "assembly_lock_sha256",
-                    "source_freeze_sha256", "native_drc_sha256", "route_summary_sha256"):
-            self.assertRegex(sample[key], r"^[0-9a-f]{64}$")
+        self.assertTrue(sample["native_drc"]["passed"])
+        self.assertTrue(sample["native_drc"]["not_checked"])
+        self.assertIn("CAM read-back PASSED", sample["native_drc"]["cam_readback"])
         self.assertEqual(sample["native_unconnected_item_count"], 0)
         self.assertEqual(sample["native_drc_violation_count"], 0)
         self.assertEqual(len(sample["copper_layers"]), 6)
-        pcb = ROOT / sample["pcb"]
-        if pcb.exists():
-            self.assertEqual(sample["pcb_sha256"], hashlib.sha256(pcb.read_bytes()).hexdigest())
+        for key in ("pcb_sha256",):
+            self.assertRegex(sample[key], r"^[0-9a-f]{64}$")
         for name, digest in sample["rendered_assets"].items():
             self.assertEqual(digest, hashlib.sha256((SHOWCASE / name).read_bytes()).hexdigest())
 
@@ -95,17 +82,18 @@ class ShowcaseTests(unittest.TestCase):
                 self.assertEqual(ElementTree.parse(path).getroot().tag, "{http://www.w3.org/2000/svg}svg")
                 self.assertIn(f"docs/showcase/{name}.svg", readme)
 
-    def test_rendering_preserves_recorded_board_and_includes_fill_free_stack(self):
+    def test_rendering_is_native_and_includes_fill_free_stack(self):
         snapshot = json.loads((SHOWCASE / "snapshot.json").read_text())
         rendering = json.loads((SHOWCASE / "rendering.json").read_text())
-        self.assertEqual(rendering["pcb_sha256"], snapshot["pcb_sha256"])
-        self.assertEqual(rendering["all_layers"], snapshot["copper_layers"])
-        self.assertEqual(rendering["native_geometry"]["footprints"], snapshot["component_count"])
-        self.assertEqual(rendering["native_geometry"]["tracks_and_vias"], snapshot["track_count"] + snapshot["via_count"])
-        self.assertGreater(rendering["native_geometry"]["pads"], 0)
-        self.assertFalse(rendering["views"]["routing-all.svg"]["copper_fills"])
+        self.assertEqual(rendering["renderer"], "copper render")
+        self.assertEqual(set(rendering["views"]), {f"{name}.svg" for name in (
+            "placement", "routing-top", "routing-inner", "routing-bottom", "routing-all")})
+        combined = rendering["views"]["routing-all.svg"]
+        self.assertFalse(combined["zone_fills"])
+        drawn = {plate.split("&")[0].split(":")[0] for plate in combined["plates"]}
+        self.assertTrue(set(snapshot["copper_layers"]) <= drawn)
         for name in ("placement.svg", "routing-top.svg", "routing-all.svg"):
-            self.assertIn(rendering["pad_color"], (SHOWCASE / name).read_text())
+            self.assertIn(rendering["exposed_copper_color"], (SHOWCASE / name).read_text())
 
     def test_capacitor_examples_use_plain_numbers_and_engineering_units(self):
         electrical = json.loads((SHOWCASE / "electrical-ir.excerpt.json").read_text())

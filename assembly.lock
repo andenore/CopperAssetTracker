@@ -5,129 +5,128 @@
     {
       "alternates": [
         {
-          "source_url": "https://www.digikey.com/en/products/detail/johanson-technology-inc/2450AT18A0100001E/1560676",
-          "supplier": "DigiKey",
-          "supplier_part": "712-2450AT18A0100001ECT-ND"
-        }
-      ],
-      "electrical_sha256": "7b145e6693da834a6a888fed947eaaffe2afec04bc0e3eefaca8734d43a712e4",
-      "footprint": "RF_Antenna:Johanson_2450AT18x100",
-      "manufacturer": "Johanson Technology",
-      "mpn": "2450AT18A0100001E",
-      "part": "johanson.JOHANSON_2450AT18A0100001E",
-      "populate": "supplier",
-      "reference": "ANT_BT",
-      "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C17430588",
-      "supplier": "jlcpcb",
-      "supplier_part": "C17430588"
-    },
-    {
-      "alternates": [
-        {
-          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL05B104KO5NNNC/3886659",
-          "supplier": "DigiKey",
-          "supplier_part": "1276-1001-1-ND"
+          "source_url": "https://www.mouser.com/ProductDetail/187-CL05B104KB54PNC",
+          "supplier": "Mouser",
+          "supplier_part": "187-CL05B104KB54PNC"
         },
         {
-          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl05b104ko5nnnc/cap-0-1uf-16v-mlcc-0402/dp/3013349",
+          "source_url": "https://uk.farnell.com/dp/4748829",
           "supplier": "Farnell",
-          "supplier_part": "3013349"
+          "supplier_part": "4748829"
         }
       ],
       "electrical_sha256": "37a6f1ab3d8160cbbf420f2ef65ec1b1bbb286a28f2febc34abd0f683688d896",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL05B104KO5NNNC",
+      "mpn": "CL05B104KB54PNC",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "C_ACCEL",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C1525",
+      "source_url": "https://jlcpcb.com/partdetail/C307331",
       "supplier": "jlcpcb",
-      "supplier_part": "C1525"
-    },
-    {
-      "electrical_sha256": "636c58f32dcf82f1519ba5622609505e103df2d6677c1dd59786318e2554a24e",
-      "footprint": "Capacitor_SMD:C_0402_1005Metric",
-      "manufacturer": "FH (Guangdong Fenghua Advanced Tech)",
-      "mpn": "0402CG1R0C500NT",
-      "part": "CAPACITOR",
-      "populate": "supplier",
-      "reference": "C_ANT_SERIES",
-      "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C1550",
-      "supplier": "jlcpcb",
-      "supplier_part": "C1550"
-    },
-    {
-      "electrical_sha256": "832ff4347877f54553d9bbd9b0de546632ce8fe0fa3e9cf1e65ec459cff61c99",
-      "footprint": "Capacitor_SMD:C_0402_1005Metric",
-      "manufacturer": "FH (Guangdong Fenghua Advanced Tech)",
-      "mpn": "0402CG0R8B500NT",
-      "part": "CAPACITOR",
-      "populate": "supplier",
-      "reference": "C_BT_MATCH",
-      "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C285068",
-      "supplier": "jlcpcb",
-      "supplier_part": "C285068"
+      "supplier_part": "C307331"
     },
     {
       "alternates": [
         {
-          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL10A105KB8NNNC/3887518",
-          "supplier": "DigiKey",
-          "supplier_part": "1276-1860-1-ND"
-        },
-        {
-          "source_url": "https://www.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL10A105KB8NNNC?qs=ktYoCbbtCSJz4pFCLWXd5g%3D%3D",
+          "source_url": "https://www.mouser.com/ProductDetail/81-GJM1555C1HR80WB1D",
           "supplier": "Mouser",
-          "supplier_part": "187-CL10A105KB8NNNC"
+          "supplier_part": "81-GJM1555C1HR80WB1D"
         },
         {
-          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl10a105kb8nnnc/cap-1uf-50v-mlcc-0603/dp/3013383",
+          "source_url": "https://uk.farnell.com/dp/2781448",
           "supplier": "Farnell",
-          "supplier_part": "3013383"
+          "supplier_part": "2781448"
+        }
+      ],
+      "electrical_sha256": "832ff4347877f54553d9bbd9b0de546632ce8fe0fa3e9cf1e65ec459cff61c99",
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "manufacturer": "Murata Electronics",
+      "mpn": "GJM1555C1HR80WB01D",
+      "part": "CAPACITOR",
+      "populate": "supplier",
+      "reference": "C_BT_MATCH",
+      "reviewed": true,
+      "source_url": "https://jlcpcb.com/partdetail/C88902",
+      "supplier": "jlcpcb",
+      "supplier_part": "C88902"
+    },
+    {
+      "electrical_sha256": "3e81d18317656b9e033cab83bf81a4861663cc04c9a88d7e1d450ac2865336ba",
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "manufacturer": "YAGEO",
+      "mpn": "CC0402BRNPO9BN1R0",
+      "part": "CAPACITOR",
+      "populate": "supplier",
+      "reference": "C_BT_SHUNT",
+      "reviewed": false,
+      "source_url": "https://jlcpcb.com/partdetail/C309455",
+      "supplier": "jlcpcb",
+      "supplier_part": "C309455"
+    },
+    {
+      "alternates": [
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/603-CC603KRX7R9BB105",
+          "supplier": "Mouser",
+          "supplier_part": "603-CC603KRX7R9BB105"
+        },
+        {
+          "source_url": "https://uk.farnell.com/dp/3764544",
+          "supplier": "Farnell",
+          "supplier_part": "3764544"
         }
       ],
       "electrical_sha256": "ae437435264e8f10c4854aeb19301ee3ee1670f7eaeeeb9f2d160c197e82d0f2",
       "footprint": "Capacitor_SMD:C_0603_1608Metric",
-      "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL10A105KB8NNNC",
+      "manufacturer": "YAGEO",
+      "mpn": "CC0603KRX7R9BB105",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "C_CC",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C15849",
+      "source_url": "https://jlcpcb.com/partdetail/C559769",
       "supplier": "jlcpcb",
-      "supplier_part": "C15849"
+      "supplier_part": "C559769"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/603-CC402JRNPO9BN101",
+          "supplier": "Mouser",
+          "supplier_part": "603-CC402JRNPO9BN101"
+        },
+        {
+          "source_url": "https://uk.farnell.com/dp/3019226",
+          "supplier": "Farnell",
+          "supplier_part": "3019226"
+        }
+      ],
       "electrical_sha256": "cb10ebbf7c1b282481720d3e74beef9c8b543a5c41630b43ec98b8a45fc8ac14",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
-      "manufacturer": "FH (Guangdong Fenghua Advanced Tech)",
-      "mpn": "0402CG101J500NT",
+      "manufacturer": "YAGEO",
+      "mpn": "CC0402JRNPO9BN101",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "C_CELL_SERIES",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C1546",
+      "source_url": "https://jlcpcb.com/partdetail/C106200",
       "supplier": "jlcpcb",
-      "supplier_part": "C1546"
+      "supplier_part": "C106200"
     },
     {
-      "electrical_sha256": "bc45292f4fe963cb5c7528ead3c6b1287ac3f9e96c301c8e15895358dae08e19",
+      "electrical_sha256": "503fd86fdea48c9602056664dea496657c2b81c91e8acc6b5bbaa7e71e6bc48a",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
-      "manufacturer": null,
-      "mpn": null,
+      "manufacturer": "Murata Electronics",
+      "mpn": "GJM1555C1H4R7CB01D",
       "part": "CAPACITOR",
-      "populate": "none",
+      "populate": "supplier",
       "reference": "C_CELL_SHUNT1",
-      "reviewed": true,
-      "source_url": null,
-      "supplier": null,
-      "supplier_part": null
+      "reviewed": false,
+      "source_url": "https://www.lcsc.com/product-detail/C85883.html",
+      "supplier": "jlcpcb",
+      "supplier_part": "C85883"
     },
     {
       "electrical_sha256": "365bf60abec7091e34fc35c1432c5e47b672f1ab2cc85f31b8efb34e8d3be7e6",
@@ -137,7 +136,7 @@
       "part": "CAPACITOR",
       "populate": "none",
       "reference": "C_CELL_SHUNT2",
-      "reviewed": true,
+      "reviewed": false,
       "source_url": null,
       "supplier": null,
       "supplier_part": null
@@ -145,175 +144,203 @@
     {
       "alternates": [
         {
-          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL05B104KO5NNNC/3886659",
-          "supplier": "DigiKey",
-          "supplier_part": "1276-1001-1-ND"
+          "source_url": "https://www.mouser.com/ProductDetail/187-CL05B104KB54PNC",
+          "supplier": "Mouser",
+          "supplier_part": "187-CL05B104KB54PNC"
         },
         {
-          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl05b104ko5nnnc/cap-0-1uf-16v-mlcc-0402/dp/3013349",
+          "source_url": "https://uk.farnell.com/dp/4748829",
           "supplier": "Farnell",
-          "supplier_part": "3013349"
+          "supplier_part": "4748829"
         }
       ],
       "electrical_sha256": "15e2b461d8c1bc1a068c26c8443653d6828fdae494e490646f7ffbde9aa0c70e",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL05B104KO5NNNC",
+      "mpn": "CL05B104KB54PNC",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "C_DEC1",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C1525",
+      "source_url": "https://jlcpcb.com/partdetail/C307331",
       "supplier": "jlcpcb",
-      "supplier_part": "C1525"
+      "supplier_part": "C307331"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/603-CC402JRNPO9BN101",
+          "supplier": "Mouser",
+          "supplier_part": "603-CC402JRNPO9BN101"
+        },
+        {
+          "source_url": "https://uk.farnell.com/dp/3019226",
+          "supplier": "Farnell",
+          "supplier_part": "3019226"
+        }
+      ],
       "electrical_sha256": "8e472a7a29e4919c363d563624d675903b18e0f015024a4ff594098265db3406",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
-      "manufacturer": "FH (Guangdong Fenghua Advanced Tech)",
-      "mpn": "0402CG101J500NT",
+      "manufacturer": "YAGEO",
+      "mpn": "CC0402JRNPO9BN101",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "C_DEC3",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C1546",
+      "source_url": "https://jlcpcb.com/partdetail/C106200",
       "supplier": "jlcpcb",
-      "supplier_part": "C1546"
+      "supplier_part": "C106200"
     },
     {
       "alternates": [
         {
-          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL10A105KB8NNNC/3887518",
-          "supplier": "DigiKey",
-          "supplier_part": "1276-1860-1-ND"
-        },
-        {
-          "source_url": "https://www.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL10A105KB8NNNC?qs=ktYoCbbtCSJz4pFCLWXd5g%3D%3D",
+          "source_url": "https://www.mouser.com/ProductDetail/603-CC603KRX7R9BB105",
           "supplier": "Mouser",
-          "supplier_part": "187-CL10A105KB8NNNC"
+          "supplier_part": "603-CC603KRX7R9BB105"
         },
         {
-          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl10a105kb8nnnc/cap-1uf-50v-mlcc-0603/dp/3013383",
+          "source_url": "https://uk.farnell.com/dp/3764544",
           "supplier": "Farnell",
-          "supplier_part": "3013383"
+          "supplier_part": "3764544"
         }
       ],
       "electrical_sha256": "b864caf81248fc543323017eac47be0f899b9e09f544972bd2264cc9d71b0961",
       "footprint": "Capacitor_SMD:C_0603_1608Metric",
-      "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL10A105KB8NNNC",
+      "manufacturer": "YAGEO",
+      "mpn": "CC0603KRX7R9BB105",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "C_DEC4",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C15849",
+      "source_url": "https://jlcpcb.com/partdetail/C559769",
       "supplier": "jlcpcb",
-      "supplier_part": "C15849"
+      "supplier_part": "C559769"
     },
     {
       "alternates": [
         {
-          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL10A105KB8NNNC/3887518",
-          "supplier": "DigiKey",
-          "supplier_part": "1276-1860-1-ND"
-        },
-        {
-          "source_url": "https://www.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL10A105KB8NNNC?qs=ktYoCbbtCSJz4pFCLWXd5g%3D%3D",
+          "source_url": "https://www.mouser.com/ProductDetail/603-CC603KRX7R9BB105",
           "supplier": "Mouser",
-          "supplier_part": "187-CL10A105KB8NNNC"
+          "supplier_part": "603-CC603KRX7R9BB105"
         },
         {
-          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl10a105kb8nnnc/cap-1uf-50v-mlcc-0603/dp/3013383",
+          "source_url": "https://uk.farnell.com/dp/3764544",
           "supplier": "Farnell",
-          "supplier_part": "3013383"
+          "supplier_part": "3764544"
         }
       ],
       "electrical_sha256": "9c8fe906b902d6f63829e9bd1fde49a796400db09a93e19bf67baa9f6bcde9cd",
       "footprint": "Capacitor_SMD:C_0603_1608Metric",
-      "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL10A105KB8NNNC",
+      "manufacturer": "YAGEO",
+      "mpn": "CC0603KRX7R9BB105",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "C_GNSS",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C15849",
+      "source_url": "https://jlcpcb.com/partdetail/C559769",
       "supplier": "jlcpcb",
-      "supplier_part": "C15849"
+      "supplier_part": "C559769"
+    },
+    {
+      "electrical_sha256": "3725ee2c516083c94d86362ea8b02931608ebcb838535c3645e01fbc4e4d56ac",
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "manufacturer": "YAGEO",
+      "mpn": "AC0402BRNPO9BN3R9",
+      "part": "CAPACITOR",
+      "populate": "supplier",
+      "reference": "C_GNSS_SERIES",
+      "reviewed": false,
+      "source_url": "https://jlcpcb.com/partdetail/YAGEO-AC0402BRNPO9BN3R9/C326821",
+      "supplier": "jlcpcb",
+      "supplier_part": "C326821"
+    },
+    {
+      "electrical_sha256": "804eb26a67668182b32c38dcf16c6f4be95f1ad771c4613fc24b813ecf3ac1f1",
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "manufacturer": "Murata Electronics",
+      "mpn": "GJM1555C1H1R1BB01D",
+      "part": "CAPACITOR",
+      "populate": "supplier",
+      "reference": "C_GNSS_SHUNT",
+      "reviewed": false,
+      "source_url": "https://www.lcsc.com/product-detail/C161308.html",
+      "supplier": "jlcpcb",
+      "supplier_part": "C161308"
     },
     {
       "alternates": [
         {
-          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL05B104KO5NNNC/3886659",
-          "supplier": "DigiKey",
-          "supplier_part": "1276-1001-1-ND"
+          "source_url": "https://www.mouser.com/ProductDetail/187-CL05B104KB54PNC",
+          "supplier": "Mouser",
+          "supplier_part": "187-CL05B104KB54PNC"
         },
         {
-          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl05b104ko5nnnc/cap-0-1uf-16v-mlcc-0402/dp/3013349",
+          "source_url": "https://uk.farnell.com/dp/4748829",
           "supplier": "Farnell",
-          "supplier_part": "3013349"
+          "supplier_part": "4748829"
         }
       ],
       "electrical_sha256": "ad532e0ea3f262f2c1fc521b74a807fd464ab35f4f260f1713b139ef90deab09",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL05B104KO5NNNC",
+      "mpn": "CL05B104KB54PNC",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "C_LEVEL_A",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C1525",
+      "source_url": "https://jlcpcb.com/partdetail/C307331",
       "supplier": "jlcpcb",
-      "supplier_part": "C1525"
+      "supplier_part": "C307331"
     },
     {
       "alternates": [
         {
-          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL05B104KO5NNNC/3886659",
-          "supplier": "DigiKey",
-          "supplier_part": "1276-1001-1-ND"
+          "source_url": "https://www.mouser.com/ProductDetail/187-CL05B104KB54PNC",
+          "supplier": "Mouser",
+          "supplier_part": "187-CL05B104KB54PNC"
         },
         {
-          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl05b104ko5nnnc/cap-0-1uf-16v-mlcc-0402/dp/3013349",
+          "source_url": "https://uk.farnell.com/dp/4748829",
           "supplier": "Farnell",
-          "supplier_part": "3013349"
+          "supplier_part": "4748829"
         }
       ],
       "electrical_sha256": "4b06a8f7f17b2292264f296df07a8309da27a3753a83051be49735391762efae",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL05B104KO5NNNC",
+      "mpn": "CL05B104KB54PNC",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "C_LEVEL_B",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C1525",
+      "source_url": "https://jlcpcb.com/partdetail/C307331",
       "supplier": "jlcpcb",
-      "supplier_part": "C1525"
+      "supplier_part": "C307331"
     },
     {
       "alternates": [
         {
-          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL05B104KO5NNNC/3886659",
-          "supplier": "DigiKey",
-          "supplier_part": "1276-1001-1-ND"
+          "source_url": "https://www.mouser.com/ProductDetail/187-CL05B104KB54PNC",
+          "supplier": "Mouser",
+          "supplier_part": "187-CL05B104KB54PNC"
         },
         {
-          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl05b104ko5nnnc/cap-0-1uf-16v-mlcc-0402/dp/3013349",
+          "source_url": "https://uk.farnell.com/dp/4748829",
           "supplier": "Farnell",
-          "supplier_part": "3013349"
+          "supplier_part": "4748829"
         }
       ],
       "electrical_sha256": "19bc8904604d09954ee2754b063563684e859d96790fe7a6e2077d5290fe692d",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL05B104KO5NNNC",
+      "mpn": "CL05B104KB54PNC",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "C_MCU",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C1525",
+      "source_url": "https://jlcpcb.com/partdetail/C307331",
       "supplier": "jlcpcb",
-      "supplier_part": "C1525"
+      "supplier_part": "C307331"
     },
     {
       "alternates": [
@@ -343,153 +370,172 @@
     {
       "alternates": [
         {
-          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL10A475KO8NNNC/3887442",
-          "supplier": "DigiKey",
-          "supplier_part": "1276-1784-1-ND"
-        },
-        {
-          "source_url": "https://www.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL10A475KO8NNNC?qs=X6jEic%2FHinAbIjmLnFfqqQ%3D%3D",
+          "source_url": "https://www.mouser.com/ProductDetail/603-CC603KRX5R7BB475",
           "supplier": "Mouser",
-          "supplier_part": "187-CL10A475KO8NNNC"
+          "supplier_part": "603-CC603KRX5R7BB475"
         }
       ],
       "electrical_sha256": "77d04e7f58e49e050caa977270b70d70b8c8dde6a3cf439fa737ffd213192e54",
       "footprint": "Capacitor_SMD:C_0603_1608Metric",
-      "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL10A475KO8NNNC",
+      "manufacturer": "YAGEO",
+      "mpn": "CC0603KRX5R7BB475",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "C_NRF",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C19666",
+      "source_url": "https://jlcpcb.com/partdetail/C277476",
       "supplier": "jlcpcb",
-      "supplier_part": "C19666"
+      "supplier_part": "C277476"
     },
     {
       "alternates": [
         {
-          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL05B104KO5NNNC/3886659",
-          "supplier": "DigiKey",
-          "supplier_part": "1276-1001-1-ND"
+          "source_url": "https://www.mouser.com/ProductDetail/187-CL05B104KB54PNC",
+          "supplier": "Mouser",
+          "supplier_part": "187-CL05B104KB54PNC"
         },
         {
-          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl05b104ko5nnnc/cap-0-1uf-16v-mlcc-0402/dp/3013349",
+          "source_url": "https://uk.farnell.com/dp/4748829",
           "supplier": "Farnell",
-          "supplier_part": "3013349"
+          "supplier_part": "4748829"
         }
       ],
       "electrical_sha256": "420245feacb39f6fb27dcc452ba5c9355f7e8a1acc1078949eb7a518c00d21da",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL05B104KO5NNNC",
+      "mpn": "CL05B104KB54PNC",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "C_NRF_VDD2",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C1525",
+      "source_url": "https://jlcpcb.com/partdetail/C307331",
       "supplier": "jlcpcb",
-      "supplier_part": "C1525"
+      "supplier_part": "C307331"
     },
     {
       "alternates": [
         {
-          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL05B104KO5NNNC/3886659",
-          "supplier": "DigiKey",
-          "supplier_part": "1276-1001-1-ND"
+          "source_url": "https://www.mouser.com/ProductDetail/187-CL05B104KB54PNC",
+          "supplier": "Mouser",
+          "supplier_part": "187-CL05B104KB54PNC"
         },
         {
-          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl05b104ko5nnnc/cap-0-1uf-16v-mlcc-0402/dp/3013349",
+          "source_url": "https://uk.farnell.com/dp/4748829",
           "supplier": "Farnell",
-          "supplier_part": "3013349"
+          "supplier_part": "4748829"
         }
       ],
       "electrical_sha256": "34990c512b4544852db8af2a80babac82aecf8c73b913ee573ce4502f76a206d",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL05B104KO5NNNC",
+      "mpn": "CL05B104KB54PNC",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "C_NRF_VDD3",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C1525",
+      "source_url": "https://jlcpcb.com/partdetail/C307331",
       "supplier": "jlcpcb",
-      "supplier_part": "C1525"
+      "supplier_part": "C307331"
     },
     {
       "alternates": [
         {
-          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL05B104KO5NNNC/3886659",
-          "supplier": "DigiKey",
-          "supplier_part": "1276-1001-1-ND"
+          "source_url": "https://www.mouser.com/ProductDetail/187-CL05B104KB54PNC",
+          "supplier": "Mouser",
+          "supplier_part": "187-CL05B104KB54PNC"
         },
         {
-          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl05b104ko5nnnc/cap-0-1uf-16v-mlcc-0402/dp/3013349",
+          "source_url": "https://uk.farnell.com/dp/4748829",
           "supplier": "Farnell",
-          "supplier_part": "3013349"
+          "supplier_part": "4748829"
         }
       ],
       "electrical_sha256": "01ba3aef3a3a7f22d0feaaa3afac7c9c8f985e5136d4acb9f5867abb603f0721",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL05B104KO5NNNC",
+      "mpn": "CL05B104KB54PNC",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "C_STATUS_A",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C1525",
+      "source_url": "https://jlcpcb.com/partdetail/C307331",
       "supplier": "jlcpcb",
-      "supplier_part": "C1525"
+      "supplier_part": "C307331"
     },
     {
       "alternates": [
         {
-          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL05B104KO5NNNC/3886659",
-          "supplier": "DigiKey",
-          "supplier_part": "1276-1001-1-ND"
+          "source_url": "https://www.mouser.com/ProductDetail/187-CL05B104KB54PNC",
+          "supplier": "Mouser",
+          "supplier_part": "187-CL05B104KB54PNC"
         },
         {
-          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl05b104ko5nnnc/cap-0-1uf-16v-mlcc-0402/dp/3013349",
+          "source_url": "https://uk.farnell.com/dp/4748829",
           "supplier": "Farnell",
-          "supplier_part": "3013349"
+          "supplier_part": "4748829"
         }
       ],
       "electrical_sha256": "fc318bd8d48e60f972139a5900aa97fc348651b50cbf578bef01854fa6181969",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL05B104KO5NNNC",
+      "mpn": "CL05B104KB54PNC",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "C_STATUS_B",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C1525",
+      "source_url": "https://jlcpcb.com/partdetail/C307331",
       "supplier": "jlcpcb",
-      "supplier_part": "C1525"
+      "supplier_part": "C307331"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/81-GRM1555C1H180JA1D",
+          "supplier": "Mouser",
+          "supplier_part": "81-GRM1555C1H180JA1D"
+        },
+        {
+          "source_url": "https://uk.farnell.com/dp/4326666",
+          "supplier": "Farnell",
+          "supplier_part": "4326666"
+        }
+      ],
       "electrical_sha256": "1d864c09475c3b52dfc7288a9ea0fb0007dbf144849a7ac3681b93b754035344",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
-      "manufacturer": "FH (Guangdong Fenghua Advanced Tech)",
-      "mpn": "0402CG180J500NT",
+      "manufacturer": "Murata Electronics",
+      "mpn": "GRM1555C1H180JA01D",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "C_XC1",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/1901-0402CG180J500NT/C1549",
+      "source_url": "https://jlcpcb.com/partdetail/C33149",
       "supplier": "jlcpcb",
-      "supplier_part": "C1549"
+      "supplier_part": "C33149"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/81-GRM1555C1H180JA1D",
+          "supplier": "Mouser",
+          "supplier_part": "81-GRM1555C1H180JA1D"
+        },
+        {
+          "source_url": "https://uk.farnell.com/dp/4326666",
+          "supplier": "Farnell",
+          "supplier_part": "4326666"
+        }
+      ],
       "electrical_sha256": "a11c85aef26728a13e9d06dcd7e368f715cf02a686435b5f72a0d79157d2e11c",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
-      "manufacturer": "FH (Guangdong Fenghua Advanced Tech)",
-      "mpn": "0402CG180J500NT",
+      "manufacturer": "Murata Electronics",
+      "mpn": "GRM1555C1H180JA01D",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "C_XC2",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/1901-0402CG180J500NT/C1549",
+      "source_url": "https://jlcpcb.com/partdetail/C33149",
       "supplier": "jlcpcb",
-      "supplier_part": "C1549"
+      "supplier_part": "C33149"
     },
     {
       "alternates": [
@@ -510,26 +556,6 @@
       "source_url": "https://jlcpcb.com/partdetail/Coilcraft-0603USB601MLC/C3211396",
       "supplier": "jlcpcb",
       "supplier_part": "C3211396"
-    },
-    {
-      "alternates": [
-        {
-          "source_url": "https://uk.farnell.com/molex/73251-2200/rf-coax-conn-sma-jack-50-ohm-panel/dp/2293854",
-          "supplier": "Farnell",
-          "supplier_part": "2293854"
-        }
-      ],
-      "electrical_sha256": "329c66e71e277eb1fb9e4212900e8c4d0c6203e3ee92294757ba879187b69d45",
-      "footprint": "Connector_Coaxial:SMA_Molex_73251-2200_Horizontal",
-      "manufacturer": "Molex",
-      "mpn": "73251-2200",
-      "part": "molex_sma.MOLEX_73251_2200",
-      "populate": "consigned",
-      "reference": "J_CELL",
-      "reviewed": true,
-      "source_url": "https://www.digikey.com/en/products/result?keywords=0732512200",
-      "supplier": "DigiKey",
-      "supplier_part": "WM9352-ND"
     },
     {
       "alternates": [
@@ -560,26 +586,6 @@
       "source_url": "https://jlcpcb.com/partdetail/JST-S4B_XH_SM4_TB_LF_SN/C161861",
       "supplier": "jlcpcb",
       "supplier_part": "C161861"
-    },
-    {
-      "alternates": [
-        {
-          "source_url": "https://uk.farnell.com/molex/73251-2200/rf-coax-conn-sma-jack-50-ohm-panel/dp/2293854",
-          "supplier": "Farnell",
-          "supplier_part": "2293854"
-        }
-      ],
-      "electrical_sha256": "46c1d8daac3d483dbd2e2c9bd02aba72bed2bb88531b9a3b30d7234563e02ccd",
-      "footprint": "Connector_Coaxial:SMA_Molex_73251-2200_Horizontal",
-      "manufacturer": "Molex",
-      "mpn": "73251-2200",
-      "part": "molex_sma.MOLEX_73251_2200",
-      "populate": "consigned",
-      "reference": "J_GNSS",
-      "reviewed": true,
-      "source_url": "https://www.digikey.com/en/products/result?keywords=0732512200",
-      "supplier": "DigiKey",
-      "supplier_part": "WM9352-ND"
     },
     {
       "alternates": [
@@ -725,51 +731,6 @@
           "supplier_part": "490-2617-1-ND"
         }
       ],
-      "electrical_sha256": "fe87ecfc31338d057c538a59a1b71d63db2112ffbdc6889e90988b36330eb4ac",
-      "footprint": "Inductor_SMD:L_0402_1005Metric",
-      "manufacturer": "Murata Electronics",
-      "mpn": "LQG15HS3N9S02D",
-      "part": "INDUCTOR",
-      "populate": "supplier",
-      "reference": "L_ANT_SERIES",
-      "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C77109",
-      "supplier": "jlcpcb",
-      "supplier_part": "C77109"
-    },
-    {
-      "alternates": [
-        {
-          "source_url": "https://www.digikey.com/en/products/detail/murata-electronics/LQG15HS2N7S02D/662864",
-          "supplier": "DigiKey",
-          "supplier_part": "490-2615-1-ND"
-        },
-        {
-          "source_url": "https://uk.farnell.com/murata/lqg15hs2n7s02d/inductor-2-7nh-0-8a-0402-multilayer/dp/2840116",
-          "supplier": "Farnell",
-          "supplier_part": "2840116"
-        }
-      ],
-      "electrical_sha256": "b983985b17031d03b42b22d08233c0dbe11545541f93cd7f11a95dbd58a4f5e1",
-      "footprint": "Inductor_SMD:L_0402_1005Metric",
-      "manufacturer": "Murata Electronics",
-      "mpn": "LQG15HS2N7S02D",
-      "part": "INDUCTOR",
-      "populate": "supplier",
-      "reference": "L_ANT_SHUNT",
-      "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/MurataElectronics-LQG15HS2N7S02D/C77108",
-      "supplier": "jlcpcb",
-      "supplier_part": "C77108"
-    },
-    {
-      "alternates": [
-        {
-          "source_url": "https://www.digikey.com/en/products/detail/murata-electronics/LQG15HS3N9S02D/662866",
-          "supplier": "DigiKey",
-          "supplier_part": "490-2617-1-ND"
-        }
-      ],
       "electrical_sha256": "a7922ace807da170a429de018829e6442879a94cca75ad654b59a08d7e5c184b",
       "footprint": "Inductor_SMD:L_0402_1005Metric",
       "manufacturer": "Murata Electronics",
@@ -783,349 +744,300 @@
       "supplier_part": "C77109"
     },
     {
+      "electrical_sha256": "d4d7b0956a8b1879e0af0dc42748f17b4ac90f12af0be98d8548b982e9e8e9e1",
+      "footprint": "Inductor_SMD:L_0402_1005Metric",
+      "manufacturer": "Murata Electronics",
+      "mpn": "LQG15HS1N0S02D",
+      "part": "INDUCTOR",
+      "populate": "supplier",
+      "reference": "L_BT_SERIES",
+      "reviewed": false,
+      "source_url": "https://www.lcsc.com/product-detail/C18222.html",
+      "supplier": "jlcpcb",
+      "supplier_part": "C18222"
+    },
+    {
+      "electrical_sha256": "8a2e2b56b24cf4def1f86aea3fb8ad5ca143ef03844a54a75a6a2ffd43eaf4c7",
+      "footprint": "Inductor_SMD:L_0402_1005Metric",
+      "manufacturer": "Murata Electronics",
+      "mpn": "LQG15HS5N6S02D",
+      "part": "INDUCTOR",
+      "populate": "supplier",
+      "reference": "L_CELL_SERIES",
+      "reviewed": false,
+      "source_url": "https://jlcpcb.com/partdetail/MurataElectronics-LQG15HS5N6S02D/C85670",
+      "supplier": "jlcpcb",
+      "supplier_part": "C85670"
+    },
+    {
       "alternates": [
         {
-          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A106KAYNNNE/3888549",
-          "supplier": "DigiKey",
-          "supplier_part": "1276-2891-1-ND"
-        },
-        {
-          "source_url": "https://www.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL21A106KAYNNNE?qs=yOVawPpwOwmTXAd4dJtNjA%3D%3D",
+          "source_url": "https://www.mouser.com/ProductDetail/81-GRM21BR61H106KE3L",
           "supplier": "Mouser",
-          "supplier_part": "187-CL21A106KAYNNNE"
-        },
-        {
-          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl21a106kaynnne/cap-10uf-25v-mlcc-0805/dp/3013452",
-          "supplier": "Farnell",
-          "supplier_part": "3013452"
+          "supplier_part": "81-GRM21BR61H106KE3L"
         }
       ],
       "electrical_sha256": "1ee225d5922fa6bf702b64adcc18f0ee09e9c43049e1a0876dd4946a8af299da",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
-      "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL21A106KAYNNNE",
+      "manufacturer": "Murata Electronics",
+      "mpn": "GRM21BR61H106KE43L",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "PWR/C_BAT",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C15850",
+      "source_url": "https://jlcpcb.com/partdetail/C440198",
       "supplier": "jlcpcb",
-      "supplier_part": "C15850"
+      "supplier_part": "C440198"
     },
     {
       "alternates": [
         {
-          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A106KAYNNNE/3888549",
-          "supplier": "DigiKey",
-          "supplier_part": "1276-2891-1-ND"
-        },
-        {
-          "source_url": "https://www.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL21A106KAYNNNE?qs=yOVawPpwOwmTXAd4dJtNjA%3D%3D",
+          "source_url": "https://www.mouser.com/ProductDetail/81-GRM21BR61H106KE3L",
           "supplier": "Mouser",
-          "supplier_part": "187-CL21A106KAYNNNE"
-        },
-        {
-          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl21a106kaynnne/cap-10uf-25v-mlcc-0805/dp/3013452",
-          "supplier": "Farnell",
-          "supplier_part": "3013452"
+          "supplier_part": "81-GRM21BR61H106KE3L"
         }
       ],
       "electrical_sha256": "8ecac549ad442002e0b93e9f4103ee1a86b8e87615b09ea6e8a3e3438ab617f1",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
-      "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL21A106KAYNNNE",
+      "manufacturer": "Murata Electronics",
+      "mpn": "GRM21BR61H106KE43L",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "PWR/C_LOGIC_IN",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C15850",
+      "source_url": "https://jlcpcb.com/partdetail/C440198",
       "supplier": "jlcpcb",
-      "supplier_part": "C15850"
+      "supplier_part": "C440198"
     },
     {
       "alternates": [
         {
-          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A226MAQNNNE/3888566",
-          "supplier": "DigiKey",
-          "supplier_part": "1276-2908-2-ND"
-        },
-        {
-          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl21a226maqnnne/cap-22uf-25v-mlcc-0805/dp/3013459",
-          "supplier": "Farnell",
-          "supplier_part": "3013459"
+          "source_url": "https://www.mouser.com/ProductDetail/187-CL21A226MPCLRNC",
+          "supplier": "Mouser",
+          "supplier_part": "187-CL21A226MPCLRNC"
         }
       ],
       "electrical_sha256": "8d8b0508ede040722d54c2f762e81198076a6a2a9a84238d84ffb7e66c03e2aa",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL21A226MAQNNNE",
+      "mpn": "CL21A226MPCLRNC",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "PWR/C_LOGIC_OUT1",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C45783",
+      "source_url": "https://jlcpcb.com/partdetail/C307529",
       "supplier": "jlcpcb",
-      "supplier_part": "C45783"
+      "supplier_part": "C307529"
     },
     {
       "alternates": [
         {
-          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A226MAQNNNE/3888566",
-          "supplier": "DigiKey",
-          "supplier_part": "1276-2908-2-ND"
-        },
-        {
-          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl21a226maqnnne/cap-22uf-25v-mlcc-0805/dp/3013459",
-          "supplier": "Farnell",
-          "supplier_part": "3013459"
+          "source_url": "https://www.mouser.com/ProductDetail/187-CL21A226MPCLRNC",
+          "supplier": "Mouser",
+          "supplier_part": "187-CL21A226MPCLRNC"
         }
       ],
       "electrical_sha256": "f9347d6ae78332e1bca305177e618b574e1017d50dbbb42974bbde8e0c5800f7",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL21A226MAQNNNE",
+      "mpn": "CL21A226MPCLRNC",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "PWR/C_LOGIC_OUT2",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C45783",
+      "source_url": "https://jlcpcb.com/partdetail/C307529",
       "supplier": "jlcpcb",
-      "supplier_part": "C45783"
+      "supplier_part": "C307529"
     },
     {
       "alternates": [
         {
-          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A226MAQNNNE/3888566",
-          "supplier": "DigiKey",
-          "supplier_part": "1276-2908-2-ND"
-        },
-        {
-          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl21a226maqnnne/cap-22uf-25v-mlcc-0805/dp/3013459",
-          "supplier": "Farnell",
-          "supplier_part": "3013459"
+          "source_url": "https://www.mouser.com/ProductDetail/187-CL21A226MPCLRNC",
+          "supplier": "Mouser",
+          "supplier_part": "187-CL21A226MPCLRNC"
         }
       ],
       "electrical_sha256": "e82fb19b53691f6be748b5a36a137be9430f0835c3ba6f8343a5dec54eb75959",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL21A226MAQNNNE",
+      "mpn": "CL21A226MPCLRNC",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "PWR/C_LOGIC_OUT3",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C45783",
+      "source_url": "https://jlcpcb.com/partdetail/C307529",
       "supplier": "jlcpcb",
-      "supplier_part": "C45783"
+      "supplier_part": "C307529"
     },
     {
       "alternates": [
         {
-          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL05B104KO5NNNC/3886659",
-          "supplier": "DigiKey",
-          "supplier_part": "1276-1001-1-ND"
+          "source_url": "https://www.mouser.com/ProductDetail/187-CL05B104KB54PNC",
+          "supplier": "Mouser",
+          "supplier_part": "187-CL05B104KB54PNC"
         },
         {
-          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl05b104ko5nnnc/cap-0-1uf-16v-mlcc-0402/dp/3013349",
+          "source_url": "https://uk.farnell.com/dp/4748829",
           "supplier": "Farnell",
-          "supplier_part": "3013349"
+          "supplier_part": "4748829"
         }
       ],
       "electrical_sha256": "82ec292fbca92af1afefa4328b7628a14ff989fb1930d025c9b70e69a9501444",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL05B104KO5NNNC",
+      "mpn": "CL05B104KB54PNC",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "PWR/C_LOGIC_VINA",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C1525",
+      "source_url": "https://jlcpcb.com/partdetail/C307331",
       "supplier": "jlcpcb",
-      "supplier_part": "C1525"
+      "supplier_part": "C307331"
     },
     {
       "alternates": [
         {
-          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A106KAYNNNE/3888549",
-          "supplier": "DigiKey",
-          "supplier_part": "1276-2891-1-ND"
-        },
-        {
-          "source_url": "https://www.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL21A106KAYNNNE?qs=yOVawPpwOwmTXAd4dJtNjA%3D%3D",
+          "source_url": "https://www.mouser.com/ProductDetail/81-GRM21BR61H106KE3L",
           "supplier": "Mouser",
-          "supplier_part": "187-CL21A106KAYNNNE"
-        },
-        {
-          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl21a106kaynnne/cap-10uf-25v-mlcc-0805/dp/3013452",
-          "supplier": "Farnell",
-          "supplier_part": "3013452"
+          "supplier_part": "81-GRM21BR61H106KE3L"
         }
       ],
       "electrical_sha256": "6d44eeeddb8d33bbbb7b7238c700fe3e338b2d370bdf083fe739146817e07545",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
-      "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL21A106KAYNNNE",
+      "manufacturer": "Murata Electronics",
+      "mpn": "GRM21BR61H106KE43L",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "PWR/C_MODEM_IN",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C15850",
+      "source_url": "https://jlcpcb.com/partdetail/C440198",
       "supplier": "jlcpcb",
-      "supplier_part": "C15850"
+      "supplier_part": "C440198"
     },
     {
       "alternates": [
         {
-          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A226MAQNNNE/3888566",
-          "supplier": "DigiKey",
-          "supplier_part": "1276-2908-2-ND"
-        },
-        {
-          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl21a226maqnnne/cap-22uf-25v-mlcc-0805/dp/3013459",
-          "supplier": "Farnell",
-          "supplier_part": "3013459"
+          "source_url": "https://www.mouser.com/ProductDetail/187-CL21A226MPCLRNC",
+          "supplier": "Mouser",
+          "supplier_part": "187-CL21A226MPCLRNC"
         }
       ],
       "electrical_sha256": "c8503a5a059198c5f11079c2b69fe6998fb3a981dc9917c45b43f0c415a7e283",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL21A226MAQNNNE",
+      "mpn": "CL21A226MPCLRNC",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "PWR/C_MODEM_OUT1",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C45783",
+      "source_url": "https://jlcpcb.com/partdetail/C307529",
       "supplier": "jlcpcb",
-      "supplier_part": "C45783"
+      "supplier_part": "C307529"
     },
     {
       "alternates": [
         {
-          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A226MAQNNNE/3888566",
-          "supplier": "DigiKey",
-          "supplier_part": "1276-2908-2-ND"
-        },
-        {
-          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl21a226maqnnne/cap-22uf-25v-mlcc-0805/dp/3013459",
-          "supplier": "Farnell",
-          "supplier_part": "3013459"
+          "source_url": "https://www.mouser.com/ProductDetail/187-CL21A226MPCLRNC",
+          "supplier": "Mouser",
+          "supplier_part": "187-CL21A226MPCLRNC"
         }
       ],
       "electrical_sha256": "08710bfa82f32119633a294a43df2aa6202681007ee48f8955ca1fef607e71a4",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL21A226MAQNNNE",
+      "mpn": "CL21A226MPCLRNC",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "PWR/C_MODEM_OUT2",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C45783",
+      "source_url": "https://jlcpcb.com/partdetail/C307529",
       "supplier": "jlcpcb",
-      "supplier_part": "C45783"
+      "supplier_part": "C307529"
     },
     {
       "alternates": [
         {
-          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A226MAQNNNE/3888566",
-          "supplier": "DigiKey",
-          "supplier_part": "1276-2908-2-ND"
-        },
-        {
-          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl21a226maqnnne/cap-22uf-25v-mlcc-0805/dp/3013459",
-          "supplier": "Farnell",
-          "supplier_part": "3013459"
+          "source_url": "https://www.mouser.com/ProductDetail/187-CL21A226MPCLRNC",
+          "supplier": "Mouser",
+          "supplier_part": "187-CL21A226MPCLRNC"
         }
       ],
       "electrical_sha256": "c671a6a47c188244d37bb9de9e6a15304f3c20d8fadf6ebf0b94550f44d9c517",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL21A226MAQNNNE",
+      "mpn": "CL21A226MPCLRNC",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "PWR/C_MODEM_OUT3",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C45783",
+      "source_url": "https://jlcpcb.com/partdetail/C307529",
       "supplier": "jlcpcb",
-      "supplier_part": "C45783"
+      "supplier_part": "C307529"
     },
     {
       "alternates": [
         {
-          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL05B104KO5NNNC/3886659",
-          "supplier": "DigiKey",
-          "supplier_part": "1276-1001-1-ND"
+          "source_url": "https://www.mouser.com/ProductDetail/187-CL05B104KB54PNC",
+          "supplier": "Mouser",
+          "supplier_part": "187-CL05B104KB54PNC"
         },
         {
-          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl05b104ko5nnnc/cap-0-1uf-16v-mlcc-0402/dp/3013349",
+          "source_url": "https://uk.farnell.com/dp/4748829",
           "supplier": "Farnell",
-          "supplier_part": "3013349"
+          "supplier_part": "4748829"
         }
       ],
       "electrical_sha256": "0a678070855c891d06c8fefd8883d85fc1b4de353c8257d6da79dae2a798b999",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
       "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL05B104KO5NNNC",
+      "mpn": "CL05B104KB54PNC",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "PWR/C_MODEM_VINA",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C1525",
+      "source_url": "https://jlcpcb.com/partdetail/C307331",
       "supplier": "jlcpcb",
-      "supplier_part": "C1525"
+      "supplier_part": "C307331"
     },
     {
       "alternates": [
         {
-          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A106KAYNNNE/3888549",
-          "supplier": "DigiKey",
-          "supplier_part": "1276-2891-1-ND"
-        },
-        {
-          "source_url": "https://www.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL21A106KAYNNNE?qs=yOVawPpwOwmTXAd4dJtNjA%3D%3D",
+          "source_url": "https://www.mouser.com/ProductDetail/81-GRM21BR61H106KE3L",
           "supplier": "Mouser",
-          "supplier_part": "187-CL21A106KAYNNNE"
-        },
-        {
-          "source_url": "https://uk.farnell.com/samsung-electro-mechanics/cl21a106kaynnne/cap-10uf-25v-mlcc-0805/dp/3013452",
-          "supplier": "Farnell",
-          "supplier_part": "3013452"
+          "supplier_part": "81-GRM21BR61H106KE3L"
         }
       ],
       "electrical_sha256": "943c9ab0f07b481fe7278ba32ab446a6ce83a87616457030034a6bcc234f76fd",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
-      "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL21A106KAYNNNE",
+      "manufacturer": "Murata Electronics",
+      "mpn": "GRM21BR61H106KE43L",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "PWR/C_SYS",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C15850",
+      "source_url": "https://jlcpcb.com/partdetail/C440198",
       "supplier": "jlcpcb",
-      "supplier_part": "C15850"
+      "supplier_part": "C440198"
     },
     {
       "alternates": [
         {
-          "source_url": "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL10A475KO8NNNC/3887442",
-          "supplier": "DigiKey",
-          "supplier_part": "1276-1784-1-ND"
-        },
-        {
-          "source_url": "https://www.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL10A475KO8NNNC?qs=X6jEic%2FHinAbIjmLnFfqqQ%3D%3D",
+          "source_url": "https://www.mouser.com/ProductDetail/603-CC603KRX5R7BB475",
           "supplier": "Mouser",
-          "supplier_part": "187-CL10A475KO8NNNC"
+          "supplier_part": "603-CC603KRX5R7BB475"
         }
       ],
       "electrical_sha256": "8d5e2ed58392cf429fcc352d713340a3aeab745a7973ac83a96f0c423ad1a3d3",
       "footprint": "Capacitor_SMD:C_0603_1608Metric",
-      "manufacturer": "Samsung Electro-Mechanics",
-      "mpn": "CL10A475KO8NNNC",
+      "manufacturer": "YAGEO",
+      "mpn": "CC0603KRX5R7BB475",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "PWR/C_USB",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C19666",
+      "source_url": "https://jlcpcb.com/partdetail/C277476",
       "supplier": "jlcpcb",
-      "supplier_part": "C19666"
+      "supplier_part": "C277476"
     },
     {
       "alternates": [
@@ -1201,115 +1113,204 @@
       "supplier_part": "C3233727"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/603-RC0402FR-073K3L",
+          "supplier": "Mouser",
+          "supplier_part": "603-RC0402FR-073K3L"
+        },
+        {
+          "source_url": "https://uk.farnell.com/dp/9239294",
+          "supplier": "Farnell",
+          "supplier_part": "9239294"
+        }
+      ],
       "electrical_sha256": "acabdae6ed0f6cb9ce08b221f0f01a66f9a2791bfeb15ce28960f9a289f4c7c3",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF3301TCE",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-073K3L",
       "part": "RESISTOR",
       "populate": "supplier",
       "reference": "PWR/R_ILIM",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C25890",
+      "source_url": "https://jlcpcb.com/partdetail/C137992",
       "supplier": "jlcpcb",
-      "supplier_part": "C25890"
+      "supplier_part": "C137992"
     },
     {
       "alternates": [
         {
-          "source_url": "https://www.mouser.com/ProductDetail/Royalohm/0402WGF2201TCE?qs=e8oIoAS2J1QvBi%2FbAiHH2g%3D%3D",
+          "source_url": "https://www.mouser.com/ProductDetail/603-AC0402FR-072K2L",
           "supplier": "Mouser",
-          "supplier_part": "303-0402WGF2201TCE"
+          "supplier_part": "603-AC0402FR-072K2L"
+        },
+        {
+          "source_url": "https://uk.farnell.com/dp/3495191",
+          "supplier": "Farnell",
+          "supplier_part": "3495191"
         }
       ],
       "electrical_sha256": "789c06025797566e48731aceccc2e0e8104a38e0c41573eaa265f8c9d1d9d16a",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF2201TCE",
+      "manufacturer": "YAGEO",
+      "mpn": "AC0402FR-072K2L",
       "part": "RESISTOR",
       "populate": "supplier",
       "reference": "PWR/R_ISET",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C25879",
+      "source_url": "https://jlcpcb.com/partdetail/C144773",
       "supplier": "jlcpcb",
-      "supplier_part": "C25879"
+      "supplier_part": "C144773"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/603-RC0402FR-07100KL",
+          "supplier": "Mouser",
+          "supplier_part": "603-RC0402FR-07100KL"
+        },
+        {
+          "source_url": "https://uk.farnell.com/dp/9239472",
+          "supplier": "Farnell",
+          "supplier_part": "9239472"
+        }
+      ],
       "electrical_sha256": "9f4b0cad3d3edb7f66ff919a842667dc0694f20682b2cef30b31ae58779b677f",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF1003TCE",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-07100KL",
       "part": "RESISTOR",
       "populate": "supplier",
       "reference": "PWR/R_LOGIC_FB_BOT",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C25741",
+      "source_url": "https://jlcpcb.com/partdetail/C60491",
       "supplier": "jlcpcb",
-      "supplier_part": "C25741"
+      "supplier_part": "C60491"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/603-AC0402FR-07560KL",
+          "supplier": "Mouser",
+          "supplier_part": "603-AC0402FR-07560KL"
+        },
+        {
+          "source_url": "https://uk.farnell.com/dp/4562006",
+          "supplier": "Farnell",
+          "supplier_part": "4562006"
+        }
+      ],
       "electrical_sha256": "da994d14f0cfdbf75ef244a924b9b588f0a954873876f7e4f2da2766c39e300e",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF5603TCE",
+      "manufacturer": "YAGEO",
+      "mpn": "AC0402FR-07560KL",
       "part": "RESISTOR",
       "populate": "supplier",
       "reference": "PWR/R_LOGIC_FB_TOP",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C132339",
+      "source_url": "https://jlcpcb.com/partdetail/C227139",
       "supplier": "jlcpcb",
-      "supplier_part": "C132339"
+      "supplier_part": "C227139"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/603-RC0402FR-07100KL",
+          "supplier": "Mouser",
+          "supplier_part": "603-RC0402FR-07100KL"
+        },
+        {
+          "source_url": "https://uk.farnell.com/dp/9239472",
+          "supplier": "Farnell",
+          "supplier_part": "9239472"
+        }
+      ],
       "electrical_sha256": "410586c3042adf6b1df354d100cba0017507dceefebefee98b155f4052e3743f",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF1003TCE",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-07100KL",
       "part": "RESISTOR",
       "populate": "supplier",
       "reference": "PWR/R_MODEM_EN_PD",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C25741",
+      "source_url": "https://jlcpcb.com/partdetail/C60491",
       "supplier": "jlcpcb",
-      "supplier_part": "C25741"
+      "supplier_part": "C60491"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/603-RC0402FR-07100KL",
+          "supplier": "Mouser",
+          "supplier_part": "603-RC0402FR-07100KL"
+        },
+        {
+          "source_url": "https://uk.farnell.com/dp/9239472",
+          "supplier": "Farnell",
+          "supplier_part": "9239472"
+        }
+      ],
       "electrical_sha256": "c56f2022a1804d38dfe9d6697607a1fef8312c0d4794371ba780a1004728c629",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF1003TCE",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-07100KL",
       "part": "RESISTOR",
       "populate": "supplier",
       "reference": "PWR/R_MODEM_FB_BOT",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C25741",
+      "source_url": "https://jlcpcb.com/partdetail/C60491",
       "supplier": "jlcpcb",
-      "supplier_part": "C25741"
+      "supplier_part": "C60491"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/603-RC0402FR-07330KL",
+          "supplier": "Mouser",
+          "supplier_part": "603-RC0402FR-07330KL"
+        },
+        {
+          "source_url": "https://uk.farnell.com/dp/9239537",
+          "supplier": "Farnell",
+          "supplier_part": "9239537"
+        }
+      ],
       "electrical_sha256": "d1c331f4e88e73f386e0938ae02e35d7e2ade8a5b6668f9907b8c9592f4c7533",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF3303TCE",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-07330KL",
       "part": "RESISTOR",
       "populate": "supplier",
       "reference": "PWR/R_MODEM_FB_TOP",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C25778",
+      "source_url": "https://jlcpcb.com/partdetail/C138006",
       "supplier": "jlcpcb",
-      "supplier_part": "C25778"
+      "supplier_part": "C138006"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/603-RC0402FR-07330KL",
+          "supplier": "Mouser",
+          "supplier_part": "603-RC0402FR-07330KL"
+        },
+        {
+          "source_url": "https://uk.farnell.com/dp/9239537",
+          "supplier": "Farnell",
+          "supplier_part": "9239537"
+        }
+      ],
       "electrical_sha256": "688675ee26633d99943178bd0c89fa96c7bdec1eccc1e08e2a37a0ec26d9416a",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF3303TCE",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-07330KL",
       "part": "RESISTOR",
       "populate": "supplier",
       "reference": "PWR/R_MODEM_FB_TOP2",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C25778",
+      "source_url": "https://jlcpcb.com/partdetail/C138006",
       "supplier": "jlcpcb",
-      "supplier_part": "C25778"
+      "supplier_part": "C138006"
     },
     {
       "alternates": [
@@ -1398,199 +1399,292 @@
     {
       "alternates": [
         {
-          "source_url": "https://www.mouser.com/ProductDetail/Royalohm/0402WGF1002TCE?qs=e8oIoAS2J1T9%2FSfQTy4YqQ%3D%3D",
+          "source_url": "https://www.mouser.com/ProductDetail/603-RC0402FR-0710KL",
           "supplier": "Mouser",
-          "supplier_part": "303-0402WGF1002TCE"
+          "supplier_part": "603-RC0402FR-0710KL"
+        },
+        {
+          "source_url": "https://uk.farnell.com/dp/9239359",
+          "supplier": "Farnell",
+          "supplier_part": "9239359"
         }
       ],
       "electrical_sha256": "a3aa27d9d9e24c74c6acfa0b0f8596e475b67563de9e39a3a1756c4b9052f84b",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF1002TCE",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-0710KL",
       "part": "RESISTOR",
       "populate": "supplier",
       "reference": "R_CC_OUT1",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C25744",
+      "source_url": "https://jlcpcb.com/partdetail/C60490",
       "supplier": "jlcpcb",
-      "supplier_part": "C25744"
+      "supplier_part": "C60490"
     },
     {
       "alternates": [
         {
-          "source_url": "https://www.mouser.com/ProductDetail/Royalohm/0402WGF1002TCE?qs=e8oIoAS2J1T9%2FSfQTy4YqQ%3D%3D",
+          "source_url": "https://www.mouser.com/ProductDetail/603-RC0402FR-0710KL",
           "supplier": "Mouser",
-          "supplier_part": "303-0402WGF1002TCE"
+          "supplier_part": "603-RC0402FR-0710KL"
+        },
+        {
+          "source_url": "https://uk.farnell.com/dp/9239359",
+          "supplier": "Farnell",
+          "supplier_part": "9239359"
         }
       ],
       "electrical_sha256": "4a74551afd6d91a890ce05e4655c9a26005696ffd820fecb2c7fd370ad66e350",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF1002TCE",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-0710KL",
       "part": "RESISTOR",
       "populate": "supplier",
       "reference": "R_CC_OUT2",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C25744",
+      "source_url": "https://jlcpcb.com/partdetail/C60490",
       "supplier": "jlcpcb",
-      "supplier_part": "C25744"
+      "supplier_part": "C60490"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/603-RC0402FR-07300KL",
+          "supplier": "Mouser",
+          "supplier_part": "603-RC0402FR-07300KL"
+        },
+        {
+          "source_url": "https://uk.farnell.com/dp/1458779",
+          "supplier": "Farnell",
+          "supplier_part": "1458779"
+        }
+      ],
       "electrical_sha256": "7b32f462bec57f80fd291bef3399f725e4c74f2aeaa845f6ba34430c32f93a1c",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF3003TCE",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-07300KL",
       "part": "RESISTOR",
       "populate": "supplier",
       "reference": "R_CC_VBUS",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C25774",
+      "source_url": "https://jlcpcb.com/partdetail/C138011",
       "supplier": "jlcpcb",
-      "supplier_part": "C25774"
+      "supplier_part": "C138011"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/603-RC0402FR-07300KL",
+          "supplier": "Mouser",
+          "supplier_part": "603-RC0402FR-07300KL"
+        },
+        {
+          "source_url": "https://uk.farnell.com/dp/1458779",
+          "supplier": "Farnell",
+          "supplier_part": "1458779"
+        }
+      ],
       "electrical_sha256": "f009198634303398fb4d523f0d13579eafec24f17c54028fb93348e1fe32ca6b",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF3003TCE",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-07300KL",
       "part": "RESISTOR",
       "populate": "supplier",
       "reference": "R_CC_VBUS2",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C25774",
+      "source_url": "https://jlcpcb.com/partdetail/C138011",
       "supplier": "jlcpcb",
-      "supplier_part": "C25774"
+      "supplier_part": "C138011"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/603-RC0402FR-07300KL",
+          "supplier": "Mouser",
+          "supplier_part": "603-RC0402FR-07300KL"
+        },
+        {
+          "source_url": "https://uk.farnell.com/dp/1458779",
+          "supplier": "Farnell",
+          "supplier_part": "1458779"
+        }
+      ],
       "electrical_sha256": "7750dae9a907d36f203f3f4cf5263fe02e707dbf1daefdbba6434f051e49888e",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF3003TCE",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-07300KL",
       "part": "RESISTOR",
       "populate": "supplier",
       "reference": "R_CC_VBUS3",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C25774",
+      "source_url": "https://jlcpcb.com/partdetail/C138011",
       "supplier": "jlcpcb",
-      "supplier_part": "C25774"
+      "supplier_part": "C138011"
     },
     {
-      "electrical_sha256": "b65d34ec0b532ede2beed7ec939a3de520e27b087074cbc9dc4cac9f5239decf",
-      "footprint": "Resistor_SMD:R_0402_1005Metric",
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF0000TCE",
-      "part": "RESISTOR",
-      "populate": "supplier",
-      "reference": "R_CELL_SERIES",
-      "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/17853-0402WGF0000TCE/C17168",
-      "supplier": "jlcpcb",
-      "supplier_part": "C17168"
-    },
-    {
+      "alternates": [
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/603-AC0402FR-074K7L",
+          "supplier": "Mouser",
+          "supplier_part": "603-AC0402FR-074K7L"
+        }
+      ],
       "electrical_sha256": "d77b42c9da4a6d146da821e32bb0ad6d88cafc9bf3297fd8a21fc61bb9c61f97",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF4701TCE",
+      "manufacturer": "YAGEO",
+      "mpn": "AC0402FR-074K7L",
       "part": "RESISTOR",
       "populate": "supplier",
       "reference": "R_I2C_SCL",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C25900",
+      "source_url": "https://jlcpcb.com/partdetail/C174364",
       "supplier": "jlcpcb",
-      "supplier_part": "C25900"
+      "supplier_part": "C174364"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/603-AC0402FR-074K7L",
+          "supplier": "Mouser",
+          "supplier_part": "603-AC0402FR-074K7L"
+        }
+      ],
       "electrical_sha256": "47a9a5c559bb3582d7c2497cbd04d5f39ec67501327b6c5f9b1143674e59e21c",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF4701TCE",
+      "manufacturer": "YAGEO",
+      "mpn": "AC0402FR-074K7L",
       "part": "RESISTOR",
       "populate": "supplier",
       "reference": "R_I2C_SDA",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C25900",
+      "source_url": "https://jlcpcb.com/partdetail/C174364",
       "supplier": "jlcpcb",
-      "supplier_part": "C25900"
+      "supplier_part": "C174364"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/603-RC0402FR-07100KL",
+          "supplier": "Mouser",
+          "supplier_part": "603-RC0402FR-07100KL"
+        },
+        {
+          "source_url": "https://uk.farnell.com/dp/9239472",
+          "supplier": "Farnell",
+          "supplier_part": "9239472"
+        }
+      ],
       "electrical_sha256": "235499b60cbe5930546b28a04e61e1cdf44812cd11ab9ae9cb6e800ff974b23d",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF1003TCE",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-07100KL",
       "part": "RESISTOR",
       "populate": "supplier",
       "reference": "R_KEY_PD",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C25741",
+      "source_url": "https://jlcpcb.com/partdetail/C60491",
       "supplier": "jlcpcb",
-      "supplier_part": "C25741"
+      "supplier_part": "C60491"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/603-RC0402FR-071KL",
+          "supplier": "Mouser",
+          "supplier_part": "603-RC0402FR-071KL"
+        },
+        {
+          "source_url": "https://uk.farnell.com/dp/2421889",
+          "supplier": "Farnell",
+          "supplier_part": "2421889"
+        }
+      ],
       "electrical_sha256": "5133d726de2aeed40b8393a0d0e9668e96b18cf9a4f5e91bf5bd554acd0fb0e6",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF1001TCE",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-071KL",
       "part": "RESISTOR",
       "populate": "supplier",
       "reference": "R_LED_1",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C11702",
+      "source_url": "https://jlcpcb.com/partdetail/C106235",
       "supplier": "jlcpcb",
-      "supplier_part": "C11702"
+      "supplier_part": "C106235"
     },
     {
+      "alternates": [
+        {
+          "source_url": "https://www.mouser.com/ProductDetail/603-RC0402FR-071KL",
+          "supplier": "Mouser",
+          "supplier_part": "603-RC0402FR-071KL"
+        },
+        {
+          "source_url": "https://uk.farnell.com/dp/2421889",
+          "supplier": "Farnell",
+          "supplier_part": "2421889"
+        }
+      ],
       "electrical_sha256": "9a54883b1c4d7ef0613b54c64545101e9e040a39e180190a79b0aedb5b107b32",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF1001TCE",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-071KL",
       "part": "RESISTOR",
       "populate": "supplier",
       "reference": "R_LED_2",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C11702",
+      "source_url": "https://jlcpcb.com/partdetail/C106235",
       "supplier": "jlcpcb",
-      "supplier_part": "C11702"
+      "supplier_part": "C106235"
     },
     {
       "alternates": [
         {
-          "source_url": "https://www.mouser.com/ProductDetail/Royalohm/0402WGF1002TCE?qs=e8oIoAS2J1T9%2FSfQTy4YqQ%3D%3D",
+          "source_url": "https://www.mouser.com/ProductDetail/603-RC0402FR-0710KL",
           "supplier": "Mouser",
-          "supplier_part": "303-0402WGF1002TCE"
+          "supplier_part": "603-RC0402FR-0710KL"
+        },
+        {
+          "source_url": "https://uk.farnell.com/dp/9239359",
+          "supplier": "Farnell",
+          "supplier_part": "9239359"
         }
       ],
       "electrical_sha256": "82a51f9a3c69e0c129d1e8a15db637280e1cf5e8e280d3b1e63f52473a00179b",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF1002TCE",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-0710KL",
       "part": "RESISTOR",
       "populate": "supplier",
       "reference": "R_RESET_MCU",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C25744",
+      "source_url": "https://jlcpcb.com/partdetail/C60490",
       "supplier": "jlcpcb",
-      "supplier_part": "C25744"
+      "supplier_part": "C60490"
     },
     {
       "alternates": [
         {
-          "source_url": "https://www.mouser.com/ProductDetail/Royalohm/0402WGF1002TCE?qs=e8oIoAS2J1T9%2FSfQTy4YqQ%3D%3D",
+          "source_url": "https://www.mouser.com/ProductDetail/603-RC0402FR-0710KL",
           "supplier": "Mouser",
-          "supplier_part": "303-0402WGF1002TCE"
+          "supplier_part": "603-RC0402FR-0710KL"
+        },
+        {
+          "source_url": "https://uk.farnell.com/dp/9239359",
+          "supplier": "Farnell",
+          "supplier_part": "9239359"
         }
       ],
       "electrical_sha256": "e34a333bcd002f30c831c9224c7e6316208da99c9d981345c7e5bb973615a97d",
       "footprint": "Resistor_SMD:R_0402_1005Metric",
-      "manufacturer": "UNI-ROYAL",
-      "mpn": "0402WGF1002TCE",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-0710KL",
       "part": "RESISTOR",
       "populate": "supplier",
       "reference": "R_RESET_NRF",
       "reviewed": true,
-      "source_url": "https://jlcpcb.com/partdetail/C25744",
+      "source_url": "https://jlcpcb.com/partdetail/C60490",
       "supplier": "jlcpcb",
-      "supplier_part": "C25744"
+      "supplier_part": "C60490"
     },
     {
       "alternates": [

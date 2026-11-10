@@ -1,5 +1,5 @@
 # CopperAssetTracker board settings. The recipes are CopperScript's shared ones
-# (make/board.mk and make/route-build.sh, maintained from CopperScript).
+# (make/board.mk, make/route-build.sh and make/release-build.sh, maintained from CopperScript).
 # Only invocation settings and this project's own targets live here.
 # Source-driven layer selection: see docs/board-configuration.md.
 SOURCE := board.copper
@@ -43,7 +43,7 @@ latest-route:
 
 # One legal placement candidate with macro copper; no board-level routing.
 layout: PHYSICAL_ARGS += --candidates 1
-.PHONY: copper plan si-check render review order test
+.PHONY: copper plan si-check render review order test antennas
 plan: layout
 
 # Build the Rust compiler from the CopperScript checkout, with its pinned
@@ -64,11 +64,35 @@ test:
 si-check:
 	$(COPPER) si-check $(SOURCE) $(RESOLVE_ARGS) --offline $(_layer_args) --fab-profile $(FAB_PROFILE)
 
+# Full-wave synthesis of the three printed antennas (constraint antenna in
+# board.copper): one report per antenna in revisions/pcb-antennas-v1/. Paste
+# the printed geometry and tuned_for lines into the declaration. ANTENNAS
+# selects a subset; SYNTH_ARGS adds e.g. --verify or --budget N. Expect tens
+# of minutes per antenna. Simulation evidence only.
+ANTENNAS ?= ble gnss lte
+ANTENNA_REPORTS := revisions/pcb-antennas-v1
+SYNTH_ARGS ?=
+antennas: copper
+	@for a in $(ANTENNAS); do \
+	  $(COPPER) synthesize-antenna $(SOURCE) $(RESOLVE_ARGS) --offline $(_layer_args) --fab-profile $(FAB_PROFILE) \
+	    --antenna $$a --report $(ANTENNA_REPORTS)/$$a-synthesis.json $(SYNTH_ARGS) || exit 1; \
+	done
+
 # Layer SVGs of the newest routed (and refilled) board.
 render:
 	"$(KICAD_CLI_BIN)" pcb export svg --layers F.Cu,In1.Cu,In2.Cu,In3.Cu,In4.Cu,B.Cu --common-layers Edge.Cuts --mode-multi --fit-page-to-board --exclude-drawing-sheet --check-zones -o $(RUNS)/latest-route/layers/ $(ROUTED)
 
+# The website showcase without KiCad: a fresh native-verified route, native
+# fill, DRC and plot, and the promo views rendered from the plotted Gerbers
+# into docs/showcase (see docs/showcase.md).
+.PHONY: showcase
+showcase: copper
+	bash scripts/showcase.sh --copper "$(COPPER)"
+
 # Browse and annotate a board in CopperReview (local web viewer; Ctrl+C stops it).
+# The page also compiles this folder in the browser for the electrical review
+# (schematic, power, buses), linked to the board; reload it to recompile.
+# 3D bodies are KiCad's STEP models once CopperReview has run `npm run build:occt`.
 # Defaults to the newest routed board; its stage follows that route's run.json.
 # Point REVIEW_BOARD elsewhere (e.g. $(OUT)/placed.kicad_pcb) and set
 # REVIEW_STAGE=placed to review a placement. REVIEW_ARGS=--no-browser etc.
@@ -80,7 +104,7 @@ REVIEW_ARGS ?=
 review_stage = $(or $(REVIEW_STAGE),$(if $(filter $(ROUTED),$(REVIEW_BOARD)),$$(jq -e '.status == "passed"' $(RUNS)/latest-route/run.json > /dev/null 2>&1 && echo fully_routed || echo partially_routed),unknown))
 review:
 	@test -f $(REVIEW_BOARD) || { echo "No board at $(REVIEW_BOARD): run 'make route' first."; exit 1; }
-	$(UV) run --project $(COPPERREVIEW) copper-review $(REVIEW_BOARD) --source $(SOURCE) --stage $(review_stage) $(REVIEW_ARGS)
+	$(UV) run --project $(COPPERREVIEW) copper-review $(REVIEW_BOARD) --project . --entry $(SOURCE) --source $(SOURCE) --stage $(review_stage) $(REVIEW_ARGS)
 
 # Complete ordering list: every component on the board, grouped by part, with
 # quantity per board, manufacturer and MPN, the assembly route and the recorded

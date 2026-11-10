@@ -9,8 +9,8 @@ supplier codes), generated from the lock. Once J_CELL and J_GNSS are
 reviewed, `make bom` writes the per-designator ordering sheet with one column
 per distributor.
 
-Coverage of the 43 distinct MPNs: JLCPCB 42, DigiKey 26, Farnell 20, Mouser 16;
-nine are listed at all three. The two SMA jacks (Molex 73251-2200) are not
+Coverage of the 44 distinct MPNs: JLCPCB 43, Farnell 31, Mouser 30, DigiKey 21;
+seven are listed at all three. The two SMA jacks (Molex 73251-2200) are not
 stocked by JLCPCB, so they are `consigned` with DigiKey as the primary offer.
 
 ## How the codes were checked
@@ -27,17 +27,16 @@ distributor's cart before ordering.
 
 ## Gaps and risks
 
-- **No DigiKey, Mouser or Farnell listing (14 MPNs):** all FH 0402 C0G
-  capacitors, all UNI-ROYAL 0402 resistors (Mouser lists a few as
-  `303-…`, not confirmed here), the KENTO KT-0603R LED, the YXC X322532MOB4SI
-  crystal and the SIM7670G-LNGV modem (LCSC/SIMCom only). A non-JLCPCB build
-  needs equivalent substitutes (for example Yageo RC0402FR-07 resistors and
-  Murata GRM15 C0G capacitors). Substitutes are new selections that need their
-  own review, not alternates of these MPNs.
-- **CL21A226MAQNNNE** (six TPS63020 output capacitors) is marked obsolete at
-  DigiKey and Mouser; DigiKey suggests CL21A226MAYNNNE. JLCPCB C45783 is
-  unaffected for now.
-- **CL21A106KAYNNNE** is marked discontinued at DigiKey.
+- **No DigiKey, Mouser or Farnell listing (3 MPNs):** the KENTO KT-0603R LED,
+  the YXC X322532MOB4SI crystal and the SIM7670G-LNGV modem (LCSC/SIMCom only).
+  The FH 0402 C0G capacitors and UNI-ROYAL 0402 resistors that had none are
+  replaced in the lock by reviewed YAGEO and Murata selections (YAGEO RC/AC0402
+  resistors, YAGEO CC0402/CC0603 and Murata GRM15/GJM15/GRM21 capacitors),
+  which JLCPCB and at least one distributor stock.
+- The TPS63020 output capacitors are Samsung **CL21A226MPCLRNC** (C307529) and
+  the 10 µF inputs Murata **GRM21BR61H106KE43L** (C440198), replacing the
+  CL21A226MAQNNNE (obsolete at DigiKey and Mouser) and CL21A106KAYNNNE
+  (discontinued at DigiKey) of the first selection.
 - **NRF52832-QFAA-R** is NRND at Nordic; Mouser lists only the -R7 reel.
 - **FTSH-105-01-L-DV-007-K** (SWD headers) is sold in tubes, and STM32G0C1RET6
   in trays: no cut tape.

@@ -6,8 +6,8 @@ from pathlib import Path
 import unittest
 
 from copper_cli import (assembly_check, assembly_snapshot, audit_footprints, check, compile_board,
-                        components, fixed_placements, nanometres, net, net_names, part, query,
-                        routing_rules)
+                        components, constraints, fixed_placements, nanometres, net, net_names, part,
+                        query, routing_rules)
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -60,14 +60,13 @@ class TrackerTests(unittest.TestCase):
         expected = {s["reference"] for s in assembly_snapshot()["selections"]}
         self.assertEqual(expected, set(self.selections))
         self.assertEqual(len(expected), len(self.lock["selections"]))
-        # JLCPCB places everything fitted but the hand-fitted SMA jacks; the
-        # cellular matching shunts are reserved pads, not fitted.
+        # JLCPCB places everything fitted; consigned parts are hand-fitted.
+        # The LTE network's C2 shunt is a reserved tuning land, not fitted.
         fitted = [s for s in self.lock["selections"] if s["populate"] != "none"]
         self.assertTrue(all(s["mpn"] and s["supplier_part"] for s in fitted))
         self.assertEqual({s["reference"] for s in fitted if s["supplier"] != "jlcpcb"},
                          {s["reference"] for s in fitted if s["populate"] == "consigned"})
-        self.assertEqual({s["reference"] for s in self.lock["selections"] if s["populate"] == "none"},
-                         {"C_CELL_SHUNT1", "C_CELL_SHUNT2"})
+        self.assertEqual({s["reference"] for s in self.lock["selections"] if s["populate"] == "none"}, {"C_CELL_SHUNT2"})
         groups = json.loads((ROOT / "procurement/parts.json").read_text())["groups"]
         refs = [r for g in groups for r in g["references"]]
         self.assertEqual(expected, set(refs))
@@ -86,9 +85,22 @@ class TrackerTests(unittest.TestCase):
         r = assembly_check()
         self.assertEqual(r["exact_selection_count"], len(self.lock["selections"]))
         # Each selection is bound to its own component and every one is
-        # reviewed; a source change that alters one makes it fail again.
-        self.assertTrue(r["passed"], r["issues"])
-        self.assertEqual(r["reviewed_count"], len(self.lock["selections"]))
+        # reviewed but the printed antennas' new matching parts, which await
+        # a human review; a source change that alters another fails again.
+        pending = {"C_BT_SHUNT", "L_BT_SERIES", "C_GNSS_SERIES", "C_GNSS_SHUNT", "C_CELL_SHUNT1", "L_CELL_SERIES", "C_CELL_SHUNT2"}
+        self.assertEqual(r["reviewed_count"], len(self.lock["selections"]) - len(pending))
+        self.assertEqual({s["reference"] for s in self.lock["selections"] if not s["reviewed"]}, pending)
+        self.assertTrue(all(i["code"] == "REVIEW_REQUIRED" for i in r["issues"]), r["issues"])
+
+    def test_rf_matching_leaves_no_dc_path_from_radio_pins_to_ground(self):
+        # A shunt inductor straight on the nRF52832 ANT pin or the SIM7672X
+        # ANT_MAIN would DC-short it; whether either tolerates that is not
+        # established, so radio-side shunts are capacitors.
+        for ref in ("C_BT_SHUNT", "C_CELL_SHUNT1", "C_CELL_SHUNT2", "C_GNSS_SHUNT"):
+            self.assertEqual(self.components[ref], "CAPACITOR")
+        for name in ("NRF_RF_RAW", "NRF_RF_ANT", "CELL_RF", "CELL_RF_MATCH"):
+            self.assertFalse(any(ref.startswith("L_") and ref not in ("L_BT_MATCH", "L_BT_SERIES", "L_CELL_SERIES")
+                                 for ref, _ in net(name)), net(name))
 
     def test_battery_and_power_path(self):
         self.assertIn(("PWR/J_BAT", "P1"), net("PWR/BAT"))
@@ -136,7 +148,8 @@ class TrackerTests(unittest.TestCase):
 
     def test_cellular_feed_has_source_backed_surface_length_limit(self):
         # The matching network splits the feed; the three nets' budgets sum to
-        # the SIM7672X V1.01 p60 20 mm module-to-connector maximum.
+        # the SIM7672X V1.01 p60 20 mm module-to-antenna maximum (the
+        # antenna-side budget leaves out the radiator on the same net).
         rules = routing_rules()
         feed = [rules[n] for n in ("CELL_RF", "CELL_RF_MATCH", "CELL_RF_ANT")]
         self.assertEqual(sum(nanometres(r["max_length"]) for r in feed), 20000000)
@@ -144,18 +157,52 @@ class TrackerTests(unittest.TestCase):
         for rule in feed:
             self.assertEqual(rule["max_vias"], 0)
             self.assertEqual(rule["allowed_layers"], "F.Cu")
-        fixed = fixed_placements()["J_CELL"]
-        self.assertEqual((nanometres(fixed["x"]), nanometres(fixed["y"])), (4400000, 13000000))
-        self.assertEqual(fixed["rotation"], 90)
+        # The network runs along x = 4.4 mm from the LTE antenna feed, which
+        # its antenna constraint fixes on the same column.
+        fixed = fixed_placements()["C_CELL_SERIES"]
+        self.assertEqual((nanometres(fixed["x"]), nanometres(fixed["y"])), (4400000, 18900000))
+        self.assertEqual(net("CELL_RF_ANT"), {("C_CELL_SERIES", "2"), ("ANT_CELL", "FEED")})
 
     def test_rf_macro_identity(self):
+        # The retained Johanson asset stays bound to its hash for history.
         scene = json.loads((ROOT / "nrf-antenna-macro.json").read_text())
         self.assertEqual(hashlib.sha256((ROOT / scene["asset"]).read_bytes()).hexdigest(), scene["asset_sha256"])
         macros = {m["name"]: m for m in self.design["physical_macros"]}
         self.assertEqual(len(macros), 3)
-        nordic = macros["nordic-antenna"]
-        self.assertEqual(nordic["symbol"], "NRF52832_JOHANSON_MANAGED_SIX_LAYER")
-        self.assertEqual(len([m for m in nordic["mappings"] if m["kind"] == "member"]), 7)
+        nordic = macros["nordic-rf"]
+        self.assertEqual(nordic["symbol"], "NRF52832_NORDIC_MATCH_SIX_LAYER")
+        self.assertEqual({m["target"] for m in nordic["mappings"] if m["kind"] == "member"},
+                         {"U_NRF", "C_BT_MATCH", "L_BT_MATCH"})
+
+    def test_three_synthesized_trace_antennas_replace_chip_and_connectors(self):
+        removed = {"J_CELL", "J_GNSS", "C_ANT_SERIES", "L_ANT_SHUNT", "L_ANT_SERIES"}
+        self.assertTrue(removed.isdisjoint(self.components))
+        self.assertNotIn("ANT_TEE", net_names())
+        source = (ROOT / "board.copper").read_text()
+        self.assertNotIn("johanson", source)
+        self.assertNotIn("molex_sma", source)
+        antennas = {c["parameters"]["name"]: c for c in constraints("antenna")}
+        self.assertEqual(set(antennas), {"lte", "ble", "gnss"})
+        feeds = {"lte": ("ANT_CELL", "CELL_RF_ANT"), "ble": ("ANT_BT", "ANT_FEED"),
+                 "gnss": ("ANT_GNSS", "GNSS_RF_ANT")}
+        for name, (feed, feed_net) in feeds.items():
+            antenna = antennas[name]
+            self.assertEqual(antenna["targets"], [feed + ".FEED"])
+            self.assertEqual(self.components[feed], "rf.AntennaFeed")
+            self.assertIn((feed, "FEED"), net(feed_net))
+            self.assertEqual(antenna["parameters"]["ground"], "GND")
+            # Tuned in the full-wave model: geometry and its site digest.
+            self.assertTrue(antenna["parameters"]["geometry"].startswith(("monopole ", "meander ")))
+            self.assertTrue(antenna["parameters"]["tuned_for"].startswith("sha256:"))
+            report = json.loads((ROOT / "revisions/pcb-antennas-v1" / f"{name}-synthesis.json").read_text())
+            self.assertEqual(report["site_digest"], antenna["parameters"]["tuned_for"])
+            self.assertEqual(report["geometry"], antenna["parameters"]["geometry"])
+        self.assertEqual(antennas["ble"]["parameters"]["bands"], "2400 MHz-2483.5 MHz")
+        self.assertEqual(antennas["gnss"]["parameters"]["bands"], "1559 MHz-1606 MHz")
+        self.assertEqual(antennas["lte"]["parameters"]["bands"], "791 MHz-862 MHz")
+        # The feed pads are bare copper: no BOM or CPL line.
+        feed_part = part(self.design, "rf.AntennaFeed")
+        self.assertFalse(feed_part["assembled"])
 
 
 if __name__ == "__main__":

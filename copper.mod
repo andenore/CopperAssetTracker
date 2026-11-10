@@ -1,6 +1,6 @@
 module github.com/andenore/CopperAssetTracker
 
-require github.com/andenore/CopperLib 931770e5cfcec97431f95a02e277238c76e339e3
+require github.com/andenore/CopperLib 5a0df7588b5e09de16f8b7afefc94442c8438aa8
 require github.com/KiCad/kicad-footprints 7ebfa6b23cc292a56f751b7b5f4a0e12eeef69dd
 
 footprint-library Connector_Debug github.com/andenore/CopperLib/packages/parts/samtec/ftsh-105-01-l-dv-007-k/footprints
@@ -19,3 +19,5 @@ footprint-library Package_TO_SOT_SMD github.com/KiCad/kicad-footprints/Package_T
 footprint-library RF_Antenna github.com/KiCad/kicad-footprints/RF_Antenna.pretty
 footprint-library Inductor_SMD github.com/KiCad/kicad-footprints/Inductor_SMD.pretty
 footprint-library Resistor_SMD github.com/KiCad/kicad-footprints/Resistor_SMD.pretty
+require github.com/KiCad/kicad-packages3D 10.0.8
+replace github.com/KiCad/kicad-packages3D => gitlab.com/kicad/libraries/kicad-packages3D 10.0.8
