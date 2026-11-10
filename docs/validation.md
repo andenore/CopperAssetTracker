@@ -8,7 +8,7 @@ CopperScript's full-wave model of this board: BLE (2.4 GHz, right edge),
 GNSS (1559-1606 MHz, right edge) and LTE B20 (791-862 MHz, top edge). See
 [the revision record](../revisions/pcb-antennas-v1/README.md) for the
 geometry, simulated return loss, matching values and the open items. ERC and
-legal placement pass, and `make showcase` (native-showcase-20261109) routed
+legal placement pass, and `make showcase` (native-showcase-20261110) routed
 the current source completely with native plane verification: native fill,
 DRC (0 violations once the three radiator open ends are excused) and CAM
 read-back pass, 14 requirements blocked. That is a routing illustration, not

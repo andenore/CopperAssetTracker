@@ -511,13 +511,13 @@
       "references": [
         "C_GNSS_SHUNT"
       ],
-      "manufacturer": "Murata Electronics",
-      "mpn": "GJM1555C1H1R1BB01D",
+      "manufacturer": "YAGEO",
+      "mpn": "CQ0402ARNPO9BN1R1",
       "supplier": "jlcpcb",
-      "supplier_part": "C161308",
-      "source_url": "https://www.lcsc.com/product-detail/C161308.html",
-      "checked_on": "2026-11-09",
-      "availability": "LCSC listing C161308 showed out of stock on 2026-11-09; choose an in-stock 1.1 pF C0G 0402 before order"
+      "supplier_part": "C2209626",
+      "source_url": "https://www.lcsc.com/product-detail/C2209626.html",
+      "checked_on": "2026-11-10",
+      "availability": "LCSC listing C2209626 showed about 4,550 in stock in a 2026-11-10 search snapshot (not a live check); YAGEO CQ high-Q RF series, 1.1 pF +-0.05 pF C0G 50 V. Recheck JLC stock before order"
     },
     {
       "references": [

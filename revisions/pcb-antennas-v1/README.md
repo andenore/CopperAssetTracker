@@ -121,6 +121,7 @@ digests as stale.
 - Seven matching selections are new or changed and unreviewed in
   `assembly.lock` (C_BT_SHUNT, L_BT_SERIES, C_GNSS_SERIES, C_GNSS_SHUNT,
   C_CELL_SHUNT1, L_CELL_SERIES, and the unfitted C_CELL_SHUNT2); their
-  LCSC/JLCPCB codes come from catalogue searches, stock is not confirmed, and
-  C_GNSS_SHUNT's listing (C161308) showed out of stock on 2026-11-09.
+  LCSC/JLCPCB codes come from catalogue searches and stock is not confirmed.
+  C_GNSS_SHUNT moved to YAGEO CQ0402ARNPO9BN1R1 (C2209626, high-Q, +-0.05 pF)
+  after Murata GJM1555C1H1R1BB01D (C161308) showed out of stock.
 - Radiated performance, SAR/exposure and regulatory certification.
