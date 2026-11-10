@@ -65,14 +65,16 @@ make antennas                    # all three; ANTENNAS="ble gnss" for a subset
 make antennas SYNTH_ARGS=--verify  # re-evaluate the declared geometry only
 ```
 
-Synthesis ran with CopperScript at antenna model revision 5, which fixes the
-mesh faults this six-layer stack-up exposed (thin-prepreg z lines merging,
-and ground edges merging onto radiator copper and shorting the feed) while
-modelling the feed slot at the board clearance, as it is built; see
-CopperScript `docs/antenna-synthesis-performance.md`. `.copper-version`
-pins CopperScript 646117e, which also leaves the antennas' own copper out of
-routed-length budgets; compilers before revision 5 (9a6a134) reject these
-digests as stale.
+Synthesis ran with CopperScript at antenna model revision 6 (11589d7, the
+pinned `.copper-version`). Revision 5 fixed the mesh faults this six-layer
+stack-up exposed (thin-prepreg z lines merging, and ground edges merging
+onto radiator copper and shorting the feed) while modelling the feed slot at
+the board clearance, as it is built; revision 6 keeps a slot wall off a stub
+edge that lies on a port line. See CopperScript
+`docs/antenna-synthesis-performance.md`. Re-tuning under revision 6
+reproduced the revision 5 geometries and results exactly; only the digests
+changed, and older compilers reject them as stale. `lte-search.json`/`.log`
+are the revision 5 search kept as evidence for the LTE geometry choice.
 
 ## Layout
 

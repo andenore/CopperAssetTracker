@@ -1,12 +1,12 @@
 {
   "schema": "copperassettracker-showcase/v3",
   "candidate": "native-showcase-20261110",
-  "created_utc": "20261110T162941Z",
+  "created_utc": "20261110T172204Z",
   "source": {
-    "git_commit": "ea4ed65761b99030cd65e1927bf86610059f3c93",
-    "tracked_changes": " M assembly.lock\n M procurement/candidate-bom.csv\n M procurement/distributor-bom.csv\n M procurement/parts.json\n M revisions/pcb-antennas-v1/README.md",
+    "git_commit": "b87f878c62a6a67d2d02958c32aa594b5404e251",
+    "tracked_changes": " M .copper-version\n M board.copper\n M revisions/pcb-antennas-v1/README.md\n M revisions/pcb-antennas-v1/ble-synthesis.json\n M revisions/pcb-antennas-v1/ble-synthesis.log\n M revisions/pcb-antennas-v1/gnss-synthesis.json\n M revisions/pcb-antennas-v1/gnss-synthesis.log\n M revisions/pcb-antennas-v1/lte-synthesis.json\n M revisions/pcb-antennas-v1/lte-synthesis.log",
     "input_sha256": {
-      "board.copper": "cf528f3d6f8037f6dbc57c67220e93da6c691dd965d37b624986d5de059ca436",
+      "board.copper": "b0b6f39d6853ebc1efa73f7d186395c9dd205c513f0f516c650c1d7ad93683eb",
       "copper.mod": "27667a8ee66cfbb440657387336621cb25d846388c6c2c5ad661a48700abfcc0",
       "copper.lock": "932d6673d17553fc114007bb172e3bb364a28d6b4cf61868db57e6881a93c873",
       "assembly.lock": "809e5413f0b7bacf65c366bceb6e90a8b49e4b814cfcc95c40a2869c8f8d70a6",
@@ -17,14 +17,14 @@
     }
   },
   "compiler": {
-    "copperscript_commit": "74b20130068600a069693be5a8ee1afe189817e6",
+    "copperscript_commit": "11589d7aaf7d13c8152f7dcb02c21a296103cf73",
     "tracked_changes": "",
-    "executable_sha256": "cb212596091dc22691f4d6726136af7847dc2c150f4ecbdc63f92cc7145516e6"
+    "executable_sha256": "91e7f72b1a0dca9fc24e8de1a5aabfe21487488c002f83193e7d206617d346ad"
   },
   "route": {
     "options": "--layers 6 --fab-profile jlcpcb-six-layer --candidates 1 --feedback-iterations 1 --router-iterations 5 --progress --fanout --plane-contact-radius-mm 5 --unified-set fine_regions=dense --fanout-maze --package-initial-pair-states 0 --no-early-plane-stitch --plane-stitch-step-mm 0.1 --plane-maze-step-mm 0.025 --plane-maze-budget 50000 --plane-contact-radius-mm 3 --plane-stitch-detour-mm 1.5",
     "status": "pass",
-    "report_sha256": "1f4eea64c29f0434e8acd2f59773f2e6c600cf9a6cfc9f058c4fc4c3e9430183",
+    "report_sha256": "760c323dffd43a469b8d1e39a652789f6b5b1f5267513e6e092864c0212b59b4",
     "unfilled_pcb_sha256": "077b9b26155bcddbb4c1c82c87845953a896443f6217a2837953ef1fc9ae9f0b",
     "ordinary_nets_routed": 58,
     "unrouted_ordinary_nets": [],
@@ -53,7 +53,7 @@
     "B.Cu"
   ],
   "native_drc": {
-    "report_sha256": "a477a521979166fa9899302fb234f4a851482dadcc2e41fbb5c73657c4a5e413",
+    "report_sha256": "f284cc88e99074c76c4c32eb8ee800d9a5e9ff5ebb73f5b975b423aab8c82ccf",
     "passed": true,
     "violations": 0,
     "unconnected": 0,
