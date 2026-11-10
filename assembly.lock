@@ -257,15 +257,15 @@
     {
       "electrical_sha256": "804eb26a67668182b32c38dcf16c6f4be95f1ad771c4613fc24b813ecf3ac1f1",
       "footprint": "Capacitor_SMD:C_0402_1005Metric",
-      "manufacturer": "Murata Electronics",
-      "mpn": "GJM1555C1H1R1BB01D",
+      "manufacturer": "YAGEO",
+      "mpn": "CQ0402ARNPO9BN1R1",
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "C_GNSS_SHUNT",
       "reviewed": false,
-      "source_url": "https://www.lcsc.com/product-detail/C161308.html",
+      "source_url": "https://www.lcsc.com/product-detail/C2209626.html",
       "supplier": "jlcpcb",
-      "supplier_part": "C161308"
+      "supplier_part": "C2209626"
     },
     {
       "alternates": [

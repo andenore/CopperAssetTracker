@@ -65,14 +65,16 @@ make antennas                    # all three; ANTENNAS="ble gnss" for a subset
 make antennas SYNTH_ARGS=--verify  # re-evaluate the declared geometry only
 ```
 
-Synthesis ran with CopperScript at antenna model revision 5, which fixes the
-mesh faults this six-layer stack-up exposed (thin-prepreg z lines merging,
-and ground edges merging onto radiator copper and shorting the feed) while
-modelling the feed slot at the board clearance, as it is built; see
-CopperScript `docs/antenna-synthesis-performance.md`. `.copper-version`
-pins CopperScript 646117e, which also leaves the antennas' own copper out of
-routed-length budgets; compilers before revision 5 (9a6a134) reject these
-digests as stale.
+Synthesis ran with CopperScript at antenna model revision 6 (11589d7, the
+pinned `.copper-version`). Revision 5 fixed the mesh faults this six-layer
+stack-up exposed (thin-prepreg z lines merging, and ground edges merging
+onto radiator copper and shorting the feed) while modelling the feed slot at
+the board clearance, as it is built; revision 6 keeps a slot wall off a stub
+edge that lies on a port line. See CopperScript
+`docs/antenna-synthesis-performance.md`. Re-tuning under revision 6
+reproduced the revision 5 geometries and results exactly; only the digests
+changed, and older compilers reject them as stale. `lte-search.json`/`.log`
+are the revision 5 search kept as evidence for the LTE geometry choice.
 
 ## Layout
 
@@ -121,6 +123,7 @@ digests as stale.
 - Seven matching selections are new or changed and unreviewed in
   `assembly.lock` (C_BT_SHUNT, L_BT_SERIES, C_GNSS_SERIES, C_GNSS_SHUNT,
   C_CELL_SHUNT1, L_CELL_SERIES, and the unfitted C_CELL_SHUNT2); their
-  LCSC/JLCPCB codes come from catalogue searches, stock is not confirmed, and
-  C_GNSS_SHUNT's listing (C161308) showed out of stock on 2026-11-09.
+  LCSC/JLCPCB codes come from catalogue searches and stock is not confirmed.
+  C_GNSS_SHUNT moved to YAGEO CQ0402ARNPO9BN1R1 (C2209626, high-Q, +-0.05 pF)
+  after Murata GJM1555C1H1R1BB01D (C161308) showed out of stock.
 - Radiated performance, SAR/exposure and regulatory certification.

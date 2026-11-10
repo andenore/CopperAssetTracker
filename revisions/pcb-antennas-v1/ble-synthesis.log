@@ -1,19 +1,19 @@
 SYNTHESIZE: antenna 'ble' on PadReference(component='ANT_BT', pad='1') (ANT_FEED), target -10.0 dB over 2400 MHz-2483.5 MHz, centre 2.4417 GHz
-  site digest sha256:10c846dffb8fbfb8aa29eaecc98b70c683fb90aaf864e4259c15049f5889c6b1
-  resonance coarse monopole height=5.41mm length=16.18mm                          resonance 2.9301 GHz  bare   -0.3 dB  matched   -6.3 dB  0.68 Mcells 20801 steps 0.18 ps  34.6 s
-  resonance coarse monopole height=5.41mm length=19.42mm                          resonance 2.9301 GHz  bare   -0.9 dB  matched  -12.9 dB  0.68 Mcells 20801 steps 0.18 ps  43.9 s
-  resonance coarse monopole height=5.41mm length=23.3mm                           resonance 2.4461 GHz  bare   -5.8 dB  matched  -18.6 dB  0.68 Mcells 22051 steps 0.18 ps  38.8 s
-  polish    coarse monopole height=5.41mm length=24mm                             resonance 2.3561 GHz  bare   -9.2 dB  matched  -19.3 dB  0.68 Mcells 22351 steps 0.18 ps  35.6 s
-  polish    coarse monopole height=4.21mm length=24mm                             resonance 2.1451 GHz  bare  -10.2 dB  matched  -10.2 dB  0.67 Mcells 18801 steps 0.21 ps  36.4 s
-  polish    coarse monopole height=5.41mm length=23.65mm                          resonance 2.4002 GHz  bare   -7.2 dB  matched  -19.0 dB  0.68 Mcells 22201 steps 0.18 ps  36.4 s
-  polish    coarse monopole height=4.81mm length=24mm                             resonance 2.2290 GHz  bare  -17.4 dB  matched  -17.4 dB  0.67 Mcells 18801 steps 0.21 ps  34.6 s
-  polish    coarse monopole height=5.41mm length=23.82mm                          resonance 2.3776 GHz  bare   -8.2 dB  matched  -19.2 dB  0.68 Mcells 22251 steps 0.18 ps  36.3 s
-  polish    coarse monopole height=5.11mm length=24mm                             resonance 2.2776 GHz  bare  -13.3 dB  matched  -13.3 dB  0.67 Mcells 18701 steps 0.21 ps  35.5 s
-  polish    coarse monopole height=5.41mm length=23.91mm                          resonance 2.3668 GHz  bare   -8.7 dB  matched  -19.3 dB  0.68 Mcells 22301 steps 0.18 ps  37.5 s
-  polish    coarse monopole height=5.26mm length=24mm                             resonance 2.3159 GHz  bare  -11.0 dB  matched  -11.0 dB  0.68 Mcells 18701 steps 0.21 ps  33.9 s
-  polish    coarse monopole height=5.41mm length=23.96mm                          resonance 2.3608 GHz  bare   -9.0 dB  matched  -19.3 dB  0.68 Mcells 22301 steps 0.18 ps  40.1 s
-  verify    fine   monopole height=5.41mm length=23.96mm                          resonance 2.3280 GHz  bare   -9.2 dB  matched  -18.2 dB  1.33 Mcells 24951 steps 0.18 ps  90.6 s
-  correct   fine   monopole height=5.41mm length=22.84mm                          resonance 2.4551 GHz  bare   -4.6 dB  matched  -17.0 dB  1.34 Mcells 24301 steps 0.18 ps  86.1 s
+  site digest sha256:9bb38f84e33174fb70dbf9f0d0c8c9c8e8b6ea65f988d97cfecd3dd9fedb449b
+  resonance coarse monopole height=5.41mm length=16.18mm                          resonance 2.9301 GHz  bare   -0.3 dB  matched   -6.3 dB  0.68 Mcells 20801 steps 0.18 ps  35.9 s
+  resonance coarse monopole height=5.41mm length=19.42mm                          resonance 2.9301 GHz  bare   -0.9 dB  matched  -12.9 dB  0.68 Mcells 20801 steps 0.18 ps  34.5 s
+  resonance coarse monopole height=5.41mm length=23.3mm                           resonance 2.4461 GHz  bare   -5.8 dB  matched  -18.6 dB  0.68 Mcells 22051 steps 0.18 ps  35.0 s
+  polish    coarse monopole height=5.41mm length=24mm                             resonance 2.3561 GHz  bare   -9.2 dB  matched  -19.3 dB  0.68 Mcells 22351 steps 0.18 ps  39.7 s
+  polish    coarse monopole height=4.21mm length=24mm                             resonance 2.1451 GHz  bare  -10.2 dB  matched  -10.2 dB  0.67 Mcells 18801 steps 0.21 ps  45.8 s
+  polish    coarse monopole height=5.41mm length=23.65mm                          resonance 2.4002 GHz  bare   -7.2 dB  matched  -19.0 dB  0.68 Mcells 22201 steps 0.18 ps  47.0 s
+  polish    coarse monopole height=4.81mm length=24mm                             resonance 2.2290 GHz  bare  -17.4 dB  matched  -17.4 dB  0.67 Mcells 18801 steps 0.21 ps  41.5 s
+  polish    coarse monopole height=5.41mm length=23.82mm                          resonance 2.3776 GHz  bare   -8.2 dB  matched  -19.2 dB  0.68 Mcells 22251 steps 0.18 ps  46.3 s
+  polish    coarse monopole height=5.11mm length=24mm                             resonance 2.2776 GHz  bare  -13.3 dB  matched  -13.3 dB  0.67 Mcells 18701 steps 0.21 ps  37.8 s
+  polish    coarse monopole height=5.41mm length=23.91mm                          resonance 2.3668 GHz  bare   -8.7 dB  matched  -19.3 dB  0.68 Mcells 22301 steps 0.18 ps  39.0 s
+  polish    coarse monopole height=5.26mm length=24mm                             resonance 2.3159 GHz  bare  -11.0 dB  matched  -11.0 dB  0.68 Mcells 18701 steps 0.21 ps  36.4 s
+  polish    coarse monopole height=5.41mm length=23.96mm                          resonance 2.3608 GHz  bare   -9.0 dB  matched  -19.3 dB  0.68 Mcells 22301 steps 0.18 ps  36.6 s
+  verify    fine   monopole height=5.41mm length=23.96mm                          resonance 2.3280 GHz  bare   -9.2 dB  matched  -18.2 dB  1.33 Mcells 24951 steps 0.18 ps  84.5 s
+  correct   fine   monopole height=5.41mm length=22.84mm                          resonance 2.4551 GHz  bare   -4.6 dB  matched  -17.0 dB  1.34 Mcells 24301 steps 0.18 ps  89.9 s
 RESULT (fine fidelity): resonance 2.3280 GHz; worst return loss -9.2 dB bare, -18.2 dB matched (target -10.0 dB)
   2400 MHz-2483.5 MHz: -9.2 dB bare, -18.2 dB matched (meets target)
   matching network: series 2.10 pF, then shunt 4.24 nH (antenna side first)
@@ -21,5 +21,5 @@ RESULT (fine fidelity): resonance 2.3280 GHz; worst return loss -9.2 dB bare, -1
 Report -> revisions/pcb-antennas-v1/ble-synthesis.json
 Put these lines in the constraint antenna declaration:
     geometry = "monopole height=5.41mm length=23.96mm";
-    tuned_for = "sha256:10c846dffb8fbfb8aa29eaecc98b70c683fb90aaf864e4259c15049f5889c6b1";
+    tuned_for = "sha256:9bb38f84e33174fb70dbf9f0d0c8c9c8e8b6ea65f988d97cfecd3dd9fedb449b";
 Simulation evidence only: bench tuning in the final enclosure remains mandatory.

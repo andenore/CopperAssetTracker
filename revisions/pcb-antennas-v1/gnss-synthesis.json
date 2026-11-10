@@ -3,14 +3,14 @@
   "generator": "copper antenna/v0.2",
   "solver": "ems 0.0.5 (pure-Rust FDTD, openEMS-compatible)",
   "antenna": "gnss",
-  "declaration": "board.copper:820:16",
+  "declaration": "board.copper:819:16",
   "feed": "PadReference(component='ANT_GNSS', pad='1')",
-  "site_digest": "sha256:04f1b468ffb55400ff51d3479a4dc288dba9e2c2653160983855c7bf2d78260d",
+  "site_digest": "sha256:f0f019bba78f39219f8528d472c669585bc4dc68f300b764f2e9aaf644d5c6a5",
   "method": "parametric",
   "geometry": "monopole height=8.31mm length=40.54mm",
   "source_lines": [
     "geometry = \"monopole height=8.31mm length=40.54mm\";",
-    "tuned_for = \"sha256:04f1b468ffb55400ff51d3479a4dc288dba9e2c2653160983855c7bf2d78260d\";"
+    "tuned_for = \"sha256:f0f019bba78f39219f8528d472c669585bc4dc68f300b764f2e9aaf644d5c6a5\";"
   ],
   "final_fidelity": "fine",
   "converged": true,
@@ -66,7 +66,7 @@
       "bare_worst_db": "-0.11",
       "matched_worst_db": "-1.82",
       "cells": 946827,
-      "seconds": "82.7",
+      "seconds": "81.3",
       "converged": true
     },
     {
@@ -77,7 +77,7 @@
       "bare_worst_db": "-0.29",
       "matched_worst_db": "-5.49",
       "cells": 946827,
-      "seconds": "154.8",
+      "seconds": "71.6",
       "converged": true
     },
     {
@@ -88,7 +88,7 @@
       "bare_worst_db": "-0.98",
       "matched_worst_db": "-9.34",
       "cells": 946827,
-      "seconds": "86.9",
+      "seconds": "74.1",
       "converged": true
     },
     {
@@ -99,7 +99,7 @@
       "bare_worst_db": "-2.14",
       "matched_worst_db": "-10.69",
       "cells": 946827,
-      "seconds": "79.8",
+      "seconds": "75.0",
       "converged": true
     },
     {
@@ -110,7 +110,7 @@
       "bare_worst_db": "-2.45",
       "matched_worst_db": "-11.07",
       "cells": 946827,
-      "seconds": "85.6",
+      "seconds": "76.1",
       "converged": true
     },
     {
@@ -121,7 +121,7 @@
       "bare_worst_db": "-3.73",
       "matched_worst_db": "-12.36",
       "cells": 946827,
-      "seconds": "80.9",
+      "seconds": "78.1",
       "converged": true
     },
     {
@@ -132,7 +132,7 @@
       "bare_worst_db": "-6.31",
       "matched_worst_db": "-13.10",
       "cells": 938448,
-      "seconds": "61.4",
+      "seconds": "70.5",
       "converged": true
     },
     {
@@ -143,7 +143,7 @@
       "bare_worst_db": "-0.58",
       "matched_worst_db": "-4.78",
       "cells": 944832,
-      "seconds": "73.3",
+      "seconds": "86.6",
       "converged": true
     },
     {
@@ -154,7 +154,7 @@
       "bare_worst_db": "-6.18",
       "matched_worst_db": "-13.17",
       "cells": 938448,
-      "seconds": "68.6",
+      "seconds": "76.5",
       "converged": true
     },
     {
@@ -165,7 +165,7 @@
       "bare_worst_db": "-0.59",
       "matched_worst_db": "-5.36",
       "cells": 946827,
-      "seconds": "66.3",
+      "seconds": "81.1",
       "converged": true
     },
     {
@@ -176,7 +176,7 @@
       "bare_worst_db": "-0.67",
       "matched_worst_db": "-4.95",
       "cells": 944832,
-      "seconds": "70.2",
+      "seconds": "86.8",
       "converged": true
     },
     {
@@ -187,7 +187,7 @@
       "bare_worst_db": "-6.27",
       "matched_worst_db": "-13.61",
       "cells": 938448,
-      "seconds": "62.6",
+      "seconds": "77.0",
       "converged": true
     },
     {
@@ -198,7 +198,7 @@
       "bare_worst_db": "-5.83",
       "matched_worst_db": "-12.73",
       "cells": 2096220,
-      "seconds": "199.1",
+      "seconds": "198.4",
       "converged": true
     },
     {
@@ -209,7 +209,7 @@
       "bare_worst_db": "-2.75",
       "matched_worst_db": "-10.88",
       "cells": 2096220,
-      "seconds": "177.1",
+      "seconds": "178.6",
       "converged": true
     }
   ],

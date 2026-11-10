@@ -774,7 +774,7 @@ board CopperAssetTracker {
     //
     // LTE B20 (791-862 MHz, the EU/Nordic coverage band) along the top edge,
     // fed from the modem's pi network at the left end. VSWR 3:1 is the target.
-    // Verified (fine mesh, model revision 5): resonance 0.826 GHz, -3.6 dB
+    // Verified (fine mesh, model revision 6): resonance 0.826 GHz, -3.6 dB
     // bare, 54 % efficiency without dielectric loss; the search's own pick
     // (49.75 mm, 29 %, lte-search.json) delivers 3 dB less radiated power.
     // The ideal L-section MISSES at -5.8 dB; the DC-safe Figure 30 match
@@ -791,10 +791,10 @@ board CopperAssetTracker {
         track_width = 1.5mm;
         keepout_margin = 0.5mm;
         geometry = "monopole height=9.16mm length=68.2mm";
-        tuned_for = "sha256:44da69392ba7fcc6a9a5517fd8116452a890f67b3ba362e2a2d31874d35cfab9";
+        tuned_for = "sha256:5fe56dc7f5004c5a4c8aff8ddbb0d348c877385e16c6c319b30c2efc3f9611fc";
     }
     // Bluetooth LE on the right edge beside the nRF52832. Synthesized (fine
-    // mesh, model revision 5): resonance 2.328 GHz, -9.2 dB bare, -18.2 dB
+    // mesh, model revision 6): resonance 2.328 GHz, -9.2 dB bare, -18.2 dB
     // worst over the band with the report's ideal L-section, whose shunt
     // inductor would DC-short the ANT pin; the DC-safe L_BT_SERIES/C_BT_SHUNT
     // match is used instead. 99 % efficiency without dielectric loss.
@@ -806,11 +806,11 @@ board CopperAssetTracker {
         track_width = 1mm;
         keepout_margin = 0.5mm;
         geometry = "monopole height=5.41mm length=23.96mm";
-        tuned_for = "sha256:10c846dffb8fbfb8aa29eaecc98b70c683fb90aaf864e4259c15049f5889c6b1";
+        tuned_for = "sha256:9bb38f84e33174fb70dbf9f0d0c8c9c8e8b6ea65f988d97cfecd3dd9fedb449b";
     }
     // GNSS L1/E1/B1/G1 (MAX-M10S) on the right edge below the BLE antenna.
     // Linear polarization: about 3 dB below a circularly polarized patch.
-    // Synthesized (fine mesh, model revision 5): resonance 1.471 GHz, -5.8 dB
+    // Synthesized (fine mesh, model revision 6): resonance 1.471 GHz, -5.8 dB
     // bare and -12.7 dB worst over the band with shunt 1.09 pF then series
     // 3.96 pF from the antenna side (C_GNSS_SHUNT, C_GNSS_SERIES); 98 %
     // radiation efficiency without dielectric loss. A 7 mm deep region reached
@@ -824,7 +824,7 @@ board CopperAssetTracker {
         track_width = 1mm;
         keepout_margin = 0.5mm;
         geometry = "monopole height=8.31mm length=40.54mm";
-        tuned_for = "sha256:04f1b468ffb55400ff51d3479a4dc288dba9e2c2653160983855c7bf2d78260d";
+        tuned_for = "sha256:f0f019bba78f39219f8528d472c669585bc4dc68f300b764f2e9aaf644d5c6a5";
     }
 
     physical_macro logic-buck-boost: logic_layout.TPS63020_SIX_LAYER_ALWAYS_ON on PWR {
