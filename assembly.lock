@@ -1754,7 +1754,7 @@
           "supplier_part": "595-TUSB320LAIRWBR"
         }
       ],
-      "electrical_sha256": "62573a41885ac380f015c297930f06a6d05ff98665d1d623beff5a266bcefc5e",
+      "electrical_sha256": "018d0d67ba3f9eb5f558128d2a9e00088808f659de336cc96096a89c0edd5f54",
       "footprint": "Package_DFN_QFN:Texas_X2QFN-12_1.6x1.6mm_P0.4mm",
       "manufacturer": "Texas Instruments",
       "mpn": "TUSB320LAIRWBR",
@@ -1778,7 +1778,7 @@
           "supplier_part": "377-MAX-M10S-00B"
         }
       ],
-      "electrical_sha256": "bdd8b4c972452a7e7ffeac4648b403f58cc45d3bf20a73c5f2e7be6e3930e59d",
+      "electrical_sha256": "cb3588022b85f7fea4bfb970daff307b76a7f62a12c6295b819315cfe3e113d8",
       "footprint": "MAX_M10S:u-blox_MAX-M10S",
       "manufacturer": "u-blox",
       "mpn": "MAX-M10S-00B",
@@ -1821,7 +1821,7 @@
       "supplier_part": "C3231062"
     },
     {
-      "electrical_sha256": "710f0b6421e4d25a2e4255e0e13c4369dc1adf63b6e46ab36ef4258810d4da76",
+      "electrical_sha256": "e76b4447763c7635f71b5dbcf677c0f6a008b5e405d9dda84cb5d4d23c43f208",
       "footprint": "github.com/andenore/CopperLib/packages/parts/simcom/sim7670g-lngv/footprints/SIM7670G_LNGV.kicad_mod",
       "manufacturer": "SIMCom Wireless Solutions",
       "mpn": "SIM7670G-LNGV",

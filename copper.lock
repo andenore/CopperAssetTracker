@@ -60162,7 +60162,7 @@
       "version": "10.0.8"
     },
     {
-      "checksum": "sha256:75e5bffe3a6d0cd9596b1bb41f5001fab58770e2684e1d8c7f98d279d76c84c5",
+      "checksum": "sha256:8bfacb40f54dd0052420e8cbb7e33c305215d03469517e89b7b388fc72ca78ea",
       "files": [
         {
           "path": "copper.mod",
@@ -61156,8 +61156,8 @@
         },
         {
           "path": "packages/parts/quectel/eg800g-eu/part.copper",
-          "sha256": "27528919471e93737adfde1632f8ffc2ff042268bbfda2df32194b98e9008449",
-          "size": 8848
+          "sha256": "c0a98f57e4be409c0e60906ac0f11f4ca83209db22e58c2bf72e6420664f890a",
+          "size": 10102
         },
         {
           "path": "packages/parts/recom/r78b/evidence.json",
@@ -61276,8 +61276,8 @@
         },
         {
           "path": "packages/parts/simcom/sim7670g-lngv/part.copper",
-          "sha256": "3196574e5d6ba26dec2f25fc71fd4e9a353e4c295e11f1c610b78517ded45155",
-          "size": 10487
+          "sha256": "0480675c0c5d7730362ef6410af015870b60eaf49308443e3eb17375c3d6cbde",
+          "size": 10664
         },
         {
           "path": "packages/parts/simcom/sim7670g-lngv/qualification.json",
@@ -61576,8 +61576,8 @@
         },
         {
           "path": "packages/parts/ti/tca9406/part.copper",
-          "sha256": "d39cd03b90eba1684a9b1240addd76603ace1f2b3fb92eb41ddbc6871edd204e",
-          "size": 2537
+          "sha256": "83c1c76a2c80575ef16367f30fa988b658e824c021476b83a4a9c3a1c4a75e7f",
+          "size": 2625
         },
         {
           "path": "packages/parts/ti/tcan334g/footprints/Package_SO.pretty/VSSOP-8_3x3mm_P0.65mm.kicad_mod",
@@ -61586,13 +61586,13 @@
         },
         {
           "path": "packages/parts/ti/tcan334g/part-dr.copper",
-          "sha256": "631d807d6862001492f717a2424dcca224f5fb827aa05b117887b38589783ab7",
-          "size": 1006
+          "sha256": "3388b3eced5b8314b169bd871910085d04dd959c94b068a968eb1392eef0e40e",
+          "size": 1471
         },
         {
           "path": "packages/parts/ti/tcan334g/part.copper",
-          "sha256": "3cdfffff6c3e7a61efe3014e5e4c22906f1e62119686cfa91b2aab8ffddc3575",
-          "size": 1298
+          "sha256": "3160598bd782506d29953761cf4d8d0498999bba1378df6601ea1becef4fae7b",
+          "size": 1763
         },
         {
           "path": "packages/parts/ti/ths4541/evidence/contract.json",
@@ -61811,8 +61811,8 @@
         },
         {
           "path": "packages/parts/ti/tusb320lai/part.copper",
-          "sha256": "23e2de03e0184ec1e254492371093357e3bdeece8f8935fa2da7484a43af9f46",
-          "size": 1807
+          "sha256": "d29af174977384c0a50a3d25b0f381b71fa776ac1fc1828bb7779b2fda3d03d8",
+          "size": 2401
         },
         {
           "path": "packages/parts/u-blox/max-m10s/coexistence-limits.json",
@@ -61821,8 +61821,8 @@
         },
         {
           "path": "packages/parts/u-blox/max-m10s/datasheet-review.json",
-          "sha256": "26a62125976fca4f49e9706075240c36832a347ad557088bee0bbdc488dba25f",
-          "size": 1637
+          "sha256": "fb899f85d5369f75ac1246b94c7964e4cb9da47a8f0b04d96d2800ab09dbd278",
+          "size": 1974
         },
         {
           "path": "packages/parts/u-blox/max-m10s/filter-candidates/b4327-review.json",
@@ -61836,8 +61836,8 @@
         },
         {
           "path": "packages/parts/u-blox/max-m10s/part.copper",
-          "sha256": "ec13629dccda37ded50bd437554d1f367e1e132ff7418d850e8db01f2154cca6",
-          "size": 2636
+          "sha256": "6a93ac976a6fa9c9ae878ebdf4d899d5c3416ff0f74692db35260ecd957b080d",
+          "size": 3401
         },
         {
           "path": "packages/parts/u-blox/max-m10s/passive-coexistence-options.json",
@@ -62087,7 +62087,7 @@
       ],
       "module": "github.com/andenore/CopperLib",
       "source": "git:https://github.com/andenore/CopperLib.git",
-      "version": "5a0df7588b5e09de16f8b7afefc94442c8438aa8"
+      "version": "861defa9ec103f5fc8f2d4af60fc0bc5f8e060bc"
     }
   ],
   "schema": "copperscript.package-lock/v1"
