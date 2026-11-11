@@ -5,9 +5,9 @@
     "library_lock": "../copper.lock",
     "assembly_selection": "../assembly.lock",
     "procurement": "../procurement/parts.json",
-    "nordic_macro": "../.copper-cache/pkg/ca5f5334b0544164ce06/packages/circuits/nordic/nrf52832-johanson-reference/managed-layout.copper",
-    "logic_macro": "../.copper-cache/pkg/ca5f5334b0544164ce06/packages/circuits/ti/tps63020-buck-boost/always-on-layout.copper",
-    "modem_macro": "../.copper-cache/pkg/ca5f5334b0544164ce06/packages/circuits/ti/tps63020-buck-boost/enabled-series-feedback-layout.copper",
+    "nordic_macro": "../.copper-cache/pkg/9ee13fe621090ba86843/packages/circuits/nordic/nrf52832-johanson-reference/managed-layout.copper",
+    "logic_macro": "../.copper-cache/pkg/9ee13fe621090ba86843/packages/circuits/ti/tps63020-buck-boost/always-on-layout.copper",
+    "modem_macro": "../.copper-cache/pkg/9ee13fe621090ba86843/packages/circuits/ti/tps63020-buck-boost/enabled-series-feedback-layout.copper",
     "battery_selection": "battery-selection.json",
     "battery_revision": "../revisions/battery-v1/power_tree.copper",
     "battery_revision_placement": "../revisions/battery-v1/placement.json",
@@ -20,7 +20,7 @@
   "context": {
     "stackup": {
       "reviewed": true,
-      "profile_path": "../.copper-cache/pkg/ca5f5334b0544164ce06/packages/profiles/jlcpcb/jlc06161h-3313/stackup.json"
+      "profile_path": "../.copper-cache/pkg/9ee13fe621090ba86843/packages/profiles/jlcpcb/jlc06161h-3313/stackup.json"
     },
     "operating_envelope": {
       "reviewed": false,
@@ -52,12 +52,12 @@
   "contracts": [
     {
       "scope": "ble",
-      "path": "../.copper-cache/pkg/ca5f5334b0544164ce06/packages/circuits/nordic/nrf52832-johanson-reference/qualification.json",
+      "path": "../.copper-cache/pkg/9ee13fe621090ba86843/packages/circuits/nordic/nrf52832-johanson-reference/qualification.json",
       "bindings": {}
     },
     {
       "scope": "cellular",
-      "path": "../.copper-cache/pkg/ca5f5334b0544164ce06/packages/parts/simcom/sim7670g-lngv/qualification.json",
+      "path": "../.copper-cache/pkg/9ee13fe621090ba86843/packages/parts/simcom/sim7670g-lngv/qualification.json",
       "bindings": {
         "reference-coverage": {
           "basis": "Project-only minimum geometric screen: cover the projected track width with zero extra margin. Not a sourced RF return-fringing margin or impedance qualification.",
@@ -70,7 +70,7 @@
     },
     {
       "scope": "gnss",
-      "path": "../.copper-cache/pkg/ca5f5334b0544164ce06/packages/parts/u-blox/max-m10s/qualification.json",
+      "path": "../.copper-cache/pkg/9ee13fe621090ba86843/packages/parts/u-blox/max-m10s/qualification.json",
       "bindings": {
         "reference-coverage": {
           "basis": "Project-only minimum geometric screen: cover the projected track width with zero extra margin. Matching/ESD/antenna configuration and return-fringing margin remain unresolved.",
@@ -83,7 +83,7 @@
     },
     {
       "scope": "logic-supply",
-      "path": "../.copper-cache/pkg/ca5f5334b0544164ce06/packages/circuits/ti/tps63020-buck-boost/qualification.json",
+      "path": "../.copper-cache/pkg/9ee13fe621090ba86843/packages/circuits/ti/tps63020-buck-boost/qualification.json",
       "bindings": {
         "host-conductor-width": null,
         "input-demand": {
@@ -107,7 +107,7 @@
     },
     {
       "scope": "modem-supply",
-      "path": "../.copper-cache/pkg/ca5f5334b0544164ce06/packages/circuits/ti/tps63020-buck-boost/qualification.json",
+      "path": "../.copper-cache/pkg/9ee13fe621090ba86843/packages/circuits/ti/tps63020-buck-boost/qualification.json",
       "bindings": {
         "host-conductor-width": null,
         "input-demand": {
@@ -131,12 +131,12 @@
     },
     {
       "scope": "charger",
-      "path": "../.copper-cache/pkg/ca5f5334b0544164ce06/packages/parts/ti/bq24072/qualification.json",
+      "path": "../.copper-cache/pkg/9ee13fe621090ba86843/packages/parts/ti/bq24072/qualification.json",
       "bindings": {}
     },
     {
       "scope": "usb-link",
-      "path": "../.copper-cache/pkg/ca5f5334b0544164ce06/packages/interfaces/usb/usb2-channel/qualification.json",
+      "path": "../.copper-cache/pkg/9ee13fe621090ba86843/packages/interfaces/usb/usb2-channel/qualification.json",
       "bindings": {
         "operating-mode": {
           "basis": "STM32G0C1 full-speed host; user authorizes SIM7672X Hardware Design V1.01 applicability to SIM7670G-LNGV on 2026-10-10; firmware and supply margins still require qualification",

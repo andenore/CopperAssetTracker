@@ -85,12 +85,10 @@ class TrackerTests(unittest.TestCase):
         r = assembly_check()
         self.assertEqual(r["exact_selection_count"], len(self.lock["selections"]))
         # Each selection is bound to its own component and every one is
-        # reviewed but the printed antennas' new matching parts, which await
-        # a human review; a source change that alters another fails again.
-        pending = {"C_BT_SHUNT", "L_BT_SERIES", "C_GNSS_SERIES", "C_GNSS_SHUNT", "C_CELL_SHUNT1", "L_CELL_SERIES", "C_CELL_SHUNT2"}
-        self.assertEqual(r["reviewed_count"], len(self.lock["selections"]) - len(pending))
-        self.assertEqual({s["reference"] for s in self.lock["selections"] if not s["reviewed"]}, pending)
-        self.assertTrue(all(i["code"] == "REVIEW_REQUIRED" for i in r["issues"]), r["issues"])
+        # reviewed; a source change that alters one fails the gate again.
+        self.assertEqual(r["reviewed_count"], len(self.lock["selections"]))
+        self.assertEqual({s["reference"] for s in self.lock["selections"] if not s["reviewed"]}, set())
+        self.assertEqual(r["issues"], [])
 
     def test_rf_matching_leaves_no_dc_path_from_radio_pins_to_ground(self):
         # A shunt inductor straight on the nRF52832 ANT pin or the SIM7672X

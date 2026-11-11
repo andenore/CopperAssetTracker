@@ -1,31 +1,31 @@
 {
   "schema": "copperassettracker-showcase/v3",
-  "candidate": "native-showcase-20261110",
-  "created_utc": "20261110T172204Z",
+  "candidate": "native-showcase-20261111",
+  "created_utc": "20261111T175428Z",
   "source": {
-    "git_commit": "b87f878c62a6a67d2d02958c32aa594b5404e251",
-    "tracked_changes": " M .copper-version\n M board.copper\n M revisions/pcb-antennas-v1/README.md\n M revisions/pcb-antennas-v1/ble-synthesis.json\n M revisions/pcb-antennas-v1/ble-synthesis.log\n M revisions/pcb-antennas-v1/gnss-synthesis.json\n M revisions/pcb-antennas-v1/gnss-synthesis.log\n M revisions/pcb-antennas-v1/lte-synthesis.json\n M revisions/pcb-antennas-v1/lte-synthesis.log",
+    "git_commit": "d511029ed3e99ddada56c7e6c176b0438764b812",
+    "tracked_changes": " M docs/engineering-plan.json\n M tests/test_engineering_plan.py\n M tests/test_tracker.py",
     "input_sha256": {
       "board.copper": "b0b6f39d6853ebc1efa73f7d186395c9dd205c513f0f516c650c1d7ad93683eb",
-      "copper.mod": "27667a8ee66cfbb440657387336621cb25d846388c6c2c5ad661a48700abfcc0",
-      "copper.lock": "932d6673d17553fc114007bb172e3bb364a28d6b4cf61868db57e6881a93c873",
-      "assembly.lock": "809e5413f0b7bacf65c366bceb6e90a8b49e4b814cfcc95c40a2869c8f8d70a6",
-      "Makefile": "5438609b46a77bfb7d2911a5635ddd86fd492e461fc53540981d39f793fe93fd",
+      "copper.mod": "6d16ef0e883f24f1d5caba98f9129116ee5a821d5a4494040b0f393b6a6291b3",
+      "copper.lock": "a379ce8b09152cb056c3f0d0d4e342b6f902a97371e30553b46d83fb55ec381a",
+      "assembly.lock": "9ed4b2f1dd667e605c068aca9bebb983e4ce73143786ba1d617973c6d0483e91",
+      "Makefile": "f965ef02f157763c76475e914eade9a3b1fe3ebc7bcd02a8b089edddec23a059",
       "src/rf/feed.copper": "e5698940f28c2ede8fd28ba93447128b83957c91431a30c73ff0b158d2efb130",
       "src/rf/nrf-layout.copper": "b40abff62171e95bd74f00a3c04cb5d8cbbdc303ad59ec8d105c9370622fa2a2",
       "src/tracker/power_tree.copper": "952cbe99f737065ce3c960f3241c6117b25ce19fd50e54f7f2cdb01fa73f5282"
     }
   },
   "compiler": {
-    "copperscript_commit": "11589d7aaf7d13c8152f7dcb02c21a296103cf73",
+    "copperscript_commit": "70faa1d4e4703a238634a668e11c420e99116757",
     "tracked_changes": "",
-    "executable_sha256": "91e7f72b1a0dca9fc24e8de1a5aabfe21487488c002f83193e7d206617d346ad"
+    "executable_sha256": "42ef40cb8b7cf26bb6292c91b52f1dcb379abe356069e530efc8568a12a34ccd"
   },
   "route": {
     "options": "--layers 6 --fab-profile jlcpcb-six-layer --candidates 1 --feedback-iterations 1 --router-iterations 5 --progress --fanout --plane-contact-radius-mm 5 --unified-set fine_regions=dense --fanout-maze --package-initial-pair-states 0 --no-early-plane-stitch --plane-stitch-step-mm 0.1 --plane-maze-step-mm 0.025 --plane-maze-budget 50000 --plane-contact-radius-mm 3 --plane-stitch-detour-mm 1.5",
     "status": "pass",
-    "report_sha256": "760c323dffd43a469b8d1e39a652789f6b5b1f5267513e6e092864c0212b59b4",
-    "unfilled_pcb_sha256": "077b9b26155bcddbb4c1c82c87845953a896443f6217a2837953ef1fc9ae9f0b",
+    "report_sha256": "1e178a6d75f7972e4a19859129ef75ca57fc4845d2727e1b75afc7bac5a2f5c0",
+    "unfilled_pcb_sha256": "8c95248e8bf7b8a40cad21b954c6c7a635bf66212500120c122733322d9d1b05",
     "ordinary_nets_routed": 58,
     "unrouted_ordinary_nets": [],
     "tracks": 1180,
@@ -37,7 +37,7 @@
       "pass": 94
     }
   },
-  "pcb_sha256": "9159a15f9de5775551994025f6e53bc08e4ba0d26a79d154973cd7cf3aeb9b3f",
+  "pcb_sha256": "6930070cb159b943d3b000440e9dc0b01a6027515af899e922e2d49d59a97b15",
   "component_count": 88,
   "track_count": 1180,
   "via_count": 270,
@@ -53,7 +53,7 @@
     "B.Cu"
   ],
   "native_drc": {
-    "report_sha256": "f284cc88e99074c76c4c32eb8ee800d9a5e9ff5ebb73f5b975b423aab8c82ccf",
+    "report_sha256": "e13d93af11a806594972bb43d5d4f194208fc0cb69985edb57940c73d50ba3be",
     "passed": true,
     "violations": 0,
     "unconnected": 0,
@@ -83,6 +83,6 @@
     "placement.svg": "17add52fabc97d06d69bc6f54b3ef4123cfd9f1c16ee56ef12f0bf01d8f6b023",
     "rendering.json": "9d797399222779309581375fe4639f5a306d8e2788c65393e303aeaeade0607b",
     "electrical-ir.excerpt.json": "129b7753cd21db3ea73e5ec85324cf0762093950bc293c0b3602bb8bc17ca1b8",
-    "physical-ir.excerpt.json": "be5afe9ad06a28943d5c8d679fa3109c9e9d51bb666c2e02224653afcb4720ab"
+    "physical-ir.excerpt.json": "abeed45b43e14742f05e3a2181403ade465b28c0c72bb074f387981999fbe3c7"
   }
 }

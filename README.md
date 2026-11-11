@@ -302,7 +302,7 @@ millimetres); it is not a substitute for the complete CopperScript physical IR:
 
 ```json
 {
-  "footprint": "CopperScript:C_0402_1005Metric__143a421d485a988c3cd2",
+  "footprint": "CopperScript:C_0402_1005Metric__bd2e69326833e4fd7dc0",
   "position_mm": { "x": "56.3", "y": "21" },
   "reference": "C_MCU",
   "rotation_degrees": "90"
