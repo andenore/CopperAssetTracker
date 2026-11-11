@@ -2,13 +2,14 @@
 
 ## Build
 
-Requires GNU Make, cargo, jq and KiCad 10 (`kicad-cli`, for refill and native
-DRC). `make` builds the Rust `copper` compiler from a sibling `../CopperScript`
+Requires GNU Make, cargo and jq. KiCad 10 is optional: `make route`, `make order` and
+`make render` use CopperScript's own fill, DRC, plotter and renderer unless
+`KICAD_CLI` names a `kicad-cli`. `make` builds the Rust `copper` compiler from a sibling `../CopperScript`
 checkout (`make copper`); `make COPPER=copper …` uses an installed binary
 instead. Every footprint is managed: `copper.mod` pins CopperLib and the KiCad
 footprint libraries (`github.com/KiCad/kicad-footprints`) to GitHub commits and
 `copper.lock` binds their content, so no local KiCad footprint directory is used.
-`make/board.mk` and `make/route-build.sh` are CopperScript's shared recipes,
+`make/board.mk` is CopperScript's shared recipe file (with `make/release-build.sh` where present),
 copied unchanged; the `Makefile` only adds this board's settings and targets.
 
 ```sh

@@ -1,5 +1,5 @@
 name: JLCPCB manufacturing files
-# Routes the board from source with the pinned compiler and KiCad 10, then runs
+# Routes the board from source with the pinned compiler (its own fill, DRC and plotter), then runs
 # `make order`: build/order/jlcpcb/gerbers-drill.zip is the fab upload, bom.csv
 # and cpl.csv the assembly upload, hand-assembly.csv the parts to fit by hand.
 # The files are native-DRC-clean, not an independently CAM-qualified release
@@ -57,14 +57,14 @@ jobs:
           KICAD_PINS: .copperscript/.github/board-toolchain.json
           KICAD_DEB_CACHE: /home/runner/kicad-debs
         run: bash .copperscript/scripts/ci_install_kicad10.sh
-      # The route runs offline (make/route-build.sh), so fetch the locked
+      # The route runs offline (copper build), so fetch the locked
       # packages and footprint libraries into .copper-cache first.
       - name: Fetch the locked packages
         run: copper lock board.copper --locked
-      - name: Route, refill and run native DRC
-        run: make route COPPER=copper KICAD_CLI=kicad-cli
+      - name: Route, refill and run DRC
+        run: make route COPPER=copper
       - name: Build the JLCPCB order package
-        run: make order COPPER=copper KICAD_CLI=kicad-cli
+        run: make order COPPER=copper
       - name: Summarize the order package
         run: |
           {
