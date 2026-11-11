@@ -22,7 +22,9 @@ include make/board.mk
 # KiCad is opt-in. With KICAD_CLI empty (the default) route, order and render
 # use CopperScript's own fill, DRC, plotter and renderer and need no KiCad.
 # Set KICAD_CLI to a kicad-cli path to use KiCad for all three.
-_kicad_export = $(if $(strip $(KICAD_CLI)),--drc kicad --plotter kicad --kicad-cli "$(KICAD_CLI)")
+# The synthesized antennas end in tracks that are open by design. The route
+# report lists them and the export excuses exactly those; KiCad DRC cannot.
+_kicad_export = $(if $(strip $(KICAD_CLI)),--drc kicad --plotter kicad --kicad-cli "$(KICAD_CLI)",--expected-open-ends $(RUNS)/latest-route/route-report.json)
 
 .NOTPARALLEL:
 SHELL := /bin/bash
