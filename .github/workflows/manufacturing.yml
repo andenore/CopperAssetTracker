@@ -4,6 +4,9 @@ name: JLCPCB manufacturing files
 # and cpl.csv the assembly upload, hand-assembly.csv the parts to fit by hand.
 # The files are native-DRC-clean, not an independently CAM-qualified release
 # (see the Makefile's order target).
+# The native job needs no KiCad and is the one that gates the build. The kicad
+# job repeats route and order with KiCad's fill, DRC and plotter as a
+# cross-check; its failure is reported but does not fail the workflow.
 on:
   push:
     branches: [main]
@@ -15,8 +18,14 @@ concurrency:
   cancel-in-progress: true
 jobs:
   order:
+    name: order (${{ matrix.toolchain }})
+    strategy:
+      fail-fast: false
+      matrix:
+        toolchain: [native, kicad]
     runs-on: ubuntu-24.04
     timeout-minutes: 120
+    continue-on-error: ${{ matrix.toolchain == 'kicad' }}
     defaults:
       run:
         shell: bash
@@ -27,8 +36,8 @@ jobs:
       - name: Read the pinned CopperScript revision
         id: pin
         run: echo "rev=$(cat .copper-version)" >> "$GITHUB_OUTPUT"
-      # The KiCad install script and its version pins come from the same
-      # CopperScript revision as the compiler.
+      # The KiCad install script (kicad job only) and its version pins come from
+      # the same CopperScript revision as the compiler.
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           repository: andenore/CopperScript
@@ -48,11 +57,15 @@ jobs:
           cargo +1.97.0 install --path .copperscript/crates/copper --locked --root ~/copper-bin copper
       - run: echo "$HOME/copper-bin/bin" >> "$GITHUB_PATH"
       - name: Restore cached KiCad packages
+        if: matrix.toolchain == 'kicad'
         uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         with:
           path: /home/runner/kicad-debs
           key: kicad10-debs-${{ hashFiles('.copperscript/.github/board-toolchain.json') }}
+      # The script exports KICAD_CLI, which switches make route and make order
+      # to KiCad; without it they use CopperScript's own fill, DRC and plotter.
       - name: Install KiCad 10 (pinned Ubuntu packages)
+        if: matrix.toolchain == 'kicad'
         env:
           KICAD_PINS: .copperscript/.github/board-toolchain.json
           KICAD_DEB_CACHE: /home/runner/kicad-debs
@@ -68,7 +81,7 @@ jobs:
       - name: Summarize the order package
         run: |
           {
-            echo "### JLCPCB order package"
+            echo "### JLCPCB order package (${{ matrix.toolchain }})"
             echo "Upload \`jlcpcb/gerbers-drill.zip\` for the PCB, \`jlcpcb/bom.csv\` and \`jlcpcb/cpl.csv\` for assembly."
             echo "Check every part in JLCPCB's placement preview; parts in \`hand-assembly.csv\` are fitted by hand."
             echo '```'
@@ -77,13 +90,13 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: jlcpcb-${{ github.event.repository.name }}-${{ github.sha }}
+          name: jlcpcb-${{ github.event.repository.name }}-${{ github.sha }}${{ matrix.toolchain == 'kicad' && '-kicad' || '' }}
           path: build/order/
           if-no-files-found: error
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         if: always()
         with:
-          name: route-run-${{ github.sha }}
+          name: route-run-${{ github.sha }}${{ matrix.toolchain == 'kicad' && '-kicad' || '' }}
           path: |
             build/board/runs/latest-route/run.json
             build/board/runs/latest-route/*.json
