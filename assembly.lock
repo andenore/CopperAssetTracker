@@ -60,7 +60,7 @@
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "C_BT_SHUNT",
-      "reviewed": false,
+      "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/C309455",
       "supplier": "jlcpcb",
       "supplier_part": "C309455"
@@ -123,7 +123,7 @@
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "C_CELL_SHUNT1",
-      "reviewed": false,
+      "reviewed": true,
       "source_url": "https://www.lcsc.com/product-detail/C85883.html",
       "supplier": "jlcpcb",
       "supplier_part": "C85883"
@@ -136,7 +136,7 @@
       "part": "CAPACITOR",
       "populate": "none",
       "reference": "C_CELL_SHUNT2",
-      "reviewed": false,
+      "reviewed": true,
       "source_url": null,
       "supplier": null,
       "supplier_part": null
@@ -249,7 +249,7 @@
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "C_GNSS_SERIES",
-      "reviewed": false,
+      "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/YAGEO-AC0402BRNPO9BN3R9/C326821",
       "supplier": "jlcpcb",
       "supplier_part": "C326821"
@@ -262,7 +262,7 @@
       "part": "CAPACITOR",
       "populate": "supplier",
       "reference": "C_GNSS_SHUNT",
-      "reviewed": false,
+      "reviewed": true,
       "source_url": "https://www.lcsc.com/product-detail/C2209626.html",
       "supplier": "jlcpcb",
       "supplier_part": "C2209626"
@@ -751,7 +751,7 @@
       "part": "INDUCTOR",
       "populate": "supplier",
       "reference": "L_BT_SERIES",
-      "reviewed": false,
+      "reviewed": true,
       "source_url": "https://www.lcsc.com/product-detail/C18222.html",
       "supplier": "jlcpcb",
       "supplier_part": "C18222"
@@ -764,7 +764,7 @@
       "part": "INDUCTOR",
       "populate": "supplier",
       "reference": "L_CELL_SERIES",
-      "reviewed": false,
+      "reviewed": true,
       "source_url": "https://jlcpcb.com/partdetail/MurataElectronics-LQG15HS5N6S02D/C85670",
       "supplier": "jlcpcb",
       "supplier_part": "C85670"
