@@ -4,9 +4,9 @@
 # render the five promo views from the plotted Gerbers and record a snapshot
 # that binds every input and output by SHA-256.
 #
-#   scripts/showcase.sh --route "ROUTE OPTIONS" [--copper PATH] [--run-dir DIR]
+#   scripts/showcase.sh [--copper PATH] [--run-dir DIR]
 #
-# make showcase passes the Makefile's ROUTE settings.
+# The route settings are the build block of board.copper.
 #
 # Writes docs/showcase/{routing-top,routing-inner,routing-bottom,routing-all,
 # placement}.svg, rendering.json, the two IR excerpts and snapshot.json; the
@@ -18,17 +18,15 @@ die() { echo "SHOWCASE ERROR: $*" >&2; exit 2; }
 sha256() { sha256sum "$1" | cut -d' ' -f1; }
 
 project="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)"
-copper="${COPPER:-$project/../CopperScript/target/release/copper}" run="" route=""
+copper="${COPPER:-$project/../CopperScript/target/release/copper}" run=""
 while [ $# -gt 0 ]; do
   case "$1" in
     --copper) copper="$2"; shift 2 ;;
     --run-dir) run="$2"; shift 2 ;;
-    --route) route="$2"; shift 2 ;;
     *) die "unknown argument: $1" ;;
   esac
 done
 command -v jq > /dev/null || die "jq is required"
-[ -n "$route" ] || die "--route is required (make showcase passes the Makefile's ROUTE)"
 [ -x "$copper" ] || die "copper executable missing: $copper"
 copper="$(cd "$(dirname "$copper")" && pwd -P)/$(basename "$copper")"
 cd "$project"
@@ -39,8 +37,8 @@ mkdir -p "$run" && run="$(cd "$run" && pwd -P)"
 out="$project/docs/showcase"
 mkdir -p "$out"
 
-# Route settings: the Makefile's, with native plane verification.
-read -r -a route_args <<< "--layers 6 $route"
+# Route settings: the board's build block, with native plane verification.
+route_args=(--layers 6 --progress)
 
 echo "Showcase run: $run"
 "$copper" check board.copper --locked > "$run/check.log"

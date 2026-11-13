@@ -9,14 +9,8 @@ SHELL := bash
 .NOTPARALLEL:
 .PHONY: check test si-check layout route render review bom assembly-update order antennas showcase
 
-# Router settings for this board: maze fanout and fine plane stitching. Dense
-# fine regions give the 0.4 mm-pitch packages a 0.05 mm grid: on the 0.25 mm
-# base grid the nRF HFXO nets (XC1/XC2, F.Cu, no vias) have no legal path past
-# C_DEC3.
-ROUTE := --fab-profile jlcpcb-six-layer --candidates 1 --feedback-iterations 1 --router-iterations 5 --progress \
-  --fanout --fanout-maze --unified-set fine_regions=dense --package-initial-pair-states 0 \
-  --no-early-plane-stitch --plane-stitch-step-mm 0.1 --plane-maze-step-mm 0.025 --plane-maze-budget 50000 \
-  --plane-contact-radius-mm 3 --plane-stitch-detour-mm 1.5
+# Fabrication preset and router settings are in the board's `build` block;
+# an option after `--` on a call overrides it.
 
 # Every route is a new build/board/<UTC time>-<pid>/ with a run.json; RUN is the newest.
 RUN ?= $(patsubst %/run.json,%,$(lastword $(sort $(wildcard build/board/[0-9]*/run.json))))
@@ -36,13 +30,13 @@ test:
 	COPPER="$(abspath $(COPPER))" $(PYTHON) -m pytest tests -q
 
 si-check:
-	$(COPPER) si-check board.copper --locked --offline --fab-profile jlcpcb-six-layer
+	$(COPPER) si-check board.copper --locked --offline
 
 layout:
-	$(COPPER) plan-layout board.copper --locked --fab-profile jlcpcb-six-layer --candidates 1 -o build/board/placed.kicad_pcb --report build/board/placement.json
+	$(COPPER) plan-layout board.copper --locked --candidates 1 -o build/board/placed.kicad_pcb --report build/board/placement.json
 
 route:
-	$(COPPER) build board.copper --locked $(VERIFY) -- $(ROUTE)
+	$(COPPER) build board.copper --locked $(VERIFY)
 
 render:
 	rm -rf $(RUN)/plot && $(COPPER) plot $(RUN)/board.kicad_pcb -o $(RUN)/plot
@@ -77,8 +71,8 @@ order: bom
 # re-evaluates the declared geometry only. Simulation evidence only.
 antennas: antenna-ble antenna-gnss antenna-lte
 antenna-%:
-	$(COPPER) synthesize-antenna board.copper --locked --offline --fab-profile jlcpcb-six-layer --antenna $* --report revisions/pcb-antennas-v1/$*-synthesis.json $(SYNTH)
+	$(COPPER) synthesize-antenna board.copper --locked --offline --antenna $* --report revisions/pcb-antennas-v1/$*-synthesis.json $(SYNTH)
 
 # The website pictures in docs/showcase from a fresh route (docs/showcase.md).
 showcase:
-	bash scripts/showcase.sh --copper "$(COPPER)" --route "$(ROUTE)"
+	bash scripts/showcase.sh --copper "$(COPPER)"

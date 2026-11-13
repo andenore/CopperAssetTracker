@@ -2,6 +2,19 @@
 // physical IR -> KiCad PCB -> manufacturing outputs. Values and RF networks
 // remain subject to schematic/layout review before fabrication.
 board CopperAssetTracker {
+    // Build settings: maze fanout and fine plane stitching. Dense fine regions
+    // give the 0.4 mm-pitch packages a 0.05 mm grid: on the 0.25 mm base grid
+    // the nRF HFXO nets (XC1/XC2, F.Cu, no vias) have no legal path past C_DEC3.
+    build {
+        fab_profile = "jlcpcb-six-layer";
+        routing { fanout_maze = true; pair_states = 0; }
+        planes {
+            early_stitch = false; contact_radius = 3mm; stitch_step = 0.1mm; stitch_detour = 1.5mm;
+            maze_step = 0.025mm; maze_budget = 50000;
+        }
+        router { fine_regions = dense; }
+    }
+
     use library "tiny";
     import gct_usb "github.com/andenore/CopperLib/packages/parts/gct/usb4135";
     import tusb "github.com/andenore/CopperLib/packages/parts/ti/tusb320lai";

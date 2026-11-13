@@ -1,30 +1,30 @@
 {
   "schema": "copperassettracker-showcase/v3",
-  "candidate": "native-showcase-20261111",
-  "created_utc": "20261111T175428Z",
+  "candidate": "native-showcase-20261113",
+  "created_utc": "20261113T123609Z",
   "source": {
-    "git_commit": "d511029ed3e99ddada56c7e6c176b0438764b812",
-    "tracked_changes": " M docs/engineering-plan.json\n M tests/test_engineering_plan.py\n M tests/test_tracker.py",
+    "git_commit": "1c860b13dae02ef20d618ca9663b48743e1f5286",
+    "tracked_changes": " M .copper-version\n M Makefile\n M board.copper\n M scripts/showcase.sh\n M tests/test_route_checkpoint.py",
     "input_sha256": {
-      "board.copper": "b0b6f39d6853ebc1efa73f7d186395c9dd205c513f0f516c650c1d7ad93683eb",
+      "board.copper": "115987a25beb0829d2c2210ccafdedd9173bf007dfa912554f271b3770836f2e",
       "copper.mod": "6d16ef0e883f24f1d5caba98f9129116ee5a821d5a4494040b0f393b6a6291b3",
       "copper.lock": "a379ce8b09152cb056c3f0d0d4e342b6f902a97371e30553b46d83fb55ec381a",
       "assembly.lock": "9ed4b2f1dd667e605c068aca9bebb983e4ce73143786ba1d617973c6d0483e91",
-      "Makefile": "f965ef02f157763c76475e914eade9a3b1fe3ebc7bcd02a8b089edddec23a059",
+      "Makefile": "7a6b13348051903732a23941f2dd15516087b924c827c74b780574cc23484d9c",
       "src/rf/feed.copper": "e5698940f28c2ede8fd28ba93447128b83957c91431a30c73ff0b158d2efb130",
       "src/rf/nrf-layout.copper": "b40abff62171e95bd74f00a3c04cb5d8cbbdc303ad59ec8d105c9370622fa2a2",
       "src/tracker/power_tree.copper": "952cbe99f737065ce3c960f3241c6117b25ce19fd50e54f7f2cdb01fa73f5282"
     }
   },
   "compiler": {
-    "copperscript_commit": "70faa1d4e4703a238634a668e11c420e99116757",
+    "copperscript_commit": "1ea6c474fb591ede62ec9275779232f5942056f5",
     "tracked_changes": "",
-    "executable_sha256": "42ef40cb8b7cf26bb6292c91b52f1dcb379abe356069e530efc8568a12a34ccd"
+    "executable_sha256": "6123e71e37f1baa91d7cde3e7a993544819219658b92941e8d285088cd37db77"
   },
   "route": {
-    "options": "--layers 6 --fab-profile jlcpcb-six-layer --candidates 1 --feedback-iterations 1 --router-iterations 5 --progress --fanout --plane-contact-radius-mm 5 --unified-set fine_regions=dense --fanout-maze --package-initial-pair-states 0 --no-early-plane-stitch --plane-stitch-step-mm 0.1 --plane-maze-step-mm 0.025 --plane-maze-budget 50000 --plane-contact-radius-mm 3 --plane-stitch-detour-mm 1.5",
+    "options": "--layers 6 --progress",
     "status": "pass",
-    "report_sha256": "1e178a6d75f7972e4a19859129ef75ca57fc4845d2727e1b75afc7bac5a2f5c0",
+    "report_sha256": "e6297ec9f66942d3c10c1e3e5168d7b30a8ab7b75a2fdae217488a3774e07e5d",
     "unfilled_pcb_sha256": "8c95248e8bf7b8a40cad21b954c6c7a635bf66212500120c122733322d9d1b05",
     "ordinary_nets_routed": 58,
     "unrouted_ordinary_nets": [],
@@ -53,7 +53,7 @@
     "B.Cu"
   ],
   "native_drc": {
-    "report_sha256": "e13d93af11a806594972bb43d5d4f194208fc0cb69985edb57940c73d50ba3be",
+    "report_sha256": "4841d271c205364fb2a7e0871bb50b4ee05ef2b25b47ffdf91044ff7495aa7dd",
     "passed": true,
     "violations": 0,
     "unconnected": 0,

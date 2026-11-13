@@ -17,7 +17,7 @@ class RouteCheckpointTests(unittest.TestCase):
         settings = (ROOT / 'Makefile').read_text()
         recipe = settings.split('\nroute:\n', 1)[1].split('\n', 1)[0]
         self.assertIn('$(COPPER) build board.copper', recipe)
-        self.assertIn('-- $(ROUTE)', recipe)
+        self.assertNotIn(' -- ', recipe)  # route settings are the board's build block
         self.assertFalse((ROOT / 'make').exists())
         for option in ('--pose-seed', '--route-v5', '--reroute-net', '--plane-pad'):
             self.assertNotIn(option, settings)
