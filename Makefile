@@ -19,7 +19,7 @@ ROUTE := --fab-profile jlcpcb-six-layer --candidates 1 --feedback-iterations 1 -
   --plane-contact-radius-mm 3 --plane-stitch-detour-mm 1.5
 
 # Every route is a new build/board/<UTC time>-<pid>/ with a run.json; RUN is the newest.
-RUN ?= $(patsubst %/run.json,%,$(lastword $(sort $(wildcard build/board/*/run.json))))
+RUN ?= $(patsubst %/run.json,%,$(lastword $(sort $(wildcard build/board/[0-9]*/run.json))))
 
 # The synthesized antennas end in tracks that are open by design. The route
 # report lists them and the export excuses exactly those. KiCad's DRC cannot,
