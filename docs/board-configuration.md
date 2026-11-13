@@ -8,11 +8,10 @@ CopperScript `7e70ead`.
 | --- | ---: | --- |
 | main | 6 | Inner-layer zones and routing requirements |
 
-`make plan`, `make edit`, `make route` and `make si-check` omit `--layers`
-by default. CopperScript uses the declared physical stackup or the smallest
+The Makefile's `copper` calls pass no `--layers`. CopperScript uses the declared physical stackup or the smallest
 supported stack accommodating layer requirements and the fabrication profile.
-`make LAYERS=4 ...` remains an explicit selection/check; it cannot replace a
-conflicting source stackup.
+An explicit `--layers 4` on a call remains a selection/check; it cannot replace
+a conflicting source stackup.
 
 Physical layer requirements, zones and net rules belong in `.copper`.
 `FAB_PROFILE` and routing/placement budgets remain build settings: source

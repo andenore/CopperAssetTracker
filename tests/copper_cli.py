@@ -3,7 +3,7 @@
 Tests assert board facts on what `copper compile`, `copper check`, `copper
 query` and `copper assembly` print, never on compiler internals. COPPER
 overrides the command (for example `COPPER=copper` or a Rust build);
-The default command is the installed Rust `copper` executable. Every call is locked and offline: run `make fetch` first.
+The default command is the installed Rust `copper` executable. Every call is locked and offline: run `copper lock board.copper --locked` first.
 """
 import atexit
 import functools

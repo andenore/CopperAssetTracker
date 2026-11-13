@@ -30,7 +30,7 @@ def load_contract(path):
 
 
 def library_root(path):
-    """The verified CopperLib cache entry (`make fetch`) that holds a plan input."""
+    """The verified CopperLib cache entry (`copper lock board.copper --locked`) that holds a plan input."""
     relative = path.resolve().relative_to(CACHE.resolve())
     root = CACHE / relative.parts[0]
     assert "module github.com/andenore/CopperLib" in (root / "copper.mod").read_text(), root
@@ -67,14 +67,15 @@ class EngineeringPlanTests(unittest.TestCase):
         make = shutil.which("make")
         self.assertIsNotNone(make, "GNU Make is required for the workflow gate test")
         shell = Path(os.environ.get("ProgramFiles", "C:/Program Files")) / "Git/bin/bash.exe"
-        with tempfile.TemporaryDirectory() as runs:
-            args = [make, "order", "RUNS=" + Path(runs).as_posix(), "COPPER=copper"]
+        # With no route to export, the order stops at the export's run check.
+        with tempfile.TemporaryDirectory() as run:
+            args = [make, "order", "RUN=" + Path(run).as_posix(), "COPPER=" + os.environ.get("COPPER", "copper")]
             if os.name == "nt" and shell.is_file():
                 args.append("SHELL=" + str(shell).replace("\\", "/"))
-            result = subprocess.run(args, cwd=ROOT, capture_output=True, text=True, timeout=30)
+            result = subprocess.run(args, cwd=ROOT, capture_output=True, text=True, timeout=300)
             self.assertNotEqual(result.returncode, 0)
-            self.assertIn("No passed route", result.stdout + result.stderr)
-            self.assertFalse((Path(runs) / "latest-route").exists())
+            self.assertIn("MANUFACTURING EXPORT ERROR", result.stdout + result.stderr)
+            self.assertIn("run.json", result.stdout + result.stderr)
         lock = json.loads((ROOT / "assembly.lock").read_text())
         self.assertEqual(len(lock["selections"]), 85)
         # Every selection is reviewed, the printed antennas' matching parts included.

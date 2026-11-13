@@ -62,8 +62,8 @@ jobs:
         with:
           path: /home/runner/kicad-debs
           key: kicad10-debs-${{ hashFiles('.copperscript/.github/board-toolchain.json') }}
-      # The script exports KICAD_CLI, which switches make route and make order
-      # to KiCad; without it they use CopperScript's own fill, DRC and plotter.
+      # The kicad job passes KICAD=1 to make route and make order; without it
+      # they use CopperScript's own fill, DRC and plotter.
       - name: Install KiCad 10 (pinned Ubuntu packages)
         if: matrix.toolchain == 'kicad'
         env:
@@ -75,9 +75,9 @@ jobs:
       - name: Fetch the locked packages
         run: copper lock board.copper --locked
       - name: Route, refill and run DRC
-        run: make route COPPER=copper
+        run: make route COPPER=copper ${{ matrix.toolchain == 'kicad' && 'KICAD=1' || '' }}
       - name: Build the JLCPCB order package
-        run: make order COPPER=copper
+        run: make order COPPER=copper ${{ matrix.toolchain == 'kicad' && 'KICAD=1' || '' }}
       - name: Summarize the order package
         run: |
           {
@@ -98,7 +98,7 @@ jobs:
         with:
           name: route-run-${{ github.sha }}${{ matrix.toolchain == 'kicad' && '-kicad' || '' }}
           path: |
-            build/board/runs/latest-route/run.json
-            build/board/runs/latest-route/*.json
-            build/board/runs/latest-route/*.log
+            build/board/*/run.json
+            build/board/*/*.json
+            build/board/*/*.log
           if-no-files-found: warn

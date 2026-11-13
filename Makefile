@@ -1,152 +1,84 @@
-# CopperAssetTracker board settings. The recipes are CopperScript's shared ones
-# (make/board.mk and make/release-build.sh, maintained from CopperScript).
-# Only invocation settings and this project's own targets live here.
-# Source-driven layer selection: see docs/board-configuration.md.
-SOURCE := board.copper
-FAB_PROFILE := jlcpcb-six-layer
-# Maze fanout and fine plane stitching tuned for this board (the shared
-# defaults already set one candidate and fanout). Dense fine regions give the
-# 0.4 mm-pitch packages a 0.05 mm grid: on the 0.25 mm base grid the nRF HFXO
-# nets (XC1/XC2, F.Cu, no vias) have no legal path past C_DEC3.
-EXTRA_ROUTE_ARGS ?= --unified-set fine_regions=dense --fanout-maze --package-initial-pair-states 0 --no-early-plane-stitch --plane-stitch-step-mm 0.1 --plane-maze-step-mm 0.025 --plane-maze-budget 50000 --plane-contact-radius-mm 3 --plane-stitch-detour-mm 1.5
-
-# The CopperScript compiler is the Rust `copper` binary. By default it is built
-# from the sibling CopperScript checkout (make copper); set COPPER=copper to use
-# an installed binary on PATH, or COPPERSCRIPT to another checkout.
-COPPERSCRIPT ?= ../CopperScript
-COPPER ?= $(COPPERSCRIPT)/target/release/copper
-CARGO ?= $(or $(shell command -v cargo),$(HOME)/.cargo/bin/cargo)
-
-include make/board.mk
-
-# KiCad is opt-in. With KICAD_CLI empty (the default) route, order and render
-# use CopperScript's own fill, DRC, plotter and renderer and need no KiCad.
-# Set KICAD_CLI to a kicad-cli path to use KiCad for all three.
-# The synthesized antennas end in tracks that are open by design. The route
-# report lists them and the export excuses exactly those; KiCad DRC cannot.
-_kicad_export = $(if $(strip $(KICAD_CLI)),--drc kicad --plotter kicad --kicad-cli "$(KICAD_CLI)",--expected-open-ends $(RUNS)/latest-route/route-report.json)
-
-.NOTPARALLEL:
-SHELL := /bin/bash
-# Every footprint is managed: copper.mod maps the KiCad libraries to the pinned
-# github.com/KiCad/kicad-footprints commit and copper.lock binds their content,
-# so no local KiCad footprint directory is used.
-
-# Each route gets a fresh build/board/runs/<UTC time>-route/;
-# build/board/runs/latest-route points at the newest one.
-RUNS := $(OUT)/runs
-RUN_ID := $(shell date -u +%Y%m%dT%H%M%SZ)-route
-ROUTED := $(RUNS)/latest-route/board.kicad_pcb
-route: RUN_DIR = $(RUNS)/$(RUN_ID)
-route: | latest-route
-.PHONY: latest-route
-latest-route:
-	@mkdir -p $(RUNS)/$(RUN_ID) && ln -sfn $(RUN_ID) $(RUNS)/latest-route
-	@echo "Route run: $(RUNS)/$(RUN_ID) (follow: tail -f $(RUNS)/latest-route/routing.log)"
-
-# One legal placement candidate with macro copper; no board-level routing.
-layout: PHYSICAL_ARGS += --candidates 1
-.PHONY: copper plan si-check render review order test antennas
-plan: layout
-
-# Build the Rust compiler from the CopperScript checkout, with its pinned
-# toolchain (rust-toolchain.toml applies in that directory); incremental, so a
-# no-op when current. Skipped when COPPER names a binary outside that checkout.
-check compile layout edit route si-check bom order test assembly-update: copper
-copper:
-	$(if $(filter $(COPPERSCRIPT)/target/release/copper,$(COPPER)),cd $(COPPERSCRIPT) && $(CARGO) build --release --locked -p copper,@true)
-
-# Board tests: source facts checked through the copper CLI (needs pytest,
-# see requirements-test.txt).
+# CopperAssetTracker. Each target is a plain `copper` call, written out in full;
+# `copper <command> --help` explains every option. Nothing here needs KiCad.
+#
+# COPPER is the compiler pinned in .copper-version: build it in the CopperScript
+# checkout (cargo build --release --locked -p copper) or pass COPPER=copper.
+COPPER ?= ../CopperScript/target/release/copper
 PYTHON ?= python3
+SHELL := bash
+.NOTPARALLEL:
+.PHONY: check test si-check layout route render review bom assembly-update order antennas showcase
+
+# Router settings for this board: maze fanout and fine plane stitching. Dense
+# fine regions give the 0.4 mm-pitch packages a 0.05 mm grid: on the 0.25 mm
+# base grid the nRF HFXO nets (XC1/XC2, F.Cu, no vias) have no legal path past
+# C_DEC3.
+ROUTE := --fab-profile jlcpcb-six-layer --candidates 1 --feedback-iterations 1 --router-iterations 5 --progress \
+  --fanout --fanout-maze --unified-set fine_regions=dense --package-initial-pair-states 0 \
+  --no-early-plane-stitch --plane-stitch-step-mm 0.1 --plane-maze-step-mm 0.025 --plane-maze-budget 50000 \
+  --plane-contact-radius-mm 3 --plane-stitch-detour-mm 1.5
+
+# Every route is a new build/board/<UTC time>-<pid>/ with a run.json; RUN is the newest.
+RUN ?= $(patsubst %/run.json,%,$(lastword $(sort $(wildcard build/board/*/run.json))))
+
+# The synthesized antennas end in tracks that are open by design. The route
+# report lists them and the export excuses exactly those. KiCad's DRC cannot,
+# so the KiCad cross-check (make route order KICAD=1, kicad-cli on PATH) stops
+# on them.
+VERIFY := $(if $(KICAD),--verify kicad)
+EXPORT = $(if $(KICAD),--drc kicad --plotter kicad,--expected-open-ends $(RUN)/route-report.json)
+
+check:
+	$(COPPER) check board.copper --locked
+
+# Board tests through the copper CLI (pip install -r requirements-test.txt).
 test:
 	COPPER="$(abspath $(COPPER))" $(PYTHON) -m pytest tests -q
 
-# Pre-route signal-integrity screening: impedance from the declared stack-up,
-# reference planes, layer groups and length-match groups.
 si-check:
-	$(COPPER) si-check $(SOURCE) $(RESOLVE_ARGS) --offline $(_layer_args) --fab-profile $(FAB_PROFILE)
+	$(COPPER) si-check board.copper --locked --offline --fab-profile jlcpcb-six-layer
+
+layout:
+	$(COPPER) plan-layout board.copper --locked --fab-profile jlcpcb-six-layer --candidates 1 -o build/board/placed.kicad_pcb --report build/board/placement.json
+
+route:
+	$(COPPER) build board.copper --locked $(VERIFY) -- $(ROUTE)
+
+render:
+	rm -rf $(RUN)/plot && $(COPPER) plot $(RUN)/board.kicad_pcb -o $(RUN)/plot
+	$(COPPER) render $(RUN)/plot --layer F.Cu --layer Edge.Cuts -o $(RUN)/F_Cu.svg
+	$(COPPER) render $(RUN)/plot --layer In1.Cu --layer Edge.Cuts -o $(RUN)/In1_Cu.svg
+	$(COPPER) render $(RUN)/plot --layer In2.Cu --layer Edge.Cuts -o $(RUN)/In2_Cu.svg
+	$(COPPER) render $(RUN)/plot --layer In3.Cu --layer Edge.Cuts -o $(RUN)/In3_Cu.svg
+	$(COPPER) render $(RUN)/plot --layer In4.Cu --layer Edge.Cuts -o $(RUN)/In4_Cu.svg
+	$(COPPER) render $(RUN)/plot --layer B.Cu --layer Edge.Cuts -o $(RUN)/B_Cu.svg
+
+# Browse and annotate the newest route in CopperReview (Ctrl+C stops it).
+review:
+	uv run --project ../CopperReview copper-review $(RUN)/board.kicad_pcb --project . --entry board.copper --source board.copper
+
+bom:
+	$(COPPER) assembly check board.copper --locked --offline --lock assembly.lock
+	$(COPPER) assembly bom board.copper --locked --offline --lock assembly.lock -o build/order/bom.csv --hand-assembly build/order/hand-assembly.csv --ordering build/order/ordering.csv
+
+# Rebind assembly.lock after source changes; changed selections need review again.
+assembly-update:
+	$(COPPER) assembly update board.copper --locked --offline --lock assembly.lock
+
+# JLCPCB package from the newest route. The export refuses a route that did not
+# pass or predates a source change, refills and checks the board itself, and is
+# not independently CAM-qualified.
+order: bom
+	$(COPPER) export-manufacturing $(RUN)/board.kicad_pcb --run $(RUN)/run.json $(EXPORT) --skip-independent-cam --bom build/order/bom.csv --replace -o build/order/jlcpcb
 
 # Full-wave synthesis of the three printed antennas (constraint antenna in
-# board.copper): one report per antenna in revisions/pcb-antennas-v1/. Paste
-# the printed geometry and tuned_for lines into the declaration. ANTENNAS
-# selects a subset; SYNTH_ARGS adds e.g. --verify or --budget N. Expect tens
-# of minutes per antenna. Simulation evidence only.
-ANTENNAS ?= ble gnss lte
-ANTENNA_REPORTS := revisions/pcb-antennas-v1
-SYNTH_ARGS ?=
-antennas: copper
-	@for a in $(ANTENNAS); do \
-	  $(COPPER) synthesize-antenna $(SOURCE) $(RESOLVE_ARGS) --offline $(_layer_args) --fab-profile $(FAB_PROFILE) \
-	    --antenna $$a --report $(ANTENNA_REPORTS)/$$a-synthesis.json $(SYNTH_ARGS) || exit 1; \
-	done
+# board.copper); paste the printed geometry and tuned_for lines into the
+# declaration. Tens of minutes each: make antenna-lte runs one, SYNTH=--verify
+# re-evaluates the declared geometry only. Simulation evidence only.
+antennas: antenna-ble antenna-gnss antenna-lte
+antenna-%:
+	$(COPPER) synthesize-antenna board.copper --locked --offline --fab-profile jlcpcb-six-layer --antenna $* --report revisions/pcb-antennas-v1/$*-synthesis.json $(SYNTH)
 
-# Layer SVGs of the newest routed (and refilled) board.
-_comma := ,
-RENDER_LAYERS ?= F.Cu,In1.Cu,In2.Cu,In3.Cu,In4.Cu,B.Cu
-render:
-ifeq ($(strip $(KICAD_CLI)),)
-	@rm -rf $(RUNS)/latest-route/plot && mkdir -p $(RUNS)/latest-route/layers
-	$(COPPER) plot $(ROUTED) -o $(RUNS)/latest-route/plot
-	@for layer in $(subst $(_comma), ,$(RENDER_LAYERS)); do \
-	  $(COPPER) render $(RUNS)/latest-route/plot --layer $$layer --layer Edge.Cuts \
-	    -o $(RUNS)/latest-route/layers/board-$${layer//./_}.svg || exit 1; done
-else
-	"$(KICAD_CLI)" pcb export svg --layers $(RENDER_LAYERS) --common-layers Edge.Cuts --mode-multi --fit-page-to-board --exclude-drawing-sheet --check-zones -o $(RUNS)/latest-route/layers/ $(ROUTED)
-endif
-
-# The website showcase without KiCad: a fresh native-verified route, native
-# fill, DRC and plot, and the promo views rendered from the plotted Gerbers
-# into docs/showcase (see docs/showcase.md).
-.PHONY: showcase
-showcase: copper
-	bash scripts/showcase.sh --copper "$(COPPER)"
-
-# Browse and annotate a board in CopperReview (local web viewer; Ctrl+C stops it).
-# The page also compiles this folder in the browser for the electrical review
-# (schematic, power, buses), linked to the board; reload it to recompile.
-# 3D bodies are KiCad's STEP models once CopperReview has run `npm run build:occt`.
-# Defaults to the newest routed board; its stage follows that route's run.json.
-# Point REVIEW_BOARD elsewhere (e.g. $(OUT)/placed.kicad_pcb) and set
-# REVIEW_STAGE=placed to review a placement. REVIEW_ARGS=--no-browser etc.
-UV ?= uv
-COPPERREVIEW ?= ../CopperReview
-REVIEW_BOARD ?= $(ROUTED)
-REVIEW_STAGE ?=
-REVIEW_ARGS ?=
-review_stage = $(or $(REVIEW_STAGE),$(if $(filter $(ROUTED),$(REVIEW_BOARD)),$$(jq -e '.status == "passed"' $(RUNS)/latest-route/run.json > /dev/null 2>&1 && echo fully_routed || echo partially_routed),unknown))
-review:
-	@test -f $(REVIEW_BOARD) || { echo "No board at $(REVIEW_BOARD): run 'make route' first."; exit 1; }
-	$(UV) run --project $(COPPERREVIEW) copper-review $(REVIEW_BOARD) --project . --entry $(SOURCE) --source $(SOURCE) --stage $(review_stage) $(REVIEW_ARGS)
-
-# Complete ordering list: every component on the board, grouped by part, with
-# quantity per board, manufacturer and MPN, the assembly route and the recorded
-# supplier code. No route needed.
-LOCK := assembly.lock
-ORDER := build/order
-.PHONY: bom assembly-update
-bom:
-	@mkdir -p $(ORDER)
-	$(COPPER) assembly check $(SOURCE) $(RESOLVE_ARGS) --offline --lock $(LOCK) --report $(ORDER)/assembly-report.json
-	$(COPPER) assembly bom $(SOURCE) $(RESOLVE_ARGS) --offline --lock $(LOCK) -o $(ORDER)/bom.csv --hand-assembly $(ORDER)/hand-assembly.csv --ordering $(ORDER)/ordering.csv
-	@echo "Complete BOM -> $(ORDER)/ordering.csv"
-
-# Rebind assembly.lock to the current source after changes: unchanged
-# components keep their selection and review, changed ones keep their
-# selection but need review again, new ones are added unreviewed.
-assembly-update:
-	$(COPPER) assembly update $(SOURCE) $(RESOLVE_ARGS) --offline --lock $(LOCK)
-
-# Prototype order package for JLCPCB PCB + PCBA, built from the newest passed
-# route (build/board/runs/latest-route), so run `make route` first. JLCPCB places
-# every assembly.lock selection with populate = supplier; hand-assembly.csv lists
-# the rest to buy and fit by hand. The files are native-DRC-clean but NOT an
-# independently CAM-qualified release (--skip-independent-cam), and the CPL
-# keeps KiCad's rotation convention: check every part in JLCPCB's placement preview.
-order:
-	@jq -e '.status == "passed"' $(RUNS)/latest-route/run.json > /dev/null 2>&1 || { echo "No passed route at $(RUNS)/latest-route: run 'make route' first."; exit 1; }
-	@stale=$$(for f in $(SOURCE) copper.mod copper.lock; do [ $$f -nt $(ROUTED) ] && echo $$f; done); \
-	  if [ -n "$$stale" ]; then echo "Routed board predates: $$stale -- run 'make route' first."; exit 1; fi
-	@$(MAKE) --no-print-directory bom
-	$(COPPER) export-manufacturing $(ROUTED) $(_kicad_export) --skip-independent-cam --bom $(ORDER)/bom.csv --replace -o $(ORDER)/jlcpcb
-	@echo "Order package -> $(ORDER): upload jlcpcb/ to JLCPCB; buy and fit hand-assembly.csv by hand."
+# The website pictures in docs/showcase from a fresh route (docs/showcase.md).
+showcase:
+	bash scripts/showcase.sh --copper "$(COPPER)" --route "$(ROUTE)"

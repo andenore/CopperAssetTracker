@@ -58,7 +58,7 @@ class PowerLayoutTests(unittest.TestCase):
                 self.assertEqual(returns, [["GND"]])
 
     def test_build_recipe_does_not_repeat_source_macro_bindings(self):
-        # make/board.mk only forwards HARD_MACRO(S); the board sets none.
+        # Macro bindings live in the source; the Makefile passes none.
         configuration = (ROOT / 'Makefile').read_text()
         self.assertNotIn('--hard-macro', configuration)
         self.assertNotIn('HARD_MACRO', configuration)

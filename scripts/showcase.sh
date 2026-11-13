@@ -4,7 +4,9 @@
 # render the five promo views from the plotted Gerbers and record a snapshot
 # that binds every input and output by SHA-256.
 #
-#   scripts/showcase.sh [--copper PATH] [--run-dir DIR]
+#   scripts/showcase.sh --route "ROUTE OPTIONS" [--copper PATH] [--run-dir DIR]
+#
+# make showcase passes the Makefile's ROUTE settings.
 #
 # Writes docs/showcase/{routing-top,routing-inner,routing-bottom,routing-all,
 # placement}.svg, rendering.json, the two IR excerpts and snapshot.json; the
@@ -16,16 +18,18 @@ die() { echo "SHOWCASE ERROR: $*" >&2; exit 2; }
 sha256() { sha256sum "$1" | cut -d' ' -f1; }
 
 project="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)"
-copper="${COPPER:-$project/../CopperScript/target/release/copper}" run=""
+copper="${COPPER:-$project/../CopperScript/target/release/copper}" run="" route=""
 while [ $# -gt 0 ]; do
   case "$1" in
     --copper) copper="$2"; shift 2 ;;
     --run-dir) run="$2"; shift 2 ;;
+    --route) route="$2"; shift 2 ;;
     *) die "unknown argument: $1" ;;
   esac
 done
 command -v jq > /dev/null || die "jq is required"
-[ -x "$copper" ] || die "copper executable missing: $copper (make copper)"
+[ -n "$route" ] || die "--route is required (make showcase passes the Makefile's ROUTE)"
+[ -x "$copper" ] || die "copper executable missing: $copper"
 copper="$(cd "$(dirname "$copper")" && pwd -P)/$(basename "$copper")"
 cd "$project"
 stamp="$(date -u +%Y%m%dT%H%M%SZ)"
@@ -35,11 +39,8 @@ mkdir -p "$run" && run="$(cd "$run" && pwd -P)"
 out="$project/docs/showcase"
 mkdir -p "$out"
 
-# Route settings: the Makefile's shared defaults plus this board's
-# EXTRA_ROUTE_ARGS, with native plane verification instead of KiCad's.
-route_args=(--layers 6 --fab-profile jlcpcb-six-layer --candidates 1 --feedback-iterations 1
-  --router-iterations 5 --progress --fanout --plane-contact-radius-mm 5
-  $(sed -n 's/^EXTRA_ROUTE_ARGS ?= //p' Makefile))
+# Route settings: the Makefile's, with native plane verification.
+read -r -a route_args <<< "--layers 6 $route"
 
 echo "Showcase run: $run"
 "$copper" check board.copper --locked > "$run/check.log"

@@ -14,11 +14,10 @@ class RouteCheckpointTests(unittest.TestCase):
                 self.assertFalse((ROOT / 'scripts' / (name + '.py')).exists())
 
     def test_standard_review_has_no_pose_seed_or_named_repair_switches(self):
-        board_mk = (ROOT / 'make/board.mk').read_text()
-        recipe = board_mk.split('\nroute:\n', 1)[1].split('\n', 2)[0]
-        self.assertIn('$(COPPER) build ', recipe)
-        self.assertIn('$(ROUTE_ARGS) $(EXTRA_ROUTE_ARGS)', recipe)
-        self.assertFalse((ROOT / 'make/route-build.sh').exists())
-        settings = (ROOT / 'Makefile').read_text() + board_mk
+        settings = (ROOT / 'Makefile').read_text()
+        recipe = settings.split('\nroute:\n', 1)[1].split('\n', 1)[0]
+        self.assertIn('$(COPPER) build board.copper', recipe)
+        self.assertIn('-- $(ROUTE)', recipe)
+        self.assertFalse((ROOT / 'make').exists())
         for option in ('--pose-seed', '--route-v5', '--reroute-net', '--plane-pad'):
             self.assertNotIn(option, settings)

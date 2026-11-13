@@ -2,59 +2,36 @@
 
 ## Build
 
-Requires GNU Make, cargo and jq. KiCad 10 is optional: `make route`, `make order` and
-`make render` use CopperScript's own fill, DRC, plotter and renderer unless
-`KICAD_CLI` names a `kicad-cli`. `make` builds the Rust `copper` compiler from a sibling `../CopperScript`
-checkout (`make copper`); `make COPPER=copper …` uses an installed binary
-instead. Every footprint is managed: `copper.mod` pins CopperLib and the KiCad
-footprint libraries (`github.com/KiCad/kicad-footprints`) to GitHub commits and
-`copper.lock` binds their content, so no local KiCad footprint directory is used.
-`make/board.mk` is CopperScript's shared recipe file (with `make/release-build.sh` where present),
-copied unchanged; the `Makefile` only adds this board's settings and targets.
+Requires GNU Make and the Rust `copper` compiler pinned in `.copper-version`:
+build it in a sibling `../CopperScript` checkout
+(`cargo build --release --locked -p copper`) or pass `COPPER=copper` to use an
+installed one. KiCad is not needed. Every footprint is managed: `copper.mod`
+pins CopperLib and the KiCad footprint libraries to commits and `copper.lock`
+binds their content.
+
+The `Makefile` is the whole build: each target is a plain `copper` call that
+you can read there and run by hand (`copper <command> --help` explains the
+options).
 
 ```sh
-make             # ERC and JSON compilation (build/board/board.json)
-make check       # ERC
-make test        # board tests through the copper CLI (pip install -r requirements-test.txt)
-make si-check    # impedance / reference-plane / matching screening
-make edit        # CopperScript mechanical/floorplan editor
-make plan        # legal placement, no board-level routing (build/board/placed.kicad_pcb)
-make route       # full placement + routing, native refill and DRC
-make render      # layer SVGs of the newest route
-make bom         # complete BOM (build/order/ordering.csv)
-make order       # JLCPCB package from the newest passed route
-make release RELEASE=<part>-<rev>  # checksummed bundle of the order, its route run and BOM in build/release/ for archiving by hand
+make check        # ERC
+make test         # board tests through the copper CLI (pip install -r requirements-test.txt)
+make si-check     # impedance / reference-plane / matching screening
+make layout       # legal placement, no routing (build/board/placed.kicad_pcb)
+make route        # placement + routing, refill and DRC
+make render       # one SVG per copper layer of the newest route
+make review       # open the newest route in CopperReview
+make bom          # complete BOM (build/order/ordering.csv)
+make order        # JLCPCB package from the newest route (build/order/jlcpcb)
+make antennas     # synthesize the three printed antennas (make antenna-lte for one)
+make showcase     # website pictures in docs/showcase from a fresh route
 ```
 
-Each route gets its own `build/board/runs/<UTC time>-route/` folder, and
-`build/board/runs/latest-route` points at the newest one (`routing.log`,
-`route-report.json`, `board.kicad_pcb`, `kicad-drc.json`, `run.json`).
-The source CI is a subset, not a routing, packaging or release approval.
-
-### Windows (PowerShell)
-
-`build.ps1` runs the same Makefile targets. It needs GNU Make and jq (for
-example `scoop install make jq`), Git for Windows and KiCad 10. It puts Git's
-`usr\bin` on PATH for the build, because native Windows make runs simple
-recipe lines without a shell. After a route it points `latest-route` at the
-run with a directory junction, since Git Bash cannot create symlinks without
-Windows Developer Mode.
-
-```powershell
-$copper = "<path to copper.exe built at .copper-version>"
-$kicad  = "C:/Program Files/KiCad/10.0/bin/kicad-cli.exe"
-./build.ps1 -Action check -Copper $copper
-./build.ps1 -Action bom   -Copper $copper
-./build.ps1 -Action route -Copper $copper -KiCadCli $kicad
-./build.ps1 -Action order -Copper $copper -KiCadCli $kicad
-./build.ps1 -Action test  -Copper $copper
-```
-
-Without `-Copper`, make builds the compiler from whatever `../CopperScript`
-has checked out; build the pinned revision instead, for example in a worktree:
-`git -C ../CopperScript worktree add ../CopperScript-pin (Get-Content .copper-version)`
-then `cargo build --release --locked -p copper` in `../CopperScript-pin`.
-
+Each route is a new `build/board/<UTC time>-<pid>/` folder (`routing.log`,
+`route-report.json`, `board.kicad_pcb`, `native-drc.json`, `run.json`); render,
+review and order use the newest. `make order` refuses a route that did not pass
+or that predates a change to the sources. `make route order KICAD=1` refills,
+checks and plots with `kicad-cli` instead, as a cross-check. The synthesized antennas' open track ends stop KiCad's DRC, so that cross-check fails on this board by design.
 
 LLM agents: start with `copper agent-guide` in the selected CopperScript
 environment; see [the project pointer](AGENTS.md) for older compiler pins.
@@ -258,7 +235,8 @@ constraint antenna(ANT_GNSS.FEED) {
 }
 ```
 
-`make edit` opens the shared mechanical/floorplan editor with this board's pinned
+`copper edit-mechanical board.copper --locked --fab-profile jlcpcb-six-layer`
+opens the shared mechanical/floorplan editor with this board's pinned
 compiler, six-layer configuration and hard macros. CopperScript's current
 [mechanical features](https://github.com/andenore/CopperScript/blob/main/docs/mechanical-language.md)
 also support source-defined outlines, cutouts, holes, slots, datums, attachments

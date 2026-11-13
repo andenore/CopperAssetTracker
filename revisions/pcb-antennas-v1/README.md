@@ -49,7 +49,7 @@ rates well (-6.7 dB) but which radiates 29 % and needs 16-24 nH matching
 inductors: with lossy DC-safe parts it delivers 0.65 dB less and radiates
 about 3 dB less than the 68.2 mm geometry. `board.copper` therefore pins the
 68.2 mm geometry from the previous synthesis, re-verified on the current
-model (`make antennas ANTENNAS=lte SYNTH_ARGS=--verify`, `lte-synthesis.json`).
+model (`make antenna-lte SYNTH=--verify`, `lte-synthesis.json`).
 Both reports carry the same site digest. CopperScript's search scores
 matched return loss with ideal parts and ignores efficiency; that is a
 limitation of the synthesizer, recorded here rather than worked around.
@@ -61,8 +61,8 @@ Changing the outline, stack-up, GND zones, a region, the track rules, a feed
 or a band makes lowering fail until the antenna is re-synthesized:
 
 ```sh
-make antennas                    # all three; ANTENNAS="ble gnss" for a subset
-make antennas SYNTH_ARGS=--verify  # re-evaluate the declared geometry only
+make antennas                    # all three; make antenna-ble antenna-gnss for a subset
+make antennas SYNTH=--verify     # re-evaluate the declared geometry only
 ```
 
 Synthesis ran with CopperScript at antenna model revision 6 (11589d7, the
